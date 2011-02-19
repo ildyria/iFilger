@@ -356,37 +356,36 @@ local spells = {
 			{ spellName = SpellName(11426), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Ice Barrier
 		},
 	},
---[[	["PALADIN"] = {
+	["PALADIN"] = {
  		{
 			Name = "Self",
 			Direction = "UP",
 			Spacing = 3,
-			Mode = "BAR",
+			Mode = "ICON",
 			
-			{ spellName = SpellName()"Avenging Wrath", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Blessing of Kings", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Blessing of Might", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Blessing of Sanctuary", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Blessing of Wisdom", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Divine Favor", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Divine Illumination", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Divine Plea", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Greater Blessing of Kings", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Greater Blessing of Might", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Greater Blessing of Sanctuary", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Greater Blessing of Wisdom", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Hand of Protection", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Holy Shield", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Righteous Fury", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Reckoning", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Sacred Shield", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Seal of Command", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Seal of Corruption", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Seal of Righteousness", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Seal of Vengeance", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Sheath of Light", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"The Art of War", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Vengeance", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = SpellName(31884), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Avenging Wrath
+			{ spellName = SpellName(20217), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Blessing of Kings
+			{ spellName = SpellName(19740), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Blessing of Might
+			{ spellName = SpellName(31842), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Divine Favor
+			{ spellName = SpellName(54428), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Divine Plea
+			{ spellName = SpellName(25771), size = 52, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Forbearance
+			{ spellName = SpellName(1022), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Protection
+			{ spellName = SpellName(1044), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Freedom
+			{ spellName = SpellName(1038), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Salvation
+			{ spellName = SpellName(20925), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Holy Shield
+			{ spellName = SpellName(53651), size = 52, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Light's Beacon
+			{ spellName = SpellName(25780), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Righteous Fury
+			{ spellName = SpellName(96263), size = 52, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Sacred Shield
+			{ spellName = SpellName(20165), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Insight
+			{ spellName = SpellName(20164), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Justice
+			{ spellName = SpellName(20154), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Righteousness
+			{ spellName = SpellName(31801), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Truth
+			{ spellName = SpellName(87138), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --The Art of War
+
+			{ spellName = SpellName(90355), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ancient Hysteria
+			{ spellName = SpellName(2825), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodlust
+			{ spellName = SpellName(32182), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Heroism
+			{ spellName = SpellName(80353), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Time Warp
  		},
  		{
 			Name = "Target",
@@ -394,59 +393,49 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()"Avenger's Shield", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Blood Corruption", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Hammer of Justice", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Heart of the Crusader", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Holy Shock", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Holy Wrath", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Holy Vengeance", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Judgement of Light", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Judgement of Justice", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Judgement of Wisdom", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Judgements of the Just", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Light's Beacon", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Repentance", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Righteous Vengeance", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Sacred Shield", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Silenced - Shield of the Templar", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Vindication", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = SpellName(31935), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Avenger's Shield
+			{ spellName = SpellName(853), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Hammer of Justice
+			{ spellName = SpellName(1044), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Freedom
+			{ spellName = SpellName(1038), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Salvation
+			{ spellName = SpellName(2812), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Holy Wrath
+			{ spellName = SpellName(20271), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Judgement
+			{ spellName = SpellName(53651), size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Light's Beacon
+			{ spellName = SpellName(20066), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Repentance
+			{ spellName = SpellName(26017), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Vindication
+			{ spellName = SpellName(25771), size = 26, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Forbearance
  		},
 		{
 			Name = "Cooldowns",
-			Direction = "UP",
+			Direction = "RIGHT",
 			Spacing = 3,
-			Mode = "BAR",
+			Mode = "ICON",
 			
-			{ spellName = SpellName()13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Hand of Salvation", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Hand of Protection", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Hand of Reckoning", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Hand of Freedom", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
-			{ spellName = SpellName()"Judgement of Light", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Lay on Hands", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Divine Intervention", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Righteous Defense", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Exorcism", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Hammer of Justice", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Consecration", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Divine Shield", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Hammer of Wrath", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Holy Shock", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Holy Shield", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Avenger's Shield", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Avenging Wrath", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Divine Plea", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Shield of Righteousness", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Holy Wrath", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Aura Mastery", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Crusader Strike", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Divine Favor", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Divine Illumination", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Divine Storm", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Hammer of the Righteous", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Repentance", size = 26, scale = 1, filter = "CD", barWidth = 104 }, 
+			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = SpellName(96231), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Rebuke
+			{ spellName = SpellName(1038), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Salvation
+			{ spellName = SpellName(1022), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Protection
+			{ spellName = SpellName(62124), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Reckoning
+			{ spellName = SpellName(1044), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Freedom
+			{ spellName = SpellName(20271), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Judgement
+			{ spellName = SpellName(633), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Lay on Hands
+			{ spellName = SpellName(31789), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Righteous Defense
+			{ spellName = SpellName(853), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hammer of Justice
+			{ spellName = SpellName(26573), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Consecration
+			{ spellName = SpellName(642), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Shield
+			{ spellName = SpellName(24275), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hammer of Wrath
+			{ spellName = SpellName(20473), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Holy Shock
+			{ spellName = SpellName(20925), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Holy Shield
+			{ spellName = SpellName(31935), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Avenger's Shield
+			{ spellName = SpellName(31884), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Avenging Wrath
+			{ spellName = SpellName(54428), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Plea
+			{ spellName = SpellName(2812), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Holy Wrath
+			{ spellName = SpellName(31821), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Aura Mastery
+			{ spellName = SpellName(35395), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Crusader Strike
+			{ spellName = SpellName(31842), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Favor
+			{ spellName = SpellName(53385), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Storm
+			{ spellName = SpellName(53595), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hammer of the Righteous
+			{ spellName = SpellName(20066), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Repentance
 		},
 	},]]
 	["PRIEST"] = {
