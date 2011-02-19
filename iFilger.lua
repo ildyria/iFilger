@@ -437,7 +437,7 @@ local spells = {
 			{ spellName = SpellName(53595), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hammer of the Righteous
 			{ spellName = SpellName(20066), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Repentance
 		},
-	},]]
+	},
 	["PRIEST"] = {
  		{
 			Name = "Self",
