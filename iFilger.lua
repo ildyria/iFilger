@@ -7,6 +7,12 @@
 ]]
 
 local configmode = false;
+
+local function GetSpellName(id)
+	local name, _, _, _, _, _, _, _, _ = GetSpellInfo(id)
+	return name
+end
+
 local spells = {
 --[[	["DEATHKNIGHT"] = {
 		{
@@ -15,20 +21,20 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()"Horn of Winter", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Scent of Blood", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Bloody Vengence", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Aboniable Might", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Vampiric Blood", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Sudden Doom", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Blade Barrier", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Icy Talons", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Lichborne", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Killing Machine", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Death Chill", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Unbreakable Armor", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Acclimation", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Path of Frost", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Horn of Winter", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Scent of Blood", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Bloody Vengence", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Aboniable Might", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Vampiric Blood", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Sudden Doom", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Blade Barrier", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Icy Talons", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Lichborne", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Killing Machine", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Death Chill", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Unbreakable Armor", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Acclimation", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Path of Frost", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
 		},
 		{
 			Name = "Target",
@@ -36,13 +42,13 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()"Strangulate", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Chains of Ice", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Frost Fever", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Death and Decay", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Blood Plague", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Unholy Blight", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Mark of Blood", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Strangulate", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Chains of Ice", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Frost Fever", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Death and Decay", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Blood Plague", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Unholy Blight", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Mark of Blood", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
 		},
 		{
 			Name = "Cooldowns",
@@ -50,31 +56,31 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Strangulate", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Blood Tap", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Dark Command", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Death Pact", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Mind Freeze", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Icebound Fortitude", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Horn of Winter", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Empower Rune Weapon", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Howling Blast", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Death Grip", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Raise Dead", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Anti-Magic Shell", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Army of the Dead", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Death and Decay", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Mark of Blood", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Vampiric Blood", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Dancing Rune Weapon", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Lichborne", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Hungering Cold", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Unbreakable Armor", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Anti-Magic Zone", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Bone Shield", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Summon Gargoyle", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Strangulate", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Blood Tap", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Dark Command", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Death Pact", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Mind Freeze", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Icebound Fortitude", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Horn of Winter", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Empower Rune Weapon", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Howling Blast", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Death Grip", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Raise Dead", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Anti-Magic Shell", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Army of the Dead", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Death and Decay", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Mark of Blood", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Vampiric Blood", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Dancing Rune Weapon", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Lichborne", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Hungering Cold", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Unbreakable Armor", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Anti-Magic Zone", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Bone Shield", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Summon Gargoyle", size = 26, scale = 1, filter = "CD", barWidth = 104 },
 		},
 	},]]
 	["DRUID"] = {
@@ -84,19 +90,19 @@ local spells = {
 			Spacing = 3,
 			Mode = "ICON",
 			
-			{ spellName = SpellName(1850), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Dash
-			{ spellName = SpellName(29166), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Innervate
-			{ spellName = SpellName(8936), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Regrowth
-			{ spellName = SpellName(33763), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Lifebloom
-			{ spellName = SpellName(774), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Rejuvenation
-			{ spellName = SpellName(48438), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Wild Growth
-			{ spellName = SpellName(22812), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Barkskin
-			{ spellName = SpellName(16689), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Nature's Grasp
-			{ spellName = SpellName(50334), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Berserk
-			{ spellName = SpellName(5217), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Tiger's Fury
-			{ spellName = SpellName(61336), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Survival Instincts
-			{ spellName = SpellName(5229), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Enrage
-			{ spellName = SpellName(22842), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Frenzied Regeneration
+			{ spellName = GetSpellName(1850), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Dash
+			{ spellName = GetSpellName(29166), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Innervate
+			{ spellName = GetSpellName(8936), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Regrowth
+			{ spellName = GetSpellName(33763), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Lifebloom
+			{ spellName = GetSpellName(774), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Rejuvenation
+			{ spellName = GetSpellName(48438), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Wild Growth
+			{ spellName = GetSpellName(22812), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Barkskin
+			{ spellName = GetSpellName(16689), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Nature's Grasp
+			{ spellName = GetSpellName(50334), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Berserk
+			{ spellName = GetSpellName(5217), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Tiger's Fury
+			{ spellName = GetSpellName(61336), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Survival Instincts
+			{ spellName = GetSpellName(5229), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Enrage
+			{ spellName = GetSpellName(22842), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Frenzied Regeneration
 		},
 		{
 			Name = "Target",
@@ -104,27 +110,27 @@ local spells = {
 			Spacing = 3,
 			Mode = "ICON",
 			
-			{ spellName = SpellName(33786), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Cyclone
-			{ spellName = SpellName(339), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Entangling Roots
-			{ spellName = SpellName(8921), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Moonfire
-			{ spellName = SpellName(91565), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Fearie Fire
-			{ spellName = SpellName(2637), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Hibernate
-			{ spellName = SpellName(5570), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Insect Swarm
-			{ spellName = SpellName(5209), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Challenging Roar
-			{ spellName = SpellName(5211), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Bash
-			{ spellName = SpellName(22570), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Maim
-			{ spellName = SpellName(99), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Demoralizing Roar
-			{ spellName = SpellName(9005), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Pounce
-			{ spellName = SpellName(1822), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Rake
-			{ spellName = SpellName(33745), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Lacerate
-			{ spellName = SpellName(33878), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Mangle
-			{ spellName = SpellName(1079), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Rip
-			{ spellName = SpellName(8936), size = 52, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Regrowth
-			{ spellName = SpellName(33763), size = 52, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Lifebloom
-			{ spellName = SpellName(774), size = 52, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Rejuvenation
-			{ spellName = SpellName(48438), size = 52, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Wild Growth
-			{ spellName = SpellName(29166), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Innervate
-			{ spellName = SpellName(48483), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Infected Wounds
+			{ spellName = GetSpellName(33786), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Cyclone
+			{ spellName = GetSpellName(339), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Entangling Roots
+			{ spellName = GetSpellName(8921), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Moonfire
+			{ spellName = GetSpellName(91565), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Fearie Fire
+			{ spellName = GetSpellName(2637), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Hibernate
+			{ spellName = GetSpellName(5570), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Insect Swarm
+			{ spellName = GetSpellName(5209), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Challenging Roar
+			{ spellName = GetSpellName(5211), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Bash
+			{ spellName = GetSpellName(22570), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Maim
+			{ spellName = GetSpellName(99), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Demoralizing Roar
+			{ spellName = GetSpellName(9005), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Pounce
+			{ spellName = GetSpellName(1822), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Rake
+			{ spellName = GetSpellName(33745), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Lacerate
+			{ spellName = GetSpellName(33878), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Mangle
+			{ spellName = GetSpellName(1079), size = 52, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Rip
+			{ spellName = GetSpellName(8936), size = 52, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Regrowth
+			{ spellName = GetSpellName(33763), size = 52, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Lifebloom
+			{ spellName = GetSpellName(774), size = 52, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Rejuvenation
+			{ spellName = GetSpellName(48438), size = 52, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Wild Growth
+			{ spellName = GetSpellName(29166), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Innervate
+			{ spellName = GetSpellName(48483), size = 52, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Infected Wounds
 		},
 		{
 			Name = "Cooldowns",
@@ -134,27 +140,27 @@ local spells = {
 			
 			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 }, --
 			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 }, --
-			{ spellName = SpellName(29166), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Innervate
-			{ spellName = SpellName(22812), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Barkskin
-			{ spellName = SpellName(16689), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Nature's Grasp
-			{ spellName = SpellName(48505), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Starfall
-			{ spellName = SpellName(6795), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Growl
-			{ spellName = SpellName(5229), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Enrage
-			{ spellName = SpellName(16857), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Faerie Fire (Feral)
-			{ spellName = SpellName(16979), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Feral Charge
-			{ spellName = SpellName(5209), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Challenging Roar
-			{ spellName = SpellName(22842), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Frenzied Regeneration
-			{ spellName = SpellName(5211), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Bash
-			{ spellName = SpellName(80965), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Skull Bash
-			{ spellName = SpellName(5215), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Prowl
-			{ spellName = SpellName(1850), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Dash
-			{ spellName = SpellName(22570), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Maim
-			{ spellName = SpellName(8998), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Cower
-			{ spellName = SpellName(5217), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Tiger's Fury
-			{ spellName = SpellName(33878), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Mangle (Bear)
-			{ spellName = SpellName(20484), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Rebirth
-			{ spellName = SpellName(740), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Tranquility
-			{ spellName = SpellName(48438), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --
+			{ spellName = GetSpellName(29166), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Innervate
+			{ spellName = GetSpellName(22812), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Barkskin
+			{ spellName = GetSpellName(16689), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Nature's Grasp
+			{ spellName = GetSpellName(48505), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Starfall
+			{ spellName = GetSpellName(6795), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Growl
+			{ spellName = GetSpellName(5229), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Enrage
+			{ spellName = GetSpellName(16857), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Faerie Fire (Feral)
+			{ spellName = GetSpellName(16979), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Feral Charge
+			{ spellName = GetSpellName(5209), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Challenging Roar
+			{ spellName = GetSpellName(22842), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Frenzied Regeneration
+			{ spellName = GetSpellName(5211), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Bash
+			{ spellName = GetSpellName(80965), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Skull Bash
+			{ spellName = GetSpellName(5215), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Prowl
+			{ spellName = GetSpellName(1850), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Dash
+			{ spellName = GetSpellName(22570), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Maim
+			{ spellName = GetSpellName(8998), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Cower
+			{ spellName = GetSpellName(5217), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Tiger's Fury
+			{ spellName = GetSpellName(33878), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Mangle (Bear)
+			{ spellName = GetSpellName(20484), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Rebirth
+			{ spellName = GetSpellName(740), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Tranquility
+			{ spellName = GetSpellName(48438), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --
 		},
 	},
 --[[	["HUNTER"] = {
@@ -164,26 +170,26 @@ local spells = {
 			Spacing = 3,
 			Mode = "ICON",
 			
-			{ spellName = SpellName()"Eagle Eye", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Eyes of the Beast", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Kill Command", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Masters Call", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Mend Pet", size = 52, scale = 1, unitId = "pet", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Rapid Fire", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Feign Death", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Deterrence", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Missdirection", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Improved Aspect of the Hawk", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Frenzy", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Ferocious Inspiration", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Bestial Wrath", size = 52, scale = 1, unitId = "pet", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Cobra Strikes", size = 52, scale = 1, unitId = "pet", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Rapid Killing", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Improved Steady Shot", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Lock and Load", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Expose Weakness", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Master Tactican", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Sniper Training", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Eagle Eye", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Eyes of the Beast", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Kill Command", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Masters Call", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Mend Pet", size = 52, scale = 1, unitId = "pet", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Rapid Fire", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Feign Death", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Deterrence", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Missdirection", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Improved Aspect of the Hawk", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Frenzy", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Ferocious Inspiration", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Bestial Wrath", size = 52, scale = 1, unitId = "pet", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Cobra Strikes", size = 52, scale = 1, unitId = "pet", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Rapid Killing", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Improved Steady Shot", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Lock and Load", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Expose Weakness", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Master Tactican", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Sniper Training", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
 		},
 		{
 			Name = "Target",
@@ -191,28 +197,28 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()"Scare Beast", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Concussive Shot", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Scorpid Sting", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Viper Sting", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Hunters Mark", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Serpent Sting", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Aimed Shot", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Wing Clip", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Frost Trap", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Freezing Trap", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Explosive Trap", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Counterattack", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Immolation Trap", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Black Arrow", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Explosive Shot", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Wyvern Sting", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Intimidation", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Concussive Barrage", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Piercing Shots", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Silencing Shot", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Entrapment", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Scatter Shot", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Scare Beast", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Concussive Shot", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Scorpid Sting", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Viper Sting", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Hunters Mark", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Serpent Sting", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Aimed Shot", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Wing Clip", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Frost Trap", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Freezing Trap", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Explosive Trap", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Counterattack", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Immolation Trap", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Black Arrow", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Explosive Shot", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Wyvern Sting", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Intimidation", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Concussive Barrage", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Piercing Shots", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Silencing Shot", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Entrapment", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Scatter Shot", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
 		},
 		{
 			Name = "Cooldowns",
@@ -220,38 +226,38 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Feed Pet", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Scare Beast", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Kill Command", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Master's Call", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Concussive Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Distractiong Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Rapid Fire", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Flare", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Viper Sting", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Arcane Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Aimed Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Kill Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Multi Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Disengage", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Frost Trap", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Feign Death", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Deterrence", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Missdirection", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Raptor Strike", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Counterattack", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Explosive Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Freezing Arrow", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Mongoose Bite", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Wyvern Sting", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Intimidation", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Bestial Wrath", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Readiness", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Silencing Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Chimera Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Scatter Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Feed Pet", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Scare Beast", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Kill Command", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Master's Call", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Concussive Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Distractiong Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Rapid Fire", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Flare", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Viper Sting", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Arcane Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Aimed Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Kill Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Multi Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Disengage", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Frost Trap", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Feign Death", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Deterrence", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Missdirection", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Raptor Strike", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Counterattack", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Explosive Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Freezing Arrow", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Mongoose Bite", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Wyvern Sting", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Intimidation", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Bestial Wrath", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Readiness", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Silencing Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Chimera Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Scatter Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
 		},
 	},]]
 	["MAGE"] = {
@@ -261,35 +267,35 @@ local spells = {
 			Spacing = 3,
 			Mode = "ICON",
 
-			{ spellName = SpellName(36032), size = 52, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Arcane Blast
-			{ spellName = SpellName(12042), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Arcane Power
-			{ spellName = SpellName(31642), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Blazing Speed
-			{ spellName = SpellName(57761), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Brain Freeze
-			{ spellName = SpellName(12536), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Clearcasting
-			{ spellName = SpellName(83074), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Fingers of Frost
-			{ spellName = SpellName(54646), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Focus Magic
-			{ spellName = SpellName(44448), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hot Streak
---			{ spellName = SpellName(11426), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ice Barrier
-			{ spellName = SpellName(45438), size = 52, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Ice Block
-			{ spellName = SpellName(12472), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Icy Veins
-			{ spellName = SpellName(12357), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Impact
---			{ spellName = SpellName(44395), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Incanter's Absorption
-			{ spellName = SpellName(66), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Invisibility
---			{ spellName = SpellName(54486), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Missile Barrage
-			{ spellName = SpellName(543), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Mage Ward
-			{ spellName = SpellName(12043), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Presence of Mind
-			{ spellName = SpellName(34295), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Pyromaniac
+			{ spellName = GetSpellName(36032), size = 52, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Arcane Blast
+			{ spellName = GetSpellName(12042), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Arcane Power
+			{ spellName = GetSpellName(31642), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Blazing Speed
+			{ spellName = GetSpellName(57761), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Brain Freeze
+			{ spellName = GetSpellName(12536), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Clearcasting
+			{ spellName = GetSpellName(83074), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Fingers of Frost
+			{ spellName = GetSpellName(54646), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Focus Magic
+			{ spellName = GetSpellName(44448), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hot Streak
+--			{ spellName = GetSpellName(11426), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ice Barrier
+			{ spellName = GetSpellName(45438), size = 52, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Ice Block
+			{ spellName = GetSpellName(12472), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Icy Veins
+			{ spellName = GetSpellName(12357), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Impact
+--			{ spellName = GetSpellName(44395), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Incanter's Absorption
+			{ spellName = GetSpellName(66), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Invisibility
+--			{ spellName = GetSpellName(54486), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Missile Barrage
+			{ spellName = GetSpellName(543), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Mage Ward
+			{ spellName = GetSpellName(12043), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Presence of Mind
+			{ spellName = GetSpellName(34295), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Pyromaniac
 			
-			{ spellName = SpellName(91007), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Dire Magic (Bell of Enraging Resonance)
-			{ spellName = SpellName(74223), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hurricane
-			{ spellName = SpellName(75172), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Lightweave
-			{ spellName = SpellName(74242), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Power Torrent
-			{ spellName = SpellName(91024), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Revelation (Theralion's Mirror)
-			{ spellName = SpellName(79476), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Volcanic Power
-			{ spellName = SpellName(90355), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ancient Hysteria
-			{ spellName = SpellName(2825), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodlust
-			{ spellName = SpellName(32182), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Heroism
-			{ spellName = SpellName(80353), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Time Warp
+			{ spellName = GetSpellName(91007), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Dire Magic (Bell of Enraging Resonance)
+			{ spellName = GetSpellName(74223), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hurricane
+			{ spellName = GetSpellName(75172), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Lightweave
+			{ spellName = GetSpellName(74242), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Power Torrent
+			{ spellName = GetSpellName(91024), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Revelation (Theralion's Mirror)
+			{ spellName = GetSpellName(79476), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Volcanic Power
+			{ spellName = GetSpellName(90355), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ancient Hysteria
+			{ spellName = GetSpellName(2825), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodlust
+			{ spellName = GetSpellName(32182), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Heroism
+			{ spellName = GetSpellName(80353), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Time Warp
 		},
 		{
 			Name = "Target",
@@ -297,27 +303,27 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName(11113), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Blast Wave
-			{ spellName = SpellName(11129), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Combustion
---			{ spellName = SpellName(120), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Cone of Cold
-			{ spellName = SpellName(12873), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Critical Mass
-			{ spellName = SpellName(44572), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Deep Freeze
---			{ spellName = SpellName(31661), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Dragon's Breath
-			{ spellName = SpellName(33395), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Freeze
-			{ spellName = SpellName(122), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Frost Nova
-			{ spellName = SpellName(116), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Frostbolt
-			{ spellName = SpellName(44614), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Frostfire Bolt
-			{ spellName = SpellName(12846), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Ignite
-			{ spellName = SpellName(12357), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Impact
---			{ spellName = SpellName(12488), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Improved Blizzard
---			{ spellName = SpellName(120), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Improved Cone of Cold
-			{ spellName = SpellName(12598), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Improved Counterspell
-			{ spellName = SpellName(44457), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Living Bomb
-			{ spellName = SpellName(118), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Polymorph
-			{ spellName = SpellName(11366), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Pyroblast
-			{ spellName = SpellName(92315), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Pyroblast!
---			{ spellName = SpellName(54787), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Shattered Barrier
-			{ spellName = SpellName(31589), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Slow
+			{ spellName = GetSpellName(11113), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Blast Wave
+			{ spellName = GetSpellName(11129), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Combustion
+--			{ spellName = GetSpellName(120), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Cone of Cold
+			{ spellName = GetSpellName(12873), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Critical Mass
+			{ spellName = GetSpellName(44572), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Deep Freeze
+--			{ spellName = GetSpellName(31661), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Dragon's Breath
+			{ spellName = GetSpellName(33395), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Freeze
+			{ spellName = GetSpellName(122), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Frost Nova
+			{ spellName = GetSpellName(116), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Frostbolt
+			{ spellName = GetSpellName(44614), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Frostfire Bolt
+			{ spellName = GetSpellName(12846), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Ignite
+			{ spellName = GetSpellName(12357), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Impact
+--			{ spellName = GetSpellName(12488), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Improved Blizzard
+--			{ spellName = GetSpellName(120), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Improved Cone of Cold
+			{ spellName = GetSpellName(12598), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Improved Counterspell
+			{ spellName = GetSpellName(44457), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Living Bomb
+			{ spellName = GetSpellName(118), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Polymorph
+			{ spellName = GetSpellName(11366), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Pyroblast
+			{ spellName = GetSpellName(92315), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Pyroblast!
+--			{ spellName = GetSpellName(54787), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Shattered Barrier
+			{ spellName = GetSpellName(31589), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Slow
 		},
 		{
 			Name = "Cooldowns",
@@ -327,33 +333,33 @@ local spells = {
 			
 			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 }, --
 			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 }, --
---			{ spellName = SpellName(1953), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Blink
-			{ spellName = SpellName(12051), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Evocation
-			{ spellName = SpellName(2139), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Counterspell
-			{ spellName = SpellName(66), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Invisibility
-			{ spellName = SpellName(55342), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Mirror Image
-			{ spellName = SpellName(12043), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Presence of Mind
-			{ spellName = SpellName(12042), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Arcane Power
-			{ spellName = SpellName(36799), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Mana Gem
-			{ spellName = SpellName(543), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Mage Ward
-			{ spellName = SpellName(1463), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Mana Shield
-			{ spellName = SpellName(80353), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Time Warp
+--			{ spellName = GetSpellName(1953), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Blink
+			{ spellName = GetSpellName(12051), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Evocation
+			{ spellName = GetSpellName(2139), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Counterspell
+			{ spellName = GetSpellName(66), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Invisibility
+			{ spellName = GetSpellName(55342), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Mirror Image
+			{ spellName = GetSpellName(12043), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Presence of Mind
+			{ spellName = GetSpellName(12042), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Arcane Power
+			{ spellName = GetSpellName(36799), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Mana Gem
+			{ spellName = GetSpellName(543), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Mage Ward
+			{ spellName = GetSpellName(1463), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Mana Shield
+			{ spellName = GetSpellName(80353), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Time Warp
 
---			{ spellName = SpellName(11113), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Blast Wave
---			{ spellName = SpellName(31661), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Dragon's Breath
-			{ spellName = SpellName(11129), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Combustion
-			{ spellName = SpellName(82731), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Flame Orb
---			{ spellName = SpellName(2136), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Fire Blast
+--			{ spellName = GetSpellName(11113), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Blast Wave
+--			{ spellName = GetSpellName(31661), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Dragon's Breath
+			{ spellName = GetSpellName(11129), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Combustion
+			{ spellName = GetSpellName(82731), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Flame Orb
+--			{ spellName = GetSpellName(2136), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Fire Blast
 
-			{ spellName = SpellName(45438), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Ice Block
-			{ spellName = SpellName(12472), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Icy Veins
-			{ spellName = SpellName(11958), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Cold Snap
-			{ spellName = SpellName(44572), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Deep Freeze
-			{ spellName = SpellName(82676), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Ring of Frost
---			{ spellName = SpellName(31687), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Summon Water Elemental
---			{ spellName = SpellName(122), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Frost Nova
---			{ spellName = SpellName(120), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Cone of Cold
-			{ spellName = SpellName(11426), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Ice Barrier
+			{ spellName = GetSpellName(45438), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Ice Block
+			{ spellName = GetSpellName(12472), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Icy Veins
+			{ spellName = GetSpellName(11958), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Cold Snap
+			{ spellName = GetSpellName(44572), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Deep Freeze
+			{ spellName = GetSpellName(82676), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Ring of Frost
+--			{ spellName = GetSpellName(31687), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Summon Water Elemental
+--			{ spellName = GetSpellName(122), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Frost Nova
+--			{ spellName = GetSpellName(120), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Cone of Cold
+			{ spellName = GetSpellName(11426), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Ice Barrier
 		},
 	},
 	["PALADIN"] = {
@@ -363,29 +369,29 @@ local spells = {
 			Spacing = 3,
 			Mode = "ICON",
 			
-			{ spellName = SpellName(31884), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Avenging Wrath
-			{ spellName = SpellName(20217), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Blessing of Kings
-			{ spellName = SpellName(19740), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Blessing of Might
-			{ spellName = SpellName(31842), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Divine Favor
-			{ spellName = SpellName(54428), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Divine Plea
-			{ spellName = SpellName(25771), size = 52, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Forbearance
-			{ spellName = SpellName(1022), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Protection
-			{ spellName = SpellName(1044), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Freedom
-			{ spellName = SpellName(1038), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Salvation
-			{ spellName = SpellName(20925), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Holy Shield
-			{ spellName = SpellName(53651), size = 52, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Light's Beacon
-			{ spellName = SpellName(25780), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Righteous Fury
-			{ spellName = SpellName(96263), size = 52, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Sacred Shield
-			{ spellName = SpellName(20165), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Insight
-			{ spellName = SpellName(20164), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Justice
-			{ spellName = SpellName(20154), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Righteousness
-			{ spellName = SpellName(31801), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Truth
-			{ spellName = SpellName(87138), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --The Art of War
+			{ spellName = GetSpellName(31884), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Avenging Wrath
+			{ spellName = GetSpellName(20217), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Blessing of Kings
+			{ spellName = GetSpellName(19740), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Blessing of Might
+			{ spellName = GetSpellName(31842), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Divine Favor
+			{ spellName = GetSpellName(54428), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Divine Plea
+			{ spellName = GetSpellName(25771), size = 52, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Forbearance
+			{ spellName = GetSpellName(1022), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Protection
+			{ spellName = GetSpellName(1044), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Freedom
+			{ spellName = GetSpellName(1038), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Salvation
+			{ spellName = GetSpellName(20925), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Holy Shield
+			{ spellName = GetSpellName(53651), size = 52, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Light's Beacon
+			{ spellName = GetSpellName(25780), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Righteous Fury
+			{ spellName = GetSpellName(96263), size = 52, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Sacred Shield
+			{ spellName = GetSpellName(20165), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Insight
+			{ spellName = GetSpellName(20164), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Justice
+			{ spellName = GetSpellName(20154), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Righteousness
+			{ spellName = GetSpellName(31801), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Truth
+			{ spellName = GetSpellName(87138), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --The Art of War
 
-			{ spellName = SpellName(90355), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ancient Hysteria
-			{ spellName = SpellName(2825), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodlust
-			{ spellName = SpellName(32182), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Heroism
-			{ spellName = SpellName(80353), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Time Warp
+			{ spellName = GetSpellName(90355), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ancient Hysteria
+			{ spellName = GetSpellName(2825), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodlust
+			{ spellName = GetSpellName(32182), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Heroism
+			{ spellName = GetSpellName(80353), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Time Warp
  		},
  		{
 			Name = "Target",
@@ -393,16 +399,16 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName(31935), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Avenger's Shield
-			{ spellName = SpellName(853), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Hammer of Justice
-			{ spellName = SpellName(1044), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Freedom
-			{ spellName = SpellName(1038), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Salvation
-			{ spellName = SpellName(2812), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Holy Wrath
-			{ spellName = SpellName(20271), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Judgement
-			{ spellName = SpellName(53651), size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Light's Beacon
-			{ spellName = SpellName(20066), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Repentance
-			{ spellName = SpellName(26017), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Vindication
-			{ spellName = SpellName(25771), size = 26, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Forbearance
+			{ spellName = GetSpellName(31935), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Avenger's Shield
+			{ spellName = GetSpellName(853), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Hammer of Justice
+			{ spellName = GetSpellName(1044), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Freedom
+			{ spellName = GetSpellName(1038), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Salvation
+			{ spellName = GetSpellName(2812), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Holy Wrath
+			{ spellName = GetSpellName(20271), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Judgement
+			{ spellName = GetSpellName(53651), size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Light's Beacon
+			{ spellName = GetSpellName(20066), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Repentance
+			{ spellName = GetSpellName(26017), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Vindication
+			{ spellName = GetSpellName(25771), size = 26, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Forbearance
  		},
 		{
 			Name = "Cooldowns",
@@ -412,30 +418,30 @@ local spells = {
 			
 			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
 			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName(96231), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Rebuke
-			{ spellName = SpellName(1038), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Salvation
-			{ spellName = SpellName(1022), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Protection
-			{ spellName = SpellName(62124), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Reckoning
-			{ spellName = SpellName(1044), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Freedom
-			{ spellName = SpellName(20271), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Judgement
-			{ spellName = SpellName(633), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Lay on Hands
-			{ spellName = SpellName(31789), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Righteous Defense
-			{ spellName = SpellName(853), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hammer of Justice
-			{ spellName = SpellName(26573), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Consecration
-			{ spellName = SpellName(642), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Shield
-			{ spellName = SpellName(24275), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hammer of Wrath
-			{ spellName = SpellName(20473), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Holy Shock
-			{ spellName = SpellName(20925), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Holy Shield
-			{ spellName = SpellName(31935), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Avenger's Shield
-			{ spellName = SpellName(31884), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Avenging Wrath
-			{ spellName = SpellName(54428), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Plea
-			{ spellName = SpellName(2812), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Holy Wrath
-			{ spellName = SpellName(31821), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Aura Mastery
-			{ spellName = SpellName(35395), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Crusader Strike
-			{ spellName = SpellName(31842), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Favor
-			{ spellName = SpellName(53385), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Storm
-			{ spellName = SpellName(53595), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hammer of the Righteous
-			{ spellName = SpellName(20066), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Repentance
+			{ spellName = GetSpellName(96231), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Rebuke
+			{ spellName = GetSpellName(1038), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Salvation
+			{ spellName = GetSpellName(1022), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Protection
+			{ spellName = GetSpellName(62124), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Reckoning
+			{ spellName = GetSpellName(1044), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Freedom
+			{ spellName = GetSpellName(20271), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Judgement
+			{ spellName = GetSpellName(633), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Lay on Hands
+			{ spellName = GetSpellName(31789), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Righteous Defense
+			{ spellName = GetSpellName(853), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hammer of Justice
+			{ spellName = GetSpellName(26573), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Consecration
+			{ spellName = GetSpellName(642), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Shield
+			{ spellName = GetSpellName(24275), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hammer of Wrath
+			{ spellName = GetSpellName(20473), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Holy Shock
+			{ spellName = GetSpellName(20925), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Holy Shield
+			{ spellName = GetSpellName(31935), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Avenger's Shield
+			{ spellName = GetSpellName(31884), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Avenging Wrath
+			{ spellName = GetSpellName(54428), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Plea
+			{ spellName = GetSpellName(2812), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Holy Wrath
+			{ spellName = GetSpellName(31821), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Aura Mastery
+			{ spellName = GetSpellName(35395), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Crusader Strike
+			{ spellName = GetSpellName(31842), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Favor
+			{ spellName = GetSpellName(53385), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Storm
+			{ spellName = GetSpellName(53595), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hammer of the Righteous
+			{ spellName = GetSpellName(20066), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Repentance
 		},
 	},
 	["PRIEST"] = {
@@ -445,32 +451,32 @@ local spells = {
 			Spacing = 3,
 			Mode = "ICON",
 			
-			{ spellName = SpellName(87151), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Archangel            
-			{ spellName = SpellName(27818), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Blessed Recovery
-			{ spellName = SpellName(33145), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Blessed Resilience
-			{ spellName = SpellName(59889), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Borrowed Time
-			{ spellName = SpellName(14751), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Chakra
-			{ spellName = SpellName(81206), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Chakra: Sanctuary
-			{ spellName = SpellName(81208), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Chakra: Serenity
-			{ spellName = SpellName(81209), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Chakra: Chastise
-			{ spellName = SpellName(93757), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Dark Archangel
-			{ spellName = SpellName(47585), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Dispersion
-			{ spellName = SpellName(81662), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Evangelism        
-			{ spellName = SpellName(45243), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Focused Will
-			{ spellName = SpellName(47517), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Grace
-			{ spellName = SpellName(47788), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Guardian Spirit
-			{ spellName = SpellName(33206), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Pain Suppression
-			{ spellName = SpellName(10060), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Power Infusion
-			{ spellName = SpellName(17), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Power Word: Shield
-			{ spellName = SpellName(63735), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Serendipity
-			{ spellName = SpellName(88688), size = 52, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Surge of Light
-			{ spellName = SpellName(20711), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Spirit of Redemption
-			{ spellName = SpellName(6788), size = 52, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Weakened Soul
+			{ spellName = GetSpellName(87151), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Archangel            
+			{ spellName = GetSpellName(27818), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Blessed Recovery
+			{ spellName = GetSpellName(33145), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Blessed Resilience
+			{ spellName = GetSpellName(59889), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Borrowed Time
+			{ spellName = GetSpellName(14751), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Chakra
+			{ spellName = GetSpellName(81206), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Chakra: Sanctuary
+			{ spellName = GetSpellName(81208), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Chakra: Serenity
+			{ spellName = GetSpellName(81209), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Chakra: Chastise
+			{ spellName = GetSpellName(93757), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Dark Archangel
+			{ spellName = GetSpellName(47585), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Dispersion
+			{ spellName = GetSpellName(81662), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Evangelism        
+			{ spellName = GetSpellName(45243), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Focused Will
+			{ spellName = GetSpellName(47517), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Grace
+			{ spellName = GetSpellName(47788), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Guardian Spirit
+			{ spellName = GetSpellName(33206), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Pain Suppression
+			{ spellName = GetSpellName(10060), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Power Infusion
+			{ spellName = GetSpellName(17), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Power Word: Shield
+			{ spellName = GetSpellName(63735), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Serendipity
+			{ spellName = GetSpellName(88688), size = 52, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Surge of Light
+			{ spellName = GetSpellName(20711), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Spirit of Redemption
+			{ spellName = GetSpellName(6788), size = 52, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Weakened Soul
 
-			{ spellName = SpellName(90355), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ancient Hysteria
-			{ spellName = SpellName(2825), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodlust
-			{ spellName = SpellName(32182), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Heroism
-			{ spellName = SpellName(80353), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Time Warp
+			{ spellName = GetSpellName(90355), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ancient Hysteria
+			{ spellName = GetSpellName(2825), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodlust
+			{ spellName = GetSpellName(32182), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Heroism
+			{ spellName = GetSpellName(80353), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Time Warp
  		},
  		{
 			Name = "Target",
@@ -478,20 +484,20 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName(2944), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Devouring Plague
-			{ spellName = SpellName(47515), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Divine Aegis
-			{ spellName = SpellName(47517), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Grace
-			{ spellName = SpellName(14914), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Holy Fire
-			{ spellName = SpellName(15407), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Mind Flay
-			{ spellName = SpellName(453), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Mind Soothe
-			{ spellName = SpellName(33206), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Pain Suppression
-			{ spellName = SpellName(10060), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Power Infusion
-			{ spellName = SpellName(64044), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Psychic Horror
-			{ spellName = SpellName(8122), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Psychic Scream
-			{ spellName = SpellName(139), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Renew
-			{ spellName = SpellName(589), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Shadow Word: Pain
-			{ spellName = SpellName(15487), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Silence
-			{ spellName = SpellName(34914), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Vampiric Touch
+			{ spellName = GetSpellName(2944), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Devouring Plague
+			{ spellName = GetSpellName(47515), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Divine Aegis
+			{ spellName = GetSpellName(47517), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Grace
+			{ spellName = GetSpellName(14914), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Holy Fire
+			{ spellName = GetSpellName(15407), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Mind Flay
+			{ spellName = GetSpellName(453), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Mind Soothe
+			{ spellName = GetSpellName(33206), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Pain Suppression
+			{ spellName = GetSpellName(10060), size = 26, scale = 1, unitId = "target", caster = "all", filter = "BUFF", barWidth = 104 }, --Power Infusion
+			{ spellName = GetSpellName(64044), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Psychic Horror
+			{ spellName = GetSpellName(8122), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Psychic Scream
+			{ spellName = GetSpellName(139), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Renew
+			{ spellName = GetSpellName(589), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Shadow Word: Pain
+			{ spellName = GetSpellName(15487), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Silence
+			{ spellName = GetSpellName(34914), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Vampiric Touch
  		},
 		{
 			Name = "Cooldowns",
@@ -501,27 +507,27 @@ local spells = {
 			
 			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
 			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName(34861), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Circle of Healing
-			{ spellName = SpellName(19236), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Desperate Prayer
-			{ spellName = SpellName(2944), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Devouring Plague
-			{ spellName = SpellName(47585), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Dispersion
-			{ spellName = SpellName(64843), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Hymn
-			{ spellName = SpellName(6346), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Fear Ward
-			{ spellName = SpellName(47788), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Guardian Spirit
-			{ spellName = SpellName(14914), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Holy Fire
-			{ spellName = SpellName(88686), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Holy Word: Sanctuary
-			{ spellName = SpellName(64901), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hymn of Hope
-			{ spellName = SpellName(724), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Lightwell
-			{ spellName = SpellName(33206), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Pain Suppression
-			{ spellName = SpellName(47540), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Penance
-			{ spellName = SpellName(10060), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Power Infusion
-			{ spellName = SpellName(17), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Power Word: Shield
-			{ spellName = SpellName(33076), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Prayer of Mending
-			{ spellName = SpellName(64044), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Psychic Horror
-			{ spellName = SpellName(8122), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Psychic Scream
-			{ spellName = SpellName(32379), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Shadow Word: Death
-			{ spellName = SpellName(34433), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Shadowfiend
-			{ spellName = SpellName(15487), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Silence
+			{ spellName = GetSpellName(34861), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Circle of Healing
+			{ spellName = GetSpellName(19236), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Desperate Prayer
+			{ spellName = GetSpellName(2944), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Devouring Plague
+			{ spellName = GetSpellName(47585), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Dispersion
+			{ spellName = GetSpellName(64843), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Hymn
+			{ spellName = GetSpellName(6346), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Fear Ward
+			{ spellName = GetSpellName(47788), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Guardian Spirit
+			{ spellName = GetSpellName(14914), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Holy Fire
+			{ spellName = GetSpellName(88686), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Holy Word: Sanctuary
+			{ spellName = GetSpellName(64901), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hymn of Hope
+			{ spellName = GetSpellName(724), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Lightwell
+			{ spellName = GetSpellName(33206), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Pain Suppression
+			{ spellName = GetSpellName(47540), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Penance
+			{ spellName = GetSpellName(10060), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Power Infusion
+			{ spellName = GetSpellName(17), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Power Word: Shield
+			{ spellName = GetSpellName(33076), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Prayer of Mending
+			{ spellName = GetSpellName(64044), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Psychic Horror
+			{ spellName = GetSpellName(8122), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Psychic Scream
+			{ spellName = GetSpellName(32379), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Shadow Word: Death
+			{ spellName = GetSpellName(34433), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Shadowfiend
+			{ spellName = GetSpellName(15487), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Silence
 		},
 	},
 --[[	["ROGUE"] = {
@@ -531,20 +537,20 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()"Slice and Dice", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Evasion", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Sprint", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Faint", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Tricks of the Trade", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Cloak of Shadows", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Remorseless Attacks", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Hunger for Blood", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Blade Flurry", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Adrenaline Rush", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Killing Spree", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Cheat Death", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Shadowstep", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Shadow Dance", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Slice and Dice", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Evasion", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Sprint", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Faint", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Tricks of the Trade", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Cloak of Shadows", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Remorseless Attacks", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Hunger for Blood", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Blade Flurry", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Adrenaline Rush", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Killing Spree", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Cheat Death", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Shadowstep", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Shadow Dance", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
 		},
 		{
 			Name = "Target",
@@ -552,22 +558,22 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()"Expose Armor", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Dismantle", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Cheap Shot", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Kidney Shot", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Deadly Throw", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Rupture", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Garrote", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Gouge", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Blind", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Sap", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Hemorrhage", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Crippling Poison", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Wound Poison", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Deadly Poison", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Mind-numbling Poison", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Waylay", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Expose Armor", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Dismantle", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Cheap Shot", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Kidney Shot", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Deadly Throw", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Rupture", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Garrote", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Gouge", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Blind", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Sap", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Hemorrhage", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Crippling Poison", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Wound Poison", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Deadly Poison", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Mind-numbling Poison", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Waylay", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
 		},
 				{
 			Name = "Cooldowns",
@@ -575,29 +581,29 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Dismantle", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Kidney Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Gouge", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Kick", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Evasion", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Sprint", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Feint", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Distract", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Blind", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Stealth", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Vanish", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Cloak of Shadows", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Tricks of the Trade", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Cold Blood", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Blade Flurry", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Adrenaline Rush", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Killing Spree", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Preparation", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Premeditation", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Shadowstep", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Shadow Dance", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Dismantle", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Kidney Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Gouge", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Kick", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Evasion", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Sprint", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Feint", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Distract", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Blind", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Stealth", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Vanish", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Cloak of Shadows", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Tricks of the Trade", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Cold Blood", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Blade Flurry", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Adrenaline Rush", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Killing Spree", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Preparation", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Premeditation", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Shadowstep", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Shadow Dance", size = 26, scale = 1, filter = "CD", barWidth = 104 },
 		},
 	},
 	["SHAMAN"] = {
@@ -607,32 +613,32 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()"Lightning Shield", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Water Shield", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Earth Shield", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Earthliving Weapon", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Heroism", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },		
-			{ spellName = SpellName()"Bloodlust", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Earthliving", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Riptide", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Tidal Waves", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Rapid Currents", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = SpellName()"Fire Resistance", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = SpellName()"Flametongue Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = SpellName()"Frost Resistance", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = SpellName()"Nature Resistance", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Grounding Totem Effect", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = SpellName()"Sentry Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = SpellName()"Stoneskin", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = SpellName()"Strength of Earth", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = SpellName()"Windfury Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Cleansing Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = SpellName()"Healing Stream Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = SpellName()"Mana Spring", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Mana Tide Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Tremor Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = SpellName()"Wrath of Air Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = SpellName()"Totem of Wrath", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Lightning Shield", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Water Shield", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Earth Shield", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Earthliving Weapon", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Heroism", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },		
+			{ spellName = GetSpellName()"Bloodlust", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Earthliving", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Riptide", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Tidal Waves", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Rapid Currents", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+--			{ spellName = GetSpellName()"Fire Resistance", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+--			{ spellName = GetSpellName()"Flametongue Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+--			{ spellName = GetSpellName()"Frost Resistance", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+--			{ spellName = GetSpellName()"Nature Resistance", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Grounding Totem Effect", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+--			{ spellName = GetSpellName()"Sentry Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+--			{ spellName = GetSpellName()"Stoneskin", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+--			{ spellName = GetSpellName()"Strength of Earth", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+--			{ spellName = GetSpellName()"Windfury Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Cleansing Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+--			{ spellName = GetSpellName()"Healing Stream Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+--			{ spellName = GetSpellName()"Mana Spring", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Mana Tide Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Tremor Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+--			{ spellName = GetSpellName()"Wrath of Air Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+--			{ spellName = GetSpellName()"Totem of Wrath", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
 		},
 		{
 			Name = "Target",
@@ -640,15 +646,15 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()"Earth Shock", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Frost Shock", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Flame Shock", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Wind Shock", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Earth Shield", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Riptide", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },		
-			{ spellName = SpellName()"Hex", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Earthliving", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Riptide", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Earth Shock", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Frost Shock", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Flame Shock", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Wind Shock", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Earth Shield", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Riptide", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },		
+			{ spellName = GetSpellName()"Hex", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Earthliving", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Riptide", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
  		},
 		{
 			Name = "Earth Shield",
@@ -656,7 +662,7 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()"Earth Shield", size = 26, scale = 1, unitId = "focus", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Earth Shield", size = 26, scale = 1, unitId = "focus", caster = "player", filter = "BUFF", barWidth = 104 },
 	 	},
 		{
 			Name = "Cooldowns",
@@ -664,21 +670,21 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Earth Shock", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
-			{ spellName = SpellName()"Riptide", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Elemental Mastery", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Nature's Swiftness", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Tidal Force", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
-			{ spellName = SpellName()"Thunderstorm", size = 26, scale = 1, filter = "CD", barWidth = 104 },		
-			{ spellName = SpellName()"Lava Burst", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
-			{ spellName = SpellName()"Lava Lash", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
-			{ spellName = SpellName()"Chain Lightning", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
-			{ spellName = SpellName()"Fire Elemental Totem", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
-			{ spellName = SpellName()"Earth Elemental Totem", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
-			{ spellName = SpellName()"Heroism", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
-			{ spellName = SpellName()"Bloodlust", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Earth Shock", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
+			{ spellName = GetSpellName()"Riptide", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Elemental Mastery", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Nature's Swiftness", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Tidal Force", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
+			{ spellName = GetSpellName()"Thunderstorm", size = 26, scale = 1, filter = "CD", barWidth = 104 },		
+			{ spellName = GetSpellName()"Lava Burst", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
+			{ spellName = GetSpellName()"Lava Lash", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
+			{ spellName = GetSpellName()"Chain Lightning", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
+			{ spellName = GetSpellName()"Fire Elemental Totem", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
+			{ spellName = GetSpellName()"Earth Elemental Totem", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
+			{ spellName = GetSpellName()"Heroism", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
+			{ spellName = GetSpellName()"Bloodlust", size = 26, scale = 1, filter = "CD", barWidth = 104 },
 		},
 	},
 	["WARLOCK"] = {
@@ -688,20 +694,20 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()"Unending Breath", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Detect Invisibility", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Shadow Ward", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Demonic Circle: Summon", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Backdraft", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Backslash", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },      
-			{ spellName = SpellName()"Demonic Pact", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },            
-			{ spellName = SpellName()"Metamorphosis", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },                  
-			{ spellName = SpellName()"Empowered Imp", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Eradication", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Molten Core", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Nether Protection", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Nightfall", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Pyroclasm", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Unending Breath", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Detect Invisibility", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Shadow Ward", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Demonic Circle: Summon", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Backdraft", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Backslash", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },      
+			{ spellName = GetSpellName()"Demonic Pact", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },            
+			{ spellName = GetSpellName()"Metamorphosis", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },                  
+			{ spellName = GetSpellName()"Empowered Imp", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Eradication", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Molten Core", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Nether Protection", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Nightfall", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Pyroclasm", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
 		},
 		{
 			Name = "Target",
@@ -709,26 +715,26 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()"Immolate", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Corruption", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Curse of Agony", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Curse of the Elements", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Fear", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Curse of Weakness", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Curse of Tongues", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Banish", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
- 			{ spellName = SpellName()"Howl of Terror", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
- 			{ spellName = SpellName()"Death Coil", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
- 			{ spellName = SpellName()"Curse of Doom", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Demon Charge", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Shadowfury", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Unstable Affliction", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Haunt", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
- 			{ spellName = SpellName()"Seed of Corruption", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Shadowflame", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Aftermath", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Curse of Exhaustion", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Shadow Embrace", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Immolate", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Corruption", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Curse of Agony", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Curse of the Elements", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Fear", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Curse of Weakness", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Curse of Tongues", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Banish", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+ 			{ spellName = GetSpellName()"Howl of Terror", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+ 			{ spellName = GetSpellName()"Death Coil", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+ 			{ spellName = GetSpellName()"Curse of Doom", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Demon Charge", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Shadowfury", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Unstable Affliction", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Haunt", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+ 			{ spellName = GetSpellName()"Seed of Corruption", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Shadowflame", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Aftermath", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Curse of Exhaustion", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Shadow Embrace", size = 18, scale = 1.1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
  		},
 		{
 			Name = "Cooldowns",
@@ -736,21 +742,21 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Earth Shock", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
-			{ spellName = SpellName()"Riptide", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Elemental Mastery", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Nature's Swiftness", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Tidal Force", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
-			{ spellName = SpellName()"Thunderstorm", size = 26, scale = 1, filter = "CD", barWidth = 104 },		
-			{ spellName = SpellName()"Lava Burst", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
-			{ spellName = SpellName()"Lava Lash", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
-			{ spellName = SpellName()"Chain Lightning", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
-			{ spellName = SpellName()"Fire Elemental Totem", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
-			{ spellName = SpellName()"Earth Elemental Totem", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
-			{ spellName = SpellName()"Heroism", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
-			{ spellName = SpellName()"Bloodlust", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Earth Shock", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
+			{ spellName = GetSpellName()"Riptide", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Elemental Mastery", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Nature's Swiftness", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Tidal Force", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
+			{ spellName = GetSpellName()"Thunderstorm", size = 26, scale = 1, filter = "CD", barWidth = 104 },		
+			{ spellName = GetSpellName()"Lava Burst", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
+			{ spellName = GetSpellName()"Lava Lash", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
+			{ spellName = GetSpellName()"Chain Lightning", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
+			{ spellName = GetSpellName()"Fire Elemental Totem", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
+			{ spellName = GetSpellName()"Earth Elemental Totem", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
+			{ spellName = GetSpellName()"Heroism", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
+			{ spellName = GetSpellName()"Bloodlust", size = 26, scale = 1, filter = "CD", barWidth = 104 },
 		},
 	},
 	["WARRIOR"] = {
@@ -760,26 +766,26 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()"Commanding Shout", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Battle Shout", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Slam!", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"13", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"14", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Berserker Rage", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Enraged Regeneration", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Deathwish", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Sword and Board", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Shield Block", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Shield Wall", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Retaliation", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Recklessness", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Bloodrage", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Victory Rush", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Sudden Death", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Taste for Blood", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Whirlwind", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Last Stand", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = SpellName()"Spell Reflection", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Commanding Shout", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Battle Shout", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Slam!", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"13", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"14", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Berserker Rage", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Enraged Regeneration", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Deathwish", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Sword and Board", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Shield Block", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Shield Wall", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Retaliation", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Recklessness", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Bloodrage", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Victory Rush", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Sudden Death", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Taste for Blood", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Whirlwind", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Last Stand", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Spell Reflection", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
 		},
 		{
 			Name = "Target",
@@ -787,20 +793,20 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()"Demoralizing Shout", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Sunder Armor", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Concussion Blow", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Shattering Throw", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Thunder Clap", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Intimidating Shout", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Rend", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Deep Wounds", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Hamstring", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Disarm", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Piercing Howl", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Silenced - Gag Order", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Furious Attacks", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = SpellName()"Mortal Strike", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Demoralizing Shout", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Sunder Armor", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Concussion Blow", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Shattering Throw", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Thunder Clap", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Intimidating Shout", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Rend", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Deep Wounds", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Hamstring", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Disarm", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Piercing Howl", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Silenced - Gag Order", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Furious Attacks", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName()"Mortal Strike", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
 		},
 		{
 			Name = "Cooldowns",
@@ -808,20 +814,20 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = SpellName()13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Bloodthirst", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Shield Slam", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Whirlwind", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Mortal Strike", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Thunder Clap", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Revenge", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Overpower", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Pummel", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Shield Bash", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Charge", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Intercept", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = SpellName()"Intervene", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Bloodthirst", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Shield Slam", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Whirlwind", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Mortal Strike", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Thunder Clap", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Revenge", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Overpower", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Pummel", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Shield Bash", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Charge", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Intercept", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName()"Intervene", size = 26, scale = 1, filter = "CD", barWidth = 104 },
 		},
 	},
 ]]
