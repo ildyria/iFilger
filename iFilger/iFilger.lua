@@ -758,7 +758,7 @@ local spells = {
 			{ spellName = GetSpellName()"Heroism", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
 			{ spellName = GetSpellName()"Bloodlust", size = 26, scale = 1, filter = "CD", barWidth = 104 },
 		},
-	},
+	},]]
 	["WARRIOR"] = {
 		{
 			Name = "Self",
@@ -766,26 +766,21 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = GetSpellName()"Commanding Shout", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Battle Shout", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Slam!", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"13", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"14", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Berserker Rage", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Enraged Regeneration", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Deathwish", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Sword and Board", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Shield Block", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Shield Wall", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Retaliation", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Recklessness", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Bloodrage", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Victory Rush", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Sudden Death", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Taste for Blood", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Whirlwind", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Last Stand", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Spell Reflection", size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = 13, size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --
+			{ spellName = 14, size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --
+			{ spellName = GetSpellName(469), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Commanding Shout
+			{ spellName = GetSpellName(6673), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Battle Shout
+			{ spellName = GetSpellName(46916), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodsurge
+			{ spellName = GetSpellName(18499), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Berserker Rage
+			{ spellName = GetSpellName(55694), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Enraged Regeneration
+			{ spellName = GetSpellName(12292), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Death Wish
+			{ spellName = GetSpellName(2565), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Shield Block
+			{ spellName = GetSpellName(871), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Shield Wall	
+			{ spellName = GetSpellName(20230), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Retaliation
+			{ spellName = GetSpellName(1719), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Recklessness
+			{ spellName = GetSpellName(34428), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Victory Rush
+			{ spellName = GetSpellName(1680), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Whirlwind
+			{ spellName = GetSpellName(23920), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Spell Reflection
 		},
 		{
 			Name = "Target",
@@ -793,20 +788,19 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = GetSpellName()"Demoralizing Shout", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Sunder Armor", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Concussion Blow", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Shattering Throw", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Thunder Clap", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Intimidating Shout", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Rend", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Deep Wounds", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Hamstring", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Disarm", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Piercing Howl", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Silenced - Gag Order", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Furious Attacks", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Mortal Strike", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName(1160), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Demoralizing Shout
+			{ spellName = GetSpellName(7386), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Sunder Armor
+			{ spellName = GetSpellName(12809), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Concussion Blow
+			{ spellName = GetSpellName(64382), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Shattering Throw
+			{ spellName = GetSpellName(6343), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Thunder Clap
+			{ spellName = GetSpellName(5246), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Intimidating Shout
+			{ spellName = GetSpellName(772), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Rend
+			{ spellName = GetSpellName(12867), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Deep Wounds
+			{ spellName = GetSpellName(1715), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Hamstring
+			{ spellName = GetSpellName(676), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Disarm
+			{ spellName = GetSpellName(12323), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Piercing Howl
+			{ spellName = GetSpellName(46910), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Furious Attacks
+			{ spellName = GetSpellName(12294), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Mortal Strike
 		},
 		{
 			Name = "Cooldowns",
@@ -816,21 +810,24 @@ local spells = {
 			
 			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
 			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Bloodthirst", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Shield Slam", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Whirlwind", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Mortal Strike", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Thunder Clap", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Revenge", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Overpower", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Pummel", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Shield Bash", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Charge", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Intercept", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Intervene", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName(23881), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Bloodthirst
+			{ spellName = GetSpellName(12292), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Death Wish
+			{ spellName = GetSpellName(871), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Shield Wall	
+			{ spellName = GetSpellName(23920), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Spell Reflection
+			{ spellName = GetSpellName(1719), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Recklessness
+			{ spellName = GetSpellName(23922), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Shield Slam
+			{ spellName = GetSpellName(1380), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Whirlwind
+			{ spellName = GetSpellName(12294), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Mortal Strike
+			{ spellName = GetSpellName(6343), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Thunder Clap
+			{ spellName = GetSpellName(6572), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Revenge
+			{ spellName = GetSpellName(7384), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Overpower
+			{ spellName = GetSpellName(6552), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Pummel
+			{ spellName = GetSpellName(72), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Shield Bash
+			{ spellName = GetSpellName(100), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Charge
+			{ spellName = GetSpellName(20252), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Intercept
+			{ spellName = GetSpellName(3411), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Intervene
 		},
 	},
-]]
 };
 
 local class = select(2, UnitClass("player"));
