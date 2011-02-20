@@ -1,0 +1,7 @@
+## Interface: 40000
+## Title: iFilger
+## Notes: Buff/debuff tracking
+## Author: Ildyria
+## Version: 1.0
+
+iFilger.xml
