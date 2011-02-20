@@ -908,7 +908,7 @@ function Update(self)
 	for index, value in ipairs(active[id]) do
 		bar = bars[id][index];
 		if ( not bar ) then
-			bar = CreateFrame("Frame", "sFilgerAnchor"..id.."Frame"..index, self);
+			bar = CreateFrame("Frame", "iFilgerAnchor"..id.."Frame"..index, self);
 			bar:SetWidth(value.data.size);
 			bar:SetHeight(value.data.size);
 			bar:SetScale(value.data.scale);
@@ -970,7 +970,7 @@ function Update(self)
 				end
 				bar.statusbar:SetWidth(value.data.barWidth or 200);
 				bar.statusbar:SetHeight(value.data.size);
-				bar.statusbar:SetStatusBarTexture("Interface\\AddOns\\sFilger\\media\\flat");
+				bar.statusbar:SetStatusBarTexture("Interface\\AddOns\\iFilger\\media\\flat");
 				bar.statusbar:SetBackdrop({ bgFile = "Interface\\ChatFrame\\ChatFrameBackground", edgeFile = "", insets = { left = -1, right = -1, top = -1, bottom = -1 }});
 				bar.statusbar:SetStatusBarColor(0.25, 0.25, 0.25, 1);
 				bar.statusbar:SetBackdropColor(0, 0, 0, 1);
@@ -979,7 +979,7 @@ function Update(self)
 				bar.statusbar:SetValue(0);
 				bar.statusbar.background = bar.statusbar:CreateTexture(nil, "BACKGROUND");
 				bar.statusbar.background:SetAllPoints();
-				bar.statusbar.background:SetTexture("Interface\\AddOns\\sFilger\\media\\flat");
+				bar.statusbar.background:SetTexture("Interface\\AddOns\\iFilger\\media\\flat");
 				bar.statusbar.background:SetVertexColor(0, 0, 0, 1);				
 				bar.time = bar.statusbar:CreateFontString(nil, "ARTWORK", "sfont");
 				bar.time:SetPoint("RIGHT", bar.statusbar, -2, 0);
@@ -1087,7 +1087,7 @@ if ( spells and spells[class] ) then
 	for i=1, #spells[class], 1 do
 		data = spells[class][i];
 		
-		frame = CreateFrame("Frame", "sFilgerAnchor"..i, UIParent);
+		frame = CreateFrame("Frame", "iFilgerAnchor"..i, UIParent);
 		frame.Id = i;
 		frame.Direction = data.Direction or "DOWN";
 		frame.Spacing = data.Spacing or 3;
@@ -1113,7 +1113,7 @@ if ( spells and spells[class] ) then
 			
 			frame.text = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightCenter");
 			frame.text:SetPoint("CENTER");
-			frame.text:SetText(data.Name and data.Name or "sFilgerAnchor"..i);
+			frame.text:SetText(data.Name and data.Name or "iFilgerAnchor"..i);
 			
 			for j=1, #spells[class][i], 1 do
 				data = spells[class][i][j];
