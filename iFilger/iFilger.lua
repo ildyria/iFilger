@@ -331,12 +331,12 @@ local spells = {
 			Spacing = 3,
 			Mode = "ICON",
 			
-			{ spellName = GetSpellName(12873), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Critical Mass
-			{ spellName = GetSpellName(44572), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Deep Freeze
-			{ spellName = GetSpellName(44457), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Living Bomb
-			{ spellName = GetSpellName(118), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Polymorph
-			{ spellName = GetSpellName(11366), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Pyroblast
-			{ spellName = GetSpellName(92315), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Pyroblast!
+			{ spellName = GetSpellName(12873), size = 26, scale = 1, unitId = "focus", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Critical Mass
+			{ spellName = GetSpellName(44572), size = 26, scale = 1, unitId = "focus", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Deep Freeze
+			{ spellName = GetSpellName(44457), size = 26, scale = 1, unitId = "focus", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Living Bomb
+			{ spellName = GetSpellName(118), size = 26, scale = 1, unitId = "focus", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Polymorph
+			{ spellName = GetSpellName(11366), size = 26, scale = 1, unitId = "focus", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Pyroblast
+			{ spellName = GetSpellName(92315), size = 26, scale = 1, unitId = "focus", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Pyroblast!
 		},
 		{
 			Name = "Cooldowns",
@@ -388,9 +388,11 @@ local spells = {
 			{ spellName = GetSpellName(31842), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Divine Favor
 			{ spellName = GetSpellName(54428), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Divine Plea
 			{ spellName = GetSpellName(25771), size = 52, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Forbearance
+			{ spellName = GetSpellName(53710), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Sacred Duty
 			{ spellName = GetSpellName(1022), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Protection
 			{ spellName = GetSpellName(1044), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Freedom
 			{ spellName = GetSpellName(1038), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Salvation
+			{ spellName = GetSpellName(6940), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hand of Sacrifice
 			{ spellName = GetSpellName(20925), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Holy Shield
 			{ spellName = GetSpellName(53651), size = 52, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Light's Beacon
 			{ spellName = GetSpellName(25780), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Righteous Fury
@@ -400,6 +402,14 @@ local spells = {
 			{ spellName = GetSpellName(20154), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Righteousness
 			{ spellName = GetSpellName(31801), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Seal of Truth
 			{ spellName = GetSpellName(87138), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --The Art of War
+			{ spellName = GetSpellName(31850), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ardent Defender
+			{ spellName = GetSpellName(86150), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Guardian of Ancient Kings
+			{ spellName = GetSpellName(82327), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Holy Radiance
+			{ spellName = GetSpellName(498), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Divine Protection
+			{ spellName = GetSpellName(70940), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Divine Guardian
+			{ spellName = GetSpellName(84963), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Inquisition
+			{ spellName = GetSpellName(85696), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Zealotry
+			{ spellName = GetSpellName(54151), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Judgements of the Pure
 
 			{ spellName = GetSpellName(90355), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ancient Hysteria
 			{ spellName = GetSpellName(2825), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodlust
@@ -422,6 +432,8 @@ local spells = {
 			{ spellName = GetSpellName(20066), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Repentance
 			{ spellName = GetSpellName(26017), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Vindication
 			{ spellName = GetSpellName(25771), size = 26, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Forbearance
+			{ spellName = GetSpellName(63529), size = 26, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Dazed - Avenger's Shield
+			{ spellName = GetSpellName(53696), size = 26, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Judgements of the Just
  		},
 		{
 			Name = "Beacon",
@@ -444,6 +456,7 @@ local spells = {
 			{ spellName = GetSpellName(1022), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Protection
 			{ spellName = GetSpellName(62124), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Reckoning
 			{ spellName = GetSpellName(1044), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Freedom
+			{ spellName = GetSpellName(6940), size = 52, scale = 1, filter = "CD", barWidth = 104 }, --Hand of Sacrifice
 			{ spellName = GetSpellName(20271), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Judgement
 			{ spellName = GetSpellName(633), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Lay on Hands
 			{ spellName = GetSpellName(31789), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Righteous Defense
@@ -463,6 +476,12 @@ local spells = {
 			{ spellName = GetSpellName(53385), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Divine Storm
 			{ spellName = GetSpellName(53595), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Hammer of the Righteous
 			{ spellName = GetSpellName(20066), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Repentance
+			{ spellName = GetSpellName(31850), size = 52, scale = 1, filter = "CD", barWidth = 104 }, --Ardent Defender
+			{ spellName = GetSpellName(86150), size = 52, scale = 1, filter = "CD", barWidth = 104 }, --Guardian of Ancient Kings
+			{ spellName = GetSpellName(82327), size = 52, scale = 1, filter = "CD", barWidth = 104 }, --Holy Radiance
+			{ spellName = GetSpellName(498), size = 52, scale = 1, filter = "CD", barWidth = 104 }, --Divine Protection
+			{ spellName = GetSpellName(70940), size = 52, scale = 1, filter = "CD", barWidth = 104 }, --Divine Guardian
+			{ spellName = GetSpellName(85696), size = 52, scale = 1, filter = "CD", barWidth = 104 }, --Zealotry
 		},
 	},
 	["PRIEST"] = {
