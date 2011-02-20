@@ -326,6 +326,19 @@ local spells = {
 			{ spellName = GetSpellName(31589), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Slow
 		},
 		{
+			Name = "Focus",
+			Direction = "RIGHT",
+			Spacing = 3,
+			Mode = "ICON",
+			
+			{ spellName = GetSpellName(12873), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Critical Mass
+			{ spellName = GetSpellName(44572), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Deep Freeze
+			{ spellName = GetSpellName(44457), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Living Bomb
+			{ spellName = GetSpellName(118), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Polymorph
+			{ spellName = GetSpellName(11366), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Pyroblast
+			{ spellName = GetSpellName(92315), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Pyroblast!
+		},
+		{
 			Name = "Cooldowns",
 			Direction = "ICON",
 			Spacing = 3,
@@ -410,6 +423,14 @@ local spells = {
 			{ spellName = GetSpellName(26017), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Vindication
 			{ spellName = GetSpellName(25771), size = 26, scale = 1, unitId = "player", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Forbearance
  		},
+		{
+			Name = "Beacon",
+			Direction = "UP",
+			Spacing = 3,
+			Mode = "BAR",
+			
+			{ spellName = GetSpellName(53651), size = 26, scale = 1, unitId = "focus", caster = "player", filter = "BUFF", barWidth = 104 }, --Light's Beacon
+	 	},
 		{
 			Name = "Cooldowns",
 			Direction = "RIGHT",
@@ -605,7 +626,7 @@ local spells = {
 			{ spellName = GetSpellName()"Shadowstep", size = 26, scale = 1, filter = "CD", barWidth = 104 },
 			{ spellName = GetSpellName()"Shadow Dance", size = 26, scale = 1, filter = "CD", barWidth = 104 },
 		},
-	},
+	},]]
 	["SHAMAN"] = {
 		{
 			Name = "Self",
@@ -613,32 +634,33 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = GetSpellName()"Lightning Shield", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Water Shield", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Earth Shield", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Earthliving Weapon", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Heroism", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },		
-			{ spellName = GetSpellName()"Bloodlust", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Earthliving", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Riptide", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Tidal Waves", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Rapid Currents", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = GetSpellName()"Fire Resistance", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = GetSpellName()"Flametongue Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = GetSpellName()"Frost Resistance", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = GetSpellName()"Nature Resistance", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Grounding Totem Effect", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = GetSpellName()"Sentry Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = GetSpellName()"Stoneskin", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = GetSpellName()"Strength of Earth", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = GetSpellName()"Windfury Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Cleansing Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = GetSpellName()"Healing Stream Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = GetSpellName()"Mana Spring", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Mana Tide Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Tremor Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = GetSpellName()"Wrath of Air Totem", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
---			{ spellName = GetSpellName()"Totem of Wrath", size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName(53817), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Maelstrom Weapon
+			{ spellName = GetSpellName(324), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Lightning Shield
+			{ spellName = GetSpellName(52127), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Water Shield
+			{ spellName = GetSpellName(974), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Earth Shield
+			{ spellName = GetSpellName(51730), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Earthliving Weapon
+			{ spellName = GetSpellName(51945), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Earthliving
+			{ spellName = GetSpellName(16166), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Elemental Mastery
+			{ spellName = GetSpellName(79206), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Spiritwalker's Grace
+			{ spellName = GetSpellName(73680), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Unleash Elements
+			{ spellName = GetSpellName(61295), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Riptide
+			{ spellName = GetSpellName(51564), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Tidal Waves
+--			{ spellName = GetSpellName(8227), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Flametongue Totem
+			{ spellName = GetSpellName(8178), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Grounding Totem Effect
+--			{ spellName = GetSpellName(8071), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Stoneskin
+--			{ spellName = GetSpellName(8076), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Strength of Earth
+--			{ spellName = GetSpellName(8512), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Windfury Totem
+--			{ spellName = GetSpellName(5394), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Healing Stream Totem
+--			{ spellName = GetSpellName(5675), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Mana Spring Totem
+			{ spellName = GetSpellName(16190), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Mana Tide Totem
+			{ spellName = GetSpellName(8143), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Tremor Totem
+--			{ spellName = GetSpellName(3738), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Wrath of Air Totem
+--			{ spellName = GetSpellName(77746), size = 26, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Totem of Wrath
+
+			{ spellName = GetSpellName(90355), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ancient Hysteria
+			{ spellName = GetSpellName(2825), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodlust
+			{ spellName = GetSpellName(32182), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Heroism
+			{ spellName = GetSpellName(80353), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Time Warp
 		},
 		{
 			Name = "Target",
@@ -646,23 +668,25 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = GetSpellName()"Earth Shock", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Frost Shock", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Flame Shock", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Wind Shock", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Earth Shield", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Riptide", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },		
-			{ spellName = GetSpellName()"Hex", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Earthliving", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Riptide", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName(17364), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Stormstrike
+			{ spellName = GetSpellName(77657), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Searing Flames
+			{ spellName = GetSpellName(8042), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Earth Shock
+			{ spellName = GetSpellName(8056), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Frost Shock
+			{ spellName = GetSpellName(8050), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Flame Shock
+			{ spellName = GetSpellName(974), size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Earth Shield
+			{ spellName = GetSpellName(61295), size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Riptide
+			{ spellName = GetSpellName(51514), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Hex
+			{ spellName = GetSpellName(61295), size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Riptide
+			{ spellName = GetSpellName(51945), size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 }, --Earthliving
  		},
 		{
-			Name = "Earth Shield",
+			Name = "Earth Shield / Hex",
 			Direction = "UP",
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = GetSpellName()"Earth Shield", size = 26, scale = 1, unitId = "focus", caster = "player", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName(974), size = 26, scale = 1, unitId = "focus", caster = "player", filter = "BUFF", barWidth = 104 }, --Earth Shield
+			{ spellName = GetSpellName(51514), size = 26, scale = 1, unitId = "focus", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Hex
 	 	},
 		{
 			Name = "Cooldowns",
@@ -670,24 +694,32 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Earth Shock", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
-			{ spellName = GetSpellName()"Riptide", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Elemental Mastery", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Nature's Swiftness", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Tidal Force", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
-			{ spellName = GetSpellName()"Thunderstorm", size = 26, scale = 1, filter = "CD", barWidth = 104 },		
-			{ spellName = GetSpellName()"Lava Burst", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
-			{ spellName = GetSpellName()"Lava Lash", size = 26, scale = 1, filter = "CD", barWidth = 104 },			
-			{ spellName = GetSpellName()"Chain Lightning", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
-			{ spellName = GetSpellName()"Fire Elemental Totem", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
-			{ spellName = GetSpellName()"Earth Elemental Totem", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
-			{ spellName = GetSpellName()"Heroism", size = 26, scale = 1, filter = "CD", barWidth = 104 },	
-			{ spellName = GetSpellName()"Bloodlust", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 }, --
+			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 }, --
+			{ spellName = GetSpellName(17364), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Stormstrike
+			{ spellName = GetSpellName(73899), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Primal Strike
+			{ spellName = GetSpellName(57994), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Wind Shear
+			{ spellName = GetSpellName(8042), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Earth Shock
+			{ spellName = GetSpellName(8056), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Frost Shock
+			{ spellName = GetSpellName(8050), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Flame Shock
+			{ spellName = GetSpellName(61295), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Riptide
+			{ spellName = GetSpellName(16166), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Elemental Mastery
+			{ spellName = GetSpellName(79206), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Spiritwalker's Grace
+			{ spellName = GetSpellName(73680), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Unleash Elements
+			{ spellName = GetSpellName(73920), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Healing Rain
+			{ spellName = GetSpellName(16188), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Nature's Swiftness
+			{ spellName = GetSpellName(51490), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Thunderstorm
+			{ spellName = GetSpellName(51505), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Lava Burst
+			{ spellName = GetSpellName(60103), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Lava Lash
+			{ spellName = GetSpellName(421), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Chain Lightning
+			{ spellName = GetSpellName(2894), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Fire Elemental Totem
+			{ spellName = GetSpellName(2062), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Earth Elemental Totem
+			{ spellName = GetSpellName(32182), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Heroism
+			{ spellName = GetSpellName(2825), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Bloodlust
+			{ spellName = GetSpellName(51533), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Feral Spirit
 		},
 	},
-	["WARLOCK"] = {
+--[[	["WARLOCK"] = {
 		{
 			Name = "Self",
 			Direction = "UP",
@@ -708,6 +740,11 @@ local spells = {
 			{ spellName = GetSpellName()"Nether Protection", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
 			{ spellName = GetSpellName()"Nightfall", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
 			{ spellName = GetSpellName()"Pyroclasm", size = 18, scale = 1.1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+
+			{ spellName = GetSpellName(90355), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ancient Hysteria
+			{ spellName = GetSpellName(2825), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodlust
+			{ spellName = GetSpellName(32182), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Heroism
+			{ spellName = GetSpellName(80353), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Time Warp
 		},
 		{
 			Name = "Target",
@@ -781,6 +818,11 @@ local spells = {
 			{ spellName = GetSpellName(34428), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Victory Rush
 			{ spellName = GetSpellName(1680), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Whirlwind
 			{ spellName = GetSpellName(23920), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Spell Reflection
+
+			{ spellName = GetSpellName(90355), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ancient Hysteria
+			{ spellName = GetSpellName(2825), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodlust
+			{ spellName = GetSpellName(32182), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Heroism
+			{ spellName = GetSpellName(80353), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Time Warp
 		},
 		{
 			Name = "Target",
