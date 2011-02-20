@@ -1,8 +1,0 @@
-<Ui xmlns='http://www.blizzard.com/wow/ui/'>
-	<Font name='sfont' font='Interface\AddOns\sFilger\media\semplice.ttf' outline='NORMAL' virtual='true'>
-		<FontHeight>
-			<AbsValue val='8'/>
-		</FontHeight>
-	</Font>
-	<Script file='iFilger.lua'/>
-</Ui>
