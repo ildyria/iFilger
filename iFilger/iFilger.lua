@@ -274,7 +274,7 @@ local spells = {
 			{ spellName = GetSpellName(12536), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Clearcasting
 			{ spellName = GetSpellName(83074), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Fingers of Frost
 			{ spellName = GetSpellName(54646), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Focus Magic
-			{ spellName = GetSpellName(44448), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hot Streak
+			{ spellName = GetSpellName(44445), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Hot Streak
 --			{ spellName = GetSpellName(11426), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ice Barrier
 			{ spellName = GetSpellName(45438), size = 52, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 }, --Ice Block
 			{ spellName = GetSpellName(12472), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Icy Veins
@@ -836,7 +836,7 @@ local spells = {
 			{ spellName = GetSpellName(871), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Shield Wall	
 			{ spellName = GetSpellName(20230), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Retaliation
 			{ spellName = GetSpellName(1719), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Recklessness
-			{ spellName = GetSpellName(34428), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Victory Rush
+			{ spellName = GetSpellName(32216), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Victory Rush
 			{ spellName = GetSpellName(1680), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Whirlwind
 			{ spellName = GetSpellName(23920), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Spell Reflection
 
@@ -878,6 +878,7 @@ local spells = {
 			{ spellName = GetSpellName(871), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Shield Wall	
 			{ spellName = GetSpellName(23920), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Spell Reflection
 			{ spellName = GetSpellName(1719), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Recklessness
+			{ spellName = GetSpellName(18499), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Berserker Rage
 			{ spellName = GetSpellName(23922), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Shield Slam
 			{ spellName = GetSpellName(1380), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Whirlwind
 			{ spellName = GetSpellName(12294), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Mortal Strike
