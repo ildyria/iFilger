@@ -21,6 +21,7 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
+			{ spellName = GetSpellName(59052), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Freezing Fog
 			{ spellName = GetSpellName(57330), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Horn of Winter
 			{ spellName = GetSpellName(49509), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Scent of Blood
 			{ spellName = GetSpellName(53138), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Abomination's Might
@@ -31,6 +32,7 @@ local spells = {
 			{ spellName = GetSpellName(49039), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Lichborne
 			{ spellName = GetSpellName(51128), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Killing Machine
 			{ spellName = GetSpellName(3714), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Path of Frost
+			{ spellName = GetSpellName(59052), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Freezing Fog
 
 			{ spellName = GetSpellName(90355), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ancient Hysteria
 			{ spellName = GetSpellName(2825), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodlust
@@ -79,6 +81,8 @@ local spells = {
 			{ spellName = GetSpellName(51052), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Anti-Magic Zone
 			{ spellName = GetSpellName(49222), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Bone Shield
 			{ spellName = GetSpellName(49206), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Summon Gargoyle
+			{ spellName = GetSpellName(77575), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Outbreak
+			{ spellName = GetSpellName(77606), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Dark Simulacrum
 		},
 	},
 	["DRUID"] = {
@@ -169,33 +173,35 @@ local spells = {
 			{ spellName = GetSpellName(48438), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --
 		},
 	},
---[[	["HUNTER"] = {
+	["HUNTER"] = {
 		{
 			Name = "Self",
 			Direction = "UP",
 			Spacing = 3,
 			Mode = "ICON",
 			
-			{ spellName = GetSpellName()"Eagle Eye", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Eyes of the Beast", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Kill Command", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Masters Call", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Mend Pet", size = 52, scale = 1, unitId = "pet", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Rapid Fire", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Feign Death", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Deterrence", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Missdirection", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Improved Aspect of the Hawk", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Frenzy", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Ferocious Inspiration", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Bestial Wrath", size = 52, scale = 1, unitId = "pet", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Cobra Strikes", size = 52, scale = 1, unitId = "pet", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Rapid Killing", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Improved Steady Shot", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Lock and Load", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Expose Weakness", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Master Tactican", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Sniper Training", size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 },
+			{ spellName = GetSpellName(6197), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Eagle Eye
+			{ spellName = GetSpellName(34026), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Kill Command
+			{ spellName = GetSpellName(53271), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Masters Call
+			{ spellName = GetSpellName(136), size = 52, scale = 1, unitId = "pet", caster = "all", filter = "BUFF", barWidth = 104 }, --Mend Pet
+			{ spellName = GetSpellName(3045), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Rapid Fire
+			{ spellName = GetSpellName(34477), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Misdirection
+			{ spellName = GetSpellName(5384), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Feign Death
+			{ spellName = GetSpellName(19263), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Deterrence
+			{ spellName = GetSpellName(5118), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Aspect of the Cheetah
+			{ spellName = GetSpellName(82661), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Aspect of the Fox
+			{ spellName = GetSpellName(13165), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Aspect of the Hawk
+			{ spellName = GetSpellName(13159), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Aspect of the Pack
+			{ spellName = GetSpellName(20043), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Aspect of the Wild
+			{ spellName = GetSpellName(75447), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ferocious Inspiration
+			{ spellName = GetSpellName(19574), size = 52, scale = 1, unitId = "pet", caster = "all", filter = "BUFF", barWidth = 104 }, --Bestial Wrath
+			{ spellName = GetSpellName(53260), size = 52, scale = 1, unitId = "pet", caster = "all", filter = "BUFF", barWidth = 104 }, --Cobra Strikes
+			{ spellName = GetSpellName(34949), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Rapid Killing
+			{ spellName = GetSpellName(53224), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Improved Steady Shot
+			{ spellName = GetSpellName(56343), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Lock and Load
+			{ spellName = GetSpellName(7140), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Expose Weakness
+			{ spellName = GetSpellName(53304), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Sniper Training
+			{ spellName = GetSpellName(51753), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Camouflage
 
 			{ spellName = GetSpellName(90355), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Ancient Hysteria
 			{ spellName = GetSpellName(2825), size = 52, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodlust
@@ -208,28 +214,25 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = GetSpellName()"Scare Beast", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Concussive Shot", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Scorpid Sting", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Viper Sting", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Hunters Mark", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Serpent Sting", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Aimed Shot", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Wing Clip", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Frost Trap", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Freezing Trap", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Explosive Trap", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Counterattack", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Immolation Trap", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Black Arrow", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Explosive Shot", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Wyvern Sting", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Intimidation", size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Concussive Barrage", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Piercing Shots", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Silencing Shot", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Entrapment", size = 26, scale = 1, unitId = "target", caster = "player", filter = "BUFF", barWidth = 104 },
-			{ spellName = GetSpellName()"Scatter Shot", size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 },
+			{ spellName = GetSpellName(1513), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Scare Beast
+			{ spellName = GetSpellName(5116), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Concussive Shot
+			{ spellName = GetSpellName(1130), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Hunters Mark
+			{ spellName = GetSpellName(1978), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Serpent Sting
+			{ spellName = GetSpellName(82654), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Widow Venom
+			{ spellName = GetSpellName(1499), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Freezing Trap
+			{ spellName = GetSpellName(13813), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Explosive Trap
+			{ spellName = GetSpellName(19306), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Counterattack
+			{ spellName = GetSpellName(13795), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Immolation Trap
+			{ spellName = GetSpellName(3674), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Black Arrow
+			{ spellName = GetSpellName(53301), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Explosive Shot
+			{ spellName = GetSpellName(19386), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Wyvern Sting
+			{ spellName = GetSpellName(19577), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Intimidation
+			{ spellName = GetSpellName(35101), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Concussive Barrage
+			{ spellName = GetSpellName(53238), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Piercing Shots
+			{ spellName = GetSpellName(34490), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Silencing Shot
+			{ spellName = GetSpellName(20736), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Distracting Shot
+			{ spellName = GetSpellName(19387), size = 26, scale = 1, unitId = "target", caster = "player", filter = "DEBUFF", barWidth = 104 }, --Entrapment
+			{ spellName = GetSpellName(19503), size = 26, scale = 1, unitId = "target", caster = "all", filter = "DEBUFF", barWidth = 104 }, --Scatter Shot
 		},
 		{
 			Name = "Cooldowns",
@@ -239,38 +242,37 @@ local spells = {
 			
 			{ spellName = 13, size = 26, scale = 1, filter = "CD", barWidth = 104 },
 			{ spellName = 14, size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Feed Pet", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Scare Beast", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Kill Command", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Master's Call", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Concussive Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Distractiong Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Rapid Fire", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Flare", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Viper Sting", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Arcane Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Aimed Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Kill Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Multi Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Disengage", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Frost Trap", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Feign Death", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Deterrence", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Missdirection", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Raptor Strike", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Counterattack", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Explosive Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Freezing Arrow", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Mongoose Bite", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Wyvern Sting", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Intimidation", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Bestial Wrath", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Readiness", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Silencing Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Chimera Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
-			{ spellName = GetSpellName()"Scatter Shot", size = 26, scale = 1, filter = "CD", barWidth = 104 },
+			{ spellName = GetSpellName(6991), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Feed Pet
+			{ spellName = GetSpellName(1513), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Scare Beast
+			{ spellName = GetSpellName(34026), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Kill Command
+			{ spellName = GetSpellName(53271), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Master's Call
+			{ spellName = GetSpellName(5116), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Concussive Shot
+			{ spellName = GetSpellName(20736), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Distracting Shot
+			{ spellName = GetSpellName(3045), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Rapid Fire
+			{ spellName = GetSpellName(1543), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Flare
+			{ spellName = GetSpellName(3044), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Arcane Shot
+			{ spellName = GetSpellName(19434), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Aimed Shot
+			{ spellName = GetSpellName(53351), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Kill Shot
+			{ spellName = GetSpellName(2643), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Multi Shot
+			{ spellName = GetSpellName(781), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Disengage
+			{ spellName = GetSpellName(13809), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Ice Trap
+			{ spellName = GetSpellName(5384), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Feign Death
+			{ spellName = GetSpellName(19263), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Deterrence
+			{ spellName = GetSpellName(34477), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Misdirection
+			{ spellName = GetSpellName(2973), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Raptor Strike
+			{ spellName = GetSpellName(19306), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Counterattack
+			{ spellName = GetSpellName(53301), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Explosive Shot
+			{ spellName = GetSpellName(3674), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Black Arrow
+			{ spellName = GetSpellName(19386), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Wyvern Sting
+			{ spellName = GetSpellName(19577), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Intimidation
+			{ spellName = GetSpellName(19574), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Bestial Wrath
+			{ spellName = GetSpellName(23989), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Readiness
+			{ spellName = GetSpellName(34490), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Silencing Shot
+			{ spellName = GetSpellName(53209), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Chimera Shot
+			{ spellName = GetSpellName(19503), size = 26, scale = 1, filter = "CD", barWidth = 104 }, --Scatter Shot
+			{ spellName = GetSpellName(51753), size = 52, scale = 1, filter = "CD", barWidth = 104 }, --Camouflage
 		},
-	},]]
+	},
 	["MAGE"] = {
 		{
 			Name = "Self",
@@ -840,8 +842,6 @@ local spells = {
 			Spacing = 3,
 			Mode = "BAR",
 			
-			{ spellName = 13, size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --
-			{ spellName = 14, size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --
 			{ spellName = GetSpellName(469), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Commanding Shout
 			{ spellName = GetSpellName(6673), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Battle Shout
 			{ spellName = GetSpellName(46916), size = 26, scale = 1, unitId = "player", caster = "all", filter = "BUFF", barWidth = 104 }, --Bloodsurge
