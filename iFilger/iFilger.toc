@@ -2,6 +2,6 @@
 ## Title: iFilger
 ## Notes: Buff/debuff tracking
 ## Author: Ildyria
-## Version: 1.1
+## Version: 1.2
 
 iFilger.xml
