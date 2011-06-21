@@ -320,6 +320,8 @@ ns.Filger_Spells = {
 			{ spellID = 18095, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Burning Soul
 			{ spellID = 84254, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			--Empowered Imp
+			{ spellID = 47283, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Buffs and Debuffs",
@@ -374,6 +376,8 @@ ns.Filger_Spells = {
 			{ spellID = 1098, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Demon Charge
 			{ spellID = 54785, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Curse of Gul'dan
+			{ spellID = 86000, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
         {
 			Name = "Cooldown",
@@ -883,8 +887,15 @@ ns.Filger_Spells = {
 			Mode = "ICON",
 			BarWidth = 150,
 			setPoint = {  "CENTER", UIParent ,140,220 },
+			--Battle Magic (Stump of Time)
+			{ spellID = 91047, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 			--Dire Magic (Bell of Enraging Resonance)
 			{ spellID = 91007, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
+			--Volcanic Destruction (Darkmoon Card: Volcano)
+			{ spellID = 89091, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
+			
+			--Lightweave
+			{ spellID = 75170, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			--Power Torrent
 			{ spellID = 74241, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			--Landside
