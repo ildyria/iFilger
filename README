@@ -7,24 +7,9 @@ Only the buffs/debuffs/cooldowns you want will be displayed, the addon uses a wh
 The default config is VERY bar/icon spammy, you'll probably want to go through and comment out a bunch of stuff for a usable setup.
 
 Basic use
-All configuration must be done by directly editing iFilger.lua, there are no config screens or slash commands.
+All configuration must be done by directly editing config/iFilger.lua, there are no config screens or slash commands.
 
 Moving the bars
-Open sFilger.lua with a text editor and change local configmode = false; to local configmode = true; and reload your UI (/console reloadui). You can then hold down shift + alt, and drag the individual anchors. After positioning, you can reset configmode to false and reload your UI again.
+a guide can be found here : http://www.tukui.org/forums/topic.php?id=8310#post-81958
 
-Understanding the spell list
-Taking Divine Plea as an example.
-
-{ spellName = "Divine Plea", size = 13, scale = 1, unitId = "player", caster = "player", filter = "BUFF", barWidth = 104 },
-
-spellName = The name of the spell you want to display, duh!
-size = The size of the icon/height of the bar.
-scale = Overall size of the icon/bar.
-unitId = Which unit you want to display this bar for. Can be a number of units, player/target/pet/focus etc, take a look at the included entry for Earth Shield to see how you can display a bar for specific units only.
-caster = Who cast the spell. You can limit the icon/bar display to spells cast only by a specific unit, or display no matter who cast it. Handy for displaying only your own sacred shield for example.
-filter = BUFF, DEBUFF, or CD. Fairly self explanatory.
-barWidth = The width of the bar.
-
-Copying/modifying existing entries is the easiest way to get started.
-
-iFilger is a modified version of sFilger, all credit goes to Shantalya & st0nedpenguin! 
+iFilger is a modified version of Filger with the core of ElvUI, all credit goes their authors! 
