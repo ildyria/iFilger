@@ -1234,9 +1234,6 @@ function Update(self)
 			bar:SetHeight(value.data.size);
 			bar:SetScale(1);
 			if ( index == 1 ) then
-				if ( configmode ) then
-					bar:SetFrameStrata("BACKGROUND");
-				end
 				if ( self.Direction == "UP" ) then
 					bar:SetPoint("BOTTOM", self);
 				elseif ( self.Direction == "RIGHT" ) then
@@ -1250,9 +1247,9 @@ function Update(self)
 				if ( self.Direction == "UP" ) then
 					bar:SetPoint("BOTTOM", bars[id][index-1], "TOP", 0, self.Spacing);
 				elseif ( self.Direction == "RIGHT" ) then
-					bar:SetPoint("LEFT", bars[id][index-1], "RIGHT", self.Mode == "ICON" and self.Spacing or value.data.barWidth+self.Spacing, 0);
+					bar:SetPoint("LEFT", bars[id][index-1], "RIGHT", self.Mode == "ICON" and self.Spacing or 104+self.Spacing, 0);
 				elseif ( self.Direction == "LEFT" ) then
-					bar:SetPoint("RIGHT", bars[id][index-1], "LEFT", self.Mode == "ICON" and -self.Spacing or -(value.data.barWidth+self.Spacing), 0);
+					bar:SetPoint("RIGHT", bars[id][index-1], "LEFT", self.Mode == "ICON" and -self.Spacing or -(104+self.Spacing), 0);
 				else
 					bar:SetPoint("TOP", bars[id][index-1], "BOTTOM", 0, -self.Spacing);
 				end
@@ -1289,7 +1286,7 @@ function Update(self)
 				if ( configmode ) then
 					bar.statusbar:SetFrameStrata("BACKGROUND");
 				end
-				bar.statusbar:SetWidth(value.data.barWidth or 200);
+				bar.statusbar:SetWidth(104 or 200);
 				bar.statusbar:SetHeight(value.data.size);
 				bar.statusbar:SetStatusBarTexture("Interface\\AddOns\\iFilger\\media\\flat");
 				bar.statusbar:SetBackdrop({ bgFile = "Interface\\ChatFrame\\ChatFrameBackground", edgeFile = "", insets = { left = -1, right = -1, top = -1, bottom = -1 }});
@@ -1404,7 +1401,8 @@ if ( spells and spells[class] ) then
 		frame.Mode = data.Mode or "ICON";
 		frame:SetWidth(spells[class][i][1] and spells[class][i][1].size or 100);
 		frame:SetHeight(spells[class][i][1] and spells[class][i][1].size or 20);
-		frame:SetPoint("CENTER");
+		frame:SetPoint(unpack(data.setPoint))
+--		frame:SetPoint("CENTER");
 		frame:SetMovable(1);
 		
 		if ( configmode ) then
