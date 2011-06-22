@@ -434,6 +434,8 @@ ns.Filger_Spells = {
 			BarWidth = 150,
 			setPoint = { "CENTER", "UIParent", -0, -85 },
 
+			-- Nature's Grace
+			{ spellID = 16886, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Eclipse (Lunar)
 			{ spellID = 48518, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Eclipse (Solar)
