@@ -702,6 +702,8 @@ ns.Filger_Spells = {
 			BarWidth = 150,
 			setPoint = { "CENTER", "UIParent", 225, -68 },
 
+			-- Grand Crusader
+			{ spellID = 85416, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Sacred Duty
 			{ spellID = 85433, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Daybreak
