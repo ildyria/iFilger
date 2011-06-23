@@ -643,6 +643,8 @@ ns.Filger_Spells = {
 			{ spellID = 30823, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Elemental Mastery
 			{ spellID = 16166, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Totem
+			{ spellID = 77661, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Hex
 			{ spellID = 51514, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Storm Strike
