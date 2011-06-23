@@ -199,6 +199,8 @@ ns.Filger_Spells = {
 			{ spellID = 47788, size = 37, filter = "CD" }, 
 			--Holy Word: Sanctuary
 			{ spellID = 88686, size = 37, filter = "CD" }, 
+			--Inner Focus
+			{ spellID = 89485, size = 37, filter = "CD" }, 
 			--Penance
 			{ spellID = 47540, size = 37, filter = "CD" }, 
 			--Circle of Healing
@@ -225,6 +227,10 @@ ns.Filger_Spells = {
 			{ spellID = 139, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Power Word: Shield
 			{ spellID = 17, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Inner Focus
+			{ spellID = 89485, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Strength of Soul
+			{ spellID = 96267, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			
 			-- Chakra: Serenity
 			{ spellID = 81208, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
