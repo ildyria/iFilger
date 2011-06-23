@@ -257,6 +257,10 @@ ns.Filger_Spells = {
 			{ spellID = 81700, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Evangelism
 			{ spellID = 81662, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Dark Archangel
+			{ spellID = 87153, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Dark Evangelism
+			{ spellID = 87118, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Dispersion
 			{ spellID = 47585, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 		},	
