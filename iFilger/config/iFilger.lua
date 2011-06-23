@@ -332,6 +332,8 @@ ns.Filger_Spells = {
 			{ spellID = 84254, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			--Empowered Imp
 			{ spellID = 47283, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			--Shadow Trance
+			{ spellID = 17941, size = 37, unitId = "player", caster = "player", filter = "BUFF" },			
 		},
 		{
 			Name = "Buffs and Debuffs",
