@@ -679,6 +679,8 @@ ns.Filger_Spells = {
 			BarWidth = 150,
 			setPoint = { "CENTER", UIParent, 173, -120 },
  
+			-- Long Arm of the Law
+			{ spellID = 87173, size = 37, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Beacon of Light -- target
 			{ spellID = 53563, size = 37, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Judgements of the Pure
