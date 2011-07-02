@@ -1,9 +1,9 @@
-﻿## Interface: 40100
+﻿## Interface: 40200
 ## Author: Nils Ruesch, Affli, Elv, Tukz
 ## Notes: Minimal buff/debuff/proc tracking
 ## Editor: FourOne, Jasje, Ildyria
 ## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki
-## Version: 2.2
+## Version: 2.3
 ## Title: |cff1784d1iFilger|r
 ## Notes: Power Aura Like, skinned for Tukui / ElvUi.
 
