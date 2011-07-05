@@ -1,7 +1,7 @@
 local _, ns = ...
 
 ns.Filger_Settings = {
-	configmode = true,
+	configmode = false,
 }
 -- size = 60 => size = 47
 ns.Filger_Spells = {
