@@ -148,14 +148,10 @@ ns.Filger_Spells = {
 			{ spellID = 57761, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Impact
 			{ spellID = 64343, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
-			--Missile Barrage
-			{ spellID = 54486, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			--Hot Streak(improved)
 			{ spellID = 44448, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			--Hot Streak
 			{ spellID = 44445, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Deep Freeze
-			{ spellID = 44572, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			--Arcane Blast
 			{ spellID = 30451, size = 60, unitId = "player", caster = "player", filter = "DEBUFF" },
 			--Fingers Of Frost
@@ -173,10 +169,6 @@ ns.Filger_Spells = {
 			
 			-- Sheep mage
             { spellID = 118, size = 36, unitId = "focus", caster = "player", filter = "DEBUFF" },
-			-- Pig mage
-            { spellID = 28272, size = 36, unitId = "focus", caster = "player", filter = "DEBUFF" },
-			-- Turtle mage
-            { spellID = 28271, size = 36, unitId = "focus", caster = "player", filter = "DEBUFF" },	
 			-- Remedy - Maloriak 
 			{ spellID = 92967, size = 36, unitId = "focus", caster = "all", filter = "BUFF" },	
 			-- Converted Power - Arcanotron
@@ -314,15 +306,15 @@ ns.Filger_Spells = {
 			--Devious Minds
 			{ spellID = 70840, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Improved Soul Fire
-			{ spellID = 18120, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 85383, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Molten Core
 			{ spellID = 47247, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Decimation
 			{ spellID = 63158, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Backdraft
-			{ spellID = 47260, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 47258, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Backlash
-			{ spellID = 34939, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 34936, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Nether Protection
 			{ spellID = 30301, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Nightfall
@@ -658,6 +650,8 @@ ns.Filger_Spells = {
 			{ spellID = 77661, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Hex
 			{ spellID = 51514, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Bind Elemental / Elementar binden
+			{ spellID = 76780, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Storm Strike
 			{ spellID = 17364, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Earth Shock
@@ -696,6 +690,8 @@ ns.Filger_Spells = {
 			{ spellID = 53563, size = 37, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Judgements of the Pure
 			{ spellID = 53657, size = 37, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Judgements of the Just
+			{ spellID = 68055, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Hammer of Justice
 			{ spellID = 853, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Seal of Truth Aka Censure
@@ -724,7 +720,7 @@ ns.Filger_Spells = {
 			-- Daybreak
 			{ spellID = 88819, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Infusion of Light
-			{ spellID = 54149, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 53672, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Crusader
 			{ spellID = 94686, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Art of War
@@ -782,16 +778,18 @@ ns.Filger_Spells = {
 			{ spellID = 7386, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Thunder Clap
 			{ spellID = 6343, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Infected Wounds
-			{ spellID = 48484, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Frost Fever
-			{ spellID = 55095, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Demoralizing Shout
 			{ spellID = 1160, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Demoralizing Roar
 			{ spellID = 99, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Curse of Weakness
 			{ spellID = 702, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Expose Armor
+			{ spellID = 8647, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Infected Wounds
+			{ spellID = 48484, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Frost Fever
+			{ spellID = 55095, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 		},
     },		
 -----------------------------------------------------------------------------------------------------------------------
@@ -857,6 +855,8 @@ ns.Filger_Spells = {
 			{ spellID = 86840, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Engulfing Magic
 			{ spellID = 86840, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Twilight Meteorite
+			{ spellID = 86013, size = 72, unitId = "player", caster = "all", filter = "DEBUFF" },
 		-- Halfus Wyrmbreaker	
 		    -- Malevolent Strikes
 			{ spellID = 39171, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
@@ -900,6 +900,9 @@ ns.Filger_Spells = {
 			{ spellID = 93295, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 --      [[ INCOMPLETE ]] --
 -- Firelands
+        --Trash
+			-- Melt Armor
+			{ spellID = 99532, size = 72, unitId = "player", caster = "all", filter = "DEBUFF" },		
         --Shannox
             -- Magma Rupture
             { spellID = 99840, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
@@ -921,7 +924,7 @@ ns.Filger_Spells = {
             { spellID = 100029, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 		-- Beth'tilac	
             -- The Widow's Kiss
-            { spellID = 99506, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+            { spellID = 99476, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 		-- Baleroc	
             -- Torment
             { spellID = 99256, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
@@ -951,35 +954,77 @@ ns.Filger_Spells = {
 			Mode = "ICON",
 			BarWidth = 150,
 			setPoint = {  "CENTER", UIParent ,140,220 },
+
+		-- Trinket Procs
+			-- Cleansing Tears (Tear of Blood)
+			{ spellID = 91139, size = 47, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Fury of the Five Flights 
+			{ spellID = 60314, size = 47, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Witching Hour
+			{ spellID = 90887, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Heart's Revelation
+			{ spellID = 91027, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Heart's Judgement
+			{ spellID = 91041, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			--Battle Magic (Stump of Time)
 			{ spellID = 91047, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 			--Dire Magic (Bell of Enraging Resonance)
 			{ spellID = 91007, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 			--Volcanic Destruction (Darkmoon Card: Volcano)
 			{ spellID = 89091, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
-			
-			--Lightweave
+
+		-- Item Enchants - Engineering
+			-- Hyperspeed Accelerators / Hypergeschwindigkeitsbeschleuniger
+			{ spellID = 54758, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Synapse Springs / Synapsenfedern
+			{ spellID = 82175, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+
+		-- Item Enchants - Tailoring
+			-- Darkglow
+			{ spellID = 55767, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Lightweave
 			{ spellID = 75170, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Swordguard
+			{ spellID = 55775, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+
+		-- Item Enchants - Enchanting
+			-- Heartsong / Gesang des Herzens
+--			{ spellID = 74224, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Avalanche / Lawine
+--			{ spellID = 74196, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Hurricane / Hurrikan
+--			{ spellID = 74221, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			--Power Torrent
 			{ spellID = 74241, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			--Landside
 			{ spellID = 74245, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+
+		-- Potions
+			-- Speed / Geschwindigkeit - Potion of Speed
+			{ spellID = 53908, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Wild Magic / Wilde Magie - Potion of Wild Magic
+			{ spellID = 53909, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Earthen Armor / Irdene Rüstung - Earthen Potion
+			{ spellID = 79475, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			--Volcanic Power
 			{ spellID = 79476, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
-			
-			--Ancient Hysteria
+
+		-- External Buffs
+			-- Tricks of the Trade
+			{ spellID = 57934, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Power Infusion
+			{ spellID = 10060, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Bloodlust
+			{ spellID = 2825, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Heroism
+			{ spellID = 52182, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Time Warp
+			{ spellID = 80353, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Ancient Hysteria
 			{ spellID = 90355, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
-			--Bloodlust
-			{ spellID = 2825, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
-			--Heroism
-			{ spellID = 32182, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
-			--Time Warp
-			{ spellID = 80353, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
-			
 			--Innervate
 			{ spellID = 29166, size = 52, unitId = "player", caster = "all", filter = "BUFF"},
-			--Power Infusion
-			{ spellID = 10060, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
+			
 		},
 		{
 --[[       Tons of SpellIDs taken from LoseControl so credit to Kouri 
@@ -1044,7 +1089,7 @@ ns.Filger_Spells = {
 			BarWidth = 150,
 			setPoint = {  "CENTER", UIParent ,-140,150 },			
 			
-			--[[ Rouge ]]--
+			--[[ Rogue ]]--
 			--Kidney Shot
             { spellID = 408, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Blind
@@ -1128,7 +1173,7 @@ ns.Filger_Spells = {
 			--Gnaw (Ghoul)
             { spellID = 47481, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Hungering Cold
-			{ spellID = 61058, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 49203, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Chilblains
 	        { spellID = 50040, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
         
@@ -1182,7 +1227,7 @@ ns.Filger_Spells = {
 			--Snatch (Bird of Prey)
 	        { spellID = 50541, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Froststorm Breath (Chimera)
-	        { spellID = 95725, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+	        { spellID = 92380, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Pin (Crab)
             { spellID = 50245, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Tendon Rip (Hyena)
