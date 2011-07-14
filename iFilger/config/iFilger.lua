@@ -972,6 +972,8 @@ ns.Filger_Spells = {
 			{ spellID = 91007, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 			--Volcanic Destruction (Darkmoon Card: Volcano)
 			{ spellID = 89091, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
+			--Mark of the Firelord (Rune of Zeth)
+			{ spellID = 97007, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 
 		-- Item Enchants - Engineering
 			-- Hyperspeed Accelerators / Hypergeschwindigkeitsbeschleuniger
@@ -1024,6 +1026,8 @@ ns.Filger_Spells = {
 			{ spellID = 90355, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			--Innervate
 			{ spellID = 29166, size = 52, unitId = "player", caster = "all", filter = "BUFF"},
+			--Lightwell
+			{ spellID = 7001, size = 52, unitId = "player", caster = "all", filter = "BUFF"},
 			
 		},
 		{
@@ -1063,6 +1067,8 @@ ns.Filger_Spells = {
 			{ spellID = 48707, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Lichborne
 			{ spellID = 49039, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Icebound Fortitude
+			{ spellID = 48792, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			
 			--[[ Shaman ]]--
 			-- Grounding Totem Effect
