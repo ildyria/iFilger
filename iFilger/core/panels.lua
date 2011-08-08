@@ -88,7 +88,7 @@ if(I.myclass ~= "DRUID"  and I.myclass ~= "WARLOCK" and I.myclass ~= "ROGUE" ) t
 	table.insert(I.MoverFrames,iFilgerBuffDebuff)
 end
 
-if(I.myclass ~= "DRUID" and I.myclass ~= "PALADIN" and I.myclass ~= "WARLOCK" and I.myclass ~= "ROGUE" and I.myclass ~= "WARRIOR" ) then
+if(I.myclass ~= "PALADIN" and I.myclass ~= "WARLOCK" and I.myclass ~= "ROGUE" and I.myclass ~= "WARRIOR" ) then
 	local Cooldowns = CreateFrame("Frame","iFilgerCooldowns",UIParent) -- Cooldowns
 	Cooldowns:CreatePanel("Default",160, 20, "BOTTOMRIGHT", UIParent, "CENTER", 153, -97)
 	Cooldowns:SetMovable(true)
@@ -130,7 +130,7 @@ end
 
 
 ---------------------------------
--- DRUID
+-- DRUID + HEALS
 ---------------------------------
 if(I.myclass == "DRUID" ) then
 	local TargetDebuff = CreateFrame("Frame","iFilgerTargetDebuff",UIParent) -- TargetDebuff
@@ -142,7 +142,9 @@ if(I.myclass == "DRUID" ) then
 	TargetDebuff.text:SetText("Move Target Debuff")
 	TargetDebuff:Hide()
 	table.insert(I.MoverFrames,iFilgerTargetDebuff)
+end
 
+if(I.myclass == "SHAMAN" or I.myclass == "DRUID") then
 	local BuffTargetHeal = CreateFrame("Frame","iFilgerBuffTargetHeal",UIParent) -- BuffTargetHeal
 	BuffTargetHeal:CreatePanel("Default",160, 20, "TOPLEFT", UIParent, "CENTER", 164, -268)
 	BuffTargetHeal:SetMovable(true)
@@ -152,7 +154,9 @@ if(I.myclass == "DRUID" ) then
 	BuffTargetHeal.text:SetText("Move Heal Buff Target")
 	BuffTargetHeal:Hide()
 	table.insert(I.MoverFrames,iFilgerBuffTargetHeal)
+end
 
+if(I.myclass == "SHAMAN" or I.myclass == "DRUID" or I.myclass == "PALADIN" or I.myclass == "PRIEST" ) then
 	local BuffPlayerHeal = CreateFrame("Frame","iFilgerBuffPlayerHeal",UIParent) -- BuffPlayerHeal
 	BuffPlayerHeal:CreatePanel("Default",160, 20, "TOPRIGHT", UIParent, "CENTER", -164, -268)
 	BuffPlayerHeal:SetMovable(true)
@@ -199,23 +203,6 @@ if(I.myclass == "ROGUE" ) then
 	Cooldowns.text:SetText("Move Cooldowns")
 	Cooldowns:Hide()
 	table.insert(I.MoverFrames,iFilgerCooldowns)
-end
-
-
-
----------------------------------
--- WARRIOR
----------------------------------
-if(I.myclass == "WARRIOR" ) then
-	local PlayerCDDef = CreateFrame("Frame","iFilgerPlayerCDDef",UIParent) -- Player CD Def
-	PlayerCDDef:CreatePanel("Default",160, 20, "TOPRIGHT", UIParent, "CENTER", -42, -130)
-	PlayerCDDef:SetMovable(true)
-	PlayerCDDef:SetBackdropBorderColor(RAID_CLASS_COLORS[I.myclass].r,RAID_CLASS_COLORS[I.myclass].g,RAID_CLASS_COLORS[I.myclass].b)
-	PlayerCDDef.text = I.SetFontString(PlayerCDDef, C.media.pixelfont, 12, "MONOCHROMEOUTLINE")
-	PlayerCDDef.text:SetPoint("CENTER")
-	PlayerCDDef.text:SetText("Move Player CD Def")
-	PlayerCDDef:Hide()
-	table.insert(I.MoverFrames,iFilgerPlayerCDDef)
 end
 
 
@@ -270,7 +257,7 @@ end
 ---------------------------------
 -- FOCUS FRAME
 ---------------------------------
-if(I.myclass == "MAGE" or I.myclass == "SHAMAN" or I.myclass == "PALADIN" ) then
+if(I.myclass ~= "WARRIOR" and I.myclass ~= "DEATHKNIGHT" ) then
 	local FocusBuffs = CreateFrame("Frame","iFilgerFocusBuffs",UIParent) -- CC / sheep & cie
 	FocusBuffs:CreatePanel("Default",165, 20, "TOPRIGHT", UIParent, "CENTER", -53, 53)
 	FocusBuffs:SetMovable(true)
