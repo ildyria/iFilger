@@ -3,11 +3,11 @@
 	Copyright (c) 2009, Nils Ruesch
 ]]
 
-local E, C, L, DB = unpack(select(2, ...)) -- Import: E - functions, constants, variables; C - config; L - locales
+local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
-local _, ns = ...
-local f_s = ns.Filger_Settings;
-local Filger_Spells = ns.Filger_Spells;
+--local _, ns = ...
+--local f_s = C.Filger_Settings;
+local Filger_Spells = C.Filger_Spells;
 
 local class = select(2, UnitClass("player"));
 local classcolor = RAID_CLASS_COLORS[class];
@@ -79,8 +79,8 @@ function Update(self)
 				bar.icon = _G[bar.icon:GetName()]
 			else
 				bar.icon = bar:CreateTexture("$parentIcon", "ARTWORK");
-				bar.icon:SetPoint("TOPLEFT", E.Scale(2), E.Scale(-2))
-				bar.icon:SetPoint("BOTTOMRIGHT", E.Scale(-2), E.Scale(2))
+				bar.icon:SetPoint("TOPLEFT", I.Scale(2), I.Scale(-2))
+				bar.icon:SetPoint("BOTTOMRIGHT", I.Scale(-2), I.Scale(2))
 				bar.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9);
 			end
 			
@@ -93,8 +93,8 @@ function Update(self)
 					bar.count = _G[bar.count:GetName()]
 				else
 					bar.count = bar:CreateFontString("$parentCount", "OVERLAY");
-					bar.count:SetFont(C.media.font, 16, "MONOCHROMEOUTLINE");
-					bar.count:Point("TOPLEFT", 1, 0);
+					bar.count:SetFont(C.media.pixelfont, 24, "MONOCHROMEOUTLINE");
+					bar.count:Point("BOTTOMRIGHT", 1, 0);
 					bar.count:SetJustifyH("CENTER");
 				end
 			else
@@ -102,8 +102,8 @@ function Update(self)
 					bar.statusbar = _G[bar.statusbar:GetName()]
 				else
 					bar.statusbar = CreateFrame("StatusBar", "$parentStatusBar", bar);
-					bar.statusbar:SetWidth(E.Scale(self.BarWidth - 2));
-					bar.statusbar:SetHeight(E.Scale(value.data.size - 10));
+					bar.statusbar:SetWidth(I.Scale(self.BarWidth - 2));
+					bar.statusbar:SetHeight(I.Scale(value.data.size - 10));
 					bar.statusbar:SetStatusBarTexture(C.media.normTex);
 					bar.statusbar:SetStatusBarColor(classcolor.r, classcolor.g, classcolor.b, 1);
 					if ( self.IconSide == "LEFT" ) then
@@ -119,8 +119,8 @@ function Update(self)
 					bar.bg = _G[bar.bg:GetName()]
 				else
 					bar.bg = CreateFrame("Frame","$parentBG", bar.statusbar)
-					bar.bg:SetPoint("TOPLEFT", E.Scale(-2), E.Scale(2))
-					bar.bg:SetPoint("BOTTOMRIGHT", E.Scale(2), E.Scale(-2))
+					bar.bg:SetPoint("TOPLEFT", I.Scale(-2), I.Scale(2))
+					bar.bg:SetPoint("BOTTOMRIGHT", I.Scale(2), I.Scale(-2))
 					bar.bg:SetFrameStrata("BACKGROUND")
 					bar.bg:SetTemplate("Hydra")
 				end
@@ -139,15 +139,15 @@ function Update(self)
 				else			
 					bar.time = bar.statusbar:CreateFontString("$parentTime", "ARTWORK");
 					bar.time:SetFont(C.media.font, 14, "MONOCHROMEOUTLINE");
-					bar.time:SetPoint("RIGHT", bar.statusbar, E.Scale(0), 0);
+					bar.time:SetPoint("RIGHT", bar.statusbar, I.Scale(0), 0);
 				end
 				
 				if (bar.count) then
 					bar.count = _G[bar.count:GetName()]
 				else
 					bar.count = bar:CreateFontString("$parentCount", "ARTWORK");
-					bar.count:SetFont(C["media"].font, 16, "MONOCHROMEOUTLINE");
-					bar.count:SetPoint("TOPLEFT", E.Scale(-2), E.Scale(2));
+					bar.count:SetFont(C["media"].pixelfont, 24, "MONOCHROMEOUTLINE");
+					bar.count:SetPoint("BOTTOMRIGHT", I.Scale(-2), I.Scale(2));
 					bar.count:SetJustifyH("CENTER");
 				end
 				
@@ -156,7 +156,7 @@ function Update(self)
 				else
 					bar.spellname = bar.statusbar:CreateFontString("$parentSpellName", "ARTWORK");
 					bar.spellname:SetFont(C.media.font, 14, "MONOCHROMEOUTLINE");
-					bar.spellname:SetPoint("LEFT", bar.statusbar, E.Scale(2), 0);
+					bar.spellname:SetPoint("LEFT", bar.statusbar, I.Scale(2), 0);
 					bar.spellname:SetPoint("RIGHT", bar.time, "LEFT");
 					bar.spellname:SetJustifyH("LEFT");
 				end
@@ -283,7 +283,7 @@ if (Filger_Spells and Filger_Spells[class]) then
 		frame:SetHeight(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 20);
 		frame:SetPoint(unpack(data.setPoint));
 
-		if (f_s.configmode) then
+		if (C.general.configmode) then
 			for j = 1, #Filger_Spells[class][i], 1 do
 				data = Filger_Spells[class][i][j];
 				if (not active[i]) then
@@ -315,3 +315,125 @@ if (Filger_Spells and Filger_Spells[class]) then
 		end
 	end
 end
+
+-- used to exec various code if we enable or disable moving
+local function exec(self, enable)
+	if enable then
+		self:Show()
+	else
+		self:Hide()
+	end
+end
+
+local enable = true
+local origa1, origf, origa2, origx, origy
+
+local function moving()
+	-- don't allow moving while in combat
+	if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
+
+	C.general.configmode = not(C.general.configmode)
+
+	for i = 1, #Filger_Spells[class], 1 do
+		data = Filger_Spells[class][i];
+		
+		frame = CreateFrame("Frame", "FilgerAnchor"..i, UIParent);
+		frame.Id = i;
+		frame.Name = data.Name;
+		frame.Direction = data.Direction or "DOWN";
+		frame.IconSide = data.IconSide or "LEFT";
+		frame.Interval = data.Interval or 3;
+		frame.Mode = data.Mode or "ICON";
+		frame.BarWidth = data.BarWidth or 200;
+		frame.setPoint = data.setPoint or "CENTER";
+		frame:SetWidth(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 100);
+		frame:SetHeight(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 20);
+		frame:SetPoint(unpack(data.setPoint));
+
+		if (C.general.configmode) then
+			for j = 1, #Filger_Spells[class][i], 1 do
+				data = Filger_Spells[class][i][j];
+				if (not active[i]) then
+					active[i] = {};
+				end
+				if (data.spellID) then
+					_, _, spellIcon = GetSpellInfo(data.spellID)
+				else
+					slotLink = GetInventoryItemLink("player", data.slotID);
+					if (slotLink) then
+						name, _, _, _, _, _, _, _, _, spellIcon = GetItemInfo(slotLink);
+					end
+				end
+				table.insert(active[i], { data = data, icon = spellIcon, count = 9, duration = 0, expirationTime = 0 });
+			end
+			Update(frame);
+		else
+			for index, value in ipairs(active[i]) do
+				active[i] = {};
+			end
+			Update(frame);
+		end
+	end
+
+	
+	for i = 1, getn(I.MoverFrames) do
+		if I.MoverFrames[i] then		
+			if enable then			
+				I.MoverFrames[i]:EnableMouse(true)
+				I.MoverFrames[i]:RegisterForDrag("LeftButton", "RightButton")
+				I.MoverFrames[i]:SetScript("OnDragStart", function(self) 
+					origa1, origf, origa2, origx, origy = I.MoverFrames[i]:GetPoint() 
+					self.moving = true 
+					self:SetUserPlaced(true) 
+					self:StartMoving() 
+				end)			
+				I.MoverFrames[i]:SetScript("OnDragStop", function(self) 
+					self.moving = false 
+					self:StopMovingOrSizing() 
+				end)			
+				exec(I.MoverFrames[i], enable)			
+				if I.MoverFrames[i].text then 
+					I.MoverFrames[i].text:Show() 
+				end
+			else			
+				I.MoverFrames[i]:EnableMouse(false)
+				if I.MoverFrames[i].moving == true then
+					I.MoverFrames[i]:StopMovingOrSizing()
+					I.MoverFrames[i]:ClearAllPoints()
+					I.MoverFrames[i]:SetPoint(origa1, origf, origa2, origx, origy)
+				end
+				exec(I.MoverFrames[i], enable)
+				if I.MoverFrames[i].text then I.MoverFrames[i].text:Hide() end
+				I.MoverFrames[i].moving = false
+			end
+		end
+	end
+	
+	if I.MoveUnitFrames then I.MoveUnitFrames() end
+	
+	if enable then enable = false else enable = true end
+end
+SLASH_MOVING1 = "/mifilger"
+SLASH_MOVING2 = "/moveifilger"
+SlashCmdList["MOVING"] = moving
+
+local protection = CreateFrame("Frame")
+protection:RegisterEvent("PLAYER_REGEN_DISABLED")
+protection:SetScript("OnEvent", function(self, event)
+	if enable then return end
+	print(ERR_NOT_IN_COMBAT)
+	enable = false
+	moving()
+end)
+
+local function positionsetup()
+	-- reset movable stuff into original position
+	for i = 1, getn(I.MoverFrames) do
+		if I.MoverFrames[i] then I.MoverFrames[i]:SetUserPlaced(false) end
+	end
+	ReloadUI()
+end
+
+SLASH_RESETIFILGER1 = "/rifilger"
+SLASH_RESETIFILGER2 = "/resetifilger"
+SlashCmdList.RESETIFILGER = positionsetup

@@ -3,14 +3,8 @@
 ## Notes: Minimal buff/debuff/proc tracking
 ## Editor: FourOne, Jasje, Ildyria
 ## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki
-## Version: 2.4
+## Version: 3.0
 ## Title: |cff1784d1iFilger|r
-## Notes: Power Aura Like, skinned for Tukui / ElvUi.
+## Notes: Power Aura Like, skinned for iFilger / ElvUi.
 
-init.lua
-libs\load_libs.xml
-media\load_media.xml
-config\load_config.xml
-core\load_core.xml
-modules\load_modules.xml
-iFilger.lua
+iFilger.xml
