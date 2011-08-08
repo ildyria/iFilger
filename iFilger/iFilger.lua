@@ -93,7 +93,7 @@ function Update(self)
 					bar.count = _G[bar.count:GetName()]
 				else
 					bar.count = bar:CreateFontString("$parentCount", "OVERLAY");
-					bar.count:SetFont(C.media.pixelfont, 24, "MONOCHROMEOUTLINE");
+					bar.count:SetFont(C.media.pixelfont, 16, "MONOCHROMEOUTLINE");
 					bar.count:Point("BOTTOMRIGHT", 1, 0);
 					bar.count:SetJustifyH("CENTER");
 				end
@@ -146,7 +146,7 @@ function Update(self)
 					bar.count = _G[bar.count:GetName()]
 				else
 					bar.count = bar:CreateFontString("$parentCount", "ARTWORK");
-					bar.count:SetFont(C["media"].pixelfont, 24, "MONOCHROMEOUTLINE");
+					bar.count:SetFont(C["media"].pixelfont, 16, "MONOCHROMEOUTLINE");
 					bar.count:SetPoint("BOTTOMRIGHT", I.Scale(-2), I.Scale(2));
 					bar.count:SetJustifyH("CENTER");
 				end
@@ -425,7 +425,6 @@ protection:SetScript("OnEvent", function(self, event)
 	enable = false
 	moving()
 end)
-
 local function positionsetup()
 	-- reset movable stuff into original position
 	for i = 1, getn(I.MoverFrames) do

@@ -1,8 +1,8 @@
 ﻿local I, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 
 C["general"] = {
-	["autoscale"] = true,                               -- mainly enabled for users that don't want to mess with the config file
-	["uiscale"] = 0.71,                                 -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
+	["autoscale"] = false,                               -- mainly enabled for users that don't want to mess with the config file
+	["uiscale"] = 1,                                 -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
 	["multisampleprotect"] = true,                      -- i don't recommend this because of shitty border but, voila!
 	["backdropcolor"] = { .1,.1,.1 },                   -- default backdrop color of panels
 	["bordercolor"] = { .6,.6,.6 },                     -- default border color of panels
@@ -355,13 +355,13 @@ C["Filger_Spells"] = {
 			setPoint = { "TOP", "iFilgerProcs", -0, -23 },
 
 			-- Demon Soul: Imp
-			{ spellID = 79459, size = 50, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 79459, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Demon Soul: Felguard
-			{ spellID = 79462, size = 50, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Eradication
-			{ spellID = 64371, size = 50, unitId = "player", caster = "player", filter = "BUFF" },	
+			{ spellID = 79462, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Demon Soul: Felhunter
-			{ spellID = 79460, size = 50, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 79460, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Eradication
+			{ spellID = 64371, size = 37, unitId = "player", caster = "player", filter = "BUFF" },	
 			--Devious Minds
 			{ spellID = 70840, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Improved Soul Fire
@@ -930,6 +930,8 @@ C["Filger_Spells"] = {
 			Mode = "ICON",
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 
+			-- Earth Shield / Erdschild
+			{ spellID = 974, size = 32, unitId = "focus", caster = "player", filter = "BUFF" },
 			-- Hex / Verhexen
 			{ spellID = 51514, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Bind Elemental / Elementar binden
