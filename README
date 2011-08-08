@@ -13,3 +13,8 @@ Moving the bars
 a guide can be found here : http://www.tukui.org/forums/topic.php?id=8310#post-81958
 
 iFilger is a modified version of Filger with the core of ElvUI, all credit goes their authors! 
+
+To move buffs, use /mifilger
+To reset buff positions, use /rifilger
+
+May be a bit laggy need further testings.
