@@ -1347,33 +1347,19 @@ C["Filger_Spells"] = {
 			{ spellID = 91007, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 
 		-- PvP Trinkets
-			-- Surge of Dominance / Ruthless Gladiator's Insignia of Dominance
-			{ spellID = 99742, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Call of Conquest / Ruthless Gladiator's Badge of Conquest
-			{ spellID = 99739, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Call of Dominance / Ruthless Gladiator's Badge of Dominance
-			{ spellID = 99741, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Call of Victory / Ruthless Gladiator's Badge of Victory
-			{ spellID = 99740, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Tremendous Fortitude / Battlemaster Trinket S10-384
-			{ spellID = 99737, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Surge of Conquest / Ruthless Gladiator's Insignia of Conquest
-			{ spellID = 99748, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Surge of Victory / Ruthless Gladiator's Insignia of Victory
-			{ spellID = 99746, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Call of Conquest / Vicious Gladiator's Badge of Conquest
+			-- Call of Conquest / Badge of Conquest
 			{ spellID = 99711, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Call of Dominance / Vicious Gladiator's Badge of Dominance
+			-- Call of Dominance / Badge of Dominance
 			{ spellID = 99712, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Call of Victory / Vicious Gladiator's Badge of Victory
+			-- Call of Victory / Badge of Victory
 			{ spellID = 99713, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Tremendous Fortitude / Battlemaster Trinket S10-371
 			{ spellID = 99714, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Surge of Conquest / Vicious Gladiator's Insignia of Conquest
+			-- Surge of Conquest / Insignia of Conquest
 			{ spellID = 99717, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Surge of Dominance / Vicious Gladiator's Insignia of Dominance
+			-- Surge of Dominance / Insignia of Dominance
 			{ spellID = 99719, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Surge of Victory / Vicious Gladiator's Insignia of Victory
+			-- Surge of Victory / Insignia of Victory
 			{ spellID = 99721, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 
 		-- Item Enchants - Engineering
@@ -1590,7 +1576,9 @@ C["Filger_Spells"] = {
 			{ spellID = 49203, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Chilblains
 	        { spellID = 50040, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
-        
+ 			--Dark Simulacrum
+	        { spellID = 77606, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+       
 		    --[[ Druid ]]--
 			--Bash (also Shaman Spirit Wolf ability)
 	        { spellID = 5211, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },

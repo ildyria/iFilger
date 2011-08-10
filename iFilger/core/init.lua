@@ -1,5 +1,5 @@
 ----------------------------------------------------------------
--- initiation of tukui
+-- initiation of ifilger
 ----------------------------------------------------------------
 
 -- including system
@@ -15,5 +15,5 @@ iFilger = engine -- Allow other addons to use Engine
 --	local I, C, L = unpack(select(2, ...))
 
 --	This is how another addon imports the iFilger engine:	
---	local T, C, L = unpack(iFilger)
+--	local I, C, L = unpack(iFilger)
 ---------------------------------------------------------------------------------

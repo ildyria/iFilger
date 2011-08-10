@@ -1,6 +1,6 @@
 -- iFilger API, see DOCS/API.txt for more informations
 
-local I, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
 local noop = I.dummy
 local floor = math.floor

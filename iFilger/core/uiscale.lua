@@ -1,4 +1,4 @@
-local I, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
 I.UIScale = function()
 	if I.getscreenwidth < 1600 then
