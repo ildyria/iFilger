@@ -442,6 +442,8 @@ C["Filger_Spells"] = {
 			{ spellID = 54785, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Curse of Gul'dan
 			{ spellID = 86000, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Soul Swap
+			{ spellID = 86121, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
         {
 			Name = "Cooldown",
@@ -817,7 +819,7 @@ C["Filger_Spells"] = {
 --			IconSide = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
-			setPoint = { "LEFT", "iFilgerFocusBuffs", "LEFT", 0, 0 },
+			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", "TOPRIGHT", 0, -22 },
 
 			-- Blind / Blenden
 			{ spellID = 2094, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
@@ -1576,9 +1578,9 @@ C["Filger_Spells"] = {
 			{ spellID = 49203, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Chilblains
 	        { spellID = 50040, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
- 			--Dark Simulacrum
+			--Dark Simulacrum
 	        { spellID = 77606, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
-       
+        
 		    --[[ Druid ]]--
 			--Bash (also Shaman Spirit Wolf ability)
 	        { spellID = 5211, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },

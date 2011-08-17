@@ -1,4 +1,4 @@
-local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
+local I, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 --[[
         An edited lightweight OmniCC for iFilger
                 A featureless, 'pure' version of OmniCC.
@@ -16,7 +16,7 @@ local HALFDAYISH, HALFHOURISH, HALFMINUTEISH = DAY/2 + 0.5, HOUR/2 + 0.5, MINUTE
 
 --configuration settings
 local FONT_FACE = C["media"].pixelfont --what font to use
-local FONT_SIZE = 28 --the base font size to use at a scale of 1
+local FONT_SIZE = 20 --the base font size to use at a scale of 1
 local MIN_SCALE = 0.5 --the minimum scale we want to show cooldown counts at, anything below this will be hidden
 local MIN_DURATION = 2.5 --the minimum duration to show cooldown text for
 local EXPIRING_DURATION = C["cooldown"].treshold --the minimum number of seconds a cooldown must be to use to display in the expiring format

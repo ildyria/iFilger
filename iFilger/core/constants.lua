@@ -1,4 +1,4 @@
-local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
+local I, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 
 I.dummy = function() return end
 I.myname = select(1, UnitName("player"))

@@ -5,8 +5,6 @@
 
 local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
---local _, ns = ...
---local f_s = C.Filger_Settings;
 local Filger_Spells = C.Filger_Spells;
 
 local class = select(2, UnitClass("player"));
@@ -300,7 +298,27 @@ if (Filger_Spells and Filger_Spells[class]) then
 				table.insert(active[i], { data = data, icon = spellIcon, count = 9, duration = 0, expirationTime = 0 });
 			end
 			Update(frame);
-		else
+			for i = 1, getn(I.MoverFrames) do
+				if I.MoverFrames[i] then		
+					I.MoverFrames[i]:EnableMouse(true)
+					I.MoverFrames[i]:RegisterForDrag("LeftButton", "RightButton")
+					I.MoverFrames[i]:SetScript("OnDragStart", function(self) 
+						origa1, origf, origa2, origx, origy = I.MoverFrames[i]:GetPoint() 
+						self.moving = true 
+						self:SetUserPlaced(true) 
+						self:StartMoving() 
+					end)			
+					I.MoverFrames[i]:SetScript("OnDragStop", function(self) 
+						self.moving = false 
+						self:StopMovingOrSizing() 
+					end)			
+					exec(I.MoverFrames[i], true)			
+					if I.MoverFrames[i].text then 
+						I.MoverFrames[i].text:Show() 
+					end
+				end
+			end
+	else
 			for j = 1, #Filger_Spells[class][i], 1 do
 				data = Filger_Spells[class][i][j];
 				if (data.filter == "CD") then
@@ -408,8 +426,6 @@ local function moving()
 			end
 		end
 	end
-	
-	if I.MoveUnitFrames then I.MoveUnitFrames() end
 	
 	if enable then enable = false else enable = true end
 end
