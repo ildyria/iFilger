@@ -2,7 +2,7 @@
 -- Per Class Config (overwrite general)
 -- Class need to be UPPERCASE
 ----------------------------------------------------------------------------
-local I, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
 if I.myclass == "PRIEST" then
 	-- do some config!
