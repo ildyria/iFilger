@@ -1450,7 +1450,7 @@ C["Filger_Spells"] = {
 			-- Hand of Salvation
 			{ spellID = 1038, size = 52, unitId = "player", caster = "all", filter = "BUFF" },		
 			-- Rallying Cry
-			{ spellID = 97462, size = 52, unitId = "player", caster = "player", filter = "BUFF" },	
+			{ spellID = 97462, size = 52, unitId = "player", caster = "all", filter = "BUFF" },	
 		},
 		{
 --[[       Tons of SpellIDs taken from LoseControl so credit to Kouri 
