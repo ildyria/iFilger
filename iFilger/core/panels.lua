@@ -17,7 +17,7 @@ Enhancements.text:SetText("Move Enhancements")
 Enhancements:Hide()
 
 local PvpPlayerDebuffs = CreateFrame("Frame","iFilgerPvpPlayerDebuffs",UIParent) -- Kidney shoot & cie...
-PvpPlayerDebuffs:CreatePanel("Transparent",200, 20,"BOTTOMRIGHT", UIParent , "CENTER", -104, 93)
+PvpPlayerDebuffs:CreatePanel("Transparent",250, 20,"BOTTOMRIGHT", UIParent , "CENTER", -104, 93)
 PvpPlayerDebuffs:SetMovable(true)
 PvpPlayerDebuffs:SetBackdropBorderColor(1,0,0)
 PvpPlayerDebuffs:SetFrameLevel(2)
@@ -28,7 +28,7 @@ PvpPlayerDebuffs.text:SetText("Move Pvp Player Debuffs")
 PvpPlayerDebuffs:Hide()
 
 local PvpTargetDebuffs = CreateFrame("Frame","iFilgerPvpTargetDebuffs",UIParent) -- Ice Block / smoke / ShS...
-PvpTargetDebuffs:CreatePanel("Transparent",200, 20,"BOTTOMLEFT", UIParent , "CENTER", 104,93)
+PvpTargetDebuffs:CreatePanel("Transparent",250, 20,"BOTTOMLEFT", UIParent , "CENTER", 104,93)
 PvpTargetDebuffs:SetMovable(true)
 PvpTargetDebuffs:SetBackdropBorderColor(1,0,0)
 PvpTargetDebuffs:SetFrameLevel(2)
@@ -106,18 +106,38 @@ end
 -- PRIEST
 ---------------------------------
 if(I.myclass == "PRIEST" ) then
-	local BuffDebuffDps = CreateFrame("Frame","iFilgerBuffDebuffDps",UIParent) -- BuffDebuffDps
-	BuffDebuffDps:CreatePanel("Transparent",160, 20, "TOPRIGHT", UIParent, "CENTER", 98, -140)
-	BuffDebuffDps:SetMovable(true)
-	BuffDebuffDps:SetBackdropBorderColor(RAID_CLASS_COLORS[I.myclass].r,RAID_CLASS_COLORS[I.myclass].g,RAID_CLASS_COLORS[I.myclass].b)
-	BuffDebuffDps.text = I.SetFontString(BuffDebuffDps, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
-	BuffDebuffDps.text:SetPoint("CENTER")
-	BuffDebuffDps.text:SetText("Move Buff / Debuff Dps")
-	BuffDebuffDps:Hide()
-	table.insert(I.MoverFrames,iFilgerBuffDebuffDps)
+	local DebuffDps = CreateFrame("Frame","iFilgerDebuffDps",UIParent) -- DebuffDps
+	DebuffDps:CreatePanel("Transparent",200, 20, "TOPLEFT", UIParent, "CENTER", 30, -210)
+	DebuffDps:SetMovable(true)
+	DebuffDps:SetBackdropBorderColor(RAID_CLASS_COLORS[I.myclass].r,RAID_CLASS_COLORS[I.myclass].g,RAID_CLASS_COLORS[I.myclass].b)
+	DebuffDps.text = I.SetFontString(DebuffDps, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
+	DebuffDps.text:SetPoint("CENTER")
+	DebuffDps.text:SetText("Move Debuff Dps")
+	DebuffDps:Hide()
+	table.insert(I.MoverFrames,iFilgerDebuffDps)
+
+	local BuffDps = CreateFrame("Frame","iFilgerBuffDps",UIParent) -- BuffDps
+	BuffDps:CreatePanel("Transparent",200, 20, "TOPRIGHT", UIParent, "CENTER", -30, -210)
+	BuffDps:SetMovable(true)
+	BuffDps:SetBackdropBorderColor(RAID_CLASS_COLORS[I.myclass].r,RAID_CLASS_COLORS[I.myclass].g,RAID_CLASS_COLORS[I.myclass].b)
+	BuffDps.text = I.SetFontString(BuffDps, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
+	BuffDps.text:SetPoint("CENTER")
+	BuffDps.text:SetText("Move Buff Dps")
+	BuffDps:Hide()
+	table.insert(I.MoverFrames,iFilgerBuffDps)
+
+	local ProcDps = CreateFrame("Frame","iFilgerProcDps",UIParent) -- ProcDps
+	ProcDps:CreatePanel("Transparent",200, 20, "CENTER", UIParent, "CENTER", 0, -250)
+	ProcDps:SetMovable(true)
+	ProcDps:SetBackdropBorderColor(RAID_CLASS_COLORS[I.myclass].r,RAID_CLASS_COLORS[I.myclass].g,RAID_CLASS_COLORS[I.myclass].b)
+	ProcDps.text = I.SetFontString(ProcDps, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
+	ProcDps.text:SetPoint("CENTER")
+	ProcDps.text:SetText("Move Proc Dps")
+	ProcDps:Hide()
+	table.insert(I.MoverFrames,iFilgerProcDps)
 
 	local BuffDebuffHeal = CreateFrame("Frame","iFilgerBuffDebuffHeal",UIParent) -- BuffDebuffHeal
-	BuffDebuffHeal:CreatePanel("Transparent",160, 20, "BOTTOMRIGHT", UIParent, "CENTER", 98, -61)
+	BuffDebuffHeal:CreatePanel("Transparent",200, 20, "BOTTOMRIGHT", UIParent, "CENTER", 98, -61)
 	BuffDebuffHeal:SetMovable(true)
 	BuffDebuffHeal:SetBackdropBorderColor(RAID_CLASS_COLORS[I.myclass].r,RAID_CLASS_COLORS[I.myclass].g,RAID_CLASS_COLORS[I.myclass].b)
 	BuffDebuffHeal.text = I.SetFontString(BuffDebuffHeal, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
@@ -134,7 +154,7 @@ end
 ---------------------------------
 if(I.myclass == "DRUID" ) then
 	local TargetDebuff = CreateFrame("Frame","iFilgerTargetDebuff",UIParent) -- TargetDebuff
-	TargetDebuff:CreatePanel("Transparent",160, 20, "TOPRIGHT", UIParent, "CENTER", 118, -160)
+	TargetDebuff:CreatePanel("Transparent",200, 20, "TOPRIGHT", UIParent, "CENTER", 118, -160)
 	TargetDebuff:SetMovable(true)
 	TargetDebuff:SetBackdropBorderColor(RAID_CLASS_COLORS[I.myclass].r,RAID_CLASS_COLORS[I.myclass].g,RAID_CLASS_COLORS[I.myclass].b)
 	TargetDebuff.text = I.SetFontString(TargetDebuff, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
@@ -144,9 +164,9 @@ if(I.myclass == "DRUID" ) then
 	table.insert(I.MoverFrames,iFilgerTargetDebuff)
 end
 
-if(I.myclass == "SHAMAN" or I.myclass == "DRUID") then
+if(I.myclass == "SHAMAN" or I.myclass == "DRUID" or I.myclass == "PALADIN") then
 	local BuffTargetHeal = CreateFrame("Frame","iFilgerBuffTargetHeal",UIParent) -- BuffTargetHeal
-	BuffTargetHeal:CreatePanel("Transparent",160, 20, "TOPLEFT", UIParent, "CENTER", 164, -268)
+	BuffTargetHeal:CreatePanel("Transparent",200, 20, "TOPLEFT", UIParent, "CENTER", 164, -268)
 	BuffTargetHeal:SetMovable(true)
 	BuffTargetHeal:SetBackdropBorderColor(RAID_CLASS_COLORS[I.myclass].r,RAID_CLASS_COLORS[I.myclass].g,RAID_CLASS_COLORS[I.myclass].b)
 	BuffTargetHeal.text = I.SetFontString(BuffTargetHeal, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
@@ -158,7 +178,7 @@ end
 
 if(I.myclass == "SHAMAN" or I.myclass == "DRUID" or I.myclass == "PALADIN" or I.myclass == "PRIEST" ) then
 	local BuffPlayerHeal = CreateFrame("Frame","iFilgerBuffPlayerHeal",UIParent) -- BuffPlayerHeal
-	BuffPlayerHeal:CreatePanel("Transparent",160, 20, "TOPRIGHT", UIParent, "CENTER", -164, -268)
+	BuffPlayerHeal:CreatePanel("Transparent",200, 20, "TOPRIGHT", UIParent, "CENTER", -164, -268)
 	BuffPlayerHeal:SetMovable(true)
 	BuffPlayerHeal:SetBackdropBorderColor(RAID_CLASS_COLORS[I.myclass].r,RAID_CLASS_COLORS[I.myclass].g,RAID_CLASS_COLORS[I.myclass].b)
 	BuffPlayerHeal.text = I.SetFontString(BuffPlayerHeal, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
@@ -267,4 +287,20 @@ if(I.myclass ~= "WARRIOR" and I.myclass ~= "DEATHKNIGHT" ) then
 	FocusBuffs.text:SetText("Move Focus Buffs")
 	FocusBuffs:Hide()
 	table.insert(I.MoverFrames,iFilgerFocusBuffs)
+end
+
+
+---------------------------------
+-- RAGE FRAME
+---------------------------------
+if(I.myclass == "HUNTER" or I.myclass == "DRUID" ) then
+	local RageBuffs = CreateFrame("Frame","iFilgerRage",UIParent) -- Rage buff to be dispel by hunt or druid
+	RageBuffs:CreatePanel("Transparent",165, 20, "CENTER", UIParent, "CENTER", 0, -20)
+	RageBuffs:SetMovable(true)
+	RageBuffs:SetBackdropBorderColor(RAID_CLASS_COLORS[I.myclass].r,RAID_CLASS_COLORS[I.myclass].g,RAID_CLASS_COLORS[I.myclass].b)
+	RageBuffs.text = I.SetFontString(RageBuffs, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
+	RageBuffs.text:SetPoint("CENTER")
+	RageBuffs.text:SetText("Move Rage Buffs")
+	RageBuffs:Hide()
+	table.insert(I.MoverFrames,iFilgerRage)
 end

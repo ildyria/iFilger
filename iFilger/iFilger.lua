@@ -258,6 +258,16 @@ if (Filger_Spells and Filger_Spells["ALL"]) then
 	end
 end
 
+if (Filger_Spells and Filger_Spells["HUNTER/DRUID"] and (class == "HUNTER" or class == "DRUID")) then
+	if (not Filger_Spells[class]) then
+		Filger_Spells[class] = {}
+	end
+
+	for i = 1, #Filger_Spells["HUNTER/DRUID"], 1 do
+		table.insert(Filger_Spells[class], Filger_Spells["HUNTER/DRUID"][i])
+	end
+end
+
 if (Filger_Spells and Filger_Spells[class]) then
 	for index in pairs(Filger_Spells) do
 		if (index ~= class) then
