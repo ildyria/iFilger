@@ -1055,6 +1055,18 @@ C["Filger_Spells"] = {
 			{ spellID = 85730, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Inner Rage
 			{ spellID = 1134, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Battle Trance
+			{ spellID = 85742, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Incite
+			{ spellID = 86627, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Taste for Blood
+			{ spellID = 60503, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Meat Cleaver
+			{ spellID = 85739, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Rude Interruption
+			{ spellID = 86663, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Executioner
+			{ spellID = 90806, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "T_DEBUFF_ICON",
@@ -1316,11 +1328,9 @@ C["Filger_Spells"] = {
 			-- Matrix Restabilizer  / Matrix Restabilizer
 			{ spellID = 96976, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Accelerated Heroic  / Vessel of Acceleration Heroic
-			{ spellID = 97142, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- { spellID = 97142, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Blessing of Khaz'goroth Heroic  / Apparatus of Khaz'goroth Heroic
 			{ spellID = 97127, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Victorious Heroic  / Jaws of Defeat Heroic
-			{ spellID = 97120, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Soul Fragment Heroic  / Necromantic Focus Heroic
 			{ spellID = 97131, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Devour Heroic  / The Hungerer Heroic
@@ -1335,8 +1345,6 @@ C["Filger_Spells"] = {
 			{ spellID = 97010, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Fiery Quintessence  / Fiery Quintessence
 			{ spellID = 97008, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Victorious  / Jaws of Defeat
-			{ spellID = 96907, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Mark of the Firelord  / Rune of Zeth
 			{ spellID = 97007, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Devour  / The Hungerer
@@ -1347,7 +1355,23 @@ C["Filger_Spells"] = {
 			{ spellID = 91047, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 			--Dire Magic (Bell of Enraging Resonance)
 			{ spellID = 91007, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
+			-- Titanic Power
+			{ spellID = 96923, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Blessing of the Shaper
+			{ spellID = 96928, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Rageheart
+			{ spellID = 92345, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 
+		-- Tier 12 Boni
+			-- Burning Rage
+			{ spellID = 99233, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Enrage
+			{ spellID = 14202, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Recklessness
+			{ spellID = 1719, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Death Wish
+			{ spellID = 12292, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			
 		-- PvP Trinkets
 			-- Call of Conquest / Badge of Conquest
 			{ spellID = 99711, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
@@ -1424,7 +1448,9 @@ C["Filger_Spells"] = {
 			--Lightwell
 			{ spellID = 7001, size = 52, unitId = "player", caster = "all", filter = "BUFF"},
 			-- Hand of Salvation
-			{ spellID = 1038, size = 52, unitId = "player", caster = "all", filter = "BUFF" },			
+			{ spellID = 1038, size = 52, unitId = "player", caster = "all", filter = "BUFF" },		
+			-- Rallying Cry
+			{ spellID = 97462, size = 52, unitId = "player", caster = "player", filter = "BUFF" },	
 		},
 		{
 --[[       Tons of SpellIDs taken from LoseControl so credit to Kouri 
@@ -1439,10 +1465,34 @@ C["Filger_Spells"] = {
 			--[[ Druid ]]--
 			--Innervate
 			{ spellID = 29166, size = 72, unitId = "target", caster = "all", filter = "BUFF"},
+			--Tiger's Fury
+			{ spellID = 5217, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Barkskin
+			{ spellID = 22812, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Berserk
+			{ spellID = 50334, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Starfall
+			{ spellID = 48505, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			
 			--[[ Warrior ]]--
 			--Spell Reflection
 			{ spellID = 23920, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Recklessness
+			{ spellID = 1719, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Shield Wall
+			{ spellID = 871, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Shield Block
+			{ spellID = 2565, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Retaliation
+			{ spellID = 20230, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Enraged Regeneration
+			{ spellID = 55694, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Rallying Cry
+			{ spellID = 97462, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Deadly Calm
+			{ spellID = 85730, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Death Wish
+			{ spellID = 12292, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			
 			--[[ Paladin ]]--
 			--Divine Shield
@@ -1452,7 +1502,19 @@ C["Filger_Spells"] = {
 			-- Hand of Sacrifice
 			{ spellID = 6940, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			--Aura Mastery
-			{ spellID = 31821, size = 72, unitId = "target", caster = "all", filter = "BUFF" },	
+			{ spellID = 31821, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Hand of Protection
+			{ spellID = 1022, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Divine Protection
+			{ spellID = 498, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Avenging Wrath
+			{ spellID = 31884, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Divine Favor
+			{ spellID = 31842, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Divine Guardian
+			{ spellID = 70940, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Holy Shield
+			{ spellID = 20925, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 
             --[[ Hunter ]]--
 			--Deterrence
@@ -1469,18 +1531,50 @@ C["Filger_Spells"] = {
 			--[[ Shaman ]]--
 			-- Grounding Totem Effect
 			{ spellID = 8178, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Water Shield
+			{ spellID = 52127, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Earth Shield
+			{ spellID = 974, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Elemental Mastery
+			{ spellID = 16166, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Shamanistic Rage
+			{ spellID = 30823, size = 72, unitId = "tagret", caster = "all", filter = "BUFF" },
+			-- Feral Spirit
+			{ spellID = 51533, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 
 			--[[ Mage ]]--
 			--Ice Block
 			{ spellID = 45438, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Arcane Power
+			{ spellID = 12042, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Icy Veins
+			{ spellID = 12472, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			
 			--[[ Rouge ]]--
 			--Cloak of Shadows
 			{ spellID = 31224, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Evasion
+			{ spellID = 5277, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Combat Readiness
+			{ spellID = 74001, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Adrenaline Rush
+			{ spellID = 13750, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Cold Blood
+			{ spellID = 14177, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Shadow Dance
+			{ spellID = 51713, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Vendetta
+			{ spellID = 79140, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			
 			--[[ Priest ]]--
 			-- Dispersion
 			{ spellID = 47585, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Archangel
+			{ spellID = 87151, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Pain Suppression
+			{ spellID = 33206, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Power Infusion
+			{ spellID = 10060, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 		},
 		{
 		    -- Here we track pvp debuffs on ourself
