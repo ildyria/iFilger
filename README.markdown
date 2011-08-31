@@ -16,15 +16,18 @@ Launch the game and enjoy !
 
 ## Configuration and moving bars
 All configuration must be done by directly editing config/config.lua.
-a guide can be found here : http://www.tukui.org/forums/topic.php?id=8310#post-81958
+
+A guide can be found here : http://www.tukui.org/forums/topic.php?id=8310#post-81958
 
 Moving the bars
+
 To move buffs, use /mifilger
 To reset buff positions, use /rifilger
 
 iFilger is a modified version of Filger with the core of Tukui, all credit goes their authors! 
 
 May be a bit laggy need further testings.
+
 /!\ MAY HAVE MEMORY LEEKS /!\
 
 ## Credits
