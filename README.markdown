@@ -25,7 +25,7 @@ To reset buff positions, use /rifilger
 iFilger is a modified version of Filger with the core of Tukui, all credit goes their authors! 
 
 May be a bit laggy need further testings.
-/!\ MAY HAVE MEMORY LEEKS /!\.
+/!\ MAY HAVE MEMORY LEEKS /!\
 
 ## Credits
 Elv, Tukz, Jasje, Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, FourOne, mTx, Varuljin 
