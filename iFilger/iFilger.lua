@@ -285,62 +285,25 @@ if (Filger_Spells and Filger_Spells[class]) then
 		frame.IconSide = data.IconSide or "LEFT";
 		frame.Interval = data.Interval or 3;
 		frame.Mode = data.Mode or "ICON";
+		if(frame.Mode ~= "ICON" and frame.Direction ~= "DOWN" and frame.Direction ~= "UP") then -- check if bar + right or left => ugly !
+			frame.Direction = "UP";
+		end
 		frame.BarWidth = data.BarWidth or 200;
 		frame.setPoint = data.setPoint or "CENTER";
 		frame:SetWidth(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 100);
 		frame:SetHeight(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 20);
 		frame:SetPoint(unpack(data.setPoint));
-
-		if (C.general.configmode) then
-			for j = 1, #Filger_Spells[class][i], 1 do
-				data = Filger_Spells[class][i][j];
-				if (not active[i]) then
-					active[i] = {};
-				end
-				if (data.spellID) then
-					_, _, spellIcon = GetSpellInfo(data.spellID)
-				else
-					slotLink = GetInventoryItemLink("player", data.slotID);
-					if (slotLink) then
-						name, _, _, _, _, _, _, _, _, spellIcon = GetItemInfo(slotLink);
-					end
-				end
-				table.insert(active[i], { data = data, icon = spellIcon, count = 9, duration = 0, expirationTime = 0 });
+		for j = 1, #Filger_Spells[class][i], 1 do
+			data = Filger_Spells[class][i][j];
+			if (data.filter == "CD") then
+				frame:RegisterEvent("SPELL_UPDATE_COOLDOWN");
+				break;
 			end
-			Update(frame);
-			for i = 1, getn(I.MoverFrames) do
-				if I.MoverFrames[i] then		
-					I.MoverFrames[i]:EnableMouse(true)
-					I.MoverFrames[i]:RegisterForDrag("LeftButton", "RightButton")
-					I.MoverFrames[i]:SetScript("OnDragStart", function(self) 
-						origa1, origf, origa2, origx, origy = I.MoverFrames[i]:GetPoint() 
-						self.moving = true 
-						self:SetUserPlaced(true) 
-						self:StartMoving() 
-					end)			
-					I.MoverFrames[i]:SetScript("OnDragStop", function(self) 
-						self.moving = false 
-						self:StopMovingOrSizing() 
-					end)			
-					exec(I.MoverFrames[i], true)			
-					if I.MoverFrames[i].text then 
-						I.MoverFrames[i].text:Show() 
-					end
-				end
-			end
-	else
-			for j = 1, #Filger_Spells[class][i], 1 do
-				data = Filger_Spells[class][i][j];
-				if (data.filter == "CD") then
-					frame:RegisterEvent("SPELL_UPDATE_COOLDOWN");
-					break;
-				end
-			end
-			frame:RegisterEvent("UNIT_AURA");
-			frame:RegisterEvent("PLAYER_TARGET_CHANGED");
-			frame:RegisterEvent("PLAYER_ENTERING_WORLD");
-			frame:SetScript("OnEvent", OnEvent);
 		end
+		frame:RegisterEvent("UNIT_AURA");
+		frame:RegisterEvent("PLAYER_TARGET_CHANGED");
+		frame:RegisterEvent("PLAYER_ENTERING_WORLD");
+		frame:SetScript("OnEvent", OnEvent);
 	end
 end
 
@@ -360,8 +323,6 @@ local function moving()
 	-- don't allow moving while in combat
 	if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
 
-	C.general.configmode = not(C.general.configmode)
-
 	for i = 1, #Filger_Spells[class], 1 do
 		data = Filger_Spells[class][i];
 		
@@ -378,7 +339,7 @@ local function moving()
 		frame:SetHeight(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 20);
 		frame:SetPoint(unpack(data.setPoint));
 
-		if (C.general.configmode) then
+		if (enable) then
 			for j = 1, #Filger_Spells[class][i], 1 do
 				data = Filger_Spells[class][i][j];
 				if (not active[i]) then

@@ -122,7 +122,7 @@ if(I.myclass == "PRIEST" ) then
 	BuffDps:SetBackdropBorderColor(RAID_CLASS_COLORS[I.myclass].r,RAID_CLASS_COLORS[I.myclass].g,RAID_CLASS_COLORS[I.myclass].b)
 	BuffDps.text = I.SetFontString(BuffDps, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
 	BuffDps.text:SetPoint("CENTER")
-	BuffDps.text:SetText("Move Buff Dps")
+	BuffDps.text:SetText("Move Buff/Procs Dps")
 	BuffDps:Hide()
 	table.insert(I.MoverFrames,iFilgerBuffDps)
 
@@ -132,7 +132,7 @@ if(I.myclass == "PRIEST" ) then
 	ProcDps:SetBackdropBorderColor(RAID_CLASS_COLORS[I.myclass].r,RAID_CLASS_COLORS[I.myclass].g,RAID_CLASS_COLORS[I.myclass].b)
 	ProcDps.text = I.SetFontString(ProcDps, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
 	ProcDps.text:SetPoint("CENTER")
-	ProcDps.text:SetText("Move Proc Dps")
+	ProcDps.text:SetText("Move CD Dps")
 	ProcDps:Hide()
 	table.insert(I.MoverFrames,iFilgerProcDps)
 
