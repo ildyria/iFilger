@@ -323,6 +323,7 @@ local function moving()
 	-- don't allow moving while in combat
 	if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
 
+	local data, frame;
 	for i = 1, #Filger_Spells[class], 1 do
 		data = Filger_Spells[class][i];
 		
