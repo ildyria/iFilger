@@ -1071,6 +1071,8 @@ C["Filger_Spells"] = {
 			{ spellID = 85696, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Avenging Wrath
 			{ spellID = 31884, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Guardian of Ancient Kings (prot)
+			{ spellID = 86659, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Paladin Procs",
