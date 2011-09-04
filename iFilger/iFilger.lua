@@ -203,16 +203,16 @@ end
 local function OnEvent(self, event, ...)
 	local unit = ...;
 	if ( ( unit == "target" or unit == "player" or unit == "pet" or unit == "focus" ) or event == "PLAYER_TARGET_CHANGED" or event == "PLAYER_ENTERING_WORLD" or event == "SPELL_UPDATE_COOLDOWN" ) then
-		local data, name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, start, enabled, slotLink, spn;
+		local data, name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, start, enabled, slotLink, spn, spid;
 		local id = self.Id;
 		for i=1, #Filger_Spells[class][id], 1 do
 			data = Filger_Spells[class][id][i];
 			if (data.filter == "BUFF") then
 				spn = GetSpellInfo( data.spellID )
-				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable = UnitBuff(data.unitId, spn);
+				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = UnitBuff(data.unitId, spn);
 			elseif (data.filter == "DEBUFF") then
 				spn = GetSpellInfo( data.spellID )
-				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable = UnitDebuff(data.unitId, spn);
+				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = UnitDebuff(data.unitId, spn);
 			else
 				if (data.spellID) then
 					spn = GetSpellInfo(data.spellID)
@@ -241,7 +241,9 @@ local function OnEvent(self, event, ...)
 				end
 			end
 			if ( ( name and ( data.caster ~= 1 and ( caster == data.caster or data.caster == "all" ) or MyUnits[caster] )) or ( ( enabled or 0 ) > 0 and ( duration or 0 ) > 1.5 ) ) then
-				table.insert(active[id], { data = data, icon = icon, count = count, duration = duration, expirationTime = expirationTime or start });
+				if (spid and data.spellID == spid) then
+					table.insert(active[id], { data = data, icon = icon, count = count, duration = duration, expirationTime = expirationTime or start });
+				end
 			end
 		end
 		Update(self);
