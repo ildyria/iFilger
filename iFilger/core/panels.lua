@@ -88,7 +88,7 @@ if(I.myclass ~= "DRUID"  and I.myclass ~= "WARLOCK" and I.myclass ~= "ROGUE" ) t
 	table.insert(I.MoverFrames,iFilgerBuffDebuff)
 end
 
-if(I.myclass ~= "PALADIN" and I.myclass ~= "WARLOCK" and I.myclass ~= "ROGUE" and I.myclass ~= "WARRIOR" ) then
+if(I.myclass ~= "PALADIN" and I.myclass ~= "WARLOCK" and I.myclass ~= "ROGUE") then
 	local Cooldowns = CreateFrame("Frame","iFilgerCooldowns",UIParent) -- Cooldowns
 	Cooldowns:CreatePanel("Transparent",160, 20, "BOTTOMRIGHT", UIParent, "CENTER", 153, -97)
 	Cooldowns:SetMovable(true)

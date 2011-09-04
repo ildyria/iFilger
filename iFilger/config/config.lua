@@ -1173,7 +1173,22 @@ C["Filger_Spells"] = {
 			-- Colossus Smash
 			{ spellID = 86346, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
-    },		
+		{
+			Name = "Cooldown",
+			Direction = "UP",
+			Interval = 3,
+			Mode = "ICON",
+			BarWidth = 150,
+			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
+			
+			-- recklesness
+			{ spellID = 1719, size = 37, unitId = "player", caster = "player", filter = "CD" },
+			-- throwdown
+			{ spellID = 85388, size = 37, unitId = "player", caster = "player", filter = "CD" },
+			-- berserker rage
+			{ spellID = 18499, size = 37, unitId = "player", caster = "player", filter = "CD" },    
+		},
+	},		
 -----------------------------------------------------------------------------------------------------------------------	
 -- Credits to Sapz
 -----------------------------------------------------------------------------------------------------------------------	
@@ -1463,6 +1478,8 @@ C["Filger_Spells"] = {
 			{ spellID = 91173, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			--Battle Magic (Stump of Time)
 			{ spellID = 91047, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
+			--Pattern of Light (Mandala of Stirring Patterns)
+			{ spellID = 91192, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 			--Dire Magic (Bell of Enraging Resonance)
 			{ spellID = 91007, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 			-- Weight of a Feather (Scales of Life)
