@@ -2,7 +2,7 @@
 ## Author: Nils Ruesch, Affli, Elv, Tukz
 ## Notes: Minimal buff/debuff/proc tracking
 ## Editor: FourOne, Jasje, Ildyria
-## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia
+## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, mTx
 ## Version: 3.2
 ## Title: |cff1784d1iFilger|r
 ## Notes: Power Aura Like, skinned for Tukui / ElvUI.
