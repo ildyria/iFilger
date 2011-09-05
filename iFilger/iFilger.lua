@@ -209,10 +209,10 @@ local function OnEvent(self, event, ...)
 			data = Filger_Spells[class][id][i];
 			if (data.filter == "BUFF") then
 				spn = GetSpellInfo( data.spellID )
-				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = UnitBuff(data.unitId, spn);
+				_, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = UnitBuff(data.unitId, spn);
 			elseif (data.filter == "DEBUFF") then
 				spn = GetSpellInfo( data.spellID )
-				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = UnitDebuff(data.unitId, spn);
+				_, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = UnitDebuff(data.unitId, spn);
 			else
 				if (data.spellID) then
 					spn = GetSpellInfo(data.spellID)
@@ -240,10 +240,8 @@ local function OnEvent(self, event, ...)
 					break;
 				end
 			end
-			if ( ( name and ( data.caster ~= 1 and ( caster == data.caster or data.caster == "all" ) or MyUnits[caster] )) or ( ( enabled or 0 ) > 0 and ( duration or 0 ) > 1.5 ) ) then
-				if (spid and data.spellID == spid) then
-					table.insert(active[id], { data = data, icon = icon, count = count, duration = duration, expirationTime = expirationTime or start });
-				end
+			if ( (spid and data.spellID == spid) or ( name and ( data.caster ~= 1 and ( caster == data.caster or data.caster == "all" ) or MyUnits[caster] )) or ( ( enabled or 0 ) > 0 and ( duration or 0 ) > 1.5 ) ) then
+				table.insert(active[id], { data = data, icon = icon, count = count, duration = duration, expirationTime = expirationTime or start });
 			end
 		end
 		Update(self);
