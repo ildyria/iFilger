@@ -206,7 +206,7 @@ local function OnEvent(self, event, ...)
 				spn = GetSpellInfo( data.spellID )
 				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = UnitBuff(data.unitId, spn);
 				if (spid and data.spellID ~= spid and data.absID) then
-					name = spn
+					name = nil
 				end
 			elseif (data.filter == "DEBUFF") then
 				spn = GetSpellInfo( data.spellID )
