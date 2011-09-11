@@ -274,8 +274,6 @@ C["Filger_Spells"] = {
 			{ spellID = 89485, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Strength of Soul
 			{ spellID = 96267, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Empowered Shadow
-			{ spellID = 95799, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Fade / Verblassen
 			{ spellID = 586, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Borrowed Time
@@ -820,6 +818,8 @@ C["Filger_Spells"] = {
 			{ spellID = 58426, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Slice and Dice
 			{ spellID = 5171, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Recuperate
+			{ spellID = 73651, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Tricks of the Trade
 			{ spellID = 57934, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Turn the Tables
@@ -1493,6 +1493,8 @@ C["Filger_Spells"] = {
 --			{ spellID = 97117, size = 32, unitId = "player", caster = "player", filter = "BUFF" }, SAME NAME AS 96879
 			-- Titanic Power
 			{ spellID = 96923, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Soul Power (Soul Casket)
+			{ spellID = 91019, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			
 		-- PvP Trinkets
 			-- Call of Conquest / Badge of Conquest
@@ -1521,6 +1523,10 @@ C["Filger_Spells"] = {
 			{ spellID = 82626, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Flintlocke's Woodchucker
 			{ spellID = 99621, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+
+		-- Herbalism
+			-- Lifeblood
+			{ spellID = 55503, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 
 		-- Item Enchants - Tailoring
 			-- Darkglow
@@ -1597,6 +1603,8 @@ C["Filger_Spells"] = {
 			--[[ Warrior ]]--
 			--Spell Reflection
 			{ spellID = 23920, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			--Recklessness
+			{ spellID = 1719, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			
 			--[[ Paladin ]]--
 			--Divine Shield
@@ -1610,7 +1618,7 @@ C["Filger_Spells"] = {
 			--Hand of Protection
 			{ spellID = 1022, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			--Divine Protection
-			{ spellID = 498, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+--			{ spellID = 498, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			--Avenging Wrath
 			{ spellID = 31884, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Divine Favor
@@ -1690,7 +1698,9 @@ C["Filger_Spells"] = {
 			--Crippling Poison
             { spellID = 3409, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Deadly Throw
-            { spellID = 26679, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+            { spellID = 26679, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			--Gouge
+            { spellID = 1776, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			
 			--[[ Paladin ]]--
 			--Hammer of Justice
