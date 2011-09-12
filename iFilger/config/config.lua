@@ -121,6 +121,8 @@ C["Filger_Spells"] = {
 			{ spellID = 82731, size = 37, filter = "CD" }, 
 			--Mage Ward
 			{ spellID = 543, size = 37, filter = "CD" }, 
+			--Deep Freeze
+			{ spellID = 44572, size = 37, filter = "CD" }, 
 		},	
 		{
 			Name = "Buffs and Debuffs",
@@ -177,10 +179,8 @@ C["Filger_Spells"] = {
 			{ spellID = 57761, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Impact
 			{ spellID = 64343, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
-			--Hot Streak(improved)
-			{ spellID = 44448, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			--Hot Streak
-			{ spellID = 44445, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 48108, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			--Arcane Blast
 			{ spellID = 30451, size = 60, unitId = "player", caster = "player", filter = "DEBUFF" },
 			--Fingers Of Frost
@@ -1651,6 +1651,10 @@ C["Filger_Spells"] = {
 			{ spellID = 12042, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Icy Veins
 			{ spellID = 12472, size = 72, unitId = "target", caster = "all", filter = "BUFF" },			
+			-- Impact
+			{ spellID = 64343, size = 72, unitId = "target", caster = "player", filter = "BUFF" },
+			--Fingers Of Frost
+            { spellID = 83074, size = 72, unitId = "target", caster = "player", filter = "BUFF"},
 
 			--[[ Rogue ]]--
 			--Cloak of Shadows
