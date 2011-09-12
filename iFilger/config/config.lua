@@ -1652,9 +1652,9 @@ C["Filger_Spells"] = {
 			-- Icy Veins
 			{ spellID = 12472, size = 72, unitId = "target", caster = "all", filter = "BUFF" },			
 			-- Impact
-			{ spellID = 64343, size = 72, unitId = "target", caster = "player", filter = "BUFF" },
+			{ spellID = 64343, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			--Fingers Of Frost
-            { spellID = 83074, size = 72, unitId = "target", caster = "player", filter = "BUFF"},
+            { spellID = 83074, size = 72, unitId = "target", caster = "all", filter = "BUFF"},
 
 			--[[ Rogue ]]--
 			--Cloak of Shadows
