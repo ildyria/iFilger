@@ -872,9 +872,9 @@ C["Filger_Spells"] = {
 			-- Find Weakness
 			{ spellID = 91023, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Hemorrhage
-			{ spellID = 16511, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
+			{ spellID = 16511, size = 37, unitId = "target", caster = "player", filter = "DEBUFF", absID = true  },
 			-- Glyph of Hemorrhage 
-			{ spellID = 56807, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
+			{ spellID = 89775, size = 37, unitId = "target", caster = "player", filter = "DEBUFF", absID = true  },
 			-- Vendetta
 			{ spellID = 79140, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
@@ -1568,7 +1568,7 @@ C["Filger_Spells"] = {
 			-- Bloodlust
 			{ spellID = 2825, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Heroism
-			{ spellID = 52182, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			{ spellID = 32182, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Time Warp
 			{ spellID = 80353, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Ancient Hysteria
@@ -1705,6 +1705,8 @@ C["Filger_Spells"] = {
             { spellID = 26679, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Gouge
             { spellID = 1776, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			--Cheap Shot
+            { spellID = 1833, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			
 			--[[ Paladin ]]--
 			--Hammer of Justice
