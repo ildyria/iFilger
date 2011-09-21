@@ -1558,7 +1558,7 @@ C["Filger_Spells"] = {
 			--Volcanic Power
 			{ spellID = 79476, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 			-- Golemblood Potion
-			{ spellID = 79634, size = 32, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 79634, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 
 		-- External Buffs
 			-- Tricks of the Trade
@@ -1579,6 +1579,8 @@ C["Filger_Spells"] = {
 			{ spellID = 7001, size = 52, unitId = "player", caster = "all", filter = "BUFF"},
 			-- Hand of Salvation
 			{ spellID = 1038, size = 52, unitId = "player", caster = "all", filter = "BUFF" },			
+			-- Hand of Salvation
+			{ spellID = 47788, size = 52, unitId = "player", caster = "all", filter = "BUFF" },			
 		},
 		{
 --[[       Tons of SpellIDs taken from LoseControl so credit to Kouri 
@@ -1596,9 +1598,11 @@ C["Filger_Spells"] = {
 			-- Barkskin
 			{ spellID = 22812, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Berserk
-			{ spellID = 50334, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			{ spellID = 50334, size = 72, unitId = "target", caster = "all", filter = "BUFF", absID = true },
 			-- Starfall
 			{ spellID = 48505, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Predator's Swiftness
+			{ spellID = 69369, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			
 			--[[ Warrior ]]--
 			--Spell Reflection
@@ -1652,9 +1656,9 @@ C["Filger_Spells"] = {
 			-- Icy Veins
 			{ spellID = 12472, size = 72, unitId = "target", caster = "all", filter = "BUFF" },			
 			-- Impact
-			{ spellID = 64343, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+--			{ spellID = 64343, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			--Fingers Of Frost
-            { spellID = 83074, size = 72, unitId = "target", caster = "all", filter = "BUFF"},
+--            { spellID = 83074, size = 72, unitId = "target", caster = "all", filter = "BUFF"},
 
 			--[[ Rogue ]]--
 			--Cloak of Shadows
