@@ -1495,6 +1495,8 @@ C["Filger_Spells"] = {
 			{ spellID = 96923, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Soul Power (Soul Casket)
 			{ spellID = 91019, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Now is the time! (Mithril Stopwatch)
+			{ spellID = 101291, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			
 		-- PvP Trinkets
 			-- Call of Conquest / Badge of Conquest
@@ -1579,7 +1581,7 @@ C["Filger_Spells"] = {
 			{ spellID = 7001, size = 52, unitId = "player", caster = "all", filter = "BUFF"},
 			-- Hand of Salvation
 			{ spellID = 1038, size = 52, unitId = "player", caster = "all", filter = "BUFF" },			
-			-- Hand of Salvation
+			-- Wings of Priests
 			{ spellID = 47788, size = 52, unitId = "player", caster = "all", filter = "BUFF" },			
 		},
 		{

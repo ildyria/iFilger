@@ -36,6 +36,34 @@ local function OnUpdate(self, elapsed)
 	end
 end
 
+local function FilgerUnitBuff(unitID, inSpellID, spn, absID)
+  for i = 1, 40, 1 do
+    local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitBuff(unitID, i)
+    if ( not name ) then break end
+    if ( inSpellID == spellID ) then
+      return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
+    end
+    if ( name == spn and not(absID)) then
+      return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
+    end
+  end
+  return nil
+end
+
+local function FilgerUnitDebuff(unitID, inSpellID, spn, absID)
+  for i = 1, 40, 1 do
+    local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitDebuff(unitID, i)
+    if ( not name ) then break end
+    if ( inSpellID == spellID ) then
+      return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
+    end
+    if ( name == spn and not(absID)) then
+      return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
+    end
+  end
+  return nil
+end
+
 function Update(self)
 	local id = self.Id;
 	if (not bars[id]) then
@@ -204,16 +232,10 @@ local function OnEvent(self, event, ...)
 			data = Filger_Spells[class][id][i];
 			if (data.filter == "BUFF") then
 				spn = GetSpellInfo( data.spellID )
-				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = UnitBuff(data.unitId, spn);
-				if (spid and data.spellID ~= spid and data.absID) then
-					name = nil
-				end
+				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = FilgerUnitBuff(data.unitId, data.spellID, spn, data.absID);
 			elseif (data.filter == "DEBUFF") then
 				spn = GetSpellInfo( data.spellID )
-				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = UnitDebuff(data.unitId, spn);
-				if (spid and data.spellID ~= spid and data.absID) then
-					name = nil
-				end
+				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = FilgerUnitDebuff(data.unitId, data.spellID, spn, data.absID);
 			else
 				if (data.spellID) then
 					spn = GetSpellInfo(data.spellID)
