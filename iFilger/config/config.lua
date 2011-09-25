@@ -91,11 +91,11 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
 
-			--Sudden Doom
+			-- Sudden Doom
 			{ spellID = 49530, size = 60, unitId = "player", caster = "all", filter = "BUFF" },
-			--Crimson Scourge
+			-- Crimson Scourge
 			{ spellID = 81135, size = 60, unitId = "player", caster = "all", filter = "BUFF" },
-			--Killing Machine
+			-- Killing Machine
 			{ spellID = 51128, size = 60, unitId = "player", caster = "all", filter = "BUFF" }, 
 
 		},
@@ -115,13 +115,13 @@ C["Filger_Spells"] = {
 			{ spellID = 11113, size = 37, filter = "CD" },
 			-- Fire Blast
 			{ spellID = 2136, size = 37, filter = "CD" },
-			--Counterspell
+			-- Counterspell
 			{ spellID = 2139, size = 37, filter = "CD" }, 
-			--Flame Orb
+			-- Flame Orb
 			{ spellID = 82731, size = 37, filter = "CD" }, 
-			--Mage Ward
+			-- Mage Ward
 			{ spellID = 543, size = 37, filter = "CD" }, 
-			--Deep Freeze
+			-- Deep Freeze
 			{ spellID = 44572, size = 37, filter = "CD" }, 
 		},	
 		{
@@ -134,33 +134,33 @@ C["Filger_Spells"] = {
 			
 			-- Frostfire Bolt aka Glyph of Frostfire
 --			{ spellID = 44614, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			--Slow
+			-- Slow
 			{ spellID = 31589, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			--Icy Veins
+			-- Icy Veins
 			{ spellID = 12472, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			--Arcane Power
+			-- Arcane Power
 			{ spellID = 12042, size = 37, unitId = "player", caster = "all", filter = "BUFF" },
-			--Ice Block
+			-- Ice Block
 			{ spellID = 45438, size = 37, unitId = "player", caster = "player", filter = "BUFF" }, 
-			--Invisibility
+			-- Invisibility
 			{ spellID = 66, size = 37, unitId = "player", caster = "all", filter = "BUFF" }, 
-			--Pyromaniac
+			-- Pyromaniac
 			{ spellID = 34295, size = 37, unitId = "player", caster = "all", filter = "BUFF" }, 
-			--Pyroblast
+			-- Pyroblast
 			{ spellID = 11366, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, 
-			--Pyroblast!
+			-- Pyroblast!
 			{ spellID = 92315, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, 
-			--Living Bomb
+			-- Living Bomb
 			{ spellID = 44457, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, 
-			--Ignite
+			-- Ignite
 			{ spellID = 12846, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, 
-			--Impact
+			-- Impact
 			{ spellID = 12357, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" }, 
-			--Combustion
+			-- Combustion
 			{ spellID = 11129, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, 
-			--Critical Mass
+			-- Critical Mass
 			{ spellID = 22959, size = 37, unitId = "target", caster = "all", filter = "DEBUFF"},
-			--Freeze
+			-- Freeze
 			{ spellID = 33395, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" }, 
 		},
 		{
@@ -171,21 +171,21 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
 			
-			--Clearcasting
+			-- Clearcasting
 			{ spellID = 12536, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
-			--Missiles
+			-- Missiles
 			{ spellID = 79683, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
-			--Brain Freeze
+			-- Brain Freeze
 			{ spellID = 57761, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Impact
 			{ spellID = 64343, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
-			--Hot Streak
+			-- Hot Streak
 			{ spellID = 48108, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
-			--Arcane Blast
+			-- Arcane Blast
 			{ spellID = 30451, size = 60, unitId = "player", caster = "player", filter = "DEBUFF" },
-			--Fingers Of Frost
+			-- Fingers Of Frost
             { spellID = 83074, size = 60, unitId = "player", caster = "player", filter = "BUFF"},
-			--Blazing Speed
+			-- Blazing Speed
 			{ spellID = 31642, size = 60, unitId = "player", caster = "all", filter = "BUFF" },
 		},
 		{
@@ -229,21 +229,21 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
-			--Dispersion
+			-- Dispersion
 			{ spellID = 47585, size = 37, filter = "CD" }, 
-			--Guardian Spirit
+			-- Guardian Spirit
 			{ spellID = 47788, size = 37, filter = "CD" }, 
-			--Holy Word: Sanctuary
+			-- Holy Word: Sanctuary
 			{ spellID = 88686, size = 37, filter = "CD" }, 
-			--Inner Focus
+			-- Inner Focus
 			{ spellID = 89485, size = 37, filter = "CD" }, 
-			--Penance
+			-- Penance
 			{ spellID = 47540, size = 37, filter = "CD" }, 
-			--Circle of Healing
+			-- Circle of Healing
 			{ spellID = 34861, size = 37, filter = "CD" },
-			--Prayer of Mending
+			-- Prayer of Mending
 			{ spellID = 33076, size = 37, filter = "CD" },
-			--Psychic Scream
+			-- Psychic Scream
 			{ spellID = 8122, size = 37, filter = "CD" }, 
 			-- Shadowfiend
 			{ spellID = 34433, size = 37, filter = "CD" },
@@ -251,7 +251,7 @@ C["Filger_Spells"] = {
 			{ spellID = 87151, size = 37, filter = "CD" },
 			-- Desperate Prayer
 			{ spellID = 19236, size = 37, filter = "CD" },
-			-- Penance
+			-- Holy Word: Chastise
 			{ spellID = 88625, size = 37, filter = "CD" },
 		},
 		{
@@ -931,7 +931,7 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
-			--Stoneclaw Totem
+			-- Stoneclaw Totem
 			{ spellID = 5730, size = 37, filter = "CD" },
 			-- Grounding Totem
 			{ spellID = 8177, size = 37, filter = "CD" },
@@ -1185,12 +1185,20 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 			
-			-- recklesness
+			-- Recklesness
 			{ spellID = 1719, size = 37, filter = "CD" },
-			-- throwdown
+			-- Throwdown
 			{ spellID = 85388, size = 37, filter = "CD" },
-			-- berserker rage
-			{ spellID = 18499, size = 37, filter = "CD" },    
+			-- Intercept
+			{ spellID = 20252, size = 65, filter = "CD" },
+			-- Berserker rage
+			{ spellID = 18499, size = 65, filter = "CD" },  
+			-- Last Stand
+			{ spellID = 12975, size = 65, filter = "CD" },    
+			-- Taunt
+			{ spellID = 355, size = 65, filter = "CD" },    
+			-- Commanding Shout
+			{ spellID = 469, size = 65, filter = "CD" },    
 		},
 	},		
 -----------------------------------------------------------------------------------------------------------------------	
@@ -1265,6 +1273,8 @@ C["Filger_Spells"] = {
 			{ spellID = 91521, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Power Conversion - Arcanotron
             { spellID = 79729, size = 47, unitId = "focus", caster = "all", filter = "BUFF" },
+			-- Power Conversion - Arcanotron
+            { spellID = 91547, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
 		-- Maloriak	
 			-- Flash Freeze
 			{ spellID = 77699, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
@@ -1482,11 +1492,11 @@ C["Filger_Spells"] = {
 			{ spellID = 96911, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Celerity / Shard of Woe Heroic
 			{ spellID = 91173, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			--Battle Magic (Stump of Time)
+			-- Battle Magic (Stump of Time)
 			{ spellID = 91047, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
-			--Pattern of Light (Mandala of Stirring Patterns)
+			-- Pattern of Light (Mandala of Stirring Patterns)
 			{ spellID = 91192, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
-			--Dire Magic (Bell of Enraging Resonance)
+			-- Dire Magic (Bell of Enraging Resonance)
 			{ spellID = 91007, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 			-- Weight of a Feather (Scales of Life)
 			{ spellID = 96879, size = 32, unitId = "player", caster = "player", filter = "BUFF" },
@@ -1545,9 +1555,9 @@ C["Filger_Spells"] = {
 			{ spellID = 74196, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Hurricane / Hurrikan
 			{ spellID = 74221, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
-			--Power Torrent
+			-- Power Torrent
 			{ spellID = 74241, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
-			--Landside
+			-- Landside
 			{ spellID = 74245, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 
 		-- Potions
@@ -1557,7 +1567,7 @@ C["Filger_Spells"] = {
 			{ spellID = 53909, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Earthen Armor / Irdene Rüstung - Earthen Potion
 			{ spellID = 79475, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
-			--Volcanic Power
+			-- Volcanic Power
 			{ spellID = 79476, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 			-- Golemblood Potion
 			{ spellID = 79634, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
@@ -1575,14 +1585,18 @@ C["Filger_Spells"] = {
 			{ spellID = 80353, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Ancient Hysteria
 			{ spellID = 90355, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
-			--Innervate
+			-- Innervate
 			{ spellID = 29166, size = 52, unitId = "player", caster = "all", filter = "BUFF"},
-			--Lightwell
+			-- Lightwell
 			{ spellID = 7001, size = 52, unitId = "player", caster = "all", filter = "BUFF"},
 			-- Hand of Salvation
 			{ spellID = 1038, size = 52, unitId = "player", caster = "all", filter = "BUFF" },			
-			-- Wings of Priests
+			-- Guardian Spirit
 			{ spellID = 47788, size = 52, unitId = "player", caster = "all", filter = "BUFF" },			
+			-- Aspect of the Pack
+			{ spellID = 13159, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Stampeding Roar
+			{ spellID = 77764, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 		},
 		{
 --[[       Tons of SpellIDs taken from LoseControl so credit to Kouri 
@@ -1595,7 +1609,7 @@ C["Filger_Spells"] = {
 			setPoint = {  "BOTTOMLEFT", "iFilgerPvpTargetDebuffs" ,0,22 },
 			
 			--[[ Druid ]]--
-			--Innervate
+			-- Innervate
 			{ spellID = 29166, size = 72, unitId = "target", caster = "all", filter = "BUFF"},
 			-- Barkskin
 			{ spellID = 22812, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
@@ -1607,25 +1621,25 @@ C["Filger_Spells"] = {
 			{ spellID = 69369, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			
 			--[[ Warrior ]]--
-			--Spell Reflection
+			-- Spell Reflection
 			{ spellID = 23920, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
-			--Recklessness
+			-- Recklessness
 			{ spellID = 1719, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			
 			--[[ Paladin ]]--
-			--Divine Shield
+			-- Divine Shield
 			{ spellID = 642, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Hand of Freedom
 			{ spellID = 1044, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Hand of Sacrifice
 			{ spellID = 6940, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
-			--Aura Mastery
+			-- Aura Mastery
 			{ spellID = 31821, size = 72, unitId = "target", caster = "all", filter = "BUFF" },	
-			--Hand of Protection
+			-- Hand of Protection
 			{ spellID = 1022, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
-			--Divine Protection
+			-- Divine Protection
 --			{ spellID = 498, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
-			--Avenging Wrath
+			-- Avenging Wrath
 			{ spellID = 31884, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Divine Favor
 			{ spellID = 31842, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
@@ -1635,7 +1649,7 @@ C["Filger_Spells"] = {
 			{ spellID = 20925, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 
             --[[ Hunter ]]--
-			--Deterrence
+			-- Deterrence
             { spellID = 19263, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			
 			--[[ Death Knight ]]--
@@ -1659,7 +1673,7 @@ C["Filger_Spells"] = {
 			{ spellID = 12472, size = 72, unitId = "target", caster = "all", filter = "BUFF" },			
 			-- Impact
 --			{ spellID = 64343, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
-			--Fingers Of Frost
+			-- Fingers Of Frost
 --            { spellID = 83074, size = 72, unitId = "target", caster = "all", filter = "BUFF"},
 
 			--[[ Rogue ]]--
