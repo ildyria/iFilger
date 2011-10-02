@@ -1138,9 +1138,13 @@ C["Filger_Spells"] = {
 			{ spellID = 85730, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Inner Rage
 			{ spellID = 1134, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Battle trance
+--			{ spellID = 85742, size = 47, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Incite
+			{ spellID = 86627, size = 47, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
-			Name = "T_DEBUFF_ICON",
+			Name = "Debuffs",
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
@@ -1202,6 +1206,8 @@ C["Filger_Spells"] = {
 			{ spellID = 355, size = 65, filter = "CD" },    
 			-- Commanding Shout
 			{ spellID = 469, size = 65, filter = "CD" },    
+			-- Heroic Leap      
+			{ spellID = 6544, size = 65, filter = "CD" },   
 		},
 	},		
 -----------------------------------------------------------------------------------------------------------------------	
@@ -1266,7 +1272,7 @@ C["Filger_Spells"] = {
 			-- Parasitic Infection
             { spellID = 94679, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Mangle
-            { spellID = 94617, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+--            { spellID = 94617, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 		-- Omintron Defense System	
 			-- Poison Soaked Shell	
 	        { spellID = 79835, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
