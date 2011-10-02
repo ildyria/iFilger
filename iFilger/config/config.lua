@@ -11,6 +11,7 @@ C["general"] = {
 C["cooldown"] = {
 	["enable"] = true,                                  -- do i really need to explain this?
 	["treshold"] = 8,                                   -- show decimal under X seconds and text turn red
+	["fontsize"] = 20,									--the base font size to use at a scale of 1
 }
 
 C["Filger_Spells"] = {
@@ -1069,6 +1070,8 @@ C["Filger_Spells"] = {
 			{ spellID = 54428, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Holy Shield
 			{ spellID = 20925, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Divine Protection
+			{ spellID = 498, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Inquisition
 			{ spellID = 84963, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Zealotry
@@ -1372,6 +1375,8 @@ C["Filger_Spells"] = {
 		-- Al'Akir
 			-- Ice Storm
 			{ spellID = 93260, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Ice Storm
+			{ spellID = 93271, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Lightning Rod
 			{ spellID = 93295, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Static Shock / Statischer Schock (Al'Akir)
@@ -1432,6 +1437,8 @@ C["Filger_Spells"] = {
             { spellID = 100460, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
             -- Burning Wound 
             { spellID = 101239, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+            -- Fixate
+            { spellID = 99849, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
     	},	
 		{
 			Name = "ENHANCEMENTS",
@@ -1507,6 +1514,8 @@ C["Filger_Spells"] = {
 			{ spellID = 91019, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Now is the time! (Mithril Stopwatch)
 			{ spellID = 101291, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Revelation (Theralion Mirror)
+			{ spellID = 91024, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			
 		-- PvP Trinkets
 			-- Call of Conquest / Badge of Conquest
@@ -1591,6 +1600,10 @@ C["Filger_Spells"] = {
 			{ spellID = 7001, size = 52, unitId = "player", caster = "all", filter = "BUFF"},
 			-- Hand of Salvation
 			{ spellID = 1038, size = 52, unitId = "player", caster = "all", filter = "BUFF" },			
+			-- Hand of Protection
+			{ spellID = 1022, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Hand of Freedom
+			{ spellID = 1044, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Guardian Spirit
 			{ spellID = 47788, size = 52, unitId = "player", caster = "all", filter = "BUFF" },			
 			-- Aspect of the Pack

@@ -9,7 +9,8 @@ local texture = C.media.blank
 local backdropr, backdropg, backdropb, backdropa, borderr, borderg, borderb = 0, 0, 0, 1, 0, 0, 0
 
 -- pixel perfect script of custom ui Scale.
-local mult = 768/string.match(GetCVar("gxResolution"), "%d+x(%d+)")/C["general"].uiscale
+--local mult = 768/string.match(GetCVar("gxResolution"), "%d+x(%d+)")/C["general"].uiscale
+local mult = 1;
 local Scale = function(x)
     return mult*math.floor(x/mult+.5)
 end
