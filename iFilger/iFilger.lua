@@ -425,9 +425,9 @@ local function moving()
 	
 	if enable then enable = false else enable = true end
 end
-SLASH_MOVING1 = "/mifilger"
-SLASH_MOVING2 = "/moveifilger"
-SlashCmdList["MOVING"] = moving
+SLASH_MOVINGIFILGER1 = "/mifilger"
+SLASH_MOVINGIFILGER2 = "/moveifilger"
+SlashCmdList["MOVINGIFILGER"] = moving
 
 local protection = CreateFrame("Frame")
 protection:RegisterEvent("PLAYER_REGEN_DISABLED")
