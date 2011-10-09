@@ -1308,8 +1308,10 @@ C["Filger_Spells"] = {
 			-- Low Health
 			{ spellID = 89084, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 		-- Nefarian	
-			-- Shadow Conductor / Schattenleiter (Nefarian)
+			-- Shadow Conductor
 			{ spellID = 92053, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Stolen Power
+			{ spellID = 80627, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
 -- The Bastion of Twilight
 		--Valiona & Theralion
 			-- Blackout
