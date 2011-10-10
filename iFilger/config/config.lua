@@ -82,7 +82,7 @@ C["Filger_Spells"] = {
 			{ spellID = 43265, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" }, --Death and Decay
 			{ spellID = 59879, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, --Blood Plague
 			{ spellID = 49194, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, --Unholy Blight
-			{ spellID = 77535, size = 37, unitId = "target", caster = "player", filter = "BUFF" }, --Blood Shield
+			{ spellID = 77535, size = 37, unitId = "player", caster = "player", filter = "BUFF" }, --Blood Shield
 		},
 		{
 			Name = "DK Procs",
