@@ -295,6 +295,8 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
 
+			-- Spirit of Redemption
+			{ spellID = 27827, size = 60, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Surge of Light
 			{ spellID = 88688, size = 60, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Serendipity
@@ -1076,10 +1078,18 @@ C["Filger_Spells"] = {
 			{ spellID = 84963, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Zealotry
 			{ spellID = 85696, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Ardent Defender
+			{ spellID = 31850, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Avenging Wrath
 			{ spellID = 31884, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Guardian of Ancient Kings (prot)
 			{ spellID = 86659, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Aura Mastery
+			{ spellID = 31821, size = 37, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Divine Shield
+			{ spellID = 642, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Holy Radiance
+			{ spellID = 82327, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Paladin Procs",
