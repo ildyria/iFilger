@@ -82,7 +82,7 @@ C["Filger_Spells"] = {
 			{ spellID = 43265, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" }, --Death and Decay
 			{ spellID = 59879, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, --Blood Plague
 			{ spellID = 49194, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, --Unholy Blight
-
+			{ spellID = 77535, size = 37, unitId = "target", caster = "player", filter = "BUFF" }, --Blood Shield
 		},
 		{
 			Name = "DK Procs",
@@ -563,6 +563,8 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerBuffPlayerHeal", 0, 24 },
 
+			-- Thorns
+			{ spellID = 467, size = 32, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Lifebloom
 			{ spellID = 33763, size = 32, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Rejuvenation
@@ -582,6 +584,8 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffTargetHeal", 0, 24 },
 
+			-- Thorns
+			{ spellID = 467, size = 32, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Lifebloom
 			{ spellID = 33763, size = 32, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Rejuvenation
@@ -637,6 +641,8 @@ C["Filger_Spells"] = {
 			{ spellID = 5217, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Glyph of Barkskin
 			{ spellID = 63058, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Tranquility
+			{ spellID = 740, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Buffs and Debuffs",
@@ -1530,10 +1536,19 @@ C["Filger_Spells"] = {
 			{ spellID = 96923, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Soul Power (Soul Casket)
 			{ spellID = 91019, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Now is the time! (Mithril Stopwatch)
-			{ spellID = 101291, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Revelation (Theralion Mirror)
 			{ spellID = 91024, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Now is the time! (Mithril Stopwatch)
+			{ spellID = 101291, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Drunken Evasiveness (Brawler's Trophy)
+			{ spellID = 101293, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Essence of Life (Petrified Pickled Egg)
+			{ spellID = 101289, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Loom of Fate (Spidersilk Spindle)
+			{ spellID = 96945, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Stay of Execution (Stay of Execution)
+			{ spellID = 96988, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+
 			
 		-- PvP Trinkets
 			-- Call of Conquest / Badge of Conquest
