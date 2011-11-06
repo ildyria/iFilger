@@ -141,6 +141,8 @@ C["Filger_Spells"] = {
 			{ spellID = 12472, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Arcane Power
 			{ spellID = 12042, size = 37, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Arcane Potency
+			{ spellID = 57531, size = 37, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Ice Block
 			{ spellID = 45438, size = 37, unitId = "player", caster = "player", filter = "BUFF" }, 
 			-- Invisibility
@@ -1407,7 +1409,6 @@ C["Filger_Spells"] = {
 			{ spellID = 87873, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Acid Rain / Säureregen (Al'Akir)
 			{ spellID = 93279, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
---      [[ INCOMPLETE ]] --
 -- Firelands
         --Trash
 			-- Melt Armor
@@ -1463,7 +1464,32 @@ C["Filger_Spells"] = {
             { spellID = 101239, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
             -- Fixate
             { spellID = 99849, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-    	},	
+
+-- [[  INCOMPLETE, NEED LOTS OF TEST AND FEED BACK ]] -- 
+-- Dragon Soul
+		--Morchok
+			-- Crush Armor
+			{ spellID = 33661, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		--Warlord Zon'ozz
+			-- Disrupting Shadows
+			{ spellID = 103434, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		--Yor'sahj the Unsleeping
+		--Hagara the Stormbinder
+			-- Frostflake
+			{ spellID = 109325, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		--Ultraxion (i feel like loving this fight just by reading the spells descriptions. =D )
+			-- Heroic Will
+			{ spellID = 106108, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Looming Darkness
+			{ spellID = 106498, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Twilight Burst
+			{ spellID = 106415, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		--Warmaster Blackhorn
+			-- Twilight Barrage
+			{ spellID = 109204, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		--Spine of Deathwing
+		--Madness of Deathwing
+		},
 		{
 			Name = "ENHANCEMENTS",
 			Direction = "LEFT",
@@ -1643,6 +1669,8 @@ C["Filger_Spells"] = {
 			{ spellID = 13159, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Stampeding Roar
 			{ spellID = 77764, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Master's Call
+			{ spellID = 54216, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 		},
 		{
 --[[       Tons of SpellIDs taken from LoseControl so credit to Kouri 
@@ -1697,6 +1725,8 @@ C["Filger_Spells"] = {
             --[[ Hunter ]]--
 			-- Deterrence
             { spellID = 19263, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Master's Call
+			{ spellID = 54216, size = 52, unitId = "target", caster = "all", filter = "BUFF" },
 			
 			--[[ Death Knight ]]--
 			-- Anti-Magic Shell
