@@ -81,6 +81,7 @@ function Update(self)
 			bar:SetHeight(value.data.size);
 			bar:SetScale(1);
 			bar:SetTemplate("Hydra")
+			bar:SetAlpha(self.Alpha or 1);
 
 			if (index == 1) then
 				bar:SetPoint(unpack(self.setPoint));
@@ -160,7 +161,7 @@ function Update(self)
 				else			
 					bar.time = bar.statusbar:CreateFontString("$parentTime", "ARTWORK");
 					bar.time:SetFont(C.media.pixelfont, 14, "MONOCHROMEOUTLINE");
-					bar.time:SetPoint("RIGHT", bar.statusbar, I.Scale(0), 0);
+					bar.time:SetPoint("RIGHT", bar.statusbar, I.Scale(0), I.Scale(0));
 				end
 				
 				if (bar.count) then
@@ -177,7 +178,7 @@ function Update(self)
 				else
 					bar.spellname = bar.statusbar:CreateFontString("$parentSpellName", "ARTWORK");
 					bar.spellname:SetFont(C.media.pixelfont, 14, "MONOCHROMEOUTLINE");
-					bar.spellname:SetPoint("LEFT", bar.statusbar, I.Scale(2), 0);
+					bar.spellname:SetPoint("LEFT", bar.statusbar, I.Scale(2), I.Scale(0));
 					bar.spellname:SetPoint("RIGHT", bar.time, "LEFT");
 					bar.spellname:SetJustifyH("LEFT");
 				end
@@ -282,13 +283,13 @@ if (Filger_Spells and Filger_Spells["ALL"]) then
 	end
 end
 
-if (Filger_Spells and Filger_Spells["HUNTER/DRUID"] and (class == "HUNTER" or class == "DRUID")) then
+if (Filger_Spells and Filger_Spells["HUNTER/DRUID/ROGUE"] and (class == "HUNTER" or class == "DRUID" or class == "ROGUE")) then
 	if (not Filger_Spells[class]) then
 		Filger_Spells[class] = {}
 	end
 
-	for i = 1, #Filger_Spells["HUNTER/DRUID"], 1 do
-		table.insert(Filger_Spells[class], Filger_Spells["HUNTER/DRUID"][i])
+	for i = 1, #Filger_Spells["HUNTER/DRUID/ROGUE"], 1 do
+		table.insert(Filger_Spells[class], Filger_Spells["HUNTER/DRUID/ROGUE"][i])
 	end
 end
 
@@ -309,6 +310,7 @@ if (Filger_Spells and Filger_Spells[class]) then
 		frame.IconSide = data.IconSide or "LEFT";
 		frame.Interval = data.Interval or 3;
 		frame.Mode = data.Mode or "ICON";
+		frame.Alpha = data.Alpha or 1;
 		if(frame.Mode ~= "ICON" and frame.Direction ~= "DOWN" and frame.Direction ~= "UP") then -- check if bar + right or left => ugly !
 			frame.Direction = "UP";
 		end
@@ -358,6 +360,7 @@ local function moving()
 		frame.IconSide = data.IconSide or "LEFT";
 		frame.Interval = data.Interval or 3;
 		frame.Mode = data.Mode or "ICON";
+		frame.Alpha = data.Alpha or 1;
 		frame.BarWidth = data.BarWidth or 200;
 		frame.setPoint = data.setPoint or "CENTER";
 		frame:SetWidth(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 100);

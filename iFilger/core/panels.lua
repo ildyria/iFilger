@@ -293,7 +293,7 @@ end
 ---------------------------------
 -- RAGE FRAME
 ---------------------------------
-if(I.myclass == "HUNTER" or I.myclass == "DRUID" ) then
+if(I.myclass == "HUNTER" or I.myclass == "DRUID" or I.myclass == "ROGUE" ) then
 	local RageBuffs = CreateFrame("Frame","iFilgerRage",UIParent) -- Rage buff to be dispel by hunt or druid
 	RageBuffs:CreatePanel("Transparent",165, 20, "CENTER", UIParent, "CENTER", 0, -20)
 	RageBuffs:SetMovable(true)

@@ -21,6 +21,7 @@ C["Filger_Spells"] = {
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
@@ -66,6 +67,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
 			
@@ -89,6 +91,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
 
@@ -107,6 +110,7 @@ C["Filger_Spells"] = {
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
@@ -130,6 +134,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
 			
@@ -171,6 +176,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
 			
@@ -196,6 +202,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 2,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 			
@@ -213,6 +220,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerBuffPlayerHeal", 0, 24 },
 
@@ -229,6 +237,7 @@ C["Filger_Spells"] = {
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
@@ -262,6 +271,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
 
@@ -294,6 +304,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
 
@@ -313,6 +324,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "TOPRIGHT", "iFilgerBuffDebuffHeal", 20, -22 },
 
@@ -341,6 +353,7 @@ C["Filger_Spells"] = {
 			IconSide = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 
@@ -360,6 +373,8 @@ C["Filger_Spells"] = {
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
+			BarWidth = 150,
 			setPoint = { "BOTTOM", "iFilgerProcDps", 0, 52 },
 
 			-- Mind Blast
@@ -372,6 +387,8 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
+			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerBuffDps", 0, 22 },
 
 			-- Shadow Orb
@@ -391,6 +408,8 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
+			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerDebuffDps", 0, 22},
 
 			-- Shackle undead
@@ -411,6 +430,7 @@ C["Filger_Spells"] = {
 			Direction = "DOWN",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "TOP", "iFilgerProcs", -0, -23 },
 
@@ -454,6 +474,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerTargetCCDebuff", 0, 22},
 
@@ -485,6 +506,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerTargetDoTDebuff", 58, 22},
 			
@@ -512,6 +534,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldown", 0, 22 },
 
@@ -535,6 +558,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 
@@ -550,6 +574,8 @@ C["Filger_Spells"] = {
 			Direction = "UP",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
+			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
 			-- Starsurge
@@ -562,6 +588,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerBuffPlayerHeal", 0, 24 },
 
@@ -583,6 +610,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffTargetHeal", 0, 24 },
 
@@ -602,6 +630,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
 
@@ -651,6 +680,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "TOPRIGHT", "iFilgerTargetDebuff", 0, -24 },
 
@@ -692,6 +722,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 --			IconSide = "LEFT",
 			Interval = 4,
+			Alpha = 1,
 			Mode = "ICON",
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 
@@ -709,6 +740,7 @@ C["Filger_Spells"] = {
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
@@ -722,6 +754,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
 
@@ -749,6 +782,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
 
@@ -777,6 +811,7 @@ C["Filger_Spells"] = {
 			IconSide = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 
 			-- Wyvern Sting / Wyverngift
@@ -791,6 +826,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "TOPLEFT", "iFilgerCooldowns", 0, -22 },
 
@@ -812,6 +848,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerPlayerBuff", 0, 22 },
 
@@ -851,6 +888,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerTargetDebuff", 0, 22 },
 
@@ -895,6 +933,7 @@ C["Filger_Spells"] = {
 --			IconSide = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", "TOPRIGHT", 0, -22 },
 
 			-- Blind / Blenden
@@ -911,6 +950,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			setPoint = { "BOTTOMRIGHT", "iFilgerBuffPlayerHeal", 0, 24 },
 
 			-- Earth Shield
@@ -927,6 +967,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffTargetHeal", 0, 24 },
 
 			-- Earth Shield
@@ -939,6 +980,7 @@ C["Filger_Spells"] = {
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
@@ -956,6 +998,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
 
@@ -976,6 +1019,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
 
@@ -1006,6 +1050,7 @@ C["Filger_Spells"] = {
 --			IconSide = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 
 			-- Earth Shield
@@ -1022,6 +1067,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerBuffPlayerHeal", 0, 24 },
 
@@ -1033,6 +1079,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 
@@ -1048,6 +1095,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffTargetHeal", 0, 24 },
 
@@ -1059,6 +1107,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
  
@@ -1104,6 +1153,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
 
@@ -1129,6 +1179,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
 
@@ -1166,6 +1217,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
 
@@ -1207,6 +1259,7 @@ C["Filger_Spells"] = {
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 			
@@ -1231,13 +1284,14 @@ C["Filger_Spells"] = {
 -----------------------------------------------------------------------------------------------------------------------	
 -- Credits to Sapz
 -----------------------------------------------------------------------------------------------------------------------	
-	["HUNTER/DRUID"] = {  -------------------------------------------------------------------------------------------------------- Hunt & Drood
+	["HUNTER/DRUID/ROGUE"] = {  -------------------------------------------------------------------------------------------------------- Hunt & Drood
 		{
 			Name = "Shivable Rage effects",
 			Direction = "UP",
 			IconSide = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
+			Alpha = 1,
 			setPoint = { "BOTTOM", "iFilgerRage", "BOTTOM", 0, 22 },
 
 			-----------------------------------
@@ -1274,6 +1328,7 @@ C["Filger_Spells"] = {
 			Interval = 4,
 			Mode = "ICON",
 			BarWidth = 150,			
+			Alpha = 1,
 			setPoint = { "BOTTOMRIGHT", "iFilgerPveDeBuffs", 0, 22 },
 			
 -- Baradin Hold
@@ -1495,6 +1550,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 6,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = {  "TOPRIGHT", "iFilgerEnhancements",0,-22 },
 
@@ -1679,6 +1735,7 @@ C["Filger_Spells"] = {
 			Direction = "RIGHT",
 			Interval = 6,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = {  "BOTTOMLEFT", "iFilgerPvpTargetDebuffs" ,0,22 },
 			
@@ -1775,6 +1832,7 @@ C["Filger_Spells"] = {
 			Direction = "LEFT",
 			Interval = 6,
 			Mode = "ICON",
+			Alpha = 1,
 			BarWidth = 150,
 			setPoint = {  "BOTTOMRIGHT", "iFilgerPvpPlayerDebuffs" ,0,22 },			
 			
