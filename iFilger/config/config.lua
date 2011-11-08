@@ -2,7 +2,7 @@
 
 C["general"] = {
 	["autoscale"] = false,                               -- mainly enabled for users that don't want to mess with the config file
-	["uiscale"] = 1,                                 -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
+	["uiscale"] = 0.61,                                 -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
 	["multisampleprotect"] = true,                      -- i don't recommend this because of shitty border but, voila!
 	["backdropcolor"] = { .1,.1,.1 },                   -- default backdrop color of panels
 	["bordercolor"] = { .6,.6,.6 },                     -- default border color of panels
@@ -882,6 +882,12 @@ C["Filger_Spells"] = {
 			{ spellID = 84746, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Deep Insight
 			{ spellID = 84747, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Suffering -- Legendary buff
+			{ spellID = 109959, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Nightmare -- Legendary buff
+			{ spellID = 109959, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Shadows of the Destroyer -- Legendary buff
+			{ spellID = 109941, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Buffs and Debuffs",
@@ -926,6 +932,8 @@ C["Filger_Spells"] = {
 			{ spellID = 89775, size = 37, unitId = "target", caster = "player", filter = "DEBUFF", absID = true  },
 			-- Vendetta
 			{ spellID = 79140, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Fury of the Destroyer -- Legendary buff
+			{ spellID = 109949, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Focus",
@@ -1816,6 +1824,15 @@ C["Filger_Spells"] = {
 			{ spellID = 5277, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Shadow Dance
 			{ spellID = 51713, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+
+			-- Suffering -- Legendary buff
+--			{ spellID = 109959, size = 37, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Nightmare -- Legendary buff
+--			{ spellID = 109959, size = 37, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Shadows of the Destroyer -- Legendary buff
+--			{ spellID = 109941, size = 37, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Fury of the Destroyer -- Legendary buff
+--			{ spellID = 109949, size = 37, unitId = "target", caster = "all", filter = "BUFF" },
 			
 			--[[ Priest ]]--
 			-- Dispersion
