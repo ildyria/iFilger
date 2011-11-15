@@ -15,45 +15,62 @@ Enhancements.text = I.SetFontString(Enhancements, C.media.pixelfont, 16, "MONOCH
 Enhancements.text:SetPoint("CENTER")
 Enhancements.text:SetText("Move Enhancements")
 Enhancements:Hide()
-
-local PvpPlayerDebuffs = CreateFrame("Frame","iFilgerPvpPlayerDebuffs",UIParent) -- Kidney shoot & cie...
-PvpPlayerDebuffs:CreatePanel("Transparent",250, 20,"BOTTOMRIGHT", UIParent , "CENTER", -104, 93)
-PvpPlayerDebuffs:SetMovable(true)
-PvpPlayerDebuffs:SetBackdropBorderColor(1,0,0)
-PvpPlayerDebuffs:SetFrameLevel(2)
-PvpPlayerDebuffs:SetFrameStrata("HIGH")
-PvpPlayerDebuffs.text = I.SetFontString(PvpPlayerDebuffs, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
-PvpPlayerDebuffs.text:SetPoint("CENTER")
-PvpPlayerDebuffs.text:SetText("Move Pvp Player Debuffs")
-PvpPlayerDebuffs:Hide()
-
-local PvpTargetDebuffs = CreateFrame("Frame","iFilgerPvpTargetDebuffs",UIParent) -- Ice Block / smoke / ShS...
-PvpTargetDebuffs:CreatePanel("Transparent",250, 20,"BOTTOMLEFT", UIParent , "CENTER", 104,93)
-PvpTargetDebuffs:SetMovable(true)
-PvpTargetDebuffs:SetBackdropBorderColor(1,0,0)
-PvpTargetDebuffs:SetFrameLevel(2)
-PvpTargetDebuffs:SetFrameStrata("HIGH")
-PvpTargetDebuffs.text = I.SetFontString(PvpTargetDebuffs, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
-PvpTargetDebuffs.text:SetPoint("CENTER")
-PvpTargetDebuffs.text:SetText("Move Pvp Target Debuffs")
-PvpTargetDebuffs:Hide()
-
-local PveDeBuffs = CreateFrame("Frame","iFilgerPveDeBuffs",UIParent) -- Malo etc...
-PveDeBuffs:CreatePanel("Transparent",200, 20,"TOPRIGHT", UIParent , "CENTER", -82,-68)
-PveDeBuffs:SetMovable(true)
-PveDeBuffs:SetBackdropBorderColor(1,0,0)
-PveDeBuffs:SetFrameLevel(2)
-PveDeBuffs:SetFrameStrata("HIGH")
-PveDeBuffs.text = I.SetFontString(PveDeBuffs, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
-PveDeBuffs.text:SetPoint("CENTER")
-PveDeBuffs.text:SetText("Move Pve Debuffs")
-PveDeBuffs:Hide()
-
 table.insert(I.MoverFrames,iFilgerEnhancements)
-table.insert(I.MoverFrames,iFilgerPvpPlayerDebuffs)
-table.insert(I.MoverFrames,iFilgerPvpTargetDebuffs)
-table.insert(I.MoverFrames,iFilgerPveDeBuffs)
 
+if(C["general"].PVE) then
+	local PveDeBuffs = CreateFrame("Frame","iFilgerPveDeBuffs",UIParent) -- Malo etc...
+	PveDeBuffs:CreatePanel("Transparent",200, 20,"TOPRIGHT", UIParent , "CENTER", -82,-68)
+	PveDeBuffs:SetMovable(true)
+	PveDeBuffs:SetBackdropBorderColor(1,0,0)
+	PveDeBuffs:SetFrameLevel(2)
+	PveDeBuffs:SetFrameStrata("HIGH")
+	PveDeBuffs.text = I.SetFontString(PveDeBuffs, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
+	PveDeBuffs.text:SetPoint("CENTER")
+	PveDeBuffs.text:SetText("Move Pve Debuffs")
+	PveDeBuffs:Hide()
+	table.insert(I.MoverFrames,iFilgerPveDeBuffs)
+end
+
+if(C["general"].PVP) then
+	local PvpPlayerDebuffs = CreateFrame("Frame","iFilgerPvpPlayerDebuffs",UIParent) -- Kidney shoot & cie...
+	PvpPlayerDebuffs:CreatePanel("Transparent",250, 20,"BOTTOMRIGHT", UIParent , "CENTER", -104, 93)
+	PvpPlayerDebuffs:SetMovable(true)
+	PvpPlayerDebuffs:SetBackdropBorderColor(1,0,0)
+	PvpPlayerDebuffs:SetFrameLevel(2)
+	PvpPlayerDebuffs:SetFrameStrata("HIGH")
+	PvpPlayerDebuffs.text = I.SetFontString(PvpPlayerDebuffs, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
+	PvpPlayerDebuffs.text:SetPoint("CENTER")
+	PvpPlayerDebuffs.text:SetText("Move Pvp Player Debuffs")
+	PvpPlayerDebuffs:Hide()
+	table.insert(I.MoverFrames,iFilgerPvpPlayerDebuffs)
+
+	local PvpTargetDebuffs = CreateFrame("Frame","iFilgerPvpTargetDebuffs",UIParent) -- Ice Block / smoke / ShS...
+	PvpTargetDebuffs:CreatePanel("Transparent",250, 20,"BOTTOMLEFT", UIParent , "CENTER", 104,93)
+	PvpTargetDebuffs:SetMovable(true)
+	PvpTargetDebuffs:SetBackdropBorderColor(1,0,0)
+	PvpTargetDebuffs:SetFrameLevel(2)
+	PvpTargetDebuffs:SetFrameStrata("HIGH")
+	PvpTargetDebuffs.text = I.SetFontString(PvpTargetDebuffs, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
+	PvpTargetDebuffs.text:SetPoint("CENTER")
+	PvpTargetDebuffs.text:SetText("Move Pvp Target Debuffs")
+	PvpTargetDebuffs:Hide()
+	table.insert(I.MoverFrames,iFilgerPvpTargetDebuffs)
+end
+
+
+if(C["general"].TANKS) then
+	local TankCDs = CreateFrame("Frame","iFilgerTanksCDs",UIParent)
+	TankCDs:CreatePanel("Transparent",200, 20,"BOTTOM", UIParent , "CENTER", 0,100)
+	TankCDs:SetMovable(true)
+	TankCDs:SetBackdropBorderColor(1,0,0)
+	TankCDs:SetFrameLevel(2)
+	TankCDs:SetFrameStrata("HIGH")
+	TankCDs.text = I.SetFontString(TankCDs, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
+	TankCDs.text:SetPoint("CENTER")
+	TankCDs.text:SetText("Move Tanks CDs")
+	TankCDs:Hide()
+	table.insert(I.MoverFrames,iFilgerTanksCDs)
+end
 
 
 
@@ -213,6 +230,16 @@ if(I.myclass == "ROGUE" ) then
 	PlayerBuff.text:SetText("Move Player Buff")
 	PlayerBuff:Hide()
 	table.insert(I.MoverFrames,iFilgerPlayerBuff)
+
+	local Procs = CreateFrame("Frame","iFilgerProcs",UIParent) -- Procs LEGENDARY
+	Procs:CreatePanel("Transparent",90, 20, "CENTER", UIParent, "CENTER", -0, -55)
+	Procs:SetMovable(true)
+	Procs:SetBackdropBorderColor(RAID_CLASS_COLORS[I.myclass].r,RAID_CLASS_COLORS[I.myclass].g,RAID_CLASS_COLORS[I.myclass].b)
+	Procs.text = I.SetFontString(Procs, C.media.pixelfont, 16, "MONOCHROMEOUTLINE")
+	Procs.text:SetPoint("CENTER")
+	Procs.text:SetText("Move Procs")
+	Procs:Hide()
+	table.insert(I.MoverFrames,iFilgerProcs)
 
 	local Cooldowns = CreateFrame("Frame","iFilgerCooldowns",UIParent) -- Cooldowns
 	Cooldowns:CreatePanel("Transparent",160, 20, "TOPLEFT", UIParent, "CENTER", 204, 63)

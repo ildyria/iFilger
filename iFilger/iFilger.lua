@@ -83,12 +83,13 @@ function Update(self)
 			bar:SetTemplate("Hydra")
 			bar:SetAlpha(self.Alpha or 1);
 
+			-- HORIZONTAL is created as RIGHT, position will be updated later
 			if (index == 1) then
 				bar:SetPoint(unpack(self.setPoint));
 			else
 				if (self.Direction == "UP") then
 					bar:SetPoint("BOTTOM", bars[id][index-1], "TOP", 0, self.Interval);
-				elseif (self.Direction == "RIGHT") then
+				elseif (self.Direction == "RIGHT" or self.Direction == "HORIZONTAL") then
 					bar:SetPoint("LEFT", bars[id][index-1], "RIGHT", self.Mode == "ICON" and self.Interval or self.BarWidth+self.Interval, 0);
 				elseif (self.Direction == "LEFT") then
 					bar:SetPoint("RIGHT", bars[id][index-1], "LEFT", self.Mode == "ICON" and -self.Interval or -(self.BarWidth+self.Interval), 0);
@@ -186,6 +187,25 @@ function Update(self)
 			tinsert(bars[id], bar);
 		end
 		
+		-- Update position of first 'bar' if direction is HORIZONTAL
+		if ( self.Direction == "HORIZONTAL" and index == 1 ) then
+			-- Compute total width
+
+--			local totalWidth = self.Interval * ( #active[id] - 1 )
+
+--			for _, v in ipairs(active[id]) do
+--				totalWidth = totalWidth + v.data.size
+--			end
+			-- Get base position
+			local totalWidth = (value.data.size + self.Interval) * ( #active[id] - 1 )
+
+			local point, relativeFrame, offsetX, offsetY = unpack(self.setPoint)
+			-- Update x-offset: remove half the total width and center adding half median width
+			offsetX = offsetX - ( totalWidth  / 2 )
+			-- Set position
+			bar:SetPoint( point, relativeFrame, point, offsetX, offsetY )
+		end
+
 		bar.spellName = GetSpellInfo( value.data.spellID or value.data.slotID );
 		
 		bar.icon:SetTexture(value.icon);
@@ -273,23 +293,39 @@ local function OnEvent(self, event, ...)
 	end
 end
 
-if (Filger_Spells and Filger_Spells["ALL"]) then
+if Filger_Spells then
 	if (not Filger_Spells[class]) then
 		Filger_Spells[class] = {}
 	end
 
-	for i = 1, #Filger_Spells["ALL"], 1 do
-		table.insert(Filger_Spells[class], Filger_Spells["ALL"][i])
-	end
-end
-
-if (Filger_Spells and Filger_Spells["HUNTER/DRUID/ROGUE"] and (class == "HUNTER" or class == "DRUID" or class == "ROGUE")) then
-	if (not Filger_Spells[class]) then
-		Filger_Spells[class] = {}
+	if (Filger_Spells["ALL"]) then
+		for i = 1, #Filger_Spells["ALL"], 1 do
+			table.insert(Filger_Spells[class], Filger_Spells["ALL"][i])
+		end
 	end
 
-	for i = 1, #Filger_Spells["HUNTER/DRUID/ROGUE"], 1 do
-		table.insert(Filger_Spells[class], Filger_Spells["HUNTER/DRUID/ROGUE"][i])
+	if (Filger_Spells["PVE"] and C["general"].PVE) then
+		for i = 1, #Filger_Spells["PVE"], 1 do
+			table.insert(Filger_Spells[class], Filger_Spells["PVE"][i])
+		end
+	end
+
+	if (Filger_Spells["PVP"] and C["general"].PVP) then
+		for i = 1, #Filger_Spells["PVP"], 1 do
+			table.insert(Filger_Spells[class], Filger_Spells["PVP"][i])
+		end
+	end
+
+	if (Filger_Spells["TANKS"] and C["general"].TANKS) then
+		for i = 1, #Filger_Spells["TANKS"], 1 do
+			table.insert(Filger_Spells[class], Filger_Spells["TANKS"][i])
+		end
+	end
+
+	if (Filger_Spells["HUNTER/DRUID/ROGUE"] and (class == "HUNTER" or class == "DRUID" or class == "ROGUE")) then
+		for i = 1, #Filger_Spells["HUNTER/DRUID/ROGUE"], 1 do
+			table.insert(Filger_Spells[class], Filger_Spells["HUNTER/DRUID/ROGUE"][i])
+		end
 	end
 end
 
@@ -382,6 +418,9 @@ local function moving()
 					end
 				end
 				table.insert(active[i], { data = data, icon = spellIcon, count = 9, duration = 0, expirationTime = 0 });
+				if (j > 5) then 
+					break;
+				end
 			end
 			Update(frame);
 		else

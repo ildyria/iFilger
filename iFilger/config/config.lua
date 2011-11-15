@@ -1,16 +1,19 @@
 ﻿local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
 C["general"] = {
-	["autoscale"] = false,                               -- mainly enabled for users that don't want to mess with the config file
-	["uiscale"] = 0.61,                                 -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
-	["multisampleprotect"] = true,                      -- i don't recommend this because of shitty border but, voila!
-	["backdropcolor"] = { .1,.1,.1 },                   -- default backdrop color of panels
-	["bordercolor"] = { .6,.6,.6 },                     -- default border color of panels
+	["autoscale"] = false,								-- mainly enabled for users that don't want to mess with the config file
+	["uiscale"] = 0.61,									-- set your value (between 0.64 and 1) of your uiscale if autoscale is off
+	["multisampleprotect"] = true,						-- i don't recommend this because of shitty border but, voila!
+	["backdropcolor"] = { .1,.1,.1 },					-- default backdrop color of panels
+	["bordercolor"] = { .6,.6,.6 },						-- default border color of panels
+	["PVE"] = true,										-- enable pve frame (important pve buffs & debuffs)
+	["PVP"] = true,										-- enable pvp frame (enemy pvp buffs & debuffs)
+	["TANKS"] = true,									-- enable tanks defensive cd frame (mainly for tanks healers)
 }
 
 C["cooldown"] = {
-	["enable"] = true,                                  -- do i really need to explain this?
-	["treshold"] = 8,                                   -- show decimal under X seconds and text turn red
+	["enable"] = true,									-- do i really need to explain this?
+	["treshold"] = 8,									-- show decimal under X seconds and text turn red
 	["fontsize"] = 20,									--the base font size to use at a scale of 1
 }
 
@@ -71,6 +74,7 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
 			
+			{ spellID = 73975, size = 60, unitId = "target", caster = "player", filter = "DEBUFF" }, -- Necrotic Strike
 			{ spellID = 59052, size = 37, unitId = "player", caster = "all", filter = "BUFF" }, --Freezing Fog
 			{ spellID = 49509, size = 37, unitId = "player", caster = "all", filter = "BUFF" }, --Scent of Blood
 			{ spellID = 55233, size = 37, unitId = "player", caster = "all", filter = "BUFF" }, --Vampiric Blood
@@ -101,9 +105,11 @@ C["Filger_Spells"] = {
 			{ spellID = 81135, size = 60, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Killing Machine
 			{ spellID = 51128, size = 60, unitId = "player", caster = "all", filter = "BUFF" }, 
+			-- Dark Succor
+			{ spellID = 101568, size = 47, unitId = "player", caster = "player", filter = "BUFF" },
 
 		},
-		},
+	},
 	["MAGE"] = { -------------------------------------------------------------------------------------------------------- Mage
 		{
 			Name = "Cooldown",
@@ -193,7 +199,7 @@ C["Filger_Spells"] = {
 			-- Arcane Blast
 			{ spellID = 30451, size = 60, unitId = "player", caster = "player", filter = "DEBUFF" },
 			-- Fingers Of Frost
-            { spellID = 83074, size = 60, unitId = "player", caster = "player", filter = "BUFF"},
+			{ spellID = 83074, size = 60, unitId = "player", caster = "player", filter = "BUFF"},
 			-- Blazing Speed
 			{ spellID = 31642, size = 60, unitId = "player", caster = "all", filter = "BUFF" },
 		},
@@ -207,11 +213,11 @@ C["Filger_Spells"] = {
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 			
 			-- Sheep mage
-            { spellID = 118, size = 36, unitId = "focus", caster = "player", filter = "DEBUFF" },
+			{ spellID = 118, size = 36, unitId = "focus", caster = "player", filter = "DEBUFF" },
 			-- Remedy - Maloriak 
 			{ spellID = 92967, size = 36, unitId = "focus", caster = "all", filter = "BUFF" },	
 			-- Converted Power - Arcanotron
-            { spellID = 79735, size = 36, unitId = "focus", caster = "all", filter = "BUFF" },
+			{ spellID = 79735, size = 36, unitId = "focus", caster = "all", filter = "BUFF" },
 		},
 	},
 	["PRIEST"] = { -------------------------------------------------------------------------------------------------------- Priest
@@ -299,7 +305,7 @@ C["Filger_Spells"] = {
 			-- Chakra: Chastise
 			{ spellID = 81209, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
-	    {
+		{
 			Name = "Priest Procs",
 			Direction = "RIGHT",
 			Interval = 3,
@@ -465,7 +471,7 @@ C["Filger_Spells"] = {
 			--Empowered Imp
 			{ spellID = 47283, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			--Shadow Trance
-			{ spellID = 17941, size = 37, unitId = "player", caster = "player", filter = "BUFF" },			
+			{ spellID = 17941, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Soulburn / Seelenbrand
 			{ spellID = 74434, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
@@ -529,7 +535,7 @@ C["Filger_Spells"] = {
 			-- Soul Swap
 			{ spellID = 86121, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
-        {
+		{
 			Name = "Cooldown",
 			Direction = "LEFT",
 			Interval = 4,
@@ -748,7 +754,7 @@ C["Filger_Spells"] = {
 			{ spellID = 3045, size = 37, filter = "CD" },
 			-- Feign Death
 			{ spellID = 5384, size = 37, filter = "CD" },
-		},	
+		},
 		{
 			Name = "Hunter Procs",
 			Direction = "RIGHT",
@@ -932,8 +938,6 @@ C["Filger_Spells"] = {
 			{ spellID = 89775, size = 37, unitId = "target", caster = "player", filter = "DEBUFF", absID = true  },
 			-- Vendetta
 			{ spellID = 79140, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Fury of the Destroyer -- Legendary buff
-			{ spellID = 109949, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Focus",
@@ -951,7 +955,19 @@ C["Filger_Spells"] = {
 			-- Gouge / Solarplexus
 			{ spellID = 1776, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
-    },		
+		{
+			Name = "Rogue Procs",
+			Direction = "DOWN",
+			Interval = 4,
+			Mode = "ICON",
+			Alpha = 1,
+			BarWidth = 150,
+			setPoint = { "TOP", "iFilgerProcs", -0, -23 },
+
+			-- Fury of the Destroyer -- Legendary buff
+			{ spellID = 109949, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+		},
+	},		
 	["SHAMAN"] = { -------------------------------------------------------------------------------------------------------- Shaman
 		{
 			Name = "Self Buffs",
@@ -1000,7 +1016,7 @@ C["Filger_Spells"] = {
 			{ spellID = 73680, size = 37, filter = "CD" },
 			-- Shamanistic Rage
 			{ spellID = 30823, size = 37, filter = "CD" },
-		},	
+		},
 		{
 			Name = "Shaman Procs",
 			Direction = "RIGHT",
@@ -1280,12 +1296,12 @@ C["Filger_Spells"] = {
 			-- Berserker rage
 			{ spellID = 18499, size = 65, filter = "CD" },  
 			-- Last Stand
-			{ spellID = 12975, size = 65, filter = "CD" },    
+			{ spellID = 12975, size = 65, filter = "CD" },	
 			-- Taunt
-			{ spellID = 355, size = 65, filter = "CD" },    
+			{ spellID = 355, size = 65, filter = "CD" },	
 			-- Commanding Shout
-			{ spellID = 469, size = 65, filter = "CD" },    
-			-- Heroic Leap      
+			{ spellID = 469, size = 65, filter = "CD" },	
+			-- Heroic Leap	  
 			{ spellID = 6544, size = 65, filter = "CD" },   
 		},
 	},		
@@ -1324,235 +1340,12 @@ C["Filger_Spells"] = {
 			{ spellID = 12292, size = 40, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Bastion of Defense  *
 			{ spellID = 29594, size = 40, unitId = "target", caster = "all", filter = "BUFF" },
-		},	
-	},	
+		},
+	},
 -----------------------------------------------------------------------------------------------------------------------	
 -- dont touch anything below or else ill ass rape you aight!
 -----------------------------------------------------------------------------------------------------------------------	
 	["ALL"] = {
-		{
-			Name = "Cataclysm debuff list by jasje", -- taken from aurawatch.lua
-			Direction = "LEFT",
-			Interval = 4,
-			Mode = "ICON",
-			BarWidth = 150,			
-			Alpha = 1,
-			setPoint = { "BOTTOMRIGHT", "iFilgerPveDeBuffs", 0, 22 },
-			
--- Baradin Hold
-			-- Consuming Darkness
-            { spellID = 95173, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Meteor Slash / Meteorschlag (Argaloth)
-			{ spellID = 88942, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Gaze of Occu'thar
-			{ spellID = 97028, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
--- Blackwing Descent
-		-- Magmaw
-			-- Constricting Chains
-            { spellID = 91911, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Parasitic Infection
-            { spellID = 94679, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Mangle
---            { spellID = 94617, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Omintron Defense System	
-			-- Poison Soaked Shell	
-	        { spellID = 79835, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Lightning Conductor
-			{ spellID = 91433, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Incineration Security Measure
-			{ spellID = 91521, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Power Conversion - Arcanotron
-            { spellID = 79729, size = 47, unitId = "focus", caster = "all", filter = "BUFF" },
-			-- Power Conversion - Arcanotron
-            { spellID = 91547, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
-		-- Maloriak	
-			-- Flash Freeze
-			{ spellID = 77699, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Biting Chill
-			{ spellID = 77760, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Dark Sludge
-			{ spellID = 92988, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- remedy -- for spellsteal 
-			{ spellID = 77912, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
-			-- remedy -- for spellsteal  - focus
-			{ spellID = 77912, size = 47, unitId = "focus", caster = "all", filter = "BUFF" },
-		-- Atramedes
-			-- Searing Flame
-			{ spellID = 92423, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Roaring Flame
-			{ spellID = 92485, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Sonic Breath
-			{ spellID = 92407, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Chimaeron	
-			-- Break
-			{ spellID = 82881, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Low Health
-			{ spellID = 89084, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Nefarian	
-			-- Shadow Conductor
-			{ spellID = 92053, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Stolen Power
-			{ spellID = 80627, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
--- The Bastion of Twilight
-		--Valiona & Theralion
-			-- Blackout
-			{ spellID = 92878, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Devouring Flames
-			{ spellID = 86840, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Engulfing Magic
-			{ spellID = 86840, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Twilight Meteorite
-			{ spellID = 86013, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Halfus Wyrmbreaker	
-		    -- Malevolent Strikes
-			{ spellID = 39171, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Twilight Ascendant Council
-			-- Burning Blood
-			{ spellID = 82662, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Hydro Lance
-			{ spellID = 92511, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Waterlogged
-			{ spellID = 82762, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Frozen
-			{ spellID = 92505, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Flame Torrent
-			{ spellID = 92518, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Lightning Rod
-			{ spellID = 83099, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Gravity Core
-			{ spellID = 92075, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Gravity Crush
-			{ spellID = 92488, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Static Overload
-			{ spellID = 92067, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Frost Beacon
-			{ spellID = 92307, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Cho'gall	
-			-- Corruption: Accelerated
-			{ spellID = 81836, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Corruption: Malformation
-			{ spellID = 82125, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Corruption: Absolute
-			{ spellID = 82170, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Corruption: Sickness
-			{ spellID = 93200, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		    -- Cho's Blast
-		    { spellID = 86028, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Gall's Blast
-		    { spellID = 86029, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Sinestra
-			-- Wrack
-			{ spellID = 89435, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Essence of the Red
-			{ spellID = 87946, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
-			
--- Throne of the Four Winds
-	-- Conclave of Wind
-		-- Nezir <Lord of the North Wind>
-			-- Wind Chill
-			{ spellID = 93123, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Ice Patch
-			{ spellID = 93131, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Anshal <Lord of the West Wind>
-			-- Soothing Breeze
-			{ spellID = 86206, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Toxic Spores
-			{ spellID = 93122, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Rohash <Lord of the East Wind>
-			-- Slicing Gale
-			{ spellID = 93058, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Al'Akir
-			-- Ice Storm
-			{ spellID = 93260, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Ice Storm
-			{ spellID = 93271, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Lightning Rod
-			{ spellID = 93295, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Static Shock / Statischer Schock (Al'Akir)
-			{ spellID = 87873, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Acid Rain / Säureregen (Al'Akir)
-			{ spellID = 93279, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
--- Firelands
-        --Trash
-			-- Melt Armor
-			{ spellID = 99532, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },		
-        --Shannox
-            -- Magma Rupture
-            { spellID = 99840, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-            -- Crystal Prison Trap 
-            { spellID = 99837, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-            -- Jagged Tear
-            { spellID = 99936, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Lord Rhyolith	
-            -- Eruption
-            { spellID = 98492, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Alysrazor	
-            -- Molten Feather
-            { spellID = 97128, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
-            -- Wings of Flame
-            { spellID = 98619, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
-            -- Blazing Power
-            { spellID = 99461, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-            -- Alysra's Razor
-            { spellID = 100029, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Beth'tilac	
-            -- The Widow's Kiss
-            { spellID = 99476, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Fixate (Heroic)
-			{ spellID = 99526, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Volatile Poison (Heroic)
-			{ spellID = 99278, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Baleroc	
-            -- Torment
-            { spellID = 99256, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-            -- Tormented
-            { spellID = 99257, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-            -- Blaze of Glory
-            { spellID = 99252, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-            -- Vital Flame
-            { spellID = 99262, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
-            -- Vital Spark
-            { spellID = 99263, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
-            -- Countdown
-            { spellID = 99516, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
-		-- Majordomo Staghelm	
-            -- Searing Seeds
-            { spellID = 98450, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-            -- Burning Orbs
-            { spellID = 98451, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		-- Ragnaros	
-            -- Blazing Heat
-            { spellID = 100460, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-            -- Burning Wound 
-            { spellID = 101239, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-            -- Fixate
-            { spellID = 99849, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-
--- [[  INCOMPLETE, NEED LOTS OF TEST AND FEED BACK ]] -- 
--- Dragon Soul
-		--Morchok
-			-- Crush Armor
-			{ spellID = 33661, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		--Warlord Zon'ozz
-			-- Disrupting Shadows
-			{ spellID = 103434, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		--Yor'sahj the Unsleeping
-		--Hagara the Stormbinder
-			-- Frostflake
-			{ spellID = 109325, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		--Ultraxion (i feel like loving this fight just by reading the spells descriptions. =D )
-			-- Heroic Will
-			{ spellID = 106108, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Looming Darkness
-			{ spellID = 106498, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Twilight Burst
-			{ spellID = 106415, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		--Warmaster Blackhorn
-			-- Twilight Barrage
-			{ spellID = 109204, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		--Spine of Deathwing
-		--Madness of Deathwing
-		},
 		{
 			Name = "ENHANCEMENTS",
 			Direction = "LEFT",
@@ -1722,23 +1515,27 @@ C["Filger_Spells"] = {
 			-- Lightwell
 			{ spellID = 7001, size = 52, unitId = "player", caster = "all", filter = "BUFF"},
 			-- Hand of Salvation
-			{ spellID = 1038, size = 52, unitId = "player", caster = "all", filter = "BUFF" },			
+			{ spellID = 1038, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Hand of Protection
 			{ spellID = 1022, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Hand of Freedom
 			{ spellID = 1044, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Guardian Spirit
-			{ spellID = 47788, size = 52, unitId = "player", caster = "all", filter = "BUFF" },			
+			{ spellID = 47788, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Aspect of the Pack
 			{ spellID = 13159, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Stampeding Roar
 			{ spellID = 77764, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Master's Call
 			{ spellID = 54216, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Berserker
+			{ spellID = 24378, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 		},
+	},
+	["PVP"] = {
 		{
---[[       Tons of SpellIDs taken from LoseControl so credit to Kouri 
-		    Here we track pvp buffs on our target                             ]]
+--[[	   Tons of SpellIDs taken from LoseControl so credit to Kouri 
+			Here we track pvp buffs on our target							 ]]
 			Name = "ENEMY PVP BUFF",
 			Direction = "RIGHT",
 			Interval = 6,
@@ -1787,9 +1584,9 @@ C["Filger_Spells"] = {
 			-- Holy Shield
 			{ spellID = 20925, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 
-            --[[ Hunter ]]--
+			--[[ Hunter ]]--
 			-- Deterrence
-            { spellID = 19263, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
+			{ spellID = 19263, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Master's Call
 			{ spellID = 54216, size = 52, unitId = "target", caster = "all", filter = "BUFF" },
 			
@@ -1815,7 +1612,7 @@ C["Filger_Spells"] = {
 			-- Impact
 --			{ spellID = 64343, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Fingers Of Frost
---            { spellID = 83074, size = 72, unitId = "target", caster = "all", filter = "BUFF"},
+--			{ spellID = 83074, size = 72, unitId = "target", caster = "all", filter = "BUFF"},
 
 			--[[ Rogue ]]--
 			--Cloak of Shadows
@@ -1844,7 +1641,7 @@ C["Filger_Spells"] = {
 
 		},
 		{
-		    -- Here we track pvp debuffs on ourself
+			-- Here we track pvp debuffs on ourself
 			Name = "ENEMY PVP DEBUFF",
 			Direction = "LEFT",
 			Interval = 6,
@@ -1855,255 +1652,550 @@ C["Filger_Spells"] = {
 			
 			--[[ Rogue ]]--
 			--Kidney Shot
-            { spellID = 408, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 408, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Blind
-            { spellID = 2094, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 2094, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Sap
-            { spellID = 6770, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },			
+			{ spellID = 6770, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },			
 			--Smoke Bomb
-            { spellID = 76577, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 76577, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Garrote - Silence
-            { spellID = 1330, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 1330, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Silenced - Improved Kick
-            { spellID = 18425, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 18425, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Dismantle
-            { spellID = 51722, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 51722, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Blade Twisting
-            { spellID = 31125, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },			
+			{ spellID = 31125, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },			
 			--Crippling Poison
-            { spellID = 3409, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 3409, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Deadly Throw
-            { spellID = 26679, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 26679, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Gouge
-            { spellID = 1776, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 1776, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Cheap Shot
-            { spellID = 1833, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 1833, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			
 			--[[ Paladin ]]--
 			--Hammer of Justice
-		    { spellID = 853, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 853, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Seal of Justice
-            { spellID = 20170, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 20170, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Repentance
-	        { spellID = 20066, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },			
+			{ spellID = 20066, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },			
 			--Holy Wrath
-		    { spellID = 2812, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 2812, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Turn Evil
-            { spellID = 10326, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 10326, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Avenger's Shield
-	        { spellID = 31935, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },			
+			{ spellID = 31935, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },			
 			--Dazed - Avenger's Shield
-            { spellID = 63529, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 63529, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
 
 			--[[ Mage ]]--
 			--Silenced - Improved Counterspell
-            { spellID = 18469, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 18469, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Polymorph
-	        { spellID = 118, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 118, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Improved Polymorph
-	        { spellID = 83047, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 83047, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Deep Freeze
-	        { spellID = 44572, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 44572, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Impact
-            { spellID = 12355, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 12355, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Ring of Frost
-	        { spellID = 82691, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 82691, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Fiery Payback
-	        { spellID = 64346, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 64346, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Freeze (Water Elemental)
-	        { spellID = 33395, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 33395, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Frost Nova
-            { spellID = 122, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 122, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Improved Cone of Cold
-	        { spellID = 83302, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 83302, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Shattered Barrier
-	        { spellID = 55080, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 55080, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Blast Wave
-	        { spellID = 11113, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 11113, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Cone of Cold
-	        { spellID = 120, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 120, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Frostbolt
-	        { spellID = 116, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 116, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Frostfire Bolt
-	        { spellID = 44614, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 44614, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Slow
-            { spellID = 31589, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 31589, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			--[[ Death Kinght ]]--
 			--Monstrous Blow (Super ghoul)
-            { spellID = 91797, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 91797, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Desecration
-            { spellID = 55666, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 55666, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Chains of Ice
-	        { spellID = 45524, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 45524, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Strangulate
-	        { spellID = 47476, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 47476, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Gnaw (Ghoul)
-            { spellID = 47481, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 47481, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Hungering Cold
 			{ spellID = 49203, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Chilblains
-	        { spellID = 50040, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 50040, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Dark Simulacrum
-	        { spellID = 77606, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
-        
-		    --[[ Druid ]]--
+			{ spellID = 77606, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+		
+			--[[ Druid ]]--
 			--Bash (also Shaman Spirit Wolf ability)
-	        { spellID = 5211, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 5211, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Cyclone
-	        { spellID = 33786, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 33786, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Maim
-	        { spellID = 22570, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 22570, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Pounce
-	        { spellID = 9005, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 9005, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Solar Beam
-	        { spellID = 97547, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 97547, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Entangling Roots
-	        { spellID = 339, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 339, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Feral Charge Effect
-	        { spellID = 45334, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 45334, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Infected Wounds
-	        { spellID = 58179, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 58179, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Typhoon
-	        { spellID = 61391, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 61391, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			--[[ Hunter ]]--
 			--Freezing Trap Effect
-	        { spellID = 3355, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 3355, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Intimidation
-	        { spellID = 24394, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 24394, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Wyvern Sting
-	        { spellID = 19386, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 19386, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Silencing Shot
-	        { spellID = 34490, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },			
+			{ spellID = 34490, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },			
 			--Scatter Shot
-	        { spellID = 19503, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 19503, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Counterattack
-            { spellID = 19306, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 19306, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Entrapment
-	        { spellID = 19185, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 19185, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Concussive Barrage
-	        { spellID = 35101, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 35101, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Concussive Shot
-	        { spellID = 5116, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 5116, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Frost Trap Aura
-	        { spellID = 13810, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 13810, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Glyph of Freezing Trap
-            { spellID = 61394, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 61394, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Wing Clip
-	        { spellID = 2974, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 2974, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Sonic Blast (Bat)
-	        { spellID = 50519, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 50519, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Snatch (Bird of Prey)
-	        { spellID = 50541, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 50541, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Froststorm Breath (Chimera)
-	        { spellID = 92380, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 92380, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Pin (Crab)
-            { spellID = 50245, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 50245, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Tendon Rip (Hyena)
-	        { spellID = 50271, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 50271, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Bad Manner (Monkey)
-	        { spellID = 90337, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 90337, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Venom Web Spray (Silithid)
-	        { spellID = 54706, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 54706, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Web (Spider)
-	        { spellID = 4167, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 4167, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			--[[ Priest ]]--
 			--Mind Control
-	        { spellID = 605, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 605, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Psychic Horror
-            { spellID = 64044, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 64044, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Psychic Scream
-	        { spellID = 8122, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 8122, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Shackle Undead
-	        { spellID = 9484, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 9484, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Sin and Punishment
-	        { spellID = 87204, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 87204, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Paralysis
-	        { spellID = 87194, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 87194, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Mind Flay
-            { spellID = 15407, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 15407, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			--[[ Shaman ]]--
 			--Bind Elemental
-	        { spellID = 76780, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 76780, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Earthquake
-	        { spellID = 61882, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 61882, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Hex
-	        { spellID = 51514, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 51514, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Stoneclaw Stun
-	        { spellID = 39796, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 39796, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Earthgrab (Earth's Grasp)
-            { spellID = 64695, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 64695, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Freeze (Frozen Power)
-	        { spellID = 63685, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 63685, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Earthbind (5 second duration per pulse, but will keep re-applying the debuff as long as you stand within the pulse radius)
-	        { spellID = 3600, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 3600, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Frost Shock
-	        { spellID = 8056, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 8056, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Frostbrand Attack
-	        { spellID = 8034, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 8034, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			--[[ Warlock ]]--
 			--Aura of Foreboding
-	        { spellID = 93986, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 93986, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Axe Toss (Felguard)
-	        { spellID = 89766, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 89766, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Banish
-	        { spellID = 710, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 710, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Death Coil
-            { spellID = 6789, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 6789, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Demon Leap
-	        { spellID = 54786, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 54786, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Fear
-	        { spellID = 5782, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 5782, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Howl of Terror
-	        { spellID = 5484, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 5484, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Seduction (Succubus)
-            { spellID = 6358, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 6358, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Shadowfury
-	        { spellID = 30283, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 30283, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Spell Lock (Felhunter)
-	        { spellID = 24259, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 24259, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Unstable Affliction
-	        { spellID = 31117, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 31117, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Aftermath
-            { spellID = 18118, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 18118, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Curse of Exhaustion
-	        { spellID = 18223, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 18223, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Shadowsnare (Glyph of Shadowflame)
-	        { spellID = 63311, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 63311, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			--[[ Warrior ]]--
 			--Hamstring
-	        { spellID = 1715, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 1715, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Improved Hamstring
-	        { spellID = 23694, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },			
+			{ spellID = 23694, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },			
 			--Charge Stun
-	        { spellID = 7922, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 7922, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Concussion Blow
-            { spellID = 12809, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 12809, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Heroic Leap
-	        { spellID = 6544, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 6544, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Intercept
-	        { spellID = 20253, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 20253, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Intimidating Shout
-	        { spellID = 5246, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 5246, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Shockwave
-            { spellID = 46968, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 46968, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Throwdown
-	        { spellID = 85388, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 85388, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Silenced - Gag Order
-	        { spellID = 18498, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 18498, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Disarm
-	        { spellID = 676, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 676, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Piercing Howl
-	        { spellID = 12323, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 12323, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
 
 			--[[ Racials ]]--
 			-- War Stomp
 			{ spellID = 20549, size = 70, unitId = "player", caster = "all", filter = "DEBUFF" },
+		},
+	},
+	["PVE"] = {
+		{
+			Name = "Cataclysm debuff list by jasje", -- taken from aurawatch.lua
+			Direction = "LEFT",
+			Interval = 4,
+			Mode = "ICON",
+			BarWidth = 150,			
+			Alpha = 1,
+			setPoint = { "BOTTOMRIGHT", "iFilgerPveDeBuffs", 0, 22 },
+			
+-- Baradin Hold
+			-- Consuming Darkness
+			{ spellID = 95173, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Meteor Slash / Meteorschlag (Argaloth)
+			{ spellID = 88942, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Gaze of Occu'thar
+			{ spellID = 97028, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+-- Blackwing Descent
+		-- Magmaw
+			-- Constricting Chains
+			{ spellID = 91911, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Parasitic Infection
+			{ spellID = 94679, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Mangle
+--			{ spellID = 94617, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Omintron Defense System	
+			-- Poison Soaked Shell	
+			{ spellID = 79835, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Lightning Conductor
+			{ spellID = 91433, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Incineration Security Measure
+			{ spellID = 91521, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Power Conversion - Arcanotron
+			{ spellID = 79729, size = 47, unitId = "focus", caster = "all", filter = "BUFF" },
+			-- Power Conversion - Arcanotron
+			{ spellID = 91547, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
+		-- Maloriak	
+			-- Flash Freeze
+			{ spellID = 77699, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Biting Chill
+			{ spellID = 77760, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Dark Sludge
+			{ spellID = 92988, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- remedy -- for spellsteal 
+			{ spellID = 77912, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			-- remedy -- for spellsteal  - focus
+			{ spellID = 77912, size = 47, unitId = "focus", caster = "all", filter = "BUFF" },
+		-- Atramedes
+			-- Searing Flame
+			{ spellID = 92423, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Roaring Flame
+			{ spellID = 92485, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Sonic Breath
+			{ spellID = 92407, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Chimaeron	
+			-- Break
+			{ spellID = 82881, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Low Health
+			{ spellID = 89084, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Nefarian	
+			-- Shadow Conductor
+			{ spellID = 92053, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Stolen Power
+			{ spellID = 80627, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
+-- The Bastion of Twilight
+		--Valiona & Theralion
+			-- Blackout
+			{ spellID = 92878, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Devouring Flames
+			{ spellID = 86840, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Engulfing Magic
+			{ spellID = 86840, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Twilight Meteorite
+			{ spellID = 86013, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Halfus Wyrmbreaker	
+			-- Malevolent Strikes
+			{ spellID = 39171, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Twilight Ascendant Council
+			-- Burning Blood
+			{ spellID = 82662, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Hydro Lance
+			{ spellID = 92511, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Waterlogged
+			{ spellID = 82762, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Frozen
+			{ spellID = 92505, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Flame Torrent
+			{ spellID = 92518, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Lightning Rod
+			{ spellID = 83099, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Gravity Core
+			{ spellID = 92075, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Gravity Crush
+			{ spellID = 92488, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Static Overload
+			{ spellID = 92067, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Frost Beacon
+			{ spellID = 92307, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Cho'gall	
+			-- Corruption: Accelerated
+			{ spellID = 81836, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Corruption: Malformation
+			{ spellID = 82125, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Corruption: Absolute
+			{ spellID = 82170, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Corruption: Sickness
+			{ spellID = 93200, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Cho's Blast
+			{ spellID = 86028, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Gall's Blast
+			{ spellID = 86029, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Sinestra
+			-- Wrack
+			{ spellID = 89435, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Essence of the Red
+			{ spellID = 87946, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
+			
+-- Throne of the Four Winds
+	-- Conclave of Wind
+		-- Nezir <Lord of the North Wind>
+			-- Wind Chill
+			{ spellID = 93123, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Ice Patch
+			{ spellID = 93131, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Anshal <Lord of the West Wind>
+			-- Soothing Breeze
+			{ spellID = 86206, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Toxic Spores
+			{ spellID = 93122, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Rohash <Lord of the East Wind>
+			-- Slicing Gale
+			{ spellID = 93058, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Al'Akir
+			-- Ice Storm
+			{ spellID = 93260, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Ice Storm
+			{ spellID = 93271, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Lightning Rod
+			{ spellID = 93295, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Static Shock / Statischer Schock (Al'Akir)
+			{ spellID = 87873, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Acid Rain / Säureregen (Al'Akir)
+			{ spellID = 93279, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+-- Firelands
+		--Trash
+			-- Melt Armor
+			{ spellID = 99532, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },		
+		--Shannox
+			-- Magma Rupture
+			{ spellID = 99840, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Crystal Prison Trap 
+			{ spellID = 99837, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Jagged Tear
+			{ spellID = 99936, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Lord Rhyolith	
+			-- Eruption
+			{ spellID = 98492, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Alysrazor	
+			-- Molten Feather
+			{ spellID = 97128, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Wings of Flame
+			{ spellID = 98619, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Blazing Power
+			{ spellID = 99461, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Alysra's Razor
+			{ spellID = 100029, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Beth'tilac	
+			-- The Widow's Kiss
+			{ spellID = 99476, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Fixate (Heroic)
+			{ spellID = 99526, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Volatile Poison (Heroic)
+			{ spellID = 99278, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Baleroc	
+			-- Torment
+			{ spellID = 99256, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Tormented
+			{ spellID = 99257, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Blaze of Glory
+			{ spellID = 99252, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Vital Flame
+			{ spellID = 99262, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Vital Spark
+			{ spellID = 99263, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Countdown
+			{ spellID = 99516, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
+		-- Majordomo Staghelm	
+			-- Searing Seeds
+			{ spellID = 98450, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Burning Orbs
+			{ spellID = 98451, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Ragnaros	
+			-- Blazing Heat
+			{ spellID = 100460, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Burning Wound 
+			{ spellID = 101239, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Fixate
+			{ spellID = 99849, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+
+-- [[  INCOMPLETE, NEED LOTS OF TEST AND FEED BACK ]] -- 
+-- Dragon Soul
+		--Morchok
+			-- Crush Armor
+			{ spellID = 33661, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		--Warlord Zon'ozz
+			-- Disrupting Shadows
+			{ spellID = 103434, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		--Yor'sahj the Unsleeping
+			-- Deep Corruption
+			{ spellID = 103628, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		--Hagara the Stormbinder
+			-- Frostflake
+			{ spellID = 109325, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		--Ultraxion (i feel like loving this fight just by reading the spells descriptions. =D )
+			-- Heroic Will
+			{ spellID = 106108, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Looming Darkness
+			{ spellID = 106498, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Twilight Burst
+			{ spellID = 106415, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		--Warmaster Blackhorn
+			-- Twilight Barrage
+			{ spellID = 109204, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		--Spine of Deathwing
+		--Madness of Deathwing
+		},
+	},
+	["TANKS"] = {
+		{
+			Name = "Tanks CDs", -- requested by Nâmi@EU-Culte de la Rive noire 
+			Direction = "HORIZONTAL",
+--			Direction = "RIGHT",
+			Interval = 4,
+			Mode = "ICON",
+			BarWidth = 150,			
+			Alpha = 1,
+			setPoint = { "BOTTOM", "iFilgerTanksCDs", 0, 22 },
+			
+		-- Priest CDs !!! 
+			-- Guardian Spirit
+			{ spellID = 47788, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Pain Suppression
+			{ spellID = 33206, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			
+		-- Paladin
+			-- Forbearance -- it may be good to know that you can't Lay of Hands your target...
+			{ spellID = 25771, size = 47, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Divine Shield -- immune to all
+			{ spellID = 642, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Hand of Protection -- immune to cac
+			{ spellID = 1022, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Divine Protection -20% physical OR magical dmg
+			{ spellID = 498, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Holy Shield +20% block
+			{ spellID = 20925, size = 37, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Ardent Defender
+			{ spellID = 31850, size = 37, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Guardian of Ancient Kings (prot) -50% dmg
+			{ spellID = 86659, size = 37, unitId = "target", caster = "all", filter = "BUFF" },
+			
+		-- Druid
+			-- Survival Instincts -50% dmg
+			{ spellID = 61336, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Barkskin -20% dmg
+			{ spellID = 22812, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Frenzied Regeneration
+			{ spellID = 22842, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			
+		-- Warrior
+			-- Enraged Regeneration
+			{ spellID = 55694, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Rallying Cry +20% health
+			{ spellID = 97462, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Shield Wall -40% dmg
+			{ spellID = 871, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Spell Reflection
+			{ spellID = 23920, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Shield Block +25% block
+			{ spellID = 2565, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Last Stand
+			{ spellID = 12975, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
+
+		-- Death Knight
+			-- Anti-Magic Shell : -75% spell dmg + Immune to magic debuffs.
+			{ spellID = 48707, size = 47, unitId = "target", caster = "all", filter = "BUFF" }, 
+			-- Bone Shield -20% dmg
+			{ spellID = 49222, size = 47, unitId = "target", caster = "all", filter = "BUFF" }, 
+			-- Icebound Fortitude -50% dmg
+			{ spellID = 48792, size = 47, unitId = "target", caster = "all", filter = "BUFF" }, 
+			-- Vampiric Blood +25% heal
+			{ spellID = 55233, size = 47, unitId = "target", caster = "all", filter = "BUFF" }, 
+			--Lichborne
+			{ spellID = 49039, size = 47, unitId = "target", caster = "all", filter = "BUFF" }, 
 		},
 	},
 }

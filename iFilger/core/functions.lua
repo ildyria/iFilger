@@ -1,7 +1,7 @@
 local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
 I.IsPTRVersion = function()
-	if I.toc > 40200 then
+	if I.toc > 40300 then
 		return true
 	else
 		return false
