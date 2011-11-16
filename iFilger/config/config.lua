@@ -2157,11 +2157,11 @@ C["Filger_Spells"] = {
 			-- Divine Protection -20% physical OR magical dmg
 			{ spellID = 498, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Holy Shield +20% block
-			{ spellID = 20925, size = 37, unitId = "target", caster = "all", filter = "BUFF" },
+			{ spellID = 20925, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Ardent Defender
-			{ spellID = 31850, size = 37, unitId = "target", caster = "all", filter = "BUFF" },
+			{ spellID = 31850, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Guardian of Ancient Kings (prot) -50% dmg
-			{ spellID = 86659, size = 37, unitId = "target", caster = "all", filter = "BUFF" },
+			{ spellID = 86659, size = 47, unitId = "target", caster = "all", filter = "BUFF" },
 			
 		-- Druid
 			-- Survival Instincts -50% dmg
