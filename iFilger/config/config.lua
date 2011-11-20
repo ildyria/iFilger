@@ -1356,8 +1356,8 @@ C["Filger_Spells"] = {
 			setPoint = {  "TOPRIGHT", "iFilgerEnhancements",0,-22 },
 
 		--Racial
-			-- Berserking
-			{ spellID = 26297, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Berserking -- RACIAL
+			{ spellID = 26297, size = 52, unitId = "player", caster = "player", filter = "BUFF", absID = true },
 			-- Blood Fury
 			{ spellID = 33697, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Darkflight
@@ -1528,8 +1528,8 @@ C["Filger_Spells"] = {
 			{ spellID = 77764, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Master's Call
 			{ spellID = 54216, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Berserker
-			{ spellID = 24378, size = 52, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Berserking -- BUFF BG
+			{ spellID = 24378, size = 52, unitId = "player", caster = "all", filter = "BUFF", absID = true },
 		},
 	},
 	["PVP"] = {
