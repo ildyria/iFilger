@@ -2105,6 +2105,14 @@ C["Filger_Spells"] = {
 -- [[  INCOMPLETE, NEED LOTS OF TEST AND FEED BACK ]] -- 
 -- Dragon Soul
 		--Morchok
+			-- Safe
+			{ spellID = 103541, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Warning
+			{ spellID = 103536, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Danger
+			{ spellID = 103534, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Black Blood of the Earth
+			{ spellID = 108570, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Crush Armor
 			{ spellID = 33661, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 		--Warlord Zon'ozz
@@ -2116,17 +2124,31 @@ C["Filger_Spells"] = {
 		--Hagara the Stormbinder
 			-- Frostflake
 			{ spellID = 109325, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
-		--Ultraxion (i feel like loving this fight just by reading the spells descriptions. =D )
+			-- Target
+			{ spellID = 105285, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Shattered Ice
+			{ spellID = 105289, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Ice Tomb
+			{ spellID = 104451, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Lightning Storm
+			{ spellID = 105465, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+		--Ultraxion
 			-- Heroic Will
 			{ spellID = 106108, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Looming Darkness
 			{ spellID = 106498, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Twilight Burst
 			{ spellID = 106415, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Fading Light
+			{ spellID = 109075, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
 		--Warmaster Blackhorn
 			-- Twilight Barrage
 			{ spellID = 109204, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 		--Spine of Deathwing
+			-- Searing Plasma
+			{ spellID = 105479, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Fiery Grip
+			{ spellID = 105490, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 		--Madness of Deathwing
 		},
 	},

@@ -36,6 +36,11 @@ local function OnUpdate(self, elapsed)
 	end
 end
 
+
+------------------------------------------------------------
+-- Function to parse Buff name & ID
+------------------------------------------------------------
+
 local function FilgerUnitBuff(unitID, inSpellID, spn, absID)
   for i = 1, 40, 1 do
     local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitBuff(unitID, i)
@@ -50,6 +55,12 @@ local function FilgerUnitBuff(unitID, inSpellID, spn, absID)
   return nil
 end
 
+
+
+------------------------------------------------------------
+-- Function to parse Debuff name & ID
+------------------------------------------------------------
+
 local function FilgerUnitDebuff(unitID, inSpellID, spn, absID)
   for i = 1, 40, 1 do
     local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitDebuff(unitID, i)
@@ -63,6 +74,12 @@ local function FilgerUnitDebuff(unitID, inSpellID, spn, absID)
   end
   return nil
 end
+
+
+
+------------------------------------------------------------
+-- Function Update
+------------------------------------------------------------
 
 function Update(self)
 	local id = self.Id;
@@ -189,16 +206,8 @@ function Update(self)
 		
 		-- Update position of first 'bar' if direction is HORIZONTAL
 		if ( self.Direction == "HORIZONTAL" and index == 1 ) then
-			-- Compute total width
-
---			local totalWidth = self.Interval * ( #active[id] - 1 )
-
---			for _, v in ipairs(active[id]) do
---				totalWidth = totalWidth + v.data.size
---			end
-			-- Get base position
 			local totalWidth = (value.data.size + self.Interval) * ( #active[id] - 1 )
-
+			-- Get base position
 			local point, relativeFrame, offsetX, offsetY = unpack(self.setPoint)
 			-- Update x-offset: remove half the total width and center adding half median width
 			offsetX = offsetX - ( totalWidth  / 2 )
@@ -243,6 +252,12 @@ function Update(self)
 		bar:Show();
 	end
 end
+
+
+
+------------------------------------------------------------
+-- Function OnEvent
+------------------------------------------------------------
 
 local function OnEvent(self, event, ...)
 	local unit = ...;
@@ -293,83 +308,124 @@ local function OnEvent(self, event, ...)
 	end
 end
 
-if Filger_Spells then
+
+
+------------------------------------------------------------
+-- spell list configuration
+------------------------------------------------------------
+
+local iFilgerSpells = CreateFrame("frame")
+
+function I.UpdateSpellList(zone)
+
 	if (not Filger_Spells[class]) then
 		Filger_Spells[class] = {}
 	end
+	
+	local loaded = "";
 
 	if (Filger_Spells["ALL"]) then
 		for i = 1, #Filger_Spells["ALL"], 1 do
 			table.insert(Filger_Spells[class], Filger_Spells["ALL"][i])
 		end
+	loaded = loaded .. " ALL"
 	end
 
-	if (Filger_Spells["PVE"] and C["general"].PVE) then
+	if (Filger_Spells["PVE"] and C["general"].PVE and (zone == "pve" or zone == "config")) then
 		for i = 1, #Filger_Spells["PVE"], 1 do
 			table.insert(Filger_Spells[class], Filger_Spells["PVE"][i])
 		end
+	loaded = loaded .. " PVE"
 	end
 
-	if (Filger_Spells["PVP"] and C["general"].PVP) then
-		for i = 1, #Filger_Spells["PVP"], 1 do
-			table.insert(Filger_Spells[class], Filger_Spells["PVP"][i])
-		end
-	end
-
-	if (Filger_Spells["TANKS"] and C["general"].TANKS) then
+	if (Filger_Spells["TANKS"] and C["general"].TANKS and (zone == "pve" or zone == "config")) then
 		for i = 1, #Filger_Spells["TANKS"], 1 do
 			table.insert(Filger_Spells[class], Filger_Spells["TANKS"][i])
 		end
+	loaded = loaded .. " TANKS"
+	end
+
+	if (Filger_Spells["PVP"] and C["general"].PVP and (zone == "pvp" or zone == "config")) then
+		for i = 1, #Filger_Spells["PVP"], 1 do
+			table.insert(Filger_Spells[class], Filger_Spells["PVP"][i])
+		end
+	loaded = loaded .. " PVP"
 	end
 
 	if (Filger_Spells["HUNTER/DRUID/ROGUE"] and (class == "HUNTER" or class == "DRUID" or class == "ROGUE")) then
 		for i = 1, #Filger_Spells["HUNTER/DRUID/ROGUE"], 1 do
 			table.insert(Filger_Spells[class], Filger_Spells["HUNTER/DRUID/ROGUE"][i])
 		end
+	loaded = loaded .. " HDR"
 	end
+
+--	I.Print("MODULES LOADED :"..loaded)
 end
 
-if (Filger_Spells and Filger_Spells[class]) then
-	for index in pairs(Filger_Spells) do
-		if (index ~= class) then
-			Filger_Spells[index] = nil;
-		end
-	end
-	local data, frame;
-	for i = 1, #Filger_Spells[class], 1 do
-		data = Filger_Spells[class][i];
-		
-		frame = CreateFrame("Frame", "FilgerAnchor"..i, UIParent);
-		frame.Id = i;
-		frame.Name = data.Name;
-		frame.Direction = data.Direction or "DOWN";
-		frame.IconSide = data.IconSide or "LEFT";
-		frame.Interval = data.Interval or 3;
-		frame.Mode = data.Mode or "ICON";
-		frame.Alpha = data.Alpha or 1;
-		if(frame.Mode ~= "ICON" and frame.Direction ~= "DOWN" and frame.Direction ~= "UP") then -- check if bar + right or left => ugly !
-			frame.Direction = "UP";
-		end
-		frame.BarWidth = data.BarWidth or 200;
-		frame.setPoint = data.setPoint or "CENTER";
-		frame:SetWidth(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 100);
-		frame:SetHeight(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 20);
-		frame:SetPoint(unpack(data.setPoint));
-		for j = 1, #Filger_Spells[class][i], 1 do
-			data = Filger_Spells[class][i][j];
-			if (data.filter == "CD") then
-				frame:RegisterEvent("SPELL_UPDATE_COOLDOWN");
-				break;
+function I.UpdatesFramesList ()
+	if (Filger_Spells and Filger_Spells[class]) then
+		for index in pairs(Filger_Spells) do
+			if (index ~= class) then
+				Filger_Spells[index] = nil;
 			end
 		end
-		frame:RegisterEvent("UNIT_AURA");
-		frame:RegisterEvent("PLAYER_TARGET_CHANGED");
-		frame:RegisterEvent("PLAYER_ENTERING_WORLD");
-		frame:SetScript("OnEvent", OnEvent);
+		
+		local data, frame;
+		for i = 1, #Filger_Spells[class], 1 do
+			data = Filger_Spells[class][i];
+			
+			frame = CreateFrame("Frame", "FilgerAnchor"..i, UIParent);
+			frame.Id = i;
+			frame.Name = data.Name;
+			frame.Direction = data.Direction or "DOWN";
+			frame.IconSide = data.IconSide or "LEFT";
+			frame.Interval = data.Interval or 3;
+			frame.Mode = data.Mode or "ICON";
+			frame.Alpha = data.Alpha or 1;
+			if(frame.Mode ~= "ICON" and frame.Direction ~= "DOWN" and frame.Direction ~= "UP") then -- check if bar + right or left => ugly !
+				frame.Direction = "UP";
+			end
+			frame.BarWidth = data.BarWidth or 200;
+			frame.setPoint = data.setPoint or "CENTER";
+			frame:SetWidth(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 100);
+			frame:SetHeight(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 20);
+			frame:SetPoint(unpack(data.setPoint));
+			for j = 1, #Filger_Spells[class][i], 1 do
+				data = Filger_Spells[class][i][j];
+				if (data.filter == "CD") then
+					frame:RegisterEvent("SPELL_UPDATE_COOLDOWN");
+					break;
+				end
+			end
+			frame:RegisterEvent("UNIT_AURA");
+			frame:RegisterEvent("PLAYER_TARGET_CHANGED");
+			frame:RegisterEvent("PLAYER_ENTERING_WORLD");
+			frame:SetScript("OnEvent", OnEvent);
+		end
 	end
 end
 
--- used to exec various code if we enable or disable moving
+function checkzone()
+	--[[
+	local inInstance, instanceType = IsInInstance()
+	if inInstance and (instanceType == "raid" or instanceType == "party") then
+		I.UpdateSpellList("pve")
+	else
+		I.UpdateSpellList("pvp")
+	end]]
+
+	-- COZ we don't want to reload each time we enter donjon...
+	I.UpdateSpellList("config")
+
+	I.UpdatesFramesList()
+end
+
+checkzone()
+
+------------------------------------------------------------
+-- configuration mode
+------------------------------------------------------------
+
 local function exec(self, enable)
 	if enable then
 		self:Show()
@@ -385,6 +441,9 @@ local function moving()
 	-- don't allow moving while in combat
 	if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
 
+--	I.UpdateSpellList("config")
+--	I.UpdatesFramesList()
+	
 	local data, frame;
 	for i = 1, #Filger_Spells[class], 1 do
 		data = Filger_Spells[class][i];
@@ -479,6 +538,7 @@ protection:SetScript("OnEvent", function(self, event)
 	enable = false
 	moving()
 end)
+
 local function positionsetup()
 	-- reset movable stuff into original position
 	for i = 1, getn(I.MoverFrames) do
