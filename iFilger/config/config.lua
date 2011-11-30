@@ -1364,63 +1364,68 @@ C["Filger_Spells"] = {
 			{ spellID = 68992, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 
 		-- Trinket Procs
-			-- Rageheart  / Heart of Rage
-			{ spellID = 92345, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Cleansing Tears / Läuternde Tränen (Tear of Blood)
+
+			-- 333/346
+			-- Cleansing Tears (Tear of Blood)
 			{ spellID = 91139, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Fury of the Five Flights / Furor der fünf Schwärme
-			{ spellID = 60314, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Witching Hour / Geisterstunde
+			-- Witching Hour
 			{ spellID = 90887, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Heart's Revelation / Erkenntnis des Herzens
-			{ spellID = 91027, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Heart's Judgement / Richturteil des Herzens
-			{ spellID = 91041, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Volcanic Destruction
-			{ spellID = 89091, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Soul Fragment / Seelenfragment (Necromatic Focus/Necrotischer Fokus)
-			{ spellID = 96962, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Veil of Splashing / Moonwell Phial
-			{ spellID = 101156, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Blessing of the Moonwell / Moonwell Chalice
-			{ spellID = 100403, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Charged Blows / Ricket's Magnetic Fireball
-			{ spellID = 101515, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Matrix Restabilizer  / Matrix Restabilizer
-			{ spellID = 96976, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Accelerated  / Vessel of Acceleration
-			{ spellID = 96980, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Ancient Petrified Seed  / Ancient Petrified Seed
-			{ spellID = 97009, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Blessing of Khaz'goroth   / Apparatus of Khaz'goroth
-			{ spellID = 96934, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Essence of the Eternal Flame  / Essence of the Eternal Flame
-			{ spellID = 97010, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Fiery Quintessence  / Fiery Quintessence
-			{ spellID = 97008, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Victorious  / Jaws of Defeat
-			{ spellID = 96907, size = 52, unitId = "player", caster = "player", filter = "BUFF", absID = true  },
-			-- Mark of the Firelord  / Rune of Zeth
-			{ spellID = 97007, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Devour  / The Hungerer
-			{ spellID = 96911, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Celerity / Shard of Woe Heroic
-			{ spellID = 91173, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Battle Magic (Stump of Time)
-			{ spellID = 91047, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
+		
+			-- 359/372/379 4.0
 			-- Pattern of Light (Mandala of Stirring Patterns)
 			{ spellID = 91192, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 			-- Dire Magic (Bell of Enraging Resonance)
 			{ spellID = 91007, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
-			-- Weight of a Feather (Scales of Life)
-			{ spellID = 96879, size = 32, unitId = "player", caster = "player", filter = "BUFF" },
---			{ spellID = 97117, size = 32, unitId = "player", caster = "player", filter = "BUFF" }, SAME NAME AS 96879
-			-- Titanic Power
-			{ spellID = 96923, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Battle Magic (Stump of Time)
+			{ spellID = 91047, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
+			-- Volcanic Destruction (darkmoon)
+			{ spellID = 89091, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Heart of Rage
+			{ spellID = 92345, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Heart's Revelation
+			{ spellID = 91027, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Heart's Judgement
+			{ spellID = 91041, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Soul Power (Soul Casket)
 			{ spellID = 91019, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Revelation (Theralion Mirror)
 			{ spellID = 91024, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Celerity (Shard of Woe Heroic)
+			{ spellID = 91173, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+
+			-- 365/378/384/391/397 4.2
+			-- Soul Fragment (Necromatic Focus)
+			{ spellID = 96962, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Moonwell Phial
+			{ spellID = 101156, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Blessing of the Moonwell (Moonwell Chalice)
+			{ spellID = 100403, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Charged Blows (Ricket's Magnetic Fireball)
+			{ spellID = 101515, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Matrix Restabilizer
+			{ spellID = 96976, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Accelerated
+			{ spellID = 96980, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Ancient Petrified Seed
+			{ spellID = 97009, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Blessing of Khaz'goroth (Apparatus of Khaz'goroth)
+			{ spellID = 96934, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Essence of the Eternal Flame
+			{ spellID = 97010, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Fiery Quintessence
+			{ spellID = 97008, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Victorious  (Jaws of Defeat)
+			{ spellID = 96907, size = 52, unitId = "player", caster = "player", filter = "BUFF", absID = true  },
+			-- Mark of the Firelord  (Rune of Zeth)
+			{ spellID = 97007, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Devour  (The Hungerer)
+			{ spellID = 96911, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Weight of a Feather (Scales of Life)
+			{ spellID = 96879, size = 32, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Titanic Power (Apparatus of Khaz'goroth)
+			{ spellID = 96923, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+
+			-- Brewfeast
 			-- Now is the time! (Mithril Stopwatch)
 			{ spellID = 101291, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Drunken Evasiveness (Brawler's Trophy)
@@ -1432,6 +1437,29 @@ C["Filger_Spells"] = {
 			-- Stay of Execution (Stay of Execution)
 			{ spellID = 96988, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 
+			-- 384/397/401
+			-- Titanic Strength (Eye of Unmaking/Rotting Skull)
+			{ spellID = 109750, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Expansive Mind (Heart of Unliving)
+			{ spellID = 109813, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Preternatural Evasion (Resolve of Undying)
+			{ spellID = 109782, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Combat Mind (Will of Unbinding)
+			{ spellID = 109795, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Combat Trance (Wrath of Unchaining)
+			{ spellID = 109719, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Find Weakness (Creche of the Final Dragon)
+			{ spellID = 109744, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Ultimate Power (Bottled Wishes/Reflection of the Light)
+			{ spellID = 109792, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Elusive (Fire of the Deep)
+			{ spellID = 109779, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Velocity (Insignia of the Corrupted Mind/Seal of the Seven Signs)
+			{ spellID = 109789, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Agile (Kiroptyric Sigil)
+			{ spellID = 109715, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Master Tactician (Soulshifter Vortex)
+			{ spellID = 109776, size = 52, unitId = "player", caster = "player", filter = "BUFF" },
 			
 		-- PvP Trinkets
 			-- Call of Conquest / Badge of Conquest
