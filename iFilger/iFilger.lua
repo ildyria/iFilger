@@ -406,12 +406,13 @@ function I.UpdatesFramesList ()
 end
 
 function checkzone()
-	local inInstance, instanceType = IsInInstance()
-	if inInstance and (instanceType == "raid" or instanceType == "party") then
-		I.UpdateSpellList("pve")
-	else
-		I.UpdateSpellList("pvp")
-	end
+--	local inInstance, instanceType = IsInInstance()
+--	if inInstance and (instanceType == "raid" or instanceType == "party") then
+--		I.UpdateSpellList("pve")
+--	else
+--		I.UpdateSpellList("pvp")
+--	end
+	I.UpdateSpellList("config")
 	I.UpdatesFramesList()
 end
 
