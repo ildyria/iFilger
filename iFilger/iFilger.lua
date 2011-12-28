@@ -359,7 +359,7 @@ function I.UpdateSpellList(zone)
 	loaded = loaded .. " HDR"
 	end
 
---	I.Print("MODULES LOADED :"..loaded)
+	I.Print("MODULES LOADED :"..loaded)
 end
 
 function I.UpdatesFramesList ()
@@ -406,17 +406,12 @@ function I.UpdatesFramesList ()
 end
 
 function checkzone()
-	--[[
 	local inInstance, instanceType = IsInInstance()
 	if inInstance and (instanceType == "raid" or instanceType == "party") then
 		I.UpdateSpellList("pve")
 	else
 		I.UpdateSpellList("pvp")
-	end]]
-
-	-- COZ we don't want to reload each time we enter donjon...
-	I.UpdateSpellList("config")
-
+	end
 	I.UpdatesFramesList()
 end
 

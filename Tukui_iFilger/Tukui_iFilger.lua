@@ -7,6 +7,8 @@ local I, C, L = unpack(Tukui) -- Import: I - functions, constants, variables; C 
 
 local Filger_Spells = C.Filger_Spells;
 
+--local Filger_Spells = iFilgerBuffConfig.Filger_Spells;
+
 local class = select(2, UnitClass("player"));
 local classcolor = RAID_CLASS_COLORS[class];
 local active, bars = {}, {};
@@ -75,7 +77,18 @@ local function FilgerUnitDebuff(unitID, inSpellID, spn, absID)
   return nil
 end
 
-
+--[[
+for later... some idea... :P
+IldyUI_DPS_Button:EnableMouse(true)
+IldyUI_DPS_Button:HookScript("OnEnter", function(self)
+          GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
+          GameTooltip:AddLine("DPS", .6, .6, .6, .6, .6, 1)
+          GameTooltip:AddLine("click to toggle DPS interface", 1, 1, 1, 1, 1, 1)
+          GameTooltip:Show()
+        end)
+IldyUI_DPS_Button:HookScript("OnLeave", function(self) self:SetAlpha(0.3) end)
+IldyUI_DPS_Button:HookScript("OnLeave", function(self) GameTooltip:Hide() end)
+]]
 
 ------------------------------------------------------------
 -- Function Update
@@ -314,7 +327,7 @@ end
 -- spell list configuration
 ------------------------------------------------------------
 
-local iFilgerSpells = CreateFrame("frame")
+--local iFilgerSpells = CreateFrame("frame")
 
 function I.UpdateSpellList(zone)
 
@@ -359,7 +372,7 @@ function I.UpdateSpellList(zone)
 	loaded = loaded .. " HDR"
 	end
 
---	I.Print("MODULES LOADED :"..loaded)
+	I.Print("MODULES LOADED :"..loaded)
 end
 
 function I.UpdatesFramesList ()
@@ -406,13 +419,12 @@ function I.UpdatesFramesList ()
 end
 
 function checkzone()
-	I.UpdateSpellList("config")
---[[	local inInstance, instanceType = IsInInstance()
+	local inInstance, instanceType = IsInInstance()
 	if inInstance and (instanceType == "raid" or instanceType == "party") then
 		I.UpdateSpellList("pve")
 	else
 		I.UpdateSpellList("pvp")
-	end]]
+	end
 	I.UpdatesFramesList()
 end
 

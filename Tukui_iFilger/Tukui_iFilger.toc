@@ -6,5 +6,6 @@
 ## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, mTx, SinaC
 ## Version: 3.4
 ## RequiredDeps: Tukui
+## OptionalDeps: iFilger_Config
 
 Tukui_iFilger.xml

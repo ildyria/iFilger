@@ -1,7 +1,8 @@
-﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">	
-	<Script file="config\config.lua"/>
-	<Script file="config\profiles.lua"/>
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="core\functions.lua"/>
+	<Script file="config\config.lua"/>
+	<Script file="config\config_buffs.lua"/>
+	<Script file="config\profiles.lua"/>
 	<Script file="core\panels.lua"/>
 	<Script file="Tukui_iFilger.lua"/>
 </Ui>
