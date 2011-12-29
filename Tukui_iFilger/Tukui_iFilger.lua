@@ -2,12 +2,16 @@
 	Filger
 	Copyright (c) 2009, Nils Ruesch
 ]]
-
 local I, C, L = unpack(Tukui) -- Import: I - functions, constants, variables; C - config; L - locales
 
-local Filger_Spells = C.Filger_Spells;
+local _, _, _, isiFilgerenabled = GetAddOnInfo("iFilger")
+if isiFilgerenabled == 1 then
+	C.Filger_Spells = nil
+	C.Filger_Panels = nil
+	return
+end
 
---local Filger_Spells = iFilgerBuffConfig.Filger_Spells;
+local Filger_Spells = C.Filger_Spells;
 
 local class = select(2, UnitClass("player"));
 local classcolor = RAID_CLASS_COLORS[class];
@@ -76,20 +80,6 @@ local function FilgerUnitDebuff(unitID, inSpellID, spn, absID)
   end
   return nil
 end
-
---[[
-for later... some idea... :P
-IldyUI_DPS_Button:EnableMouse(true)
-IldyUI_DPS_Button:HookScript("OnEnter", function(self)
-          GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
-          GameTooltip:AddLine("DPS", .6, .6, .6, .6, .6, 1)
-          GameTooltip:AddLine("click to toggle DPS interface", 1, 1, 1, 1, 1, 1)
-          GameTooltip:Show()
-        end)
-IldyUI_DPS_Button:HookScript("OnLeave", function(self) self:SetAlpha(0.3) end)
-IldyUI_DPS_Button:HookScript("OnLeave", function(self) GameTooltip:Hide() end)
-]]
-
 ------------------------------------------------------------
 -- Function Update
 ------------------------------------------------------------
@@ -262,6 +252,18 @@ function Update(self)
 			end
 		end
 		
+		if (C.Filger.tooltip) then				
+			bar:EnableMouse(true)
+			bar:HookScript("OnEnter", function(self)
+				GameTooltip:ClearLines()
+				GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
+				GameTooltip:AddLine(GetSpellInfo(value.data.spellID), 1, 1, 1, 1, 1, 1)
+				GameTooltip:AddLine("ID : "..value.data.spellID, .6, .6, .6, .6, .6, .6)
+				GameTooltip:Show()
+				end)
+			bar:HookScript("OnLeave", function(self) GameTooltip:Hide() end)
+		end
+
 		bar:Show();
 	end
 end
@@ -327,8 +329,6 @@ end
 -- spell list configuration
 ------------------------------------------------------------
 
---local iFilgerSpells = CreateFrame("frame")
-
 function I.UpdateSpellList(zone)
 
 	if (not Filger_Spells[class]) then
@@ -382,6 +382,8 @@ function I.UpdatesFramesList ()
 				Filger_Spells[index] = nil;
 			end
 		end
+
+		C.Filger_Panels = nil;
 		
 		local data, frame;
 		for i = 1, #Filger_Spells[class], 1 do
@@ -419,13 +421,17 @@ function I.UpdatesFramesList ()
 end
 
 function checkzone()
---	local inInstance, instanceType = IsInInstance()
---	if inInstance and (instanceType == "raid" or instanceType == "party") then
---		I.UpdateSpellList("pve")
---	else
---		I.UpdateSpellList("pvp")
---	end
-	I.UpdateSpellList("config")
+	if I.myname == "Ildyria" then
+		-- yeah my default config is not really like default iFilger.
+		local inInstance, instanceType = IsInInstance()
+		if inInstance and (instanceType == "raid" or instanceType == "party") then
+			I.UpdateSpellList("pve")
+		else
+			I.UpdateSpellList("pvp")
+		end
+	else
+		I.UpdateSpellList("config")
+	end
 	I.UpdatesFramesList()
 end
 

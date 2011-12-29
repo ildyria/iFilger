@@ -3,7 +3,7 @@
 ## Notes: Minimal buff/debuff/proc tracking
 ## Editor: FourOne, Jasje, Ildyria
 ## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, mTx, SinaC
-## Version: 3.4
+## Version: 4.0
 ## Title: |cff1784d1iFilger|r
 ## Notes: Power Aura Like, skinned for Tukui / ElvUI.
 

@@ -2,7 +2,6 @@
 	Filger
 	Copyright (c) 2009, Nils Ruesch
 ]]
-
 local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
 local Filger_Spells = C.Filger_Spells;
@@ -74,8 +73,6 @@ local function FilgerUnitDebuff(unitID, inSpellID, spn, absID)
   end
   return nil
 end
-
-
 
 ------------------------------------------------------------
 -- Function Update
@@ -249,6 +246,17 @@ function Update(self)
 			end
 		end
 		
+		if (C.general.tooltip) then				
+			bar:EnableMouse(true)
+			bar:HookScript("OnEnter", function(self)
+				GameTooltip:ClearLines()
+				GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
+				GameTooltip:AddLine(GetSpellInfo(value.data.spellID), 1, 1, 1, 1, 1, 1)
+				GameTooltip:AddLine("ID : "..value.data.spellID, .6, .6, .6, .6, .6, .6)
+				GameTooltip:Show()
+				end)
+			bar:HookScript("OnLeave", function(self) GameTooltip:Hide() end)
+		end
 		bar:Show();
 	end
 end
@@ -313,8 +321,6 @@ end
 ------------------------------------------------------------
 -- spell list configuration
 ------------------------------------------------------------
-
-local iFilgerSpells = CreateFrame("frame")
 
 function I.UpdateSpellList(zone)
 
@@ -406,13 +412,17 @@ function I.UpdatesFramesList ()
 end
 
 function checkzone()
---	local inInstance, instanceType = IsInInstance()
---	if inInstance and (instanceType == "raid" or instanceType == "party") then
---		I.UpdateSpellList("pve")
---	else
---		I.UpdateSpellList("pvp")
---	end
-	I.UpdateSpellList("config")
+	if I.myname == "Ildyria" then
+		-- yeah my default config is not really like default iFilger.
+		local inInstance, instanceType = IsInInstance()
+		if inInstance and (instanceType == "raid" or instanceType == "party") then
+			I.UpdateSpellList("pve")
+		else
+			I.UpdateSpellList("pvp")
+		end
+	else
+		I.UpdateSpellList("config")
+	end
 	I.UpdatesFramesList()
 end
 

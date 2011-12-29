@@ -17,6 +17,11 @@ if I.myname == "Tukz" then
 	-- yeah my default config is not really like default tukui.
 end
 
+if I.myname == "Ildyria" then
+	C.Filger.tooltip = false
+	-- yeah my default config is not really like default tukui.
+end
+
 if I.myname == "Nâmi" then
 	C["general"].PVP = false
 	C["general"].TANKS = true
