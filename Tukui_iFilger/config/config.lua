@@ -257,8 +257,8 @@ C["Filger_Spells"] = {
 			{ spellID = 11129, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, 
 			-- Critical Mass
 			{ spellID = 22959, size = 37, unitId = "target", caster = "all", filter = "DEBUFF"},
-			-- Critical Mass
-			{ spellID = 22959, size = 37, unitId = "target", caster = "all", filter = "DEBUFF"},
+			-- Shadow and Flame (Warlock)
+			{ spellID = 17800, size = 37, unitId = "target", caster = "all", filter = "DEBUFF"},
 			-- Freeze
 			{ spellID = 33395, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" }, 
 			-- Stolen Time (2T13)
