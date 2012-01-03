@@ -1,12 +1,33 @@
 local I, C, L = unpack(Tukui) -- Import: I - functions, constants, variables; C - config; L - locales
 
+
+------------------------------------------------------------------------
+--	Check if iFilger & Tukui_iFilger are both active. Txt Tukz.
+------------------------------------------------------------------------
+
+StaticPopupDialogs["IFILGERDISABLESELECT"] = {
+	text = "iFilger and Tukui_iFilger are both active, if you are using Tukui interface, please chose Tukui_iFilger.",
+	button1 = "Tukui_iFilger",
+	button2 = "iFilger",
+	OnAccept = function() DisableAddOn("iFilger") EnableAddOn("Tukui_iFilger") ReloadUI() end,
+	OnCancel = function() EnableAddOn("iFilger") DisableAddOn("Tukui_iFilger") ReloadUI() end,
+	timeout = 0,
+	whileDead = 1,
+	preferredIndex = 3,
+}
+
 local _, _, _, isiFilgerenabled = GetAddOnInfo("iFilger")
 if isiFilgerenabled == 1 then
+	StaticPopup_Show("IFILGERDISABLESELECT")
 	C.Filger_Spells = nil
 	C.Filger_Panels = nil
-	I.Print("iFilger is activated. Disable Tukui_iFilger")
 	return
 end
+
+
+------------------------------------------------------------------------
+--	Movers Frame
+------------------------------------------------------------------------
 
 I.MoverFrames = {}
 
@@ -33,16 +54,21 @@ I.CreateMoverFrames = function(frame, w, h, anchor, x, y, color, text)
 	frame:Hide()
 end
 
+
+
 ---------------------------------
---Filger FRAMES
+-- Filger FRAMES
 ---------------------------------
 
+-- load all of them even if we don't use some of them (like pvp in pve & so...)
 if (C["Filger_Panels"]["ALL"]) then
 	for i = 1, #C["Filger_Panels"]["ALL"], 1 do
 		local panel = C["Filger_Panels"]["ALL"][i];
 		I.CreateMover(panel.name, panel.w, panel.h, panel.anchor, panel.x, panel.y, "red", panel.text)
 	end
 end
+
+
 
 ---------------------------------
 -- CLASS FRAMES Filger

@@ -1,5 +1,12 @@
 local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
+
+
+
+------------------------------------------------------------------------
+--	Movers Frame
+------------------------------------------------------------------------
+
 I.MoverFrames = {}
 
 I.CreateMover = function(name, w, h, anchor, x, y, color, text)
@@ -25,16 +32,21 @@ I.CreateMoverFrames = function(frame, w, h, anchor, x, y, color, text)
 	frame:Hide()
 end
 
+
+
 ---------------------------------
---Filger FRAMES
+-- Filger FRAMES
 ---------------------------------
 
+-- load all of them even if we don't use some of them (like pvp in pve & so...)
 if (C["Filger_Panels"]["ALL"]) then
 	for i = 1, #C["Filger_Panels"]["ALL"], 1 do
 		local panel = C["Filger_Panels"]["ALL"][i];
 		I.CreateMover(panel.name, panel.w, panel.h, panel.anchor, panel.x, panel.y, "red", panel.text)
 	end
 end
+
+
 
 ---------------------------------
 -- CLASS FRAMES Filger

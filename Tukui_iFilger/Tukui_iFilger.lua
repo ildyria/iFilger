@@ -43,6 +43,7 @@ local function OnUpdate(self, elapsed)
 end
 
 
+
 ------------------------------------------------------------
 -- Function to parse Buff name & ID
 ------------------------------------------------------------
@@ -80,6 +81,10 @@ local function FilgerUnitDebuff(unitID, inSpellID, spn, absID)
   end
   return nil
 end
+
+
+
+
 ------------------------------------------------------------
 -- Function Update
 ------------------------------------------------------------
@@ -225,6 +230,19 @@ function Update(self)
 		if (self.Mode == "BAR") then
 			bar.spellname:SetText(value.data.displayName or GetSpellInfo( value.data.spellID ));
 		end
+
+		if (C.Filger.tooltip) then				
+			bar:EnableMouse(true)
+			bar:HookScript("OnEnter", function(self)
+				GameTooltip:ClearLines()
+				GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
+				GameTooltip:AddLine(GetSpellInfo(value.data.spellID), 1, 1, 1, 1, 1, 1)
+				GameTooltip:AddLine("ID : "..value.data.spellID, .6, .6, .6, .6, .6, .6)
+				GameTooltip:Show()
+				end)
+			bar:HookScript("OnLeave", function(self) GameTooltip:Hide() end)
+		end
+
 		if (value.duration > 0) then
 			if (self.Mode == "ICON") then
 				CooldownFrame_SetTimer(bar.cooldown, value.data.filter == "CD" and value.expirationTime or value.expirationTime-value.duration, value.duration, 1);
@@ -250,18 +268,6 @@ function Update(self)
 				bar.time:SetText("");
 				bar:SetScript("OnUpdate", nil);
 			end
-		end
-		
-		if (C.Filger.tooltip) then				
-			bar:EnableMouse(true)
-			bar:HookScript("OnEnter", function(self)
-				GameTooltip:ClearLines()
-				GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
-				GameTooltip:AddLine(GetSpellInfo(value.data.spellID), 1, 1, 1, 1, 1, 1)
-				GameTooltip:AddLine("ID : "..value.data.spellID, .6, .6, .6, .6, .6, .6)
-				GameTooltip:Show()
-				end)
-			bar:HookScript("OnLeave", function(self) GameTooltip:Hide() end)
 		end
 
 		bar:Show();
@@ -335,56 +341,175 @@ function I.UpdateSpellList(zone)
 		Filger_Spells[class] = {}
 	end
 	
+	for index, value in ipairs(Filger_Spells[class]) do
+		if value.Enable == false then
+			I.Print("class : " .. value.Name .. " disabled")
+			tremove(Filger_Spells[class], index);
+		end
+	end
+
 	local loaded = "";
+	local loading = false;
 
 	if (Filger_Spells["ALL"]) then
 		for i = 1, #Filger_Spells["ALL"], 1 do
-			table.insert(Filger_Spells[class], Filger_Spells["ALL"][i])
+			-- merge similar spell-list (compare using Name and merge flag set) otherwise add another spell-list
+			if Filger_Spells["ALL"][i].Enable then
+				local merge = false
+				local spellListAll = Filger_Spells["ALL"][i]
+				local enable = spellListAll
+				local spellListClass = nil
+				for j = 1, #Filger_Spells[class], 1 do
+					spellListClass = Filger_Spells[class][j]
+					local mergeAll = spellListAll.Merge or false
+					local mergeClass = spellListClass.Merge or false
+					if ( spellListClass.Name == spellListAll.Name and ( mergeAll or mergeClass ) ) then
+						merge = true
+						break
+					end
+				end
+				if ( not merge or spellListClass == nil ) then
+					-- add another spell-list
+					table.insert(Filger_Spells[class], Filger_Spells["ALL"][i])
+				else
+					-- merge spell-list but class-specific position, direction, ...
+					--I.Print("MERGING SPELLS FROM "..spellListAll.Name)
+					for j = 1, #spellListAll, 1 do
+						table.insert( spellListClass, spellListAll[j] )
+						loading = true
+					end
+				end
+			end
 		end
-	loaded = loaded .. " ALL"
+		if (loading) then
+			loaded = loaded .. " ALL"
+			loading = false
+		end
 	end
 
-	if (Filger_Spells["PVE"] and C["Filger"].PVE and (zone == "pve" or zone == "config")) then
+	if (Filger_Spells["PVE"] and (zone == "pve" or zone == "config")) then
 		for i = 1, #Filger_Spells["PVE"], 1 do
-			table.insert(Filger_Spells[class], Filger_Spells["PVE"][i])
+			if (Filger_Spells["PVE"][i].Enable) then
+				table.insert(Filger_Spells[class], Filger_Spells["PVE"][i])
+				loading = true
+			end
 		end
-	loaded = loaded .. " PVE"
+		if (loading) then
+			loaded = loaded .. " PVE"
+			loading = false
+		end
 	end
 
-	if (Filger_Spells["TANKS"] and C["Filger"].TANKS and (zone == "pve" or zone == "config")) then
+	if (Filger_Spells["TANKS"] and (zone == "pve" or zone == "config")) then
 		for i = 1, #Filger_Spells["TANKS"], 1 do
-			table.insert(Filger_Spells[class], Filger_Spells["TANKS"][i])
+			if (Filger_Spells["TANKS"][i].Enable) then
+				table.insert(Filger_Spells[class], Filger_Spells["TANKS"][i])
+				loading = true
+			end
 		end
-	loaded = loaded .. " TANKS"
+		if (loading) then
+			loaded = loaded .. " TANKS"
+			loading = false
+		end
 	end
 
-	if (Filger_Spells["PVP"] and C["Filger"].PVP and (zone == "pvp" or zone == "config")) then
+	if (Filger_Spells["PVP"] and (zone == "pvp" or zone == "config")) then
 		for i = 1, #Filger_Spells["PVP"], 1 do
-			table.insert(Filger_Spells[class], Filger_Spells["PVP"][i])
+			if (Filger_Spells["PVP"][i].Enable) then
+				table.insert(Filger_Spells[class], Filger_Spells["PVP"][i])
+				loading = true
+			end
 		end
-	loaded = loaded .. " PVP"
+		if (loading) then
+			loaded = loaded .. " PVP"
+			loading = false
+		end
 	end
 
 	if (Filger_Spells["HUNTER/DRUID/ROGUE"] and (class == "HUNTER" or class == "DRUID" or class == "ROGUE")) then
 		for i = 1, #Filger_Spells["HUNTER/DRUID/ROGUE"], 1 do
-			table.insert(Filger_Spells[class], Filger_Spells["HUNTER/DRUID/ROGUE"][i])
+			if (Filger_Spells["HUNTER/DRUID/ROGUE"][i].Enable) then
+				table.insert(Filger_Spells[class], Filger_Spells["HUNTER/DRUID/ROGUE"][i])
+				loading = true
+			end
 		end
-	loaded = loaded .. " HDR"
+		if (loading) then
+			loaded = loaded .. " PVP"
+			loading = false
+		end
 	end
 
-	I.Print("MODULES LOADED :"..loaded)
+	I.Print("modules loaded :"..loaded)
 end
+
+
+
+------------------------------------------------------------
+-- Cleanning spell list. Credits to SinaC
+------------------------------------------------------------
+
+function I.CleanSpellList ()
+	
+	-- clean other sections wich are not used
+	for index in pairs(Filger_Spells) do
+		if (index ~= class) then
+			Filger_Spells[index] = nil
+		end
+	end
+
+	-- remove invalid spell and empty tables
+	local idx, data, frame = {}
+
+	for i = 1, #Filger_Spells[class], 1 do
+		local jdx, spn = {}
+		data = Filger_Spells[class][i]
+
+		for j = 1, #data, 1 do
+			if (data[j].spellID) then
+				spn = GetSpellInfo(data[j].spellID)
+			else
+				local slotLink = GetInventoryItemLink("player", data[j].slotID);
+				if (slotLink) then
+					spn = GetItemInfo(slotLink)
+				end
+			end
+
+			if (not spn and not data[j].slotID) then -- Warning only for spell, not for trinket
+				I.Print("WARNING - BAD spell/slot ID -> ".. (data[j].spellID or data[j].slotID or "UNKNOWN") .." !")
+				table.insert(jdx, j)
+			end
+		end
+		for _, v in ipairs(jdx) do
+			table.remove(data, v)
+		end
+
+		if (#data == 0) then
+			I.Print("WARNING - EMPTY section -> "..data.Name.." !")
+			table.insert(idx, i)
+		end
+	end
+	for _, v in ipairs(idx) do
+		table.remove(Filger_Spells[class], v)
+	end
+end
+
+
+
+------------------------------------------------------------
+-- Create frame spell list
+------------------------------------------------------------
 
 function I.UpdatesFramesList ()
 	if (Filger_Spells and Filger_Spells[class]) then
+		
 		for index in pairs(Filger_Spells) do
 			if (index ~= class) then
 				Filger_Spells[index] = nil;
 			end
 		end
-
-		C.Filger_Panels = nil;
 		
+		C.Filger_Panels = nil;
+
 		local data, frame;
 		for i = 1, #Filger_Spells[class], 1 do
 			data = Filger_Spells[class][i];
@@ -420,8 +545,15 @@ function I.UpdatesFramesList ()
 	end
 end
 
+
+
+------------------------------------------------------------
+-- checkzone for cleverzone check
+------------------------------------------------------------
+
 function checkzone()
-	if I.myname == "Ildyria" then
+
+	if C["Filger"].cleverzone then
 		-- yeah my default config is not really like default iFilger.
 		local inInstance, instanceType = IsInInstance()
 		if inInstance and (instanceType == "raid" or instanceType == "party") then
@@ -432,10 +564,13 @@ function checkzone()
 	else
 		I.UpdateSpellList("config")
 	end
+	I.CleanSpellList()
 	I.UpdatesFramesList()
 end
 
 checkzone()
+
+
 
 ------------------------------------------------------------
 -- configuration mode
@@ -455,9 +590,6 @@ local origa1, origf, origa2, origx, origy
 local function moving()
 	-- don't allow moving while in combat
 	if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
-
---	I.UpdateSpellList("config")
---	I.UpdatesFramesList()
 	
 	local data, frame;
 	for i = 1, #Filger_Spells[class], 1 do

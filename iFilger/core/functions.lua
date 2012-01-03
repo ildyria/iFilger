@@ -1,13 +1,5 @@
 local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
-I.IsPTRVersion = function()
-	if I.toc > 40300 then
-		return true
-	else
-		return false
-	end
-end
-
 -- just for creating text
 I.SetFontString = function(parent, fontName, fontHeight, fontStyle)
 	local fs = parent:CreateFontString(nil, "OVERLAY")

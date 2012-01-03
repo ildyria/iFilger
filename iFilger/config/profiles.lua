@@ -18,11 +18,13 @@ if I.myname == "Tukz" then
 end
 
 if I.myname == "Ildyria" then
-	C.general.tooltip = false
+	C.Filger.cleverzone = true
+	C.Filger.tooltip = false
 	-- yeah my default config is not really like default tukui.
 end
 
 if I.myname == "Nâmi" then
-	C["general"].PVP = false
-	C["general"].TANKS = true
+	for index, value in ipairs(C["Filger_Spells"]["PVP"]) do
+		value.Enable = false
+	end
 end

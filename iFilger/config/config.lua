@@ -6,9 +6,7 @@ C["general"] = {
 	["multisampleprotect"] = true,						-- i don't recommend this because of shitty border but, voila!
 	["backdropcolor"] = { .1,.1,.1 },					-- default backdrop color of panels
 	["bordercolor"] = { .6,.6,.6 },						-- default border color of panels
-	["PVE"] = true,										-- enable pve frame (important pve buffs & debuffs)
-	["PVP"] = true,										-- enable pvp frame (enemy pvp buffs & debuffs)
-	["TANKS"] = true,									-- enable tanks defensive cd frame (mainly for tanks healers)
+	["cleverzone"] = false,								-- load only PVP in PVP zones and PVE in PVE zones (require to reload the 1st time you enter the pve zone)
 	["tooltip"] = true,									-- tooltip on mouseover buffs, some people wanted it. I don't.
 }
 
@@ -46,7 +44,7 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerTargetCCDebuff", w = 160, h = 20, anchor = "TOPLEFT", x = 37, y = -110, text = "Target CC Debuff" },
 		{ name = "iFilgerTargetDoTDebuff", w = 160, h = 20, anchor = "TOPRIGHT", x = -100, y = -110, text = "Target DoT Debuff" },
 		{ name = "iFilgerProcs", w = 90, h = 20, anchor = "CENTER", x = 0, y = -55, text = "Procs" },
-		{ name = "iFilgerCooldown", w = 160, h = 20, anchor = "TOPRIGHT", x = -42, y = -150, text = "Cooldowns" },
+		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "TOPRIGHT", x = -42, y = -150, text = "Cooldowns" },
 	},
 	["DRUID"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
@@ -107,6 +105,7 @@ C["Filger_Spells"] = {
 	["DEATHKNIGHT"] = {  -------------------------------------------------------------------------------------------------------- Death Knight -- A REVOIR
 		{
 			Name = "Cooldown",
+			Enable = true,
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
@@ -153,6 +152,7 @@ C["Filger_Spells"] = {
 		},	
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
@@ -178,6 +178,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "DK Procs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
@@ -199,6 +200,7 @@ C["Filger_Spells"] = {
 	["MAGE"] = { -------------------------------------------------------------------------------------------------------- Mage
 		{
 			Name = "Cooldown",
+			Enable = true,
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
@@ -229,6 +231,7 @@ C["Filger_Spells"] = {
 		},	
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
@@ -275,6 +278,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Mage Procs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
@@ -303,6 +307,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Focus",  
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 2,
 			Mode = "ICON",
@@ -321,6 +326,7 @@ C["Filger_Spells"] = {
 	["PRIEST"] = { -------------------------------------------------------------------------------------------------------- Priest
 		{
 			Name = "Self Buffs",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
@@ -338,6 +344,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Cooldown",
+			Enable = true,
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
@@ -372,6 +379,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
@@ -405,6 +413,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Priest Procs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
@@ -427,6 +436,7 @@ C["Filger_Spells"] = {
 		},	
 		{
 			Name = "Buffs and Debuffs HEAL",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 3,
 			Mode = "ICON",
@@ -455,6 +465,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Focus",
+			Enable = true,
 			Direction = "LEFT",
 			IconSide = "LEFT",
 			Interval = 4,
@@ -475,7 +486,8 @@ C["Filger_Spells"] = {
 			{ spellID = 34914, size = 32, unitId = "focus", caster = "player", filter = "DEBUFF" },
 		},
 		{	
-			Name = "Cooldown",
+			Name = "Cooldown procs",
+			Enable = true,
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
@@ -490,6 +502,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
@@ -511,6 +524,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
@@ -533,6 +547,7 @@ C["Filger_Spells"] = {
 	["WARLOCK"] = { -------------------------------------------------------------------------------------------------------- Warlock
 		{
 			Name = "Warlock Procs",
+			Enable = true,
 			Direction = "DOWN",
 			Interval = 4,
 			Mode = "ICON",
@@ -542,6 +557,8 @@ C["Filger_Spells"] = {
 
 			-- 4set11 bonus
 			{ spellID = 89937, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Empowered Imp
+			{ spellID = 47283, size = 37, unitId = "player", caster = "all", filter = "BUFF" },	
 			-- Demon Soul: Imp
 			{ spellID = 79459, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Demon Soul: Felguard
@@ -568,15 +585,16 @@ C["Filger_Spells"] = {
 			{ spellID = 18095, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Burning Soul
 			{ spellID = 84254, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			--Empowered Imp
-			{ spellID = 47283, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			--Shadow Trance
 			{ spellID = 17941, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Soulburn / Seelenbrand
 			{ spellID = 74434, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Apocalypse
+			{ spellID = 99232, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Buffs and Debuffs DPS",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
@@ -584,16 +602,8 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerTargetCCDebuff", 0, 22},
 
-			-- Fear
-			{ spellID = 5782, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Banish
-			{ spellID = 710, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Curse of the Elements
-			{ spellID = 1490, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Curse of Tongues
-			{ spellID = 1714, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Curse of Exhaustion
-			{ spellID = 18223, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Bane of havoc
+			{ spellID = 80240, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },	
 			-- Bane of Agony
 			{ spellID = 980, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Bane of Doom
@@ -606,9 +616,12 @@ C["Filger_Spells"] = {
 			{ spellID = 172, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Immolate
 			{ spellID = 348, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Shadowflame
+			{ spellID = 47960, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
 		{
 			Name = "Buffs and Debuffs CC",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
@@ -616,8 +629,18 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerTargetDoTDebuff", 58, 22},
 			
+			-- Curse of the Elements
+			{ spellID = 1490, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Curse of Tongues
+			{ spellID = 1714, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Curse of Exhaustion
+			{ spellID = 18223, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Curse of Weakness
 			{ spellID = 702, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Fear
+			{ spellID = 5782, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Banish
+			{ spellID = 710, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Haunt
 			{ spellID = 48181, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Seed of Corruption
@@ -633,34 +656,88 @@ C["Filger_Spells"] = {
 			-- Curse of Gul'dan
 			{ spellID = 86000, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Soul Swap
-			{ spellID = 86121, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 86121, size = 37, unitId = "player", caster = "player", filter = "BUFF" },		
+			-- Dark Intent
+			{ spellID = 85767, size = 50, unitId = "target", caster = "player", filter = "BUFF" },
+			-- Soulstone Resurrection
+			{ spellID = 20707, size = 50, unitId = "target", caster = "player", filter = "BUFF" },	
+
+			-- Other (thx TJ)
+
+
+			-- Curse of the Elements: Jinx (Warlock)
+			{ spellID = 86105, size = 50, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Earth and Moon (Moonkin)
+			{ spellID = 48506, size = 50, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Ebon Plaguebringer (DK)
+			{ spellID = 65142, size = 50, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Master poisoner (Rogue)
+			{ spellID = 93068, size = 50, unitId = "target", caster = "all", filter = "DEBUFF" },
 		},
 		{
 			Name = "Cooldown",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
 			Alpha = 1,
 			BarWidth = 150,
-			setPoint = { "BOTTOMRIGHT", "iFilgerCooldown", 0, 22 },
+			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 0, 22 },
 
-			-- Soul Shatter
-			{ spellID = 29858, size = 33, filter = "CD" },
-			-- Death Coil
-			{ spellID = 6789, size = 33, filter = "CD" },
-			-- Demonic Circle: Teleport
-			{ spellID = 48020, size = 33, filter = "CD" },
-			-- SoulBurn
-			{ spellID = 74434, size = 33, filter = "CD" },
 			-- Demon Soul
 			{ spellID = 77801, size = 33, filter = "CD" },
 			-- Infernal
 			{ spellID = 1122, size = 33, filter = "CD" },
+			-- Conflagrate
+			{ spellID = 17962, size = 33, filter = "CD" },
+			-- Shadow Ward
+			{ spellID = 6229, size = 33, filter = "CD" },
+			-- Demonic Empowerment
+			{ spellID = 47193, size = 33, filter = "CD" },
+			-- Demon Leap
+			{ spellID = 54785, size = 33, filter = "CD" },
+			-- Soulshatter
+			{ spellID = 29858, size = 33, filter = "CD" },
+			-- Demonic Circle: Teleport
+			{ spellID = 48020, size = 33, filter = "CD" },
+			-- Howl of Terror
+			{ spellID = 5484, size = 33, filter = "CD" },
+			-- Death Coil
+			{ spellID = 6789, size = 33, filter = "CD" },
+			-- Haunt
+			{ spellID = 48181, size = 33, filter = "CD" },
+			-- Shadowburn
+			{ spellID = 17877, size = 33, filter = "CD" },
+			-- Shadowfury
+			{ spellID = 30283, size = 33, filter = "CD" },
+			-- Chaos Bolt
+			{ spellID = 50796, size = 33, filter = "CD" },
+			-- Shadowflame
+			{ spellID = 47897, size = 33, filter = "CD" },
+			-- Fel Domination
+			{ spellID = 18708, size = 33, filter = "CD" },
+			-- Sacrifice (Voidwalker)
+			{ spellID = 7812, size = 33, filter = "CD" },
+			-- Suffering (Voidwalker)
+			{ spellID = 17735, size = 33, filter = "CD" },
+			-- Spell Lock (Felhunter)
+			{ spellID = 19647, size = 33, filter = "CD" },
+			-- Devour Magic (Felhunter)
+			{ spellID = 19505, size = 33, filter = "CD" },
 			-- Soul Harvest
 			{ spellID = 79268, size = 33, filter = "CD" },
+			-- Felstorm
+			{ spellID = 89751, size = 33, filter = "CD" },
+			-- Soulburn
+			{ spellID = 74434, size = 33, filter = "CD" },
+			-- Hand of Gul'dan
+			{ spellID = 71521, size = 33, filter = "CD" },
+			-- Immolation Aura
+			{ spellID = 50589, size = 33, filter = "CD" },
 		},
 		{
 			Name = "Focus",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
@@ -668,15 +745,18 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 
+			-- Bane of havoc
+			{ spellID = 80240, size = 37, unitId = "focus", caster = "player", filter = "DEBUFF" },	
 			-- Fear
-			{ spellID = 5782, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			{ spellID = 5782, size = 32, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Banish
-			{ spellID = 710, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			{ spellID = 710, size = 32, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},
 	["DRUID"] = { -------------------------------------------------------------------------------------------------------- Druid
 		{
-			Name = "COOLDOWN",
+			Name = "Cooldown",
+			Enable = true,
 			Direction = "UP",
 			Interval = 4,
 			Mode = "ICON",
@@ -691,6 +771,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
@@ -713,6 +794,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
@@ -733,6 +815,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Druid Procs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
@@ -785,6 +868,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 3,
 			Mode = "ICON",
@@ -827,6 +911,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Focus",
+			Enable = true,
 			Direction = "LEFT",
 --			IconSide = "LEFT",
 			Interval = 4,
@@ -834,17 +919,18 @@ C["Filger_Spells"] = {
 			Mode = "ICON",
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 
-			-- Hibernate / Winterschlaf
-			{ spellID = 2637, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
-			-- Entangling Roots / Wucherwurzeln
-			{ spellID = 339, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
-			-- Cyclone / Wirbelsturm
-			{ spellID = 33786, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Hibernate
+			{ spellID = 2637, size = 32, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Entangling Roots
+			{ spellID = 339, size = 32, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Cyclone
+			{ spellID = 33786, size = 32, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},
 	["HUNTER"] = { -------------------------------------------------------------------------------------------------------- Hunter
 		{
 			Name = "Cooldown",
+			Enable = true,
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
@@ -859,6 +945,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Hunter Procs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
@@ -887,6 +974,7 @@ C["Filger_Spells"] = {
 			},
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
@@ -915,6 +1003,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Focus",
+			Enable = true,
 			Direction = "LEFT",
 			IconSide = "LEFT",
 			Interval = 4,
@@ -922,15 +1011,16 @@ C["Filger_Spells"] = {
 			Alpha = 1,
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 
-			-- Wyvern Sting / Wyverngift
-			{ spellID = 19386, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
-			-- Silencing Shot / Unterdrückender Schuss
-			{ spellID = 34490, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Wyvern Sting
+			{ spellID = 19386, size = 32, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Silencing Shot
+			{ spellID = 34490, size = 32, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},	
 	["ROGUE"] = { -------------------------------------------------------------------------------------------------------- Rogue
 		{
-			Name = "Cooldowns",
+			Name = "Cooldown",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
@@ -953,6 +1043,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
@@ -999,6 +1090,8 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Buffs and Debuffs",
+
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
@@ -1043,22 +1136,23 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Focus",
+			Enable = true,
 			Direction = "LEFT",
---			IconSide = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
 			Alpha = 1,
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", "TOPRIGHT", 0, -22 },
 
-			-- Blind / Blenden
-			{ spellID = 2094, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
-			-- Sap / Kopfnuss
-			{ spellID = 6770, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
-			-- Gouge / Solarplexus
-			{ spellID = 1776, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Blind
+			{ spellID = 2094, size = 32, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Sap
+			{ spellID = 6770, size = 32, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Gouge
+			{ spellID = 1776, size = 32, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 		{
 			Name = "Rogue Procs",
+			Enable = true,
 			Direction = "DOWN",
 			Interval = 4,
 			Mode = "ICON",
@@ -1073,6 +1167,7 @@ C["Filger_Spells"] = {
 	["SHAMAN"] = { -------------------------------------------------------------------------------------------------------- Shaman
 		{
 			Name = "Self Buffs",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
@@ -1090,6 +1185,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Target Buffs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
@@ -1103,6 +1199,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Cooldown",
+			Enable = true,
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
@@ -1121,6 +1218,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Shaman Procs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
@@ -1144,6 +1242,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
@@ -1174,6 +1273,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Focus",
+			Enable = true,
 			Direction = "LEFT",
 --			IconSide = "LEFT",
 			Interval = 4,
@@ -1184,14 +1284,15 @@ C["Filger_Spells"] = {
 			-- Earth Shield
 			{ spellID = 974, size = 32, unitId = "focus", caster = "player", filter = "BUFF" },
 			-- Hex
-			{ spellID = 51514, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			{ spellID = 51514, size = 32, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Bind Elemental
-			{ spellID = 76780, size = 32, barWidth = 200, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			{ spellID = 76780, size = 32, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},	
 	["PALADIN"] = { -------------------------------------------------------------------------------------------------------- Paladin
 		{
 			Name = "Cooldown",
+			Enable = true,
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
@@ -1220,6 +1321,7 @@ C["Filger_Spells"] = {
 		},	
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
@@ -1232,6 +1334,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Beacon of Light focus",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
@@ -1248,6 +1351,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
@@ -1260,6 +1364,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Buffs and Debuffs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
@@ -1308,6 +1413,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Paladin Procs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
@@ -1336,6 +1442,7 @@ C["Filger_Spells"] = {
 	["WARRIOR"] = {  -------------------------------------------------------------------------------------------------------- Warrior
 		{
 			Name = "Warrior Procs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
@@ -1374,6 +1481,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Debuffs",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
@@ -1416,6 +1524,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Cooldown",
+			Enable = true,
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
@@ -1447,6 +1556,7 @@ C["Filger_Spells"] = {
 	["HUNTER/DRUID/ROGUE"] = {  -------------------------------------------------------------------------------------------------------- Hunt & Drood
 		{
 			Name = "Shivable Rage effects",
+			Enable = true,
 			Direction = "UP",
 			IconSide = "LEFT",
 			Interval = 4,
@@ -1484,6 +1594,7 @@ C["Filger_Spells"] = {
 	["ALL"] = {
 		{
 			Name = "ENHANCEMENTS",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 6,
 			Mode = "ICON",
@@ -1703,12 +1814,53 @@ C["Filger_Spells"] = {
 			-- Berserking -- BUFF BG
 			{ spellID = 24378, size = 52, unitId = "player", caster = "all", filter = "BUFF", absID = true },
 		},
+		{
+			Name = "Cooldown", -- (racial)
+			Enable = true,
+			Direction = "UP",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+			Merge = true,
+			BarWidth = 150,
+			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
+
+			-- Trinket 1
+			{ slotID = 13, size = 37, filter = "CD" }, 
+			-- Trinket 2
+			{ slotID = 14, size = 37, filter = "CD" }, 
+			-- Arcane Torrent
+			{ spellID = 28730, size = 37, filter = "CD" }, 
+			-- Gift of the Naaru
+			{ spellID = 59547, size = 37, filter = "CD" }, 
+			-- Stoneform
+			{ spellID = 20594, size = 37, filter = "CD" }, 
+			-- Shadowmeld
+			{ spellID = 58984, size = 37, filter = "CD" }, 
+			-- Blood Fury
+			{ spellID = 20572, size = 37, filter = "CD" }, 
+			-- Darkflight
+			{ spellID = 68992, size = 37, filter = "CD" }, 
+			-- Cannibalize
+			{ spellID = 20577, size = 37, filter = "CD" }, 
+			-- Will of the Forsaken
+			{ spellID = 7744, size = 37, filter = "CD" }, 
+			-- Berserking
+			{ spellID = 26297, size = 37, filter = "CD" }, 
+			-- Every Man for Himself
+			{ spellID = 59752, size = 37, filter = "CD" }, 
+			-- Rocket Jump
+			{ spellID = 69070, size = 37, filter = "CD" }, 
+			-- Escape Artist
+			{ spellID = 20589, size = 37, filter = "CD" }, 
+		}
 	},
 	["PVP"] = {
 		{
 --			Tons of SpellIDs taken from LoseControl so credit to Kouri 
 --			Here we track pvp buffs on our target							 
 			Name = "ENEMY PVP BUFF",
+			Enable = true,
 			Direction = "RIGHT",
 			Interval = 6,
 			Mode = "ICON",
@@ -1815,6 +1967,7 @@ C["Filger_Spells"] = {
 		{
 			-- Here we track pvp debuffs on ourself
 			Name = "ENEMY PVP DEBUFF",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 6,
 			Mode = "ICON",
@@ -2078,6 +2231,7 @@ C["Filger_Spells"] = {
 	["PVE"] = {
 		{
 			Name = "Cataclysm debuff list by jasje", -- taken from aurawatch.lua
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
@@ -2335,8 +2489,8 @@ C["Filger_Spells"] = {
 	["TANKS"] = {
 		{
 			Name = "Tanks CDs", -- requested by Nâmi@EU-Culte de la Rive noire 
+			Enable = true,
 			Direction = "HORIZONTAL",
---			Direction = "RIGHT",
 			Interval = 4,
 			Mode = "ICON",
 			BarWidth = 150,			
@@ -2401,6 +2555,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Tanks CDs focus",
+			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
 			Mode = "ICON",
