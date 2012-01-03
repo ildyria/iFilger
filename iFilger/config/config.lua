@@ -10,7 +10,7 @@ C["general"] = {
 	["tooltip"] = true,									-- tooltip on mouseover buffs, some people wanted it. I don't.
 }
 
-C["cooldown"] = {
+C["cooldown"] = { -- will be disabled if Tukui / ElvUI / OmniCC / ncCooldown is enabled
 	["enable"] = true,									-- do i really need to explain this?
 	["treshold"] = 8,									-- show decimal under X seconds and text turn red
 	["fontsize"] = 20,									--the base font size to use at a scale of 1

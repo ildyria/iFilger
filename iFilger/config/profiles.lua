@@ -18,8 +18,8 @@ if I.myname == "Tukz" then
 end
 
 if I.myname == "Ildyria" then
-	C.Filger.cleverzone = true
-	C.Filger.tooltip = false
+	C.general.cleverzone = true
+	C.general.tooltip = false
 	-- yeah my default config is not really like default tukui.
 end
 

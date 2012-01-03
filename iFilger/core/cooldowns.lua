@@ -5,7 +5,14 @@ local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, vari
                 This version should work on absolutely everything, but I've removed pretty much all of the options
 --]]
 
-if IsAddOnLoaded("OmniCC") or IsAddOnLoaded("ncCooldown") or C["cooldown"].enable ~= true then return end
+local _, _, _, isOmniCCenabled = GetAddOnInfo("OmniCC")
+local _, _, _, isncCooldownenabled = GetAddOnInfo("ncCooldown")
+local _, _, _, isElvUIenabled = GetAddOnInfo("ElvUI")
+local _, _, _, isTukuienabled = GetAddOnInfo("Tukui")
+
+if isOmniCCenabled or isncCooldownenabled or isElvUIenabled or isTukuienabled or C["cooldown"].enable ~= true then
+	return
+end
 
 --constants!
 OmniCC = true --hack to work around detection from other addons for OmniCC
