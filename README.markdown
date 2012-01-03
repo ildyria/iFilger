@@ -12,14 +12,16 @@ The default config is VERY bar/icon spammy, you'll probably want to go through a
 
 ## Installation
 Download the zip file and unzip it. You will find the README, a folder named iFilger and a folder named Tukui_iFilger. Copy both folders (iFilger, not ildyria-iFilger-somerandomnumbers) into you World of Warcraft\Interface\AddOns\ folder.
+
 Tukui_iFilger is for those who already have Tukui (dependant version).
 iFilger is for the one who do not have Tukui (stand alone version).
+
 Launch the game and enjoy !
 
 ## Configuration and moving bars
 All configuration must be done by directly editing config/config.lua.
 
-A guide can be found here : http://www.tukui.org/forums/topic.php?id=8310#post-81958
+A guide can be found here : http://www.tukui.org/forums/topic.php?id=19087
 
 Moving the bars
 
@@ -33,5 +35,7 @@ Elv, Tukz, Jasje, Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia,
 
 ## What's next ? 
 I've in mind to make config a little more easier coz now, i need to keep update both version (stand alone and not).
-I need to make Tukui_iFilger disable if iFilger is enable so it doesn't create matters.
 I may try to make iFilger_config seperate to the addon so it doesn't depend on which version you want to use (stand alone or not).
+
+## WARNING
+There is a memory leak and i can't find that b**** >_<

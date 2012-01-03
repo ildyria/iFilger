@@ -17,6 +17,7 @@ local class = select(2, UnitClass("player"));
 local classcolor = RAID_CLASS_COLORS[class];
 local active, bars = {}, {};
 
+
 local time, Update;
 local function OnUpdate(self, elapsed)
 	time = self.filter == "CD" and self.expirationTime+self.duration-GetTime() or self.expirationTime-GetTime();
@@ -697,3 +698,54 @@ end
 SLASH_RESETIFILGER1 = "/rifilger"
 SLASH_RESETIFILGER2 = "/resetifilger"
 SlashCmdList.RESETIFILGER = positionsetup
+
+
+-------------------------------------------------------
+-- DEBUG
+-------------------------------------------------------
+
+local DatatextColor = I.RGBToHex(unpack(C.media.datatextcolor1))
+local kiloByteString = "%d "..DatatextColor.."kb".."|r"
+local megaByteString = "%.2f "..DatatextColor.."mb".."|r"
+
+
+
+---------------------------------
+-- formatMemory : b => kb or mb
+---------------------------------
+
+local function formatMem(memory)
+	local mult = 10^1
+	if memory > 999 then
+		local mem = ((memory/1024) * mult) / mult
+		return string.format(megaByteString, mem)
+	else
+		local mem = (memory * mult) / mult
+		return string.format(kiloByteString, mem)
+	end
+end
+
+
+local function senddata()
+	local primary_size = #Filger_Spells[class]
+	local bars_memory = 0
+	for i = 1, primary_size, 1 do
+		bars_memory = bars_memory + getn(bars[i])
+	end
+
+	local active_memory = 0
+	for i = 1, primary_size, 1 do
+		active_memory = active_memory + getn(active[i])
+	end
+
+	local addOnMem = GetAddOnMemoryUsage("Tukui_iFilger")
+	local msg = formatMem(addOnMem)
+
+	I.iFilgerAddIncoming("MEMORY : " .. msg .. ", number of tables " .. primary_size .. " / active : " .. active_memory .. " / bars : " .. bars_memory )
+end
+
+local iFilgerDebug = CreateFrame("Frame", "iFilger_Debug", UIParent)
+iFilgerDebug:RegisterEvent("UNIT_AURA");
+iFilgerDebug:RegisterEvent("PLAYER_TARGET_CHANGED");
+iFilgerDebug:RegisterEvent("PLAYER_ENTERING_WORLD");
+iFilgerDebug:SetScript("OnEvent", senddata)

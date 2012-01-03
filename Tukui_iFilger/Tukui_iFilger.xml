@@ -4,5 +4,6 @@
 	<Script file="config\config_buffs.lua"/>
 	<Script file="config\profiles.lua"/>
 	<Script file="core\panels.lua"/>
+	<Script file="core\debug.lua"/>
 	<Script file="Tukui_iFilger.lua"/>
 </Ui>
