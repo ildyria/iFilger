@@ -224,7 +224,7 @@ function Update(self)
 			bar.spellname:SetText(value.data.displayName or GetSpellInfo( value.data.spellID ));
 		end
 
-		if (C.Filger.tooltip) then				
+		if (C.general.tooltip) then				
 			bar:EnableMouse(true)
 			bar:HookScript("OnEnter", function(self)
 				GameTooltip:ClearLines()
