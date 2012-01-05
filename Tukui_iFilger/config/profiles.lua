@@ -16,7 +16,7 @@ end
 if I.myname == "Ildyria" then
 	C.Filger.cleverzone = true
 	C.Filger.tooltip = false
-	-- yeah my default config is not really like default tukui.
+	-- yeah my default config is not really like default iFilger.
 end
 
 if I.myname == "Nâmi" then

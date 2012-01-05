@@ -10,7 +10,10 @@ local class = select(2, UnitClass("player"));
 local classcolor = RAID_CLASS_COLORS[class];
 local active, bars = {}, {};
 
+
 local time, Update;
+
+
 local function OnUpdate(self, elapsed)
 	time = self.filter == "CD" and self.expirationTime+self.duration-GetTime() or self.expirationTime-GetTime();
 	if (self:GetParent().Mode == "BAR") then
@@ -75,6 +78,25 @@ local function FilgerUnitDebuff(unitID, inSpellID, spn, absID)
   return nil
 end
 
+
+
+------------------------------------------------------------
+-- Tooltip functions
+------------------------------------------------------------
+
+local function TooltipOnEnter(self)
+	if (self.spellID) then -- coz slot ID...
+		GameTooltip:ClearLines()
+		GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
+		GameTooltip:AddLine(GetSpellInfo(self.spellID), 1, 1, 1, 1, 1, 1)
+		GameTooltip:AddLine("ID : "..self.spellID, .6, .6, .6, .6, .6, .6)
+		GameTooltip:Show()
+	end
+end
+
+local function TooltipOnLeave(self)
+        GameTooltip:Hide()
+end
 
 
 
@@ -202,6 +224,11 @@ function Update(self)
 					bar.spellname:SetJustifyH("LEFT");
 				end
 			end
+			if (C.general.tooltip) then
+				bar:EnableMouse(true)
+				bar:SetScript("OnEnter", TooltipOnEnter)
+				bar:SetScript("OnLeave", TooltipOnLeave)
+			end
 			tinsert(bars[id], bar);
 		end
 		
@@ -217,23 +244,12 @@ function Update(self)
 		end
 
 		bar.spellName = GetSpellInfo( value.data.spellID or value.data.slotID );
-		
+		bar.spellID = value.data.spellID or value.data.slotID
+
 		bar.icon:SetTexture(value.icon);
 		bar.count:SetText(value.count > 1 and value.count or "");
 		if (self.Mode == "BAR") then
 			bar.spellname:SetText(value.data.displayName or GetSpellInfo( value.data.spellID ));
-		end
-
-		if (C.general.tooltip) then				
-			bar:EnableMouse(true)
-			bar:HookScript("OnEnter", function(self)
-				GameTooltip:ClearLines()
-				GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
-				GameTooltip:AddLine(GetSpellInfo(value.data.spellID), 1, 1, 1, 1, 1, 1)
-				GameTooltip:AddLine("ID : "..value.data.spellID, .6, .6, .6, .6, .6, .6)
-				GameTooltip:Show()
-				end)
-			bar:HookScript("OnLeave", function(self) GameTooltip:Hide() end)
 		end
 
 		if (value.duration > 0) then
