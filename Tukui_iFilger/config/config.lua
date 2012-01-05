@@ -1842,6 +1842,13 @@ C["Filger_Spells"] = {
 			{ spellID = 69070, size = 37, filter = "CD" }, 
 			-- Escape Artist
 			{ spellID = 20589, size = 37, filter = "CD" }, 
+
+			-- ICD -- (test)
+			-- Velocity
+			{ spellID = 77971, size = 37, filter = "ICD", trigger = "BUFF", duration = 110 }, 
+			-- Power Torrent
+			{ spellID = 74241, size = 47, filter = "ICD", trigger = "BUFF", duration = 45 }
+--			{ spellID = 74241, trigger = "BUFF", size = 47, duration = 45, slotID = 16, filter = "ICD" }, -- if slotID not specified, spellID is used as icon
 		}
 	},
 	["PVP"] = {
