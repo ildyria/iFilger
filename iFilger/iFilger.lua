@@ -323,6 +323,7 @@ local function OnEvent(self, event, ...)
 				count = 0;
 				caster = "all";
 			elseif ( data.filter == "ICD" ) then
+				enabled = 0
 				if ( data.trigger == "BUFF" ) then
 					spn = GetSpellInfo( data.spellID )
 					name, _, icon, _, _, _, _, _, _, _, _ = FilgerUnitBuff("player", data.spellID, spn, data.absID);
