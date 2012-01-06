@@ -15,7 +15,7 @@ local time, Update;
 
 
 local function OnUpdate(self, elapsed)
-	time = self.filter == "CD" and self.expirationTime+self.duration-GetTime() or self.expirationTime-GetTime();
+	time = ( self.filter == "CD" or self.filter == "ICD" ) and ( self.expirationTime + self.duration - GetTime() ) or ( self.expirationTime - GetTime() );
 	if (self:GetParent().Mode == "BAR") then
 		self.statusbar:SetValue(time);
 		if time <= 60 then
@@ -24,7 +24,7 @@ local function OnUpdate(self, elapsed)
 			self.time:SetFormattedText("%d:%.2d",(time/60),(time%60));
 		end
 	end
-	if (time < 0 and self.filter == "CD") then
+	if ( time < 0 and ( self.filter == "CD"  or self.filter == "ICD" ) )then
 		local id = self:GetParent().Id;
 		for index, value in ipairs(active[id]) do
 			local spn = GetSpellInfo(value.data.spellID or value.data.slotID)
@@ -85,13 +85,13 @@ end
 ------------------------------------------------------------
 
 local function TooltipOnEnter(self)
-	if (self.spellID) then -- coz slot ID...
+--	if (self.spellID) then -- coz slot ID... need to work on that soon : creating LUA error when mouseover a trinket tooltip
 		GameTooltip:ClearLines()
 		GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
 		GameTooltip:AddLine(GetSpellInfo(self.spellID), 1, 1, 1, 1, 1, 1)
 		GameTooltip:AddLine("ID : "..self.spellID, .6, .6, .6, .6, .6, .6)
 		GameTooltip:Show()
-	end
+--	end
 end
 
 local function TooltipOnLeave(self)
@@ -224,11 +224,13 @@ function Update(self)
 					bar.spellname:SetJustifyH("LEFT");
 				end
 			end
+			
 			if (C.general.tooltip) then
 				bar:EnableMouse(true)
 				bar:SetScript("OnEnter", TooltipOnEnter)
 				bar:SetScript("OnLeave", TooltipOnLeave)
 			end
+			
 			tinsert(bars[id], bar);
 		end
 		
@@ -254,8 +256,8 @@ function Update(self)
 
 		if (value.duration > 0) then
 			if (self.Mode == "ICON") then
-				CooldownFrame_SetTimer(bar.cooldown, value.data.filter == "CD" and value.expirationTime or value.expirationTime-value.duration, value.duration, 1);
-				if (value.data.filter == "CD") then
+				CooldownFrame_SetTimer(bar.cooldown, ( value.data.filter == "CD" or value.data.filter == "ICD" ) and value.expirationTime or value.expirationTime - value.duration, value.duration, 1);
+				if (value.data.filter == "CD" or value.data.filter == "ICD" ) then
 					bar.expirationTime = value.expirationTime;
 					bar.duration = value.duration;
 					bar.filter = value.data.filter;
@@ -292,17 +294,18 @@ end
 local function OnEvent(self, event, ...)
 	local unit = ...;
 	if ( ( unit == "target" or unit == "player" or unit == "pet" or unit == "focus" ) or event == "PLAYER_TARGET_CHANGED" or event == "PLAYER_ENTERING_WORLD" or event == "SPELL_UPDATE_COOLDOWN" ) then
-		local data, name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, start, enabled, slotLink, spn, spid;
+--		local data, name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, start, enabled, slotLink, spn, spid;
+		local data, name, icon, count, duration, expirationTime, caster, start, enabled, slotLink, spn;
 		local id = self.Id;
 		for i=1, #Filger_Spells[class][id], 1 do
 			data = Filger_Spells[class][id][i];
 			if (data.filter == "BUFF") then
 				spn = GetSpellInfo( data.spellID )
-				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = FilgerUnitBuff(data.unitId, data.spellID, spn, data.absID);
+				name, _, icon, count, _, duration, expirationTime, caster, _, _, _ = FilgerUnitBuff(data.unitId, data.spellID, spn, data.absID);
 			elseif (data.filter == "DEBUFF") then
 				spn = GetSpellInfo( data.spellID )
-				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = FilgerUnitDebuff(data.unitId, data.spellID, spn, data.absID);
-			else
+				name, _, icon, count, _, duration, expirationTime, caster, _, _, _ = FilgerUnitDebuff(data.unitId, data.spellID, spn, data.absID);
+			elseif (data.filter == "CD") then
 				if (data.spellID) then
 					spn = GetSpellInfo(data.spellID)
 					start, duration, enabled = GetSpellCooldown(spn);
@@ -317,21 +320,58 @@ local function OnEvent(self, event, ...)
 						start, duration, enabled = GetInventoryItemCooldown("player", data.slotID);
 					end
 				end
-				spid = 0;
 				count = 0;
 				caster = "all";
+			elseif ( data.filter == "ICD" ) then
+				if ( data.trigger == "BUFF" ) then
+					spn = GetSpellInfo( data.spellID )
+					name, _, icon, _, _, _, _, _, _, _, _ = FilgerUnitBuff("player", data.spellID, spn, data.absID);
+				elseif (data.trigger == "DEBUFF") then
+					spn = GetSpellInfo( data.spellID )
+					name, _, icon, _, _, _, _, _, _, _, _ = FilgerUnitDebuff("player", data.spellID, spn, data.absID);
+				end
+				if ( data.slotID ) then
+					slotLink = GetInventoryItemLink("player", data.slotID)
+					name, _, _, _, _, _, _, _, _, icon = GetItemInfo(slotLink)
+					spn = name
+				end
+				start = GetTime()
+				duration = data.duration
+				caster = "all"
+				count = 0
+				if ( name ) then
+					enabled = 1
+				end
 			end
+			
 			if (not active[id]) then
 				active[id] = {};
 			end
-			for index, value in ipairs(active[id]) do
-				if (data.spellID == value.data.spellID) then
-					tremove(active[id], index);
-					break;
+
+			-- remove existing and insert if needed
+			local toInsert = true -- by default, insert in active
+			if ( data.filter == "ICD" ) then
+				-- Don't insert if an ICD already exists
+				for index, value in ipairs(active[id]) do
+					if ( data.spellID == value.data.spellID and value.data.filter == "ICD" ) then
+						toInsert = false
+						break
+					end
+				end
+			else
+				-- Remove existing non-ICD
+				for index, value in ipairs(active[id]) do
+					if (data.spellID == value.data.spellID and value.data.filter ~= "ICD" ) then
+						tremove(active[id], index)
+						--print("#active["..id.."]"..(#active[id]))
+					end
 				end
 			end
-			if (( name and ( data.caster ~= 1 and ( caster == data.caster or data.caster == "all" ))) or ( ( enabled or 0 ) > 0 and ( duration or 0 ) > 1.5 ) ) then
-				table.insert(active[id], { data = data, icon = icon, count = count, duration = duration, expirationTime = expirationTime or start });
+
+			if ( toInsert ) then
+				if (( name and ( data.caster ~= 1 and ( caster == data.caster or data.caster == "all" ))) or ( ( enabled or 0 ) > 0 and ( duration or 0 ) > 1.5 ) ) then
+					table.insert(active[id], { data = data, icon = icon, count = count, duration = duration, expirationTime = expirationTime or start });
+				end
 			end
 		end
 		Update(self);

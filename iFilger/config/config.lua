@@ -228,6 +228,8 @@ C["Filger_Spells"] = {
 			{ spellID = 12472, size = 37, filter = "CD" }, 
 			-- Combustion -- since 4T13
 			{ spellID = 11129, size = 37, filter = "CD" }, 
+			-- Cauterize
+			{ spellID = 87023, size = 37, filter = "ICD", trigger = "DEBUFF", duration = 60 },
 		},	
 		{
 			Name = "Buffs and Debuffs",
@@ -1090,7 +1092,6 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Buffs and Debuffs",
-
 			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
@@ -1853,7 +1854,27 @@ C["Filger_Spells"] = {
 			{ spellID = 69070, size = 37, filter = "CD" }, 
 			-- Escape Artist
 			{ spellID = 20589, size = 37, filter = "CD" }, 
-		}
+		},
+		{
+			Name = "Cooldown", -- (ICD testing)
+			Enable = true,
+			Direction = "UP",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+			Merge = true,
+			BarWidth = 150,
+			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
+
+			-- ICD -- (test)
+			-- Velocity
+			{ spellID = 109789, size = 37, filter = "ICD", trigger = "BUFF", duration = 110 }, 
+			-- Lightweave
+			{ spellID = 75170, size = 37, filter = "ICD", trigger = "BUFF", duration = 45 },
+			-- Power Torrent
+			{ spellID = 74241, size = 37, filter = "ICD", trigger = "BUFF", duration = 45 },
+--			{ spellID = 74241, trigger = "BUFF", size = 37, duration = 45, slotID = 16, filter = "ICD" }, -- if slotID not specified, spellID is used as icon
+		},
 	},
 	["PVP"] = {
 		{

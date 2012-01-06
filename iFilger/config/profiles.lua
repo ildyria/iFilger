@@ -13,14 +13,11 @@ end
 -- Name need to be case sensitive
 ----------------------------------------------------------------------------
 
-if I.myname == "Tukz" then
-	-- yeah my default config is not really like default tukui.
-end
-
 if I.myname == "Ildyria" then
 	C.general.cleverzone = true
 	C.general.tooltip = false
-	-- yeah my default config is not really like default tukui.
+	C["Filger_Spells"]["PVP"][3].Enable = false -- disable ICD
+	-- yeah my default config is not really like default iFilger.
 end
 
 if I.myname == "Nâmi" then
