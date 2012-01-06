@@ -160,7 +160,7 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
 			
-			{ spellID = 73975, size = 60, unitId = "target", caster = "player", filter = "DEBUFF" }, -- Necrotic Strike
+			{ spellID = 73975, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, -- Necrotic Strike
 			{ spellID = 59052, size = 37, unitId = "player", caster = "all", filter = "BUFF" }, --Freezing Fog
 			{ spellID = 49509, size = 37, unitId = "player", caster = "all", filter = "BUFF" }, --Scent of Blood
 			{ spellID = 55233, size = 37, unitId = "player", caster = "all", filter = "BUFF" }, --Vampiric Blood
@@ -193,7 +193,7 @@ C["Filger_Spells"] = {
 			-- Killing Machine
 			{ spellID = 51128, size = 60, unitId = "player", caster = "all", filter = "BUFF" }, 
 			-- Dark Succor
-			{ spellID = 101568, size = 47, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 101568, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 
 		},
 	},
@@ -1478,9 +1478,9 @@ C["Filger_Spells"] = {
 			-- Inner Rage
 			{ spellID = 1134, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Battle trance
---			{ spellID = 85742, size = 47, unitId = "player", caster = "player", filter = "BUFF" },
+--			{ spellID = 85742, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Incite
-			{ spellID = 86627, size = 47, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 86627, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Debuffs",
@@ -1540,17 +1540,17 @@ C["Filger_Spells"] = {
 			-- Throwdown
 			{ spellID = 85388, size = 37, filter = "CD" },
 			-- Intercept
-			{ spellID = 20252, size = 65, filter = "CD" },
+			{ spellID = 20252, size = 37, filter = "CD" },
 			-- Berserker rage
-			{ spellID = 18499, size = 65, filter = "CD" },  
+			{ spellID = 18499, size = 37, filter = "CD" },  
 			-- Last Stand
-			{ spellID = 12975, size = 65, filter = "CD" },	
+			{ spellID = 12975, size = 37, filter = "CD" },	
 			-- Taunt
-			{ spellID = 355, size = 65, filter = "CD" },	
+			{ spellID = 355, size = 37, filter = "CD" },	
 			-- Commanding Shout
-			{ spellID = 469, size = 65, filter = "CD" },	
+			{ spellID = 469, size = 37, filter = "CD" },	
 			-- Heroic Leap	  
-			{ spellID = 6544, size = 65, filter = "CD" },   
+			{ spellID = 6544, size = 37, filter = "CD" },   
 		},
 	},		
 -----------------------------------------------------------------------------------------------------------------------	

@@ -682,7 +682,7 @@ local function moving()
 					end
 				end
 				table.insert(active[i], { data = data, icon = spellIcon, count = 9, duration = 0, expirationTime = 0 });
-				if (j > 5) then 
+				if (j > 3) then 
 					break;
 				end
 			end
