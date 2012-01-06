@@ -22,7 +22,7 @@ local time, Update;
 
 
 local function OnUpdate(self, elapsed)
-	time = ( self.filter == "CD" or self.filter == "ICD" ) and ( self.expirationTime + self.duration-GetTime() ) or ( self.expirationTime - GetTime() );
+	time = ( self.filter == "CD" or self.filter == "ICD" ) and ( self.expirationTime + self.duration - GetTime() ) or ( self.expirationTime - GetTime() );
 	if (self:GetParent().Mode == "BAR") then
 		self.statusbar:SetValue(time);
 		if time <= 60 then
@@ -308,11 +308,9 @@ local function OnEvent(self, event, ...)
 			data = Filger_Spells[class][id][i];
 			if (data.filter == "BUFF") then
 				spn = GetSpellInfo( data.spellID )
---				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = FilgerUnitBuff(data.unitId, data.spellID, spn, data.absID);
 				name, _, icon, count, _, duration, expirationTime, caster, _, _, _ = FilgerUnitBuff(data.unitId, data.spellID, spn, data.absID);
 			elseif (data.filter == "DEBUFF") then
 				spn = GetSpellInfo( data.spellID )
---				name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, _, spid = FilgerUnitDebuff(data.unitId, data.spellID, spn, data.absID);
 				name, _, icon, count, _, duration, expirationTime, caster, _, _, _ = FilgerUnitDebuff(data.unitId, data.spellID, spn, data.absID);
 			elseif (data.filter == "CD") then
 				if (data.spellID) then
@@ -329,16 +327,15 @@ local function OnEvent(self, event, ...)
 						start, duration, enabled = GetInventoryItemCooldown("player", data.slotID);
 					end
 				end
---				spid = 0;
 				count = 0;
 				caster = "all";
 			elseif ( data.filter == "ICD" ) then
 				if ( data.trigger == "BUFF" ) then
-					spn = GetSpellInfo(data.spellID)
-					name, _, icon = FilgerUnitBuff("player", data.spellID, spn, data.absID)
-				elseif ( data.trigger == "DEBUFF" ) then
-					spn = GetSpellInfo(data.spellID)
-					name, _, icon = UnitDebuff("player", data.spellID, spn, data.absID)
+					spn = GetSpellInfo( data.spellID )
+					name, _, icon, _, _, _, _, _, _, _, _ = FilgerUnitBuff("player", data.spellID, spn, data.absID);
+				elseif (data.trigger == "DEBUFF") then
+					spn = GetSpellInfo( data.spellID )
+					name, _, icon, _, _, _, _, _, _, _, _ = FilgerUnitDebuff("player", data.spellID, spn, data.absID);
 				end
 				if ( data.slotID ) then
 					slotLink = GetInventoryItemLink("player", data.slotID)
@@ -349,7 +346,7 @@ local function OnEvent(self, event, ...)
 				duration = data.duration
 				caster = "all"
 				count = 0
-				if ( spn ) then
+				if ( name ) then
 					enabled = 1
 				end
 			end

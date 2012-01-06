@@ -16,6 +16,7 @@ end
 if I.myname == "Ildyria" then
 	C.Filger.cleverzone = true
 	C.Filger.tooltip = false
+	C["Filger_Spells"]["PVP"][3].Enable = false -- disable ICD
 	-- yeah my default config is not really like default iFilger.
 end
 
