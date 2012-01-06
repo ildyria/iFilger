@@ -548,6 +548,8 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "TOP", "iFilgerProcs", -0, -23 },
 
+			-- Temporal Ruin (4set13 bonus)
+			{ spellID = 105786, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- 4set11 bonus
 			{ spellID = 89937, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Empowered Imp
@@ -676,6 +678,7 @@ C["Filger_Spells"] = {
 			Alpha = 1,
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 0, 22 },
+
 			-- Demon Soul
 			{ spellID = 77801, size = 33, filter = "CD" },
 			-- Infernal

@@ -350,7 +350,7 @@ local function OnEvent(self, event, ...)
 					enabled = 1
 				end
 			end
-
+			
 			if (not active[id]) then
 				active[id] = {};
 			end
