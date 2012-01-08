@@ -6,7 +6,7 @@ p. iFilger is a very minimal buff/debuff tracking addon that will allow you to t
 
 p. Buffs/debuffs/cooldowns can be displayed as both bars and icons, and stack sizes and durations will be shown.
 
-p. Only the buffs/debuffs/cooldowns you want will be displayed, the addon uses a whitelist system and you have to tell it exactly what you want it to show. 
+p. Only the buffs/debuffs/cooldowns you want will be displayed, the addon uses a white-list system and you have to tell it exactly what you want it to show. 
 
 p. The default config is VERY bar/icon spammy, you'll probably want to go through and comment out a bunch of stuff for a usable setup.
 
@@ -18,7 +18,7 @@ p. "Latest Version":https://github.com/ildyria/iFilger/zipball/master
 
 h3. Installation
 
-p. Download the zip file and unzip it. You will find the README, a folder named iFilger and a folder named Tukui_iFilger. Copy both folders (iFilger, not ildyria-iFilger-somerandomnumbers) into you World of Warcraft\Interface\AddOns\ folder.
+p. Download the zip file and unzip it. You will find the README, a folder named *iFilger* and a folder named *Tukui_iFilger*. Copy both folders (iFilger, not -ildyria-iFilger-somerandomnumbers-) into you World of Warcraft\Interface\AddOns\ folder.
 
 p. Tukui_iFilger is for those who already have Tukui (dependant version).
 iFilger is for the one who do not have Tukui (stand alone version).
@@ -28,6 +28,7 @@ p. Launch the game and enjoy !
 
 h3. Screenshots
 
+p. In configuration :
 "Mage":http://wisdom.biv.free.fr/WoW/Mage.jpg
 "Hunter":http://wisdom.biv.free.fr/WoW/Hunt.jpg
 "Druid":http://wisdom.biv.free.fr/WoW/druid.jpg
@@ -39,15 +40,20 @@ h3. Screenshots
 "Paladin":http://wisdom.biv.free.fr/WoW/Paladin.jpg
 "Warrior":http://wisdom.biv.free.fr/WoW/War.jpg
 
+p. In real situation :
+"Getting perfect by a rogue":http://i40.servimg.com/u/f40/11/00/34/63/wowscr29.jpg
+"Some test on Training Dummys (full procs/buffs)":http://i40.servimg.com/u/f40/11/00/34/63/wowscr10.jpg
+
 h3. Configuration and moving bars
 
 p. All configuration must be done by directly editing config/config.lua.
 
-p. A guide can be found here : http://www.tukui.org/forums/topic.php?id=19087
+p. A guide can be found "here":http://www.tukui.org/forums/topic.php?id=19087 .
 
 p. Moving the bars
-bq.To move buffs, use /mifilger .
-To reset buff positions, use /rifilger
+
+@	To move buffs, use /mifilger .
+	To reset buff positions, use /rifilger@
 
 h3. Credits
 
