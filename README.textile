@@ -39,7 +39,7 @@ p. A guide can be found "here":http://www.tukui.org/forums/topic.php?id=19087 .
 p. Moving the bars
 
 <pre>
-	To move buffs, use /mifilger .
+	To move buffs, use /mifilger
 	To reset buff positions, use /rifilger
 </pre>
 
@@ -63,7 +63,7 @@ p. In real situation :
 
 h3. Credits
 
-p. Elv, Tukz, Jasje, Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, FourOne, mTx, Varuljin 
+p. "Elv":https://github.com/Elv22 , "Tukz":https://github.com/tukz , "Jasje":https://github.com/Jasje , "Nils Ruesch":http://blog.shantalya.de , "Shestak":https://github.com/Shestak , "Affli":https://github.com/affli , "Garagar":https://github.com/budha, hidekki , Sapz , "Asphyxia":https://github.com/Asphyxia , "FourOne":https://github.com/FourOne , "mTx":https://github.com/mTx87 , "Varuljin":https://github.com/varuljin ,"SinaC":https://github.com/SinaC 
 
 h3. What's next ? 
 
