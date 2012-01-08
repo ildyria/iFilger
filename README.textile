@@ -8,7 +8,7 @@ h3. About
 
 p. iFilger is a very minimal buff/debuff tracking addon that will allow you to track buffs/debuffs on yourself, target, pets, focus, etc, and also can be used to track cooldowns.
 
-p. Buffs/debuffs/cooldowns can be displayed as both bars and icons, and stack sizes and durations will be shown.
+p. Buffs/debuffs/cooldowns/internal-cooldown can be displayed as both bars and icons, and stack sizes and durations will be shown.
 
 p. Only the buffs/debuffs/cooldowns you want will be displayed, the addon uses a white-list system and you have to tell it exactly what you want it to show. 
 
@@ -30,6 +30,19 @@ iFilger is for the one who do not have Tukui (stand alone version).
 
 p. Launch the game and enjoy !
 
+h3. Configuration and moving bars
+
+p. All configuration must be done by directly editing config/config.lua.
+
+p. A guide can be found "here":http://www.tukui.org/forums/topic.php?id=19087 .
+
+p. Moving the bars
+
+<pre>
+	To move buffs, use /mifilger .
+	To reset buff positions, use /rifilger
+</pre>
+
 h3. Screenshots
 
 p. In configuration :
@@ -47,19 +60,6 @@ p. In configuration :
 p. In real situation :
 "Getting perfect by a rogue":http://i40.servimg.com/u/f40/11/00/34/63/wowscr29.jpg
 "Some test on Training Dummys (full procs/buffs)":http://i40.servimg.com/u/f40/11/00/34/63/wowscr10.jpg
-
-h3. Configuration and moving bars
-
-p. All configuration must be done by directly editing config/config.lua.
-
-p. A guide can be found "here":http://www.tukui.org/forums/topic.php?id=19087 .
-
-p. Moving the bars
-
-<pre>
-	To move buffs, use /mifilger .
-	To reset buff positions, use /rifilger
-</pre>
 
 h3. Credits
 
