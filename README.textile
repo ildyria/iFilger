@@ -1,5 +1,9 @@
 h2. iFilger
 
+h3. Language
+
+p. Vous pourrez trouver un guide en fran&#231;ais "ici":http://wisdom.biv.free.fr/WoW/iFilger.html
+
 h3. About
 
 p. iFilger is a very minimal buff/debuff tracking addon that will allow you to track buffs/debuffs on yourself, target, pets, focus, etc, and also can be used to track cooldowns.
@@ -18,7 +22,7 @@ p. "Latest Version":https://github.com/ildyria/iFilger/zipball/master
 
 h3. Installation
 
-p. Download the zip file and unzip it. You will find the README, a folder named *iFilger* and a folder named *Tukui_iFilger*. Copy both folders (iFilger, not -ildyria-iFilger-somerandomnumbers-) into you World of Warcraft\Interface\AddOns\ folder.
+p. Download the zip file and unzip it. You will find the README, a folder named *iFilger* and a folder named *Tukui_iFilger*. Copy both folders (iFilger, __not ildyria-iFilger-somerandomnumbers__) into you World of Warcraft\Interface\AddOns\ folder.
 
 p. Tukui_iFilger is for those who already have Tukui (dependant version).
 iFilger is for the one who do not have Tukui (stand alone version).
@@ -56,10 +60,6 @@ p. Moving the bars
 	To move buffs, use /mifilger .
 	To reset buff positions, use /rifilger
 </pre>
-
-h3. En français
-
-p. Vous pourrez trouver un guide en français "ici":http://wisdom.biv.free.fr/WoW/iFilger.html
 
 h3. Credits
 
