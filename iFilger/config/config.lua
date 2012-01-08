@@ -946,6 +946,8 @@ C["Filger_Spells"] = {
 			{ spellID = 3045, size = 37, filter = "CD" },
 			-- Feign Death
 			{ spellID = 5384, size = 37, filter = "CD" },
+			-- Bestial Wrath
+			{ spellID = 19574, size = 37, filter = "CD" },
 		},
 		{
 			Name = "Hunter Procs",
@@ -975,7 +977,9 @@ C["Filger_Spells"] = {
 			{ spellID = 34837, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Call of the Wild / Ruf der Wildnis
 			{ spellID = 53434, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
-			},
+			-- The Beast Within
+			{ spellID = 34692, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+		},
 		{
 			Name = "Buffs and Debuffs",
 			Enable = true,
