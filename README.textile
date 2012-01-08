@@ -52,8 +52,14 @@ p. A guide can be found "here":http://www.tukui.org/forums/topic.php?id=19087 .
 
 p. Moving the bars
 
-@	To move buffs, use /mifilger .
-	To reset buff positions, use /rifilger@
+<pre>
+	To move buffs, use /mifilger .
+	To reset buff positions, use /rifilger
+</pre>
+
+h3. En français
+
+p. Vous pourrez trouver un guide en français "ici":http://wisdom.biv.free.fr/WoW/iFilger.html
 
 h3. Credits
 
