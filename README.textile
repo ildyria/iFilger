@@ -1,6 +1,7 @@
 h2. iFilger
 
 h3. About
+
 p. iFilger is a very minimal buff/debuff tracking addon that will allow you to track buffs/debuffs on yourself, target, pets, focus, etc, and also can be used to track cooldowns.
 
 p. Buffs/debuffs/cooldowns can be displayed as both bars and icons, and stack sizes and durations will be shown.
@@ -12,9 +13,11 @@ p. The default config is VERY bar/icon spammy, you'll probably want to go throug
 h3. Download
 
 h4. World of Warcraft (4.3 live)
+
 p. "Latest Version":https://github.com/ildyria/iFilger/zipball/master
 
 h3. Installation
+
 p. Download the zip file and unzip it. You will find the README, a folder named iFilger and a folder named Tukui_iFilger. Copy both folders (iFilger, not ildyria-iFilger-somerandomnumbers) into you World of Warcraft\Interface\AddOns\ folder.
 
 p. Tukui_iFilger is for those who already have Tukui (dependant version).
@@ -37,6 +40,7 @@ h3. Screenshots
 "Warrior":http://wisdom.biv.free.fr/WoW/War.jpg
 
 h3. Configuration and moving bars
+
 p. All configuration must be done by directly editing config/config.lua.
 
 p. A guide can be found here : http://www.tukui.org/forums/topic.php?id=19087
@@ -46,11 +50,14 @@ bq.To move buffs, use /mifilger .
 To reset buff positions, use /rifilger
 
 h3. Credits
+
 p. Elv, Tukz, Jasje, Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, FourOne, mTx, Varuljin 
 
 h3. What's next ? 
+
 p. I've in mind to make config a little more easier coz now, i need to keep update both version (stand alone and not).
 I may try to make iFilger_config seperate to the addon so it doesn't depend on which version you want to use (stand alone or not).
 
 h3. WARNING
+
 p. It seams the memory used by the addon still increase slowly during long fight and come back to normal value at the end. There may be a small memory leak and i can't find that b**** again >_<
