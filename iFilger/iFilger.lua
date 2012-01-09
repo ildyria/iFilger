@@ -85,13 +85,13 @@ end
 ------------------------------------------------------------
 
 local function TooltipOnEnter(self)
---	if (self.spellID) then -- coz slot ID... need to work on that soon : creating LUA error when mouseover a trinket tooltip
+	if (self.spellID > 20) then -- coz slot ID... need to work on that soon : creating LUA error when mouseover a trinket tooltip
 		GameTooltip:ClearLines()
 		GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
 		GameTooltip:AddLine(GetSpellInfo(self.spellID), 1, 1, 1, 1, 1, 1)
 		GameTooltip:AddLine("ID : "..self.spellID, .6, .6, .6, .6, .6, .6)
 		GameTooltip:Show()
---	end
+	end
 end
 
 local function TooltipOnLeave(self)
@@ -641,7 +641,7 @@ local function moving()
 	-- don't allow moving while in combat
 	if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
 	
-	local data, frame;
+	local data, frame, name, spellIcon, slotLink;
 	for i = 1, #Filger_Spells[class], 1 do
 		data = Filger_Spells[class][i];
 		
@@ -658,7 +658,7 @@ local function moving()
 		frame:SetWidth(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 100);
 		frame:SetHeight(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 20);
 		frame:SetPoint(unpack(data.setPoint));
-
+		
 		if (enable) then
 			for j = 1, #Filger_Spells[class][i], 1 do
 				data = Filger_Spells[class][i][j];

@@ -960,13 +960,13 @@ C["Filger_Spells"] = {
 			{ spellID = 3045, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Sic'Em
 			{ spellID = 89388, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Ready, Set, Aim / Auf die Plätze, Fertig, Zielen
+			-- Ready, Set, Aim
 			{ spellID = 82925, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Fire! / Feuer!
 			{ spellID = 82926, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Master Tactician / Meister der Taktik
+			-- Master Tactician
 			{ spellID = 34837, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Call of the Wild / Ruf der Wildnis
+			-- Call of the Wild
 			{ spellID = 53434, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- The Beast Within
 			{ spellID = 34692, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
@@ -987,7 +987,7 @@ C["Filger_Spells"] = {
 			{ spellID = 34490, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Serpent Sting
 			{ spellID = 1978, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Widow Venom / Witwentoxin
+			-- Widow Venom
 			{ spellID = 82654, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Black Arrow
 			{ spellID = 3674, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
@@ -997,7 +997,7 @@ C["Filger_Spells"] = {
 			{ spellID = 1130, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Piercing Shots 
 			{ spellID = 63468, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Sniper Training / Scharfschützenübung
+			-- Sniper Training
 			{ spellID = 64420, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
