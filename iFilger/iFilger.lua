@@ -587,6 +587,13 @@ function I.UpdatesFramesList ()
 					break;
 				end
 			end
+			for j = 1, #Filger_Spells[class][i], 1 do
+				data = Filger_Spells[class][i][j];
+				if (data.unitId == "focus") then
+					frame:RegisterEvent("PLAYER_FOCUS_CHANGED");
+					break;
+				end
+			end
 			frame:RegisterEvent("UNIT_AURA");
 			frame:RegisterEvent("PLAYER_TARGET_CHANGED");
 			frame:RegisterEvent("PLAYER_ENTERING_WORLD");
