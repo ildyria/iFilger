@@ -255,7 +255,7 @@ C["Filger_Spells"] = {
 			-- Living Bomb
 			{ spellID = 44457, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, 
 			-- Ignite
-			{ spellID = 12846, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, 
+			{ spellID = 12604, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" }, 
 			-- Impact
 			{ spellID = 12357, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" }, 
 			-- Combustion

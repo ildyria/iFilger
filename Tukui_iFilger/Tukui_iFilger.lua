@@ -90,13 +90,23 @@ end
 ------------------------------------------------------------
 -- Tooltip functions
 ------------------------------------------------------------
-
 local function TooltipOnEnter(self)
 	if (self.spellID > 20) then -- coz slot ID... need to work on that soon : creating LUA error when mouseover a trinket tooltip
+		local str = "spell:%s"
+		local BadTotems = {
+		[8076] = 8075,
+		[8972] = 8071,
+		[5677] = 5675,
+		}
 		GameTooltip:ClearLines()
 		GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
-		GameTooltip:AddLine(GetSpellInfo(self.spellID), 1, 1, 1, 1, 1, 1)
-		GameTooltip:AddLine("ID : "..self.spellID, .6, .6, .6, .6, .6, .6)
+		if BadTotems[self.spell] then
+			GameTooltip:SetHyperlink(format(str, BadTotems[self.spellID]))
+		else
+			GameTooltip:SetHyperlink(format(str, self.spellID))
+		end
+--		GameTooltip:AddLine(GetSpellInfo(self.spellID), 1, 1, 1, 1, 1, 1)
+--		GameTooltip:AddLine("ID : "..self.spellID, .6, .6, .6, .6, .6, .6)
 		GameTooltip:Show()
 	end
 end
