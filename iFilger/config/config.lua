@@ -617,7 +617,7 @@ C["Filger_Spells"] = {
 			-- Unstable Affliction
 			{ spellID = 30108, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Shadow Embrace
-			{ spellID = 32395, size = 37, unitId = "target", caster = "player", filter = "BUFF" },
+			{ spellID = 32395, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Corruption
 			{ spellID = 172, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Immolate
@@ -1630,6 +1630,8 @@ C["Filger_Spells"] = {
 			-- 359/372/379 4.0
 			-- Pattern of Light (Mandala of Stirring Patterns)
 			{ spellID = 91192, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
+			-- Image of Immortality (Mirror of Broken Images)
+			{ spellID = 92222, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 			-- Dire Magic (Bell of Enraging Resonance)
 			{ spellID = 91007, size = 52, unitId = "player", caster = "all", filter = "BUFF" }, 
 			-- Battle Magic (Stump of Time)
