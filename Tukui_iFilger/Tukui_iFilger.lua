@@ -629,7 +629,7 @@ end
 -- checkzone for cleverzone check
 ------------------------------------------------------------
 
-function checkzone()
+local function checkzone()
 
 	if C["Filger"].cleverzone then
 		-- yeah my default config is not really like default iFilger.

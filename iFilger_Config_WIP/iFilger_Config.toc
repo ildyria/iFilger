@@ -1,0 +1,1 @@
+## Interface: 40300## Author: Ildyria## Notes: Minimal buff/debuff/proc tracking## Credits: Nils Ruesch, FourOne, Jasje, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, mTx, SinaC, Elv, Tukz, Epicgrim## Version: 3.4## Title: |cffC495DDTukui |r|cff1784d1iFilger|r config## Notes: Config files for iFilger / Tukui_iFilger. WIP DO NOT USE.iFilger_Config.xml
