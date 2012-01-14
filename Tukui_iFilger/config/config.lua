@@ -6,7 +6,9 @@ C["Filger"] = {
 }
 
 C["cooldown"].fontsize = 20									--the base font size to use at a scale of 1
---[[
+
+
+--[[ NOT USING ANYMORE. BUFF CONFIG IS DONE IN iFilger_Config/iFilger_Config.lua
 C["Filger_Panels"] = {
 	["MAGE"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },

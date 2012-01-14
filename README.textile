@@ -22,7 +22,7 @@ p. "Latest Version":https://github.com/ildyria/iFilger/zipball/master
 
 h3. Installation
 
-p. Download the zip file and unzip it. You will find the README, a folder named *iFilger* and a folder named *Tukui_iFilger*. Copy both folders (iFilger, +not ildyria-iFilger-somerandomnumbers+) into you World of Warcraft\Interface\AddOns\ folder.
+p. Download the zip file and unzip it. You will find the README, a folder named *iFilger*, a folder named *iFilger_Config* and a folder named *Tukui_iFilger*. Copy the three folders (iFilger, iFilger_Config and Tukui_iFilger +not ildyria-iFilger-somerandomnumbers+) into you World of Warcraft\Interface\AddOns\ folder.
 
 p. Tukui_iFilger is for those who already have Tukui (dependant version).
 iFilger is for the one who do not have Tukui (stand alone version).

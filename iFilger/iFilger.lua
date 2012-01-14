@@ -4,8 +4,14 @@
 ]]
 local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
---local Filger_Spells = C.Filger_Spells;
-local Filger_Spells = iFilgerBuffConfig.Filger_Spells;
+local Filger_Spells;
+if iFilgerBuffConfig then 
+	Filger_Spells = iFilgerBuffConfig["Filger_Spells"]
+	C.Filger_Spells = nil
+	C.Filger_Panels = nil
+else
+	Filger_Spells = C.Filger_Spells
+end
 
 local class = select(2, UnitClass("player"));
 local classcolor = RAID_CLASS_COLORS[class];

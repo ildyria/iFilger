@@ -38,8 +38,12 @@ end
 -- Filger FRAMES
 ---------------------------------
 
---local Filger_Panels = C["Filger_Panels"]
-local Filger_Panels = iFilgerBuffConfig["Filger_Panels"]
+local Filger_Panels;
+if iFilgerBuffConfig then 
+	Filger_Panels = iFilgerBuffConfig["Filger_Panels"]
+else
+	Filger_Panels = C.Filger_Panels
+end
 
 -- load all of them even if we don't use some of them (like pvp in pve & so...)
 if (Filger_Panels["ALL"]) then
