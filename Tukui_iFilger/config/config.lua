@@ -6,7 +6,7 @@ C["Filger"] = {
 }
 
 C["cooldown"].fontsize = 20									--the base font size to use at a scale of 1
-
+--[[
 C["Filger_Panels"] = {
 	["MAGE"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
@@ -1953,6 +1953,8 @@ C["Filger_Spells"] = {
 			{ spellID = 12042, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Icy Veins
 			{ spellID = 12472, size = 72, unitId = "target", caster = "all", filter = "BUFF" },			
+			-- Hot Streak
+			{ spellID = 48108, size = 72, unitId = "target", caster = "all", filter = "BUFF" },			
 			-- Impact
 --			{ spellID = 64343, size = 72, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Fingers Of Frost
@@ -2641,3 +2643,4 @@ C["Filger_Spells"] = {
 		},
 	},
 }
+]]

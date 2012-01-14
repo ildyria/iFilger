@@ -1,1 +1,0 @@
-local C = {}iFilgerBuffConfig = Cprint('iFilgerBuffConfig loaded')

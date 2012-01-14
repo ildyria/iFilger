@@ -5,6 +5,7 @@
 ## Editor: FourOne, Jasje, Ildyria
 ## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, mTx, SinaC
 ## Version: 4.3
+## RequiredDeps: iFilger_Config
 ## Notes: Power Aura Like, skinned for Tukui / ElvUI.
 
 iFilger.xml

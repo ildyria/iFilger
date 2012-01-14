@@ -16,12 +16,12 @@ end
 if I.myname == "Ildyria" then
 	C.Filger.cleverzone = true
 --	C.Filger.tooltip = false
-	C["Filger_Spells"]["ALL"][3].Enable = false -- disable ICD
+	iFilgerBuffConfig["Filger_Spells"]["ALL"][3].Enable = false -- disable ICD
 	-- yeah my default config is not really like default iFilger.
 end
 
 if I.myname == "Nâmi" then
-	for index, value in ipairs(C["Filger_Spells"]["PVP"]) do
+	for index, value in ipairs(iFilgerBuffConfig["Filger_Spells"]["PVP"]) do
 		value.Enable = false
 	end
 end

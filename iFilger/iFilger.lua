@@ -4,7 +4,8 @@
 ]]
 local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
-local Filger_Spells = C.Filger_Spells;
+--local Filger_Spells = C.Filger_Spells;
+local Filger_Spells = iFilgerBuffConfig.Filger_Spells;
 
 local class = select(2, UnitClass("player"));
 local classcolor = RAID_CLASS_COLORS[class];
@@ -694,7 +695,7 @@ local function moving()
 						name, _, _, _, _, _, _, _, _, spellIcon = GetItemInfo(slotLink);
 					end
 				end
-				table.insert(active[i], { data = data, icon = spellIcon, count = 9, duration = 0, expirationTime = 0 });
+				table.insert(active[i], { data = data, icon = spellIcon, count = 9, duration = 0, expirationTime = 0, spid = data.spellID or data.slotID });
 				if (j > 3) then 
 					break;
 				end

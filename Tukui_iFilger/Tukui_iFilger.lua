@@ -11,7 +11,8 @@ if isiFilgerenabled == 1 then
 	return
 end
 
-local Filger_Spells = C.Filger_Spells;
+--local Filger_Spells = C.Filger_Spells;
+local Filger_Spells = iFilgerBuffConfig.Filger_Spells;
 
 local class = select(2, UnitClass("player"));
 local classcolor = RAID_CLASS_COLORS[class];
@@ -701,7 +702,7 @@ local function moving()
 						name, _, _, _, _, _, _, _, _, spellIcon = GetItemInfo(slotLink);
 					end
 				end
-				table.insert(active[i], { data = data, icon = spellIcon, count = 9, duration = 0, expirationTime = 0 });
+				table.insert(active[i], { data = data, icon = spellIcon, count = 9, duration = 0, expirationTime = 0, spid = data.spellID or data.slotID });
 				if (j > 3) then 
 					break;
 				end
@@ -820,9 +821,9 @@ local function senddata()
 
 	I.iFilgerAddIncoming("MEMORY : " .. msg .. ", number of tables " .. primary_size .. " / active : " .. active_memory .. " / bars : " .. bars_memory )
 end
---[[
+
 local iFilgerDebug = CreateFrame("Frame", "iFilger_Debug", UIParent)
 iFilgerDebug:RegisterEvent("UNIT_AURA");
 iFilgerDebug:RegisterEvent("PLAYER_TARGET_CHANGED");
 iFilgerDebug:RegisterEvent("PLAYER_ENTERING_WORLD");
-iFilgerDebug:SetScript("OnEvent", senddata)]]
+iFilgerDebug:SetScript("OnEvent", senddata)

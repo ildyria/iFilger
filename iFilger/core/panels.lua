@@ -38,10 +38,13 @@ end
 -- Filger FRAMES
 ---------------------------------
 
+--local Filger_Panels = C["Filger_Panels"]
+local Filger_Panels = iFilgerBuffConfig["Filger_Panels"]
+
 -- load all of them even if we don't use some of them (like pvp in pve & so...)
-if (C["Filger_Panels"]["ALL"]) then
-	for i = 1, #C["Filger_Panels"]["ALL"], 1 do
-		local panel = C["Filger_Panels"]["ALL"][i];
+if (Filger_Panels["ALL"]) then
+	for i = 1, #Filger_Panels["ALL"], 1 do
+		local panel = Filger_Panels["ALL"][i];
 		I.CreateMover(panel.name, panel.w, panel.h, panel.anchor, panel.x, panel.y, "red", panel.text)
 	end
 end
@@ -52,9 +55,9 @@ end
 -- CLASS FRAMES Filger
 ---------------------------------
 
-if (C["Filger_Panels"][I.myclass]) then
-	for i = 1, #C["Filger_Panels"][I.myclass], 1 do
-		local panel = C["Filger_Panels"][I.myclass][i];
+if (Filger_Panels[I.myclass]) then
+	for i = 1, #Filger_Panels[I.myclass], 1 do
+		local panel = Filger_Panels[I.myclass][i];
 		I.CreateMover(panel.name, panel.w, panel.h, panel.anchor, panel.x, panel.y, "class", panel.text)
 	end
 end
