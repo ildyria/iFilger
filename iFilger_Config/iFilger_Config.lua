@@ -1311,6 +1311,8 @@ C["Filger_Spells"] = {
 			{ spellID = 31842, size = 37, filter = "CD" },
 			-- Aura Mastery
 			{ spellID = 31821, size = 37, filter = "CD" },
+			-- Zealotry
+			{ spellID = 85696, size = 37, filter = "CD" },
 		},	
 		{
 			Name = "Buffs and Debuffs",
