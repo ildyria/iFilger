@@ -2471,11 +2471,13 @@ C["Filger_Spells"] = {
 			{ spellID = 105289, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Ice Tomb
 			{ spellID = 104451, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Ice Lance
+			{ spellID = 107061, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Lightning Storm
 			{ spellID = 105465, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Watery Entrenchment
+			{ spellID = 105259, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 		--Ultraxion
-			-- Heroic Will
-			{ spellID = 106108, size = 47, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Looming Darkness
 			{ spellID = 106498, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Twilight Burst
@@ -2491,14 +2493,30 @@ C["Filger_Spells"] = {
 		--Warmaster Blackhorn
 			-- Twilight Barrage
 			{ spellID = 109204, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Sunder Armor
+			{ spellID = 108043, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Shockwave
+			{ spellID = 108046, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Brutal Strike
+			{ spellID = 107567, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Degeneration
+			{ spellID = 107558, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 		--Spine of Deathwing
 			-- Searing Plasma
 			{ spellID = 105479, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Fiery Grip
 			{ spellID = 105490, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Grasping Tendrils
+			{ spellID = 105563, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 		--Madness of Deathwing
 			-- Shrapnel
 			{ spellID = 109597, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Degenerative Bite
+			{ spellID = 105841, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Blistering heat
+			{ spellID = 105445, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Tetanus
+			{ spellID = 109603, size = 47, unitId = "player", caster = "all", filter = "DEBUFF" },
 		},
 	},
 	["TANKS"] = {
