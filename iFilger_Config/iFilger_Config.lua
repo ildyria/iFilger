@@ -1034,6 +1034,12 @@ C["Filger_Spells"] = {
 			{ spellID = 36554, size = 37, filter = "CD" },
 			-- Shadow Dance
 			{ spellID = 51713, size = 37, filter = "CD" },
+			-- Vendetta
+			{ spellID = 14177, size = 37, filter = "CD" },
+			-- Cold Blood
+			{ spellID = 51713, size = 37, filter = "CD" },
+			-- Vanish
+			{ spellID = 1856, size = 37, filter = "CD" },
 		},
 		{
 			Name = "Buffs and Debuffs",
