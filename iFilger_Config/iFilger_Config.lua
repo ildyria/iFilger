@@ -1195,6 +1195,8 @@ C["Filger_Spells"] = {
 			{ spellID = 974, size = 32, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Riptide
 			{ spellID = 61295, size = 32, unitId = "target", caster = "player", filter = "BUFF" },
+			-- Ancestral Fortitude
+			{ spellID = 16236, size = 32, unitId = "target", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Cooldown",
@@ -1858,7 +1860,7 @@ C["Filger_Spells"] = {
 			{ spellID = 20589, size = 37, filter = "CD" }, 
 		},
 		{
-			Name = "Cooldown", -- (ICD testing)
+			Name = "Cooldown", -- (ICD)
 			Enable = true,
 			Direction = "UP",
 			Interval = 3,
@@ -1869,13 +1871,22 @@ C["Filger_Spells"] = {
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
 			-- ICD -- (test)
-			-- Velocity
-			{ spellID = 109789, size = 37, filter = "ICD", trigger = "BUFF", duration = 110 }, 
+			-- Foul Gift (Foul Gift of the Demon Lord)
+			{ spellID = 102662, size = 37, filter = "ICD", trigger = "BUFF", duration = 45, absID = true }, -- 60 ?
+			-- Indomitable (Indomitable Pride)
+			{ spellID = 108008, size = 37, filter = "ICD", trigger = "BUFF", duration = 60 }, -- not sure of the spellID
+			-- Find Weakness (Creche of the Final Dragon)
+			{ spellID = 109744, size = 37, filter = "ICD", trigger = "BUFF", duration = 110 }, -- 115/120 ?
+			-- Master Tactician (Soulshifter Vortex) / May create problem for hunter... (i hate 'em btw)
+			{ spellID = 109776, size = 37, filter = "ICD", trigger = "BUFF", duration = 110 }, -- 115/120 ?
+			-- Velocity (Starcatcher Compass, )
+			{ spellID = 109789, size = 37, filter = "ICD", trigger = "BUFF", duration = 110 }, -- 115/120 ?
 			-- Lightweave
-			{ spellID = 75170, size = 37, filter = "ICD", trigger = "BUFF", duration = 45 },
+			{ spellID = 75170, size = 37, filter = "ICD", trigger = "BUFF", duration = 45 }, -- 60 ?
 			-- Power Torrent
-			{ spellID = 74241, size = 37, filter = "ICD", trigger = "BUFF", duration = 45 },
---			{ spellID = 74241, trigger = "BUFF", size = 37, duration = 45, slotID = 16, filter = "ICD" }, -- if slotID not specified, spellID is used as icon
+			{ spellID = 74241, size = 37, filter = "ICD", trigger = "BUFF", duration = 45 }, -- 60 ?
+
+--			{ spellID = 74241, size = 37, filter = "ICD", trigger = "BUFF", duration = 45, slotID = 16 }, -- if slotID not specified, spellID is used as icon
 		},
 	},
 	["PVP"] = {
