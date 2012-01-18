@@ -1876,15 +1876,15 @@ C["Filger_Spells"] = {
 			-- Indomitable (Indomitable Pride)
 			{ spellID = 108008, size = 37, filter = "ICD", trigger = "BUFF", duration = 60 }, -- not sure of the spellID
 			-- Find Weakness (Creche of the Final Dragon)
-			{ spellID = 109744, size = 37, filter = "ICD", trigger = "BUFF", duration = 110 }, -- 115/120 ?
+			{ spellID = 109744, size = 37, filter = "ICD", trigger = "BUFF", duration = 115 }, -- guess
 			-- Master Tactician (Soulshifter Vortex) / May create problem for hunter... (i hate 'em btw)
-			{ spellID = 109776, size = 37, filter = "ICD", trigger = "BUFF", duration = 110 }, -- 115/120 ?
-			-- Velocity (Starcatcher Compass, )
-			{ spellID = 109789, size = 37, filter = "ICD", trigger = "BUFF", duration = 110 }, -- 115/120 ?
+			{ spellID = 109776, size = 37, filter = "ICD", trigger = "BUFF", duration = 115 }, -- guess
+			-- Velocity (Starcatcher Compass, Insignia of the Corrupted Mind, Seal of the Seven Signs)
+			{ spellID = 109789, size = 37, filter = "ICD", trigger = "BUFF", duration = 115 }, -- exact (check in game with Proculas, couldn't go below)
 			-- Lightweave
-			{ spellID = 75170, size = 37, filter = "ICD", trigger = "BUFF", duration = 45 }, -- 60 ?
+			{ spellID = 75170, size = 37, filter = "ICD", trigger = "BUFF", duration = 60 }, -- it seems 62 with Proculas but with 30% proc chance, i guess 60. => ~25% uptime => 150k intel bonus instead of 80 for the others professions. :P
 			-- Power Torrent
-			{ spellID = 74241, size = 37, filter = "ICD", trigger = "BUFF", duration = 45 }, -- 60 ?
+			{ spellID = 74241, size = 37, filter = "ICD", trigger = "BUFF", duration = 45 }, -- exact (check in game with Proculas)
 
 --			{ spellID = 74241, size = 37, filter = "ICD", trigger = "BUFF", duration = 45, slotID = 16 }, -- if slotID not specified, spellID is used as icon
 		},
