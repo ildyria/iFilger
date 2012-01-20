@@ -312,23 +312,58 @@ end
 local function OnEvent(self, event, ...)
 	local unit = ...;
 	if ( ( unit == "target" or unit == "player" or unit == "pet" or unit == "focus" ) or event == "PLAYER_TARGET_CHANGED" or event == "PLAYER_ENTERING_WORLD" or event == "SPELL_UPDATE_COOLDOWN" ) then
---		local data, name, rank, icon, count, debuffType, duration, expirationTime, caster, isStealable, start, enabled, slotLink, spn, spid;
 		local data, name, icon, count, duration, expirationTime, caster, start, enabled, slotLink, spn, spid;
 		local id = self.Id;
 		for i=1, #Filger_Spells[class][id], 1 do
+			name, duration, expirationTime, caster, start, enabled = nil, nil, nil, nil, nil, nil; -- cleaning vars...
 			data = Filger_Spells[class][id][i];
 			if (data.filter == "BUFF") then
 				spn = GetSpellInfo( data.spellID )
 				name, _, icon, count, _, duration, expirationTime, caster, _, _, spid = FilgerUnitBuff(data.unitId, data.spellID, spn, data.absID);
+			elseif (data.filter == "IBUFF") then
+				spn, _, icon = GetSpellInfo( data.spellID )
+				name, _, _, count, _, duration, expirationTime, caster, _, _, spid = FilgerUnitBuff(data.unitId, data.spellID, spn, data.absID);
+				if (not name) then
+					name = spn
+					duration = 0
+					count = 0
+					expirationTime = 0
+					caster = "all"
+					spid = data.spellID
+				else
+					name = nil
+				end
 			elseif (data.filter == "DEBUFF") then
 				spn = GetSpellInfo( data.spellID )
 				name, _, icon, count, _, duration, expirationTime, caster, _, _, spid = FilgerUnitDebuff(data.unitId, data.spellID, spn, data.absID);
+			elseif (data.filter == "IDEBUFF" and InCombatLockdown()) then
+				spn, _, icon = GetSpellInfo( data.spellID )
+				name, _, _, count, _, duration, expirationTime, caster, _, _, spid = FilgerUnitDebuff(data.unitId, data.spellID, spn, data.absID);
+				if (not name) then
+					name = spn
+					duration = 0
+					count = 0
+					expirationTime = 0
+					caster = "player"
+					spid = data.spellID
+				elseif(caster ~= "player" and data.caster ~= "all") then
+					name = spn
+					duration = 0
+					count = 0
+					expirationTime = 0
+					caster = "player"
+					spid = data.spellID
+				else
+					name = nil
+					duration = 0
+					expirationTime = 0
+				end
 			elseif (data.filter == "CD") then
 				if (data.spellID) then
 					spn = GetSpellInfo(data.spellID)
 					start, duration, enabled = GetSpellCooldown(spn);
 					name, _, icon = GetSpellInfo(data.spellID);
-					spid = data.spellID
+					spid = data.spellID;
 				else
 					slotLink = GetInventoryItemLink("player", data.slotID);
 					if ( slotLink ) then
@@ -338,14 +373,29 @@ local function OnEvent(self, event, ...)
 						end
 						start, duration, enabled = GetInventoryItemCooldown("player", data.slotID);
 					end
-					spid = data.slotID
+					spid = data.slotID;
 				end
 				count = 0;
 				caster = "all";
+			elseif (data.filter == "ACD" and InCombatLockdown()) then
+				spn = GetSpellInfo(data.spellID);
+				start, duration, enabled = GetSpellCooldown(spn);
+				name, _, icon = GetSpellInfo(data.spellID);
+				spid = data.spellID;
+				local usable, _ = IsUsableSpell(data.spellID);
+				if(not enabled) then
+					name = nil;
+				elseif(enabled == 0 or (start > 0 and duration > 0)) then
+					name = nil;
+				end
+				expirationTime = 0;
+				duration = 0;
+				count = 0;
+				caster = "all";
 			elseif ( data.filter == "ICD" ) then
-				enabled = 0
+				enabled = 0;
 				if ( data.trigger == "BUFF" ) then
-					spn = GetSpellInfo( data.spellID )
+					spn = GetSpellInfo( data.spellID );
 					name, _, icon, _, _, _, _, _, _, _, spid = FilgerUnitBuff("player", data.spellID, spn, data.absID);
 				elseif (data.trigger == "DEBUFF") then
 					spn = GetSpellInfo( data.spellID )
@@ -603,7 +653,7 @@ function I.UpdatesFramesList ()
 			frame:SetPoint(unpack(data.setPoint));
 			for j = 1, #Filger_Spells[class][i], 1 do
 				data = Filger_Spells[class][i][j];
-				if (data.filter == "CD") then
+				if (data.filter == "CD" or data.filter == "ACD") then
 					frame:RegisterEvent("SPELL_UPDATE_COOLDOWN");
 					break;
 				end
@@ -685,7 +735,6 @@ local function moving()
 		frame.setPoint = data.setPoint or "CENTER";
 		frame:SetWidth(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 100);
 		frame:SetHeight(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 20);
-		frame:SetPoint(unpack(data.setPoint));
 		
 		if (enable) then
 			for j = 1, #Filger_Spells[class][i], 1 do

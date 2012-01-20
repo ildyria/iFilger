@@ -6,6 +6,7 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
 		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
 		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerMageInvertAura", w = 200, h = 20, anchor = "BOTTOM", x = 0, y = 30, text = "Invert Auras/CD" },
 	},
 	["DEATHKNIGHT"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
@@ -290,6 +291,23 @@ C["Filger_Spells"] = {
 			{ spellID = 31642, size = 60, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Cauterize	
 			{ spellID = 87023, size = 60, unitId = "player", caster = "player", filter = "DEBUFF" },
+		},
+		{
+			Name = "Mage InvertAura",
+			Enable = true, -- i don't want to spam, nor to use it. :)
+			Direction = "HORIZONTAL",
+			Interval = 4,
+			Mode = "ICON",
+			Alpha = 0.5,
+			BarWidth = 150,
+			setPoint = { "BOTTOM", "iFilgerMageInvertAura", 0, 22 },
+			
+			-- Molten Armor
+			{ spellID = 30482, size = 47, unitId = "player", caster = "all", filter = "IBUFF" },
+			-- Combustion
+			{ spellID = 11129, size = 47, caster = "all", filter = "ACD" },
+			-- Living Bomb
+			{ spellID = 44457, size = 47, unitId = "target", caster = "player", filter = "IDEBUFF" }, 
 		},
 		{
 			Name = "Focus",  
