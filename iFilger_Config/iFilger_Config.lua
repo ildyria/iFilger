@@ -294,7 +294,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Mage InvertAura",
-			Enable = true, -- i don't want to spam, nor to use it. :)
+			Enable = false, -- i don't want to spam, nor to use it. :)
 			Direction = "HORIZONTAL",
 			Interval = 4,
 			Mode = "ICON",
