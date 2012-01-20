@@ -1177,6 +1177,9 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "TOP", "iFilgerProcs", -0, -23 },
 
+			
+			-- Tricks of the Trade
+			{ spellID = 57934, size = 37, caster = "all", filter = "ACD" },
 			-- Fury of the Destroyer -- Legendary buff
 			{ spellID = 109949, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
@@ -1889,6 +1892,8 @@ C["Filger_Spells"] = {
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
 			-- ICD -- (test)
+			-- Indomitable (Indomitable Pride)
+			{ spellID = 108008, size = 37, filter = "ICD", trigger = "BUFF", duration = 60 }, -- not sure of the spellID
 			-- Foul Gift (Foul Gift of the Demon Lord)
 			{ spellID = 102662, size = 37, filter = "ICD", trigger = "BUFF", duration = 45, absID = true }, -- 60 ?
 			-- Indomitable (Indomitable Pride)
@@ -1903,6 +1908,8 @@ C["Filger_Spells"] = {
 			{ spellID = 75170, size = 37, filter = "ICD", trigger = "BUFF", duration = 60 }, -- it seems 62 with Proculas but with 30% proc chance, i guess 60. => ~25% uptime => 150k intel bonus instead of 80 for the others professions. :P
 			-- Power Torrent
 			{ spellID = 74241, size = 37, filter = "ICD", trigger = "BUFF", duration = 45 }, -- exact (check in game with Proculas)
+			-- Tricks of the Trade (Thx Rogue)
+			{ spellID = 57934, size = 37, filter = "ICD", trigger = "BUFF", duration = 30 },
 
 --			{ spellID = 74241, size = 37, filter = "ICD", trigger = "BUFF", duration = 45, slotID = 16 }, -- if slotID not specified, spellID is used as icon
 		},
