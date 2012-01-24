@@ -916,6 +916,8 @@ C["Filger_Spells"] = {
 			{ spellID = 58180, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Pounce 
 			{ spellID = 9005, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Demoralizing Roar
+			{ spellID = 99, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
 		{
 			Name = "Focus",
@@ -1218,6 +1220,8 @@ C["Filger_Spells"] = {
 			{ spellID = 61295, size = 32, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Ancestral Fortitude
 			{ spellID = 16236, size = 32, unitId = "target", caster = "player", filter = "BUFF" },
+			-- Hearthliving
+			{ spellID = 51945, size = 32, unitId = "target", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Cooldown",
@@ -1233,10 +1237,32 @@ C["Filger_Spells"] = {
 			{ spellID = 5730, size = 37, filter = "CD" },
 			-- Grounding Totem
 			{ spellID = 8177, size = 37, filter = "CD" },
+			-- Tremor Totem
+			{ spellID = 8143, size = 37, filter = "CD" },
+			-- Spirit Link Totem
+			{ spellID = 98008, size = 37, filter = "CD" },
+			-- Spiritwalker Grace
+			{ spellID = 79206, size = 37, filter = "CD" },
 			-- Unleash Elements
 			{ spellID = 73680, size = 37, filter = "CD" },
 			-- Shamanistic Rage
 			{ spellID = 30823, size = 37, filter = "CD" },
+			-- Mana Tide Totem
+			{ spellID = 16190, size = 37, filter = "CD" },
+			-- Nature's Swiftness
+			{ spellID = 16188, size = 37, filter = "CD" },
+			-- Fire Elemental Totem
+			{ spellID = 2894, size = 37, filter = "CD" },
+			-- Earth Elemental Totem
+			{ spellID = 2062, size = 37, filter = "CD" },
+			-- Bloodlust
+			{ spellID = 2825, size = 37, filter = "CD" },
+			-- Hex
+			{ spellID = 51514, size = 37, filter = "CD" },
+			-- Healing Rain
+			{ spellID = 73920, size = 37, filter = "CD" },
+			-- Unleash Elements
+			{ spellID = 73680, size = 37, filter = "CD" },
 		},
 		{
 			Name = "Shaman Procs",
@@ -1258,9 +1284,14 @@ C["Filger_Spells"] = {
 			{ spellID = 77796, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Unleash Life
 			{ spellID = 73685, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Riptide
+			{ spellID = 61295, size = 60, caster = "all", filter = "ACD" },
+			-- Spirit Link Totem
+			{ spellID = 98008, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Spiritual Stimulus (2T13)
 			{ spellID = 105763, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
-			
+			-- Timewalker (4T13 heal)
+ 			{ spellID = 105877, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Buffs and Debuffs",
@@ -1891,9 +1922,6 @@ C["Filger_Spells"] = {
 			BarWidth = 150,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
-			-- ICD -- (test)
-			-- Indomitable (Indomitable Pride)
-			{ spellID = 108008, size = 37, filter = "ICD", trigger = "BUFF", duration = 60 }, -- not sure of the spellID
 			-- Foul Gift (Foul Gift of the Demon Lord)
 			{ spellID = 102662, size = 37, filter = "ICD", trigger = "BUFF", duration = 45, absID = true }, -- 60 ?
 			-- Indomitable (Indomitable Pride)
