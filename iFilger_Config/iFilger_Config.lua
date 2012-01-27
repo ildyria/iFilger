@@ -2721,16 +2721,22 @@ C["Filger_Spells"] = {
 			
 			-- Demoralizing Shout (war)
 			{ spellID = 1160, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Thunderclap (war)
+			{ spellID = 6343, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Infected Wounds (Druid)
 			{ spellID = 48484, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Frost Fever (Death Knight)
-			{ spellID = 55095, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Demoralizing Roar (Druid)
 			{ spellID = 99, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Curse of Weakness (Warlock)
 			{ spellID = 702, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Frost Fever (Death Knight)
+			{ spellID = 55095, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			 --Blood Plague (Death Knight)
 			{ spellID = 59879, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Vindication (Paladin)
+			{ spellID = 26017, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Judgement of the Just (Paladin)
+			{ spellID = 68055, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 		},
 	},
 }
