@@ -294,7 +294,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Mage InvertAura",
-			Enable = false, -- i don't want to spam, nor to use it. :)
+			Enable = true, -- i don't want to spam, nor to use it. :)
 			Direction = "HORIZONTAL",
 			Interval = 4,
 			Mode = "ICON",
@@ -303,11 +303,11 @@ C["Filger_Spells"] = {
 			setPoint = { "BOTTOM", "iFilgerMageInvertAura", 0, 22 },
 			
 			-- Molten Armor
-			{ spellID = 30482, size = 47, unitId = "player", caster = "all", filter = "IBUFF" },
+			{ spellID = 30482, size = 47, unitId = "player", caster = "all", filter = "IBUFF", incombat = false },
 			-- Combustion
-			{ spellID = 11129, size = 47, caster = "all", filter = "ACD" },
+			{ spellID = 11129, size = 47, caster = "all", filter = "ACD", incombat = false },
 			-- Living Bomb
-			{ spellID = 44457, size = 47, unitId = "target", caster = "player", filter = "IDEBUFF" }, 
+			{ spellID = 44457, size = 47, unitId = "target", caster = "player", filter = "IDEBUFF", incombat = false }, 
 		},
 		{
 			Name = "Focus",  
@@ -912,18 +912,13 @@ C["Filger_Spells"] = {
 			{ spellID = 48506, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Faerie Fire
 			{ spellID = 770, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Infected Wounds
-			{ spellID = 58180, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Pounce 
 			{ spellID = 9005, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Demoralizing Roar
-			{ spellID = 99, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
 		{
 			Name = "Focus",
 			Enable = true,
 			Direction = "LEFT",
---			IconSide = "LEFT",
 			Interval = 4,
 			Alpha = 1,
 			Mode = "ICON",
@@ -1181,7 +1176,7 @@ C["Filger_Spells"] = {
 
 			
 			-- Tricks of the Trade
-			{ spellID = 57934, size = 37, caster = "all", filter = "ACD" },
+			{ spellID = 57934, size = 37, caster = "all", filter = "ACD", incombat = true },
 			-- Fury of the Destroyer -- Legendary buff
 			{ spellID = 109949, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
@@ -1285,7 +1280,7 @@ C["Filger_Spells"] = {
 			-- Unleash Life
 			{ spellID = 73685, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Riptide
-			{ spellID = 61295, size = 60, caster = "all", filter = "ACD" },
+			{ spellID = 61295, size = 60, caster = "all", filter = "ACD", incombat = false },
 			-- Spirit Link Totem
 			{ spellID = 98008, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Spiritual Stimulus (2T13)
@@ -1529,8 +1524,6 @@ C["Filger_Spells"] = {
 			{ spellID = 85730, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Inner Rage
 			{ spellID = 1134, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Battle trance
---			{ spellID = 85742, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Incite
 			{ spellID = 86627, size = 60, unitId = "player", caster = "player", filter = "BUFF" },
 		},
@@ -1554,8 +1547,6 @@ C["Filger_Spells"] = {
 			{ spellID = 6343, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Demoralizing Shout
 			{ spellID = 1160, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Demoralizing Roar
-			{ spellID = 99, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Charge Stun
 			{ spellID = 7922, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Throwdown Stun
@@ -1566,14 +1557,6 @@ C["Filger_Spells"] = {
 			{ spellID = 23694, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Expose Armor (Rogue)
 			{ spellID = 8647, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Infected Wounds (Druid)
-			{ spellID = 48484, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Frost Fever (Death Knight)
-			{ spellID = 55095, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Demoralizing Roar (Druid)
-			{ spellID = 99, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Curse of Weakness (Warlock)
-			{ spellID = 702, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Colossus Smash
 			{ spellID = 86346, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
@@ -2723,6 +2706,29 @@ C["Filger_Spells"] = {
 			{ spellID = 55233, size = 47, unitId = "focus", caster = "all", filter = "BUFF" }, 
 			--Lichborne
 			{ spellID = 49039, size = 47, unitId = "focus", caster = "all", filter = "BUFF" }, 
+		},
+		{
+			Name = "Tanks Boss Debuff",
+			Enable = true,
+			Direction = "LEFT",
+			Interval = 4,
+			Mode = "ICON",
+			BarWidth = 150,			
+			Alpha = 1,
+			setPoint = { "BOTTOMRIGHT", "iFilgerTanksCDs", 0, 22 },
+			
+			-- Demoralizing Shout (war)
+			{ spellID = 1160, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Infected Wounds (Druid)
+			{ spellID = 48484, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Frost Fever (Death Knight)
+			{ spellID = 55095, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Demoralizing Roar (Druid)
+			{ spellID = 99, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Curse of Weakness (Warlock)
+			{ spellID = 702, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			 --Blood Plague (Death Knight)
+			{ spellID = 59879, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
 	},
 }

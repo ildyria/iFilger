@@ -327,7 +327,7 @@ local function OnEvent(self, event, ...)
 			if (data.filter == "BUFF") then
 				spn = GetSpellInfo( data.spellID )
 				name, _, icon, count, _, duration, expirationTime, caster, _, _, spid = FilgerUnitBuff(data.unitId, data.spellID, spn, data.absID);
-			elseif (data.filter == "IBUFF") then
+			elseif (data.filter == "IBUFF" and (InCombatLockdown() or not(data.incombat))) then
 				spn, _, icon = GetSpellInfo( data.spellID )
 				name, _, _, count, _, duration, expirationTime, caster, _, _, spid = FilgerUnitBuff(data.unitId, data.spellID, spn, data.absID);
 				if (not name) then
@@ -343,7 +343,7 @@ local function OnEvent(self, event, ...)
 			elseif (data.filter == "DEBUFF") then
 				spn = GetSpellInfo( data.spellID )
 				name, _, icon, count, _, duration, expirationTime, caster, _, _, spid = FilgerUnitDebuff(data.unitId, data.spellID, spn, data.absID);
-			elseif (data.filter == "IDEBUFF" and InCombatLockdown()) then
+			elseif (data.filter == "IDEBUFF" and (InCombatLockdown() or not(data.incombat))) then
 				spn, _, icon = GetSpellInfo( data.spellID )
 				name, _, _, count, _, duration, expirationTime, caster, _, _, spid = FilgerUnitDebuff(data.unitId, data.spellID, spn, data.absID);
 				if (not name) then
@@ -384,7 +384,7 @@ local function OnEvent(self, event, ...)
 				end
 				count = 0;
 				caster = "all";
-			elseif (data.filter == "ACD" and InCombatLockdown()) then
+			elseif (data.filter == "ACD" and (InCombatLockdown() or not(data.incombat))) then
 				spn = GetSpellInfo(data.spellID);
 				start, duration, enabled = GetSpellCooldown(spn);
 				name, _, icon = GetSpellInfo(data.spellID);
@@ -663,6 +663,7 @@ function I.UpdatesFramesList ()
 				data = Filger_Spells[class][i][j];
 				if (data.filter == "CD" or data.filter == "ACD") then
 					frame:RegisterEvent("SPELL_UPDATE_COOLDOWN");
+					frame:RegisterEvent("SPELL_UPDATE_USABLE");
 					break;
 				end
 			end
