@@ -914,6 +914,8 @@ C["Filger_Spells"] = {
 			{ spellID = 770, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Pounce 
 			{ spellID = 9005, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Pulverize 
+			{ spellID = 80951, size = 37, unitId = "player", caster = "all", filter = "DEBUFF" },
 		},
 		{
 			Name = "Focus",
