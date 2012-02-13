@@ -239,17 +239,17 @@ end
 ------------------------------------------------------------
 
 function Filger:OnEvent(event, unit)
-	if event == "SPELL_UPDATE_COOLDOWN" or event == "SPELL_UPDATE_USABLE" or event == "PLAYER_TARGET_CHANGED" or event == "PLAYER_FOCUS_CHANGED" or event == "PLAYER_ENTERING_WORLD" or event == "UNIT_AURA" and (unit == "target" or unit == "player" or unit == "pet" or unit == "focus") then
+	if event == "SPELL_UPDATE_COOLDOWN" or event == "SPELL_UPDATE_USABLE" or event == "ACTIVE_TALENT_GROUP_CHANGED" or event == "PLAYER_TARGET_CHANGED" or event == "PLAYER_FOCUS_CHANGED" or event == "PLAYER_ENTERING_WORLD" or event == "UNIT_AURA" and (unit == "target" or unit == "player" or unit == "pet" or unit == "focus") then
 		local ptt = GetPrimaryTalentTree()
 		local needUpdate = false
 		local id = self.Id
 		if Filger["spells"][id] then
 			for i = 1, #Filger["spells"][id], 1 do
 				local data = Filger["spells"][id][i]
-				if not data.spec or data.spec == ptt then
+--				if not data.spec or data.spec == ptt then
 					local found = false
 					local name, icon, count, duration, start
-					if data.filter == "BUFF" then
+					if data.filter == "BUFF" and (not data.spec or data.spec == ptt) then
 						local caster, spn, expirationTime
 						spn, _, icon = GetSpellInfo(data.spellID)
 						name, _, _, count, _, duration, expirationTime, caster = Filger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
@@ -257,7 +257,7 @@ function Filger:OnEvent(event, unit)
 							start = expirationTime - duration
 							found = true
 						end
-					elseif data.filter == "DEBUFF" then
+					elseif data.filter == "DEBUFF" and (not data.spec or data.spec == ptt) then
 						local caster, spn, expirationTime
 						spn, _, icon = GetSpellInfo(data.spellID)
 						name, _, _, count, _, duration, expirationTime, caster = Filger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
@@ -265,7 +265,7 @@ function Filger:OnEvent(event, unit)
 							start = expirationTime - duration
 							found = true
 						end
-					elseif data.filter == "IBUFF" and (not data.incombat or InCombatLockdown()) then
+					elseif data.filter == "IBUFF" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) then
 						local spn
 						spn, _, icon = GetSpellInfo(data.spellID)
 						name = Filger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
@@ -273,7 +273,7 @@ function Filger:OnEvent(event, unit)
 							found = true
 							name = spn
 						end
-					elseif data.filter == "IDEBUFF" and (not data.incombat or InCombatLockdown()) then
+					elseif data.filter == "IDEBUFF" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) then
 						local spn
 						spn, _, icon = GetSpellInfo(data.spellID)
 						name = Filger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
@@ -281,7 +281,7 @@ function Filger:OnEvent(event, unit)
 							found = true
 							name = spn
 						end
-					elseif data.filter == "CD" then
+					elseif data.filter == "CD" and (not data.spec or data.spec == ptt) then
 						if data.spellID then
 							name, _, icon = GetSpellInfo(data.spellID)
 							start, duration = GetSpellCooldown(name)
@@ -310,7 +310,7 @@ function Filger:OnEvent(event, unit)
 						-- if name and (duration or 0) > 1.5 then
 							-- found = false
 						-- end
-					elseif data.filter == "ICD" then
+					elseif data.filter == "ICD" and (not data.spec or data.spec == ptt) then
 						if data.trigger == "BUFF" then
 							local spn
 							spn, _, icon = GetSpellInfo(data.spellID)
@@ -348,7 +348,7 @@ function Filger:OnEvent(event, unit)
 							self.actives[i] = nil -- remove BUFF/DEBUFF/CD(only when BUFF/DEBUFF modified, CD are removed in UpdateCD)
 							needUpdate = true
 						end
-					end
+--					end
 				end
 			end
 		end
@@ -571,6 +571,7 @@ function Filger:UpdatesFramesList ()
 			if focusFound then frame:RegisterEvent("PLAYER_FOCUS_CHANGED") end
 			frame:RegisterEvent("UNIT_AURA")
 			frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+			frame:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 			frame:SetScript("OnEvent", Filger.OnEvent)
 			Filger["frame_list"][i] = frame
 		end
