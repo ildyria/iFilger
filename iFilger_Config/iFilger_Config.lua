@@ -294,7 +294,7 @@ C["Filger_Spells"] = {
 		},
 		{
 			Name = "Mage InvertAura",
-			Enable = true, -- i don't want to spam, nor to use it. :)
+			Enable = false, -- i don't want to spam, nor to use it. :)
 			Direction = "HORIZONTAL",
 			Interval = 4,
 			Mode = "ICON",
@@ -915,7 +915,7 @@ C["Filger_Spells"] = {
 			-- Pounce 
 			{ spellID = 9005, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Pulverize 
-			{ spellID = 80951, size = 37, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 80951, size = 37, unitId = "player", caster = "all", filter = "BUFF" },
 		},
 		{
 			Name = "Focus",
@@ -1918,7 +1918,7 @@ C["Filger_Spells"] = {
 			-- Velocity (Starcatcher Compass, Insignia of the Corrupted Mind, Seal of the Seven Signs)
 			{ spellID = 109789, size = 37, filter = "ICD", trigger = "BUFF", duration = 115 }, -- exact (check in game with Proculas, couldn't go below)
 			-- Lightweave
-			{ spellID = 75170, size = 37, filter = "ICD", trigger = "BUFF", duration = 60 }, -- it seems 62 with Proculas but with 30% proc chance, i guess 60. => ~25% uptime => 150k intel bonus instead of 80 for the others professions. :P
+			{ spellID = 75170, size = 37, filter = "ICD", trigger = "BUFF", duration = 61 }, -- it seems 62 with Proculas but with 30% proc chance, i guess 60. => ~25% uptime => 150k intel bonus instead of 80 for the others professions. :P
 			-- Power Torrent
 			{ spellID = 74241, size = 37, filter = "ICD", trigger = "BUFF", duration = 45 }, -- exact (check in game with Proculas)
 			-- Tricks of the Trade (Thx Rogue)
