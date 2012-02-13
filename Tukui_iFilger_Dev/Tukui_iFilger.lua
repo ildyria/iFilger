@@ -6,68 +6,38 @@ local I, C, L = unpack(Tukui) -- Import: I - functions, constants, variables; C 
 
 local _, _, _, isiFilgerenabled = GetAddOnInfo("iFilger")
 if isiFilgerenabled == 1 then
-	C.Filger_Spells = nil
-	C.Filger_Panels = nil
 	return
 end
 
 local Filger_Spells;
 if iFilgerBuffConfig then 
 	Filger_Spells = iFilgerBuffConfig["Filger_Spells"]
-	C.Filger_Spells = nil
-	C.Filger_Panels = nil
 end
 
 local class = select(2, UnitClass("player"));
 local classcolor = RAID_CLASS_COLORS[class];
 local active, bars = {}, {};
-
+local Filger = {}
 
 local time, Update;
-
-
-local function OnUpdate(self, elapsed)
-	time = ( self.filter == "CD" or self.filter == "ICD" ) and ( self.expirationTime + self.duration - GetTime() ) or ( self.expirationTime - GetTime() );
-	if (self:GetParent().Mode == "BAR") then
-		self.statusbar:SetValue(time);
-		if time <= 60 then
-			self.time:SetFormattedText("%.1f",(time));
-		else
-			self.time:SetFormattedText("%d:%.2d",(time/60),(time%60));
-		end
-	end
-	if ( time < 0 and ( self.filter == "CD"  or self.filter == "ICD" ) )then
-		local id = self:GetParent().Id;
-		for index, value in ipairs(active[id]) do
-			local spn = GetSpellInfo(value.data.spellID or value.data.slotID)
-			if (self.spellName == spn) then
-				tremove(active[id], index);
-				break;
-			end
-		end
-		self:SetScript("OnUpdate", nil);
-		Update(self:GetParent());
-	end
-end
-
-
 
 ------------------------------------------------------------
 -- Function to parse Buff name & ID
 ------------------------------------------------------------
 
-local function FilgerUnitBuff(unitID, inSpellID, spn, absID)
-  for i = 1, 40, 1 do
-    local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitBuff(unitID, i)
-    if ( not name ) then break end
-    if ( inSpellID == spellID ) then
-      return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
-    end
-    if ( name == spn and not(absID)) then
-      return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
-    end
-  end
-  return nil
+function Filger:UnitBuff(unitID, inSpellID, spn, absID)
+	if absID then
+		for i = 1, 40, 1 do
+			local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitBuff(unitID, i)
+			if not name then break end
+			if ( inSpellID == spellID ) then
+				return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
+			end
+		end
+	else
+		return UnitBuff(unitID, spn)
+	end
+	return nil
 end
 
 
@@ -76,18 +46,19 @@ end
 -- Function to parse Debuff name & ID
 ------------------------------------------------------------
 
-local function FilgerUnitDebuff(unitID, inSpellID, spn, absID)
-  for i = 1, 40, 1 do
-    local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitDebuff(unitID, i)
-    if ( not name ) then break end
-    if ( inSpellID == spellID ) then
-      return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
-    end
-    if ( name == spn and not(absID)) then
-      return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
-    end
-  end
-  return nil
+function Filger:UnitDebuff(unitID, inSpellID, spn, absID)
+	if absID then
+		for i = 1, 40, 1 do
+			local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitDebuff(unitID, i)
+			if not name then break end
+			if ( inSpellID == spellID ) then
+				return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
+			end
+		end
+	else
+		return UnitDebuff(unitID, spn)
+	end
+	return nil
 end
 
 
@@ -96,7 +67,7 @@ end
 -- Tooltip functions
 ------------------------------------------------------------
 
-local function TooltipOnEnter(self)
+function Filger:TooltipOnEnter(self)
 	if (self.spellID > 20) then -- coz slot ID... need to work on that soon : creating LUA error when mouseover a trinket tooltip
 		local str = "spell:%s"
 		local BadTotems = {
@@ -111,13 +82,11 @@ local function TooltipOnEnter(self)
 		else
 			GameTooltip:SetHyperlink(format(str, self.spellID))
 		end
---		GameTooltip:AddLine(GetSpellInfo(self.spellID), 1, 1, 1, 1, 1, 1)
---		GameTooltip:AddLine("ID : "..self.spellID, .6, .6, .6, .6, .6, .6)
 		GameTooltip:Show()
 	end
 end
 
-local function TooltipOnLeave(self)
+function Filger:TooltipOnLeave(self)
         GameTooltip:Hide()
 end
 
@@ -127,184 +96,138 @@ end
 -- Function Update
 ------------------------------------------------------------
 
-function Update(self)
-	local id = self.Id;
-	if (not bars[id]) then
-		bars[id] = {};
+
+
+function Filger:UpdateCD(elapsed)
+	local time = self.value.start + self.value.duration - GetTime()
+	if time < 0 then
+		local frame = self:GetParent()
+		frame.actives[self.activeIndex] = nil
+		self:SetScript("OnUpdate", nil)
+		Filger.DisplayActives(frame)
 	end
-	for index, value in ipairs(bars[id]) do
-		value:Hide();
+end
+
+function Filger:DisplayActives()
+	if not self.actives then return end
+	if not self.auras then self.auras = {} end
+	local id = self.Id
+	local index
+	local previous = nil
+	index = 1
+	for _, _ in pairs(self.actives) do
+		local aura = self.auras[index]
+		if not aura then
+			-- create aura
+			aura = CreateFrame("Frame", "FilgerAnchor"..id.."Frame"..index, self)
+			aura:Width(16) -- default value
+			aura:Height(16) -- default value
+			aura:SetScale(1)
+			aura:SetTemplate("Default")
+			-- anchor
+			if index == 1 then
+				aura:Point(unpack(self.setPoint))
+			else
+				if self.Direction == "UP" then
+					aura:Point("BOTTOM", previous, "TOP", 0, self.Interval)
+				elseif self.Direction == "RIGHT" or self.Direction == "HORIZONTAL" then
+					aura:Point("LEFT", previous, "RIGHT", self.Interval, 0)
+				elseif self.Direction == "LEFT" then
+					aura:Point("RIGHT", previous, "LEFT", -self.Interval, 0)
+				else
+					aura:Point("TOP", previous, "BOTTOM", 0, -self.Interval)
+				end
+			end
+			-- icon
+			if aura.icon then
+				aura.icon = _G[aura.icon:GetName()]
+			else
+				aura.icon = aura:CreateTexture("$parentIcon", "ARTWORK")
+				aura.icon:Point("TOPLEFT", 2, -2)
+				aura.icon:Point("BOTTOMRIGHT", -2, 2)
+				aura.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+			end
+			-- cooldown
+			if aura.cooldown then
+				aura.cooldown = _G[aura.cooldown:GetName()]
+			else
+				aura.cooldown = CreateFrame("Cooldown", "$parentCD", aura, "CooldownFrameTemplate")
+				aura.cooldown:SetAllPoints(aura.icon)
+				aura.cooldown:SetReverse()
+			end
+			-- count
+			if aura.count then
+				aura.count = _G[aura.count:GetName()]
+			else
+				aura.count = aura:CreateFontString("$parentCount", "OVERLAY")
+				aura.count:SetFont(C["media"].uffont, 14, "OUTLINE")
+				aura.count:Point("BOTTOMRIGHT", 1, -1)
+				aura.count:SetJustifyH("CENTER")
+			end
+			-- insert aura
+			self.auras[index] = aura
+		end
+		-- save previous
+		previous = aura
+		-- next
+		index = index + 1
 	end
-	local bar;
-	for index, value in ipairs(active[id]) do
-		bar = bars[id][index];
-		if (not bar) then
-			bar = CreateFrame("Frame", "FilgerAnchor"..id.."Frame"..index, self);
-			bar:SetWidth(value.data.size);
-			bar:SetHeight(value.data.size);
-			bar:SetScale(1);
-			bar:SetTemplate("Hydra")
-			bar:SetAlpha(self.Alpha or 1);
-
-			-- HORIZONTAL is created as RIGHT, position will be updated later
-			if (index == 1) then
-				bar:SetPoint(unpack(self.setPoint));
-			else
-				if (self.Direction == "UP") then
-					bar:SetPoint("BOTTOM", bars[id][index-1], "TOP", 0, self.Interval);
-				elseif (self.Direction == "RIGHT" or self.Direction == "HORIZONTAL") then
-					bar:SetPoint("LEFT", bars[id][index-1], "RIGHT", self.Mode == "ICON" and self.Interval or self.BarWidth+self.Interval, 0);
-				elseif (self.Direction == "LEFT") then
-					bar:SetPoint("RIGHT", bars[id][index-1], "LEFT", self.Mode == "ICON" and -self.Interval or -(self.BarWidth+self.Interval), 0);
-				else
-					bar:SetPoint("TOP", bars[id][index-1], "BOTTOM", 0, -self.Interval);
-				end
-			end
-
-			if (bar.icon) then
-				bar.icon = _G[bar.icon:GetName()]
-			else
-				bar.icon = bar:CreateTexture("$parentIcon", "ARTWORK");
-				bar.icon:SetPoint("TOPLEFT", I.Scale(2), I.Scale(-2))
-				bar.icon:SetPoint("BOTTOMRIGHT", I.Scale(-2), I.Scale(2))
-				bar.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9);
-			end
-			
-			if (self.Mode == "ICON") then
-				bar.cooldown = CreateFrame("Cooldown", "$parentCD", bar, "CooldownFrameTemplate");
-				bar.cooldown:SetAllPoints(bar.icon);
-				bar.cooldown:SetReverse();
-				
-				if (bar.count) then
-					bar.count = _G[bar.count:GetName()]
-				else
-					bar.count = bar:CreateFontString("$parentCount", "OVERLAY");
-					bar.count:SetFont(C.media.pixelfont, 16, "MONOCHROMEOUTLINE");
-					bar.count:Point("BOTTOMRIGHT", 1, 0);
-					bar.count:SetJustifyH("CENTER");
-				end
-			else
-				if (bar.statusbar) then
-					bar.statusbar = _G[bar.statusbar:GetName()]
-				else
-					bar.statusbar = CreateFrame("StatusBar", "$parentStatusBar", bar);
-					bar.statusbar:SetWidth(I.Scale(self.BarWidth - 2));
-					bar.statusbar:SetHeight(I.Scale(value.data.size - 10));
-					bar.statusbar:SetStatusBarTexture(C.media.normTex);
-					bar.statusbar:SetStatusBarColor(classcolor.r, classcolor.g, classcolor.b, 1);
-					if ( self.IconSide == "LEFT" ) then
-						bar.statusbar:SetPoint("BOTTOMLEFT", bar, "BOTTOMRIGHT", 6, 2);
-					elseif ( self.IconSide == "RIGHT" ) then
-						bar.statusbar:SetPoint("BOTTOMRIGHT", bar, "BOTTOMLEFT", -6, 2);
-					end
-				end
-				bar.statusbar:SetMinMaxValues(0, 1);
-				bar.statusbar:SetValue(0);
-				
-				if (bar.bg)then
-					bar.bg = _G[bar.bg:GetName()]
-				else
-					bar.bg = CreateFrame("Frame","$parentBG", bar.statusbar)
-					bar.bg:SetPoint("TOPLEFT", I.Scale(-2), I.Scale(2))
-					bar.bg:SetPoint("BOTTOMRIGHT", I.Scale(2), I.Scale(-2))
-					bar.bg:SetFrameStrata("BACKGROUND")
-					bar.bg:SetTemplate("Hydra")
-				end
-				
-				if (bar.background)then
-					bar.background = _G[bar.background:GetName()]
-				else
-					bar.background = bar.statusbar:CreateTexture(nil, "BACKGROUND");
-					bar.background:SetAllPoints();
-					bar.background:SetTexture(C.media.normTex);
-					bar.background:SetVertexColor(0, 0, 0, 0.5);
-				end
-				
-				if (bar.time)then
-					bar.time = _G[bar.time:GetName()]
-				else			
-					bar.time = bar.statusbar:CreateFontString("$parentTime", "ARTWORK");
-					bar.time:SetFont(C.media.pixelfont, 14, "MONOCHROMEOUTLINE");
-					bar.time:SetPoint("RIGHT", bar.statusbar, I.Scale(0), I.Scale(0));
-				end
-				
-				if (bar.count) then
-					bar.count = _G[bar.count:GetName()]
-				else
-					bar.count = bar:CreateFontString("$parentCount", "ARTWORK");
-					bar.count:SetFont(C["media"].pixelfont, 16, "MONOCHROMEOUTLINE");
-					bar.count:SetPoint("BOTTOMRIGHT", I.Scale(-2), I.Scale(2));
-					bar.count:SetJustifyH("CENTER");
-				end
-				
-				if (bar.spellname)then
-					bar.spellname = _G[bar.spellname:GetName()]
-				else
-					bar.spellname = bar.statusbar:CreateFontString("$parentSpellName", "ARTWORK");
-					bar.spellname:SetFont(C.media.pixelfont, 14, "MONOCHROMEOUTLINE");
-					bar.spellname:SetPoint("LEFT", bar.statusbar, I.Scale(2), I.Scale(0));
-					bar.spellname:SetPoint("RIGHT", bar.time, "LEFT");
-					bar.spellname:SetJustifyH("LEFT");
-				end
-			end
-			
-			if (C.Filger.tooltip) then
-				bar:EnableMouse(true)
-				bar:SetScript("OnEnter", TooltipOnEnter)
-				bar:SetScript("OnLeave", TooltipOnLeave)
-			end
-			
-			tinsert(bars[id], bar);
-		end
-		
-		-- Update position of first 'bar' if direction is HORIZONTAL
-		if ( self.Direction == "HORIZONTAL" and index == 1 ) then
-			local totalWidth = (value.data.size + self.Interval) * ( #active[id] - 1 )
-			-- Get base position
-			local point, relativeFrame, offsetX, offsetY = unpack(self.setPoint)
-			-- Update x-offset: remove half the total width and center adding half median width
-			offsetX = offsetX - ( totalWidth  / 2 )
-			-- Set position
-			bar:SetPoint( point, relativeFrame, point, offsetX, offsetY )
-		end
-
-		bar.spellName = GetSpellInfo( value.data.spellID or value.data.slotID );
-		bar.spellID = value.spid --data.spellID or value.data.slotID
-
-		bar.icon:SetTexture(value.icon);
-		bar.count:SetText(value.count > 1 and value.count or "");
-		if (self.Mode == "BAR") then
-			bar.spellname:SetText(value.data.displayName or GetSpellInfo( value.data.spellID ));
-		end
-
-		if (value.duration > 0) then
-			if (self.Mode == "ICON") then
-				CooldownFrame_SetTimer(bar.cooldown, ( value.data.filter == "CD" or value.data.filter == "ICD" ) and value.expirationTime or value.expirationTime - value.duration, value.duration, 1);
-				if (value.data.filter == "CD" or value.data.filter == "ICD" ) then
-					bar.expirationTime = value.expirationTime;
-					bar.duration = value.duration;
-					bar.filter = value.data.filter;
-					bar:SetScript("OnUpdate", OnUpdate);
-				end
-			else
-				bar.statusbar:SetMinMaxValues(0, value.duration);
-				bar.expirationTime = value.expirationTime;
-				bar.duration = value.duration;
-				bar.filter = value.data.filter;
-				bar:SetScript("OnUpdate", OnUpdate);
-			end
+	-- Update texture, count, cd, size, opacity
+	local totalWidth = 0
+	index = 1
+	for activeIndex, value in pairs(self.actives) do
+		local aura = self.auras[index]
+		aura.icon:SetTexture(value.icon)
+		if value.count and value.count > 1 then
+			aura.count:SetText(value.count)
+			aura.count:Show()
 		else
-			if (self.Mode == "ICON") then
-				bar.cooldown:Hide();
-			else
-				bar.statusbar:SetMinMaxValues(0, 1);
-				bar.statusbar:SetValue(1);
-				bar.time:SetText("");
-				bar:SetScript("OnUpdate", nil);
-			end
+			aura.count:Hide()
 		end
-
-		bar:Show();
+		if value.duration and value.duration > 0 then
+			CooldownFrame_SetTimer(aura.cooldown, value.start, value.duration, 1)
+			if value.data.filter == "CD" or value.data.filter == "ICD" then
+				aura.value = value
+				aura.activeIndex = activeIndex
+				aura:SetScript("OnUpdate", Filger.UpdateCD)
+			else
+				aura:SetScript("OnUpdate", nil)
+			end
+			aura.cooldown:Show()
+		else
+			aura:SetScript("OnUpdate", nil)
+			aura.cooldown:Hide()
+		end
+		if (C.Filger.tooltip) then
+			aura:EnableMouse(true)
+			aura:SetScript("OnEnter", Filger.TooltipOnEnter)
+			aura:SetScript("OnLeave", Filger.TooltipOnLeave)
+		end
+		aura:Width(value.data.size)
+		aura:Height(value.data.size)
+		aura:SetAlpha(value.data.Alpha or 1.0)
+		totalWidth = totalWidth + value.data.size + self.Interval
+		-- show
+		aura:Show()
+		-- next
+		index = index + 1
+	end
+	-- Update horizontal anchoring
+	if index > 1 and self.Direction == "HORIZONTAL" then
+		-- Compute total width
+		totalWidth = totalWidth - self.Interval -- remove last interval
+		-- Get base position
+		local point, relativeFrame, relativePoint, offsetX, offsetY = unpack(self.setPoint)
+		-- Update x-offset: remove half the total width
+		offsetX = offsetX - (totalWidth / 2)
+		-- Set position
+		local aura = self.auras[1]
+		aura:Point(point, relativeFrame, relativePoint, offsetX, offsetY)
+	end
+	-- Hide remaining
+	for i = index, #self.auras, 1 do
+		local aura = self.auras[i]
+		aura:Hide()
 	end
 end
 
@@ -314,169 +237,139 @@ end
 -- Function OnEvent
 ------------------------------------------------------------
 
-local function OnEvent(self, event, ...)
-	local unit = ...;
-	if ( ( unit == "target" or unit == "player" or unit == "pet" or unit == "focus" ) or event == "PLAYER_TARGET_CHANGED" or event == "PLAYER_ENTERING_WORLD" or event == "SPELL_UPDATE_COOLDOWN" ) then
-		local data, name, icon, count, duration, expirationTime, caster, start, enabled, slotLink, spn, spid;
-		local id = self.Id;
-		for i=1, #Filger_Spells[class][id], 1 do
-			name, duration, expirationTime, caster, start, enabled = nil, nil, nil, nil, nil, nil; -- cleaning vars...
-			data = Filger_Spells[class][id][i];
-			if (data.filter == "BUFF") then
-				spn = GetSpellInfo( data.spellID )
-				name, _, icon, count, _, duration, expirationTime, caster, _, _, spid = FilgerUnitBuff(data.unitId, data.spellID, spn, data.absID);
-			elseif (data.filter == "IBUFF" and (InCombatLockdown() or not(data.incombat))) then
-				spn, _, icon = GetSpellInfo( data.spellID )
-				name, _, _, count, _, duration, expirationTime, caster, _, _, spid = FilgerUnitBuff(data.unitId, data.spellID, spn, data.absID);
-				if (not name) then
-					name = spn
-					duration = 0
-					count = 0
-					expirationTime = 0
-					caster = "all"
-					spid = data.spellID
-				else
-					name = nil
-				end
-			elseif (data.filter == "DEBUFF") then
-				spn = GetSpellInfo( data.spellID )
-				name, _, icon, count, _, duration, expirationTime, caster, _, _, spid = FilgerUnitDebuff(data.unitId, data.spellID, spn, data.absID);
-			elseif (data.filter == "IDEBUFF" and (InCombatLockdown() or not(data.incombat))) then
-				spn, _, icon = GetSpellInfo( data.spellID )
-				name, _, _, count, _, duration, expirationTime, caster, _, _, spid = FilgerUnitDebuff(data.unitId, data.spellID, spn, data.absID);
-				if (not name) then
-					name = spn
-					duration = 0
-					count = 0
-					expirationTime = 0
-					caster = "player"
-					spid = data.spellID
-				elseif(caster ~= "player" and data.caster ~= "all") then
-					name = spn
-					duration = 0
-					count = 0
-					expirationTime = 0
-					caster = "player"
-					spid = data.spellID
-				else
-					name = nil
-					duration = 0
-					expirationTime = 0
-				end
-			elseif (data.filter == "CD") then
-				if (data.spellID) then
-					spn = GetSpellInfo(data.spellID)
-					start, duration, enabled = GetSpellCooldown(spn);
-					name, _, icon = GetSpellInfo(data.spellID);
-					spid = data.spellID;
-				else
-					slotLink = GetInventoryItemLink("player", data.slotID);
-					if ( slotLink ) then
-						name, _, _, _, _, _, _, _, _, icon = GetItemInfo(slotLink);
-						if (not data.displayName) then
-							data.displayName = name;
+function Filger:OnEvent(event, unit)
+	if event == "SPELL_UPDATE_COOLDOWN" or event == "PLAYER_TARGET_CHANGED" or event == "PLAYER_FOCUS_CHANGED" or event == "PLAYER_ENTERING_WORLD" or event == "UNIT_AURA" and (unit == "target" or unit == "player" or unit == "pet" or unit == "focus") then
+		local ptt = GetPrimaryTalentTree()
+		local needUpdate = false
+		local id = self.Id
+		for i = 1, #Filger["spells"][id], 1 do
+			local data = Filger["spells"][id][i]
+			if not data.spec or data.spec == ptt then
+				local found = false
+				local name, icon, count, duration, start
+				if data.filter == "BUFF" then
+					local caster, spn, expirationTime
+					spn, _, icon = GetSpellInfo(data.spellID)
+					name, _, _, count, _, duration, expirationTime, caster = Filger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
+					if name and (data.caster == "all" or data.caster == caster) then
+						start = expirationTime - duration
+						found = true
+					end
+				elseif data.filter == "DEBUFF" then
+					local caster, spn, expirationTime
+					spn, _, icon = GetSpellInfo(data.spellID)
+					name, _, _, count, _, duration, expirationTime, caster = Filger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
+					if name and (data.caster == "all" or data.caster == caster) then
+						start = expirationTime - duration
+						found = true
+					end
+				elseif data.filter == "IBUFF" and (not data.incombat or InCombatLockdown()) then
+					local spn
+					spn, _, icon = GetSpellInfo(data.spellID)
+					name = Filger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
+					if not name then
+						found = true
+						name = spn
+					end
+				elseif data.filter == "IDEBUFF" and (not data.incombat or InCombatLockdown()) then
+					local spn
+					spn, _, icon = GetSpellInfo(data.spellID)
+					name = Filger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
+					if not name then
+						found = true
+						name = spn
+					end
+				elseif data.filter == "CD" then
+					if data.spellID then
+						name, _, icon = GetSpellInfo(data.spellID)
+						start, duration = GetSpellCooldown(name)
+					elseif data.slotID then
+						local slotLink = GetInventoryItemLink("player", data.slotID)
+						if slotLink then
+							name, _, _, _, _, _, _, _, _, icon = GetItemInfo(slotLink)
+							start, duration = GetInventoryItemCooldown("player", data.slotID)
 						end
-						start, duration, enabled = GetInventoryItemCooldown("player", data.slotID);
 					end
-					spid = data.slotID;
-				end
-				count = 0;
-				caster = "all";
-			elseif (data.filter == "ACD" and (InCombatLockdown() or not(data.incombat))) then
-				spn = GetSpellInfo(data.spellID);
-				start, duration, enabled = GetSpellCooldown(spn);
-				name, _, icon = GetSpellInfo(data.spellID);
-				spid = data.spellID;
-				local usable, _ = IsUsableSpell(data.spellID);
-				if(not enabled) then
-					name = nil;
-				elseif(enabled == 0 or (start > 0 and duration > 0)) then
-					name = nil;
-				end
-				expirationTime = 0;
-				duration = 0;
-				count = 0;
-				caster = "all";
-			elseif ( data.filter == "ICD" ) then
-				enabled = 0;
-				if ( data.trigger == "BUFF" ) then
-					spn = GetSpellInfo( data.spellID );
-					name, _, icon, _, _, _, _, _, _, _, spid = FilgerUnitBuff("player", data.spellID, spn, data.absID);
-				elseif (data.trigger == "DEBUFF") then
-					spn = GetSpellInfo( data.spellID )
-					name, _, icon, _, _, _, _, _, _, _, spid = FilgerUnitDebuff("player", data.spellID, spn, data.absID);
-				end
-				if ( data.slotID ) then
-					slotLink = GetInventoryItemLink("player", data.slotID)
-					name, _, _, _, _, _, _, _, _, icon = GetItemInfo(slotLink)
-					spn = name
-					spid = data.slotID
-				end
-				start = GetTime()
-				duration = data.duration
-				caster = "all"
-				count = 0
-				if ( name ) then
---					I.iFilgerAddIncoming("ICD : " .. name)
-					enabled = 1
-				end
-			end
-			
-			if (not active[id]) then
-				active[id] = {};
-			end
-
-			-- remove existing and insert if needed
-			local toInsert = true -- by default, insert in active
-			if ( data.filter == "ICD" ) then
-				-- Don't insert if an ICD already exists
-				for index, value in ipairs(active[id]) do
-					if ( data.spellID == value.data.spellID and value.data.filter == "ICD" ) then
-						toInsert = false
-						break
+					if name and (duration or 0) > 1.5 then
+						found = true
+					end
+				elseif data.filter == "ICD" then
+					if data.trigger == "BUFF" then
+						local spn
+						spn, _, icon = GetSpellInfo(data.spellID)
+						name = Filger:UnitBuff("player", data.spellID, spn, data.absID)
+					elseif data.trigger == "DEBUFF" then
+						local spn
+						spn, _, icon = GetSpellInfo(data.spellID)
+						name = Filger:UnitDebuff("player", data.spellID, spn, data.absID)
+					end
+					if name then
+						if data.slotID then
+							local slotLink = GetInventoryItemLink("player", data.slotID)
+							_, _, _, _, _, _, _, _, _, icon = GetItemInfo(slotLink)
+						end
+						duration = data.duration
+						start = GetTime()
+						found = true
 					end
 				end
-			else
-				-- Remove existing non-ICD
-				for index, value in ipairs(active[id]) do
-					if (data.spellID == value.data.spellID and value.data.filter ~= "ICD" ) then
-						tremove(active[id], index)
-						--print("#active["..id.."]"..(#active[id]))
+				if found then
+					if not self.actives then self.actives = {} end
+					if not self.actives[i] then
+						self.actives[i] = {data = data, name = name, icon = icon, count = count, start = start, duration = duration}
+						needUpdate = true
+					else
+						if data.filter ~= "ICD" and (self.actives[i].count ~= count or self.actives[i].start ~= start or self.actives[i].duration ~= duration) then
+							self.actives[i].count = count
+							self.actives[i].start = start
+							self.actives[i].duration = duration
+							needUpdate = true
+						end
 					end
-				end
-			end
-
-			if ( toInsert ) then
-				if (( name and ( data.caster ~= 1 and ( caster == data.caster or data.caster == "all" ))) or ( ( enabled or 0 ) > 0 and ( duration or 0 ) > 1.5 ) ) then
-					table.insert(active[id], { data = data, icon = icon, count = count, duration = duration, expirationTime = expirationTime or start, spid = spid });
+				else
+					if data.filter ~= "ICD" and self.actives and self.actives[i] then
+						self.actives[i] = nil -- remove BUFF/DEBUFF/CD(only when BUFF/DEBUFF modified, CD are removed in UpdateCD)
+						needUpdate = true
+					end
 				end
 			end
 		end
-		Update(self);
+
+		if needUpdate and self.actives then
+			Filger.DisplayActives(self)
+		end
 	end
 end
-
 
 
 ------------------------------------------------------------
 -- spell list configuration
 ------------------------------------------------------------
 
-function I.UpdateSpellList(zone)
-
-	if (not Filger_Spells[class]) then
-		Filger_Spells[class] = {}
-	end
-	
-	for index, value in ipairs(Filger_Spells[class]) do
-		if value.Enable == false then
-			I.Print("class : " .. value.Name .. " disabled")
-			tremove(Filger_Spells[class], index);
-		end
+function Filger:UpdateSpellList(zone)
+	if (not Filger["spells"]) then
+		Filger["spells"] = {}
 	end
 
 	local loaded = "";
 	local loading = false;
+
+	for index in pairs(Filger["spells"]) do
+		Filger["spells"][index] = nil
+	end
+	
+	if (Filger_Spells[class]) then
+		for i = 1, #Filger_Spells[class], 1 do
+			if (Filger_Spells[class][i].Enable) then
+				table.insert(Filger["spells"], Filger_Spells[class][i])
+				loading = true
+			end
+		end
+		if (loading) then
+			loaded = loaded .. " CLASS"
+			loading = false
+		end
+	end
 
 	if (Filger_Spells["ALL"]) then
 		for i = 1, #Filger_Spells["ALL"], 1 do
@@ -486,8 +379,8 @@ function I.UpdateSpellList(zone)
 				local spellListAll = Filger_Spells["ALL"][i]
 				local enable = spellListAll
 				local spellListClass = nil
-				for j = 1, #Filger_Spells[class], 1 do
-					spellListClass = Filger_Spells[class][j]
+				for j = 1, #Filger["spells"], 1 do
+					spellListClass = Filger["spells"][j]
 					local mergeAll = spellListAll.Merge or false
 					local mergeClass = spellListClass.Merge or false
 					if ( spellListClass.Name == spellListAll.Name and ( mergeAll or mergeClass ) ) then
@@ -497,7 +390,7 @@ function I.UpdateSpellList(zone)
 				end
 				if ( not merge or spellListClass == nil ) then
 					-- add another spell-list
-					table.insert(Filger_Spells[class], Filger_Spells["ALL"][i])
+					table.insert(Filger["spells"], Filger_Spells["ALL"][i])
 				else
 					-- merge spell-list but class-specific position, direction, ...
 					--I.Print("MERGING SPELLS FROM "..spellListAll.Name)
@@ -517,7 +410,7 @@ function I.UpdateSpellList(zone)
 	if (Filger_Spells["PVE"] and (zone == "pve" or zone == "config")) then
 		for i = 1, #Filger_Spells["PVE"], 1 do
 			if (Filger_Spells["PVE"][i].Enable) then
-				table.insert(Filger_Spells[class], Filger_Spells["PVE"][i])
+				table.insert(Filger["spells"], Filger_Spells["PVE"][i])
 				loading = true
 			end
 		end
@@ -530,7 +423,7 @@ function I.UpdateSpellList(zone)
 	if (Filger_Spells["TANKS"] and (zone == "pve" or zone == "config")) then
 		for i = 1, #Filger_Spells["TANKS"], 1 do
 			if (Filger_Spells["TANKS"][i].Enable) then
-				table.insert(Filger_Spells[class], Filger_Spells["TANKS"][i])
+				table.insert(Filger["spells"], Filger_Spells["TANKS"][i])
 				loading = true
 			end
 		end
@@ -543,7 +436,7 @@ function I.UpdateSpellList(zone)
 	if (Filger_Spells["PVP"] and (zone == "pvp" or zone == "config")) then
 		for i = 1, #Filger_Spells["PVP"], 1 do
 			if (Filger_Spells["PVP"][i].Enable) then
-				table.insert(Filger_Spells[class], Filger_Spells["PVP"][i])
+				table.insert(Filger["spells"], Filger_Spells["PVP"][i])
 				loading = true
 			end
 		end
@@ -556,7 +449,7 @@ function I.UpdateSpellList(zone)
 	if (Filger_Spells["HUNTER/DRUID/ROGUE"] and (class == "HUNTER" or class == "DRUID" or class == "ROGUE")) then
 		for i = 1, #Filger_Spells["HUNTER/DRUID/ROGUE"], 1 do
 			if (Filger_Spells["HUNTER/DRUID/ROGUE"][i].Enable) then
-				table.insert(Filger_Spells[class], Filger_Spells["HUNTER/DRUID/ROGUE"][i])
+				table.insert(Filger["spells"], Filger_Spells["HUNTER/DRUID/ROGUE"][i])
 				loading = true
 			end
 		end
@@ -575,21 +468,20 @@ end
 -- Cleanning spell list. Credits to SinaC
 ------------------------------------------------------------
 
-function I.CleanSpellList ()
-	
+function Filger:CleanSpellList ()	
 	-- clean other sections wich are not used
-	for index in pairs(Filger_Spells) do
-		if (index ~= class) then
-			Filger_Spells[index] = nil
-		end
-	end
+	-- for index in pairs(Filger_Spells) do
+		-- if (index ~= class) then
+			-- Filger_Spells[index] = nil
+		-- end
+	-- end
 
 	-- remove invalid spell and empty tables
 	local idx, data, frame = {}
 
-	for i = 1, #Filger_Spells[class], 1 do
+	for i = 1, #Filger["spells"], 1 do
 		local jdx, spn = {}
-		data = Filger_Spells[class][i]
+		data = Filger["spells"][i]
 
 		for j = 1, #data, 1 do
 			if (data[j].spellID) then
@@ -616,7 +508,7 @@ function I.CleanSpellList ()
 		end
 	end
 	for _, v in ipairs(idx) do
-		table.remove(Filger_Spells[class], v)
+		table.remove(Filger["spells"], v)
 	end
 end
 
@@ -626,20 +518,18 @@ end
 -- Create frame spell list
 ------------------------------------------------------------
 
-function I.UpdatesFramesList ()
-	if (Filger_Spells and Filger_Spells[class]) then
+function Filger:UpdatesFramesList ()
+	if (Filger["spells"]) then
 		
-		for index in pairs(Filger_Spells) do
-			if (index ~= class) then
-				Filger_Spells[index] = nil;
-			end
-		end
-		
-		C.Filger_Panels = nil;
+		-- for index in pairs(Filger[spells]) do
+			-- if (index ~= class) then
+				-- Filger_Spells[index] = nil;
+			-- end
+		-- end
 
 		local data, frame;
-		for i = 1, #Filger_Spells[class], 1 do
-			data = Filger_Spells[class][i];
+		for i = 1, #Filger["spells"], 1 do
+			data = Filger["spells"][i];
 			
 			frame = CreateFrame("Frame", "FilgerAnchor"..i, UIParent);
 			frame.Id = i;
@@ -654,19 +544,19 @@ function I.UpdatesFramesList ()
 			end
 			frame.BarWidth = data.BarWidth or 200;
 			frame.setPoint = data.setPoint or "CENTER";
-			frame:SetWidth(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 100);
-			frame:SetHeight(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 20);
+			frame:SetWidth(Filger["spells"][i][1] and Filger["spells"][i][1].size or 100);
+			frame:SetHeight(Filger["spells"][i][1] and Filger["spells"][i][1].size or 20);
 			frame:SetPoint(unpack(data.setPoint));
-			for j = 1, #Filger_Spells[class][i], 1 do
-				data = Filger_Spells[class][i][j];
+			for j = 1, #Filger["spells"][i], 1 do
+				data = Filger["spells"][i][j];
 				if (data.filter == "CD" or data.filter == "ACD") then
 					frame:RegisterEvent("SPELL_UPDATE_COOLDOWN");
 					frame:RegisterEvent("SPELL_UPDATE_USABLE");
 					break;
 				end
 			end
-			for j = 1, #Filger_Spells[class][i], 1 do
-				data = Filger_Spells[class][i][j];
+			for j = 1, #Filger["spells"][i], 1 do
+				data = Filger["spells"][i][j];
 				if (data.unitId == "focus") then
 					frame:RegisterEvent("PLAYER_FOCUS_CHANGED");
 					break;
@@ -686,24 +576,23 @@ end
 -- checkzone for cleverzone check
 ------------------------------------------------------------
 
-local function checkzone()
-
+function Filger:checkzone()
 	if C["Filger"].cleverzone then
 		-- yeah my default config is not really like default iFilger.
 		local inInstance, instanceType = IsInInstance()
 		if inInstance and (instanceType == "raid" or instanceType == "party") then
-			I.UpdateSpellList("pve")
+			Filger:UpdateSpellList("pve")
 		else
-			I.UpdateSpellList("pvp")
+			Filger:UpdateSpellList("pvp")
 		end
 	else
-		I.UpdateSpellList("config")
+		Filger:UpdateSpellList("config")
 	end
-	I.CleanSpellList()
-	I.UpdatesFramesList()
+	Filger:CleanSpellList()
+	Filger:UpdatesFramesList()
 end
 
-checkzone()
+Filger:checkzone()
 
 
 
@@ -727,8 +616,8 @@ local function moving()
 	if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
 	
 	local data, frame, name, spellIcon, slotLink;
-	for i = 1, #Filger_Spells[class], 1 do
-		data = Filger_Spells[class][i];
+	for i = 1, #Filger["spells"], 1 do
+		data = Filger["spells"][i];
 		
 		frame = CreateFrame("Frame", "FilgerAnchor"..i, UIParent);
 		frame.Id = i;
@@ -740,12 +629,12 @@ local function moving()
 		frame.Alpha = data.Alpha or 1;
 		frame.BarWidth = data.BarWidth or 200;
 		frame.setPoint = data.setPoint or "CENTER";
-		frame:SetWidth(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 100);
-		frame:SetHeight(Filger_Spells[class][i][1] and Filger_Spells[class][i][1].size or 20);
+		frame:SetWidth(Filger["spells"][i][1] and Filger["spells"][i][1].size or 100);
+		frame:SetHeight(Filger["spells"][i][1] and Filger["spells"][i][1].size or 20);
 		
 		if (enable) then
-			for j = 1, #Filger_Spells[class][i], 1 do
-				data = Filger_Spells[class][i][j];
+			for j = 1, #Filger["spells"][i], 1 do
+				data = Filger["spells"][i][j];
 				if (not active[i]) then
 					active[i] = {};
 				end
@@ -859,26 +748,7 @@ local function formatMem(memory)
 end
 
 
-local function senddata()
-	local primary_size = #Filger_Spells[class]
-	local bars_memory = 0
-	for i = 1, primary_size, 1 do
-		bars_memory = bars_memory + getn(bars[i])
-	end
-
-	local active_memory = 0
-	for i = 1, primary_size, 1 do
-		active_memory = active_memory + getn(active[i])
-	end
-
-	local addOnMem = GetAddOnMemoryUsage("Tukui_iFilger")
-	local msg = formatMem(addOnMem)
-
-	I.iFilgerAddIncoming("MEMORY : " .. msg .. ", number of tables " .. primary_size .. " / active : " .. active_memory .. " / bars : " .. bars_memory )
-end
-
 local iFilgerDebug = CreateFrame("Frame", "iFilger_Debug", UIParent)
 iFilgerDebug:RegisterEvent("UNIT_AURA");
 iFilgerDebug:RegisterEvent("PLAYER_TARGET_CHANGED");
 iFilgerDebug:RegisterEvent("PLAYER_ENTERING_WORLD");
-iFilgerDebug:SetScript("OnEvent", senddata)
