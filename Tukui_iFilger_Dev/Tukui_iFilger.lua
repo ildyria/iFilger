@@ -18,7 +18,7 @@ local class = select(2, UnitClass("player"));
 local classcolor = RAID_CLASS_COLORS[class];
 local active, bars = {}, {};
 local Filger = {}
-
+Filger["frame_list"] = {}
 local time, Update;
 
 ------------------------------------------------------------
@@ -468,13 +468,7 @@ end
 -- Cleanning spell list. Credits to SinaC
 ------------------------------------------------------------
 
-function Filger:CleanSpellList ()	
-	-- clean other sections wich are not used
-	-- for index in pairs(Filger_Spells) do
-		-- if (index ~= class) then
-			-- Filger_Spells[index] = nil
-		-- end
-	-- end
+function Filger:CleanSpellList ()
 
 	-- remove invalid spell and empty tables
 	local idx, data, frame = {}
@@ -520,52 +514,51 @@ end
 
 function Filger:UpdatesFramesList ()
 	if (Filger["spells"]) then
-		
-		-- for index in pairs(Filger[spells]) do
-			-- if (index ~= class) then
-				-- Filger_Spells[index] = nil;
-			-- end
-		-- end
-
-		local data, frame;
+		-- create frame for each spell-list
 		for i = 1, #Filger["spells"], 1 do
-			data = Filger["spells"][i];
+			local data = Filger["spells"][i]
+			local frame = CreateFrame("Frame", "FilgerFrame"..i.."_"..data.Name, UIParent)
+--			I.Print("FRAME CREATED:"..data.Name)
+			frame.Id = i
+			frame.Name = data.Name
+			frame.Direction = data.Direction or "UP"
+			frame.IconSide = data.IconSide or "LEFT"
+			frame.Interval = data.Interval or 3
+			frame.Mode = data.Mode or "ICON"
+			frame.setPoint = data.setPoint or "CENTER"
+			frame:Width(Filger["spells"][i][1] and Filger["spells"][i][1].size or 100)
+			frame:Height(Filger["spells"][i][1] and Filger["spells"][i][1].size or 20)
+			frame:Point(unpack(data.setPoint))
+			frame:SetAlpha(data.Opacity or 1.0)
+
+			for j = 1, #data, 1 do
+				local spell = Filger["spells"][i][j]
+				if data.Size and (ForceSize or not spell.size) then spell.size = data.Size end
+				if data.Filter and not spell.filter then spell.filter = data.Filter end
+				if data.UnitId and not spell.UnitId then spell.unitId = data.UnitId end
+			end
 			
-			frame = CreateFrame("Frame", "FilgerAnchor"..i, UIParent);
-			frame.Id = i;
-			frame.Name = data.Name;
-			frame.Direction = data.Direction or "DOWN";
-			frame.IconSide = data.IconSide or "LEFT";
-			frame.Interval = data.Interval or 3;
-			frame.Mode = data.Mode or "ICON";
-			frame.Alpha = data.Alpha or 1;
-			if(frame.Mode ~= "ICON" and frame.Direction ~= "DOWN" and frame.Direction ~= "UP") then -- check if bar + right or left => ugly !
-				frame.Direction = "UP";
-			end
-			frame.BarWidth = data.BarWidth or 200;
-			frame.setPoint = data.setPoint or "CENTER";
-			frame:SetWidth(Filger["spells"][i][1] and Filger["spells"][i][1].size or 100);
-			frame:SetHeight(Filger["spells"][i][1] and Filger["spells"][i][1].size or 20);
-			frame:SetPoint(unpack(data.setPoint));
+			local CDFound = false
+			local focusFound = false
+			local targetFound = false
 			for j = 1, #Filger["spells"][i], 1 do
-				data = Filger["spells"][i][j];
-				if (data.filter == "CD" or data.filter == "ACD") then
-					frame:RegisterEvent("SPELL_UPDATE_COOLDOWN");
-					frame:RegisterEvent("SPELL_UPDATE_USABLE");
-					break;
+				local data = Filger["spells"][i][j]
+				if data.filter == "CD" or data.filter == "ACD" then
+					CDFound = true
+				elseif data.unitID == "target" then
+					targetFound = true
+				elseif data.unitID == "focus" then
+					focusFound = true
 				end
 			end
-			for j = 1, #Filger["spells"][i], 1 do
-				data = Filger["spells"][i][j];
-				if (data.unitId == "focus") then
-					frame:RegisterEvent("PLAYER_FOCUS_CHANGED");
-					break;
-				end
-			end
-			frame:RegisterEvent("UNIT_AURA");
-			frame:RegisterEvent("PLAYER_TARGET_CHANGED");
-			frame:RegisterEvent("PLAYER_ENTERING_WORLD");
-			frame:SetScript("OnEvent", OnEvent);
+			if CDFound then frame:RegisterEvent("SPELL_UPDATE_COOLDOWN") end
+			if CDFound then frame:RegisterEvent("SPELL_UPDATE_USABLE") end
+			if targetFound then frame:RegisterEvent("PLAYER_TARGET_CHANGED") end
+			if focusFound then frame:RegisterEvent("PLAYER_FOCUS_CHANGED") end
+			frame:RegisterEvent("UNIT_AURA")
+			frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+			frame:SetScript("OnEvent", Filger.OnEvent)
+			Filger["frame_list"][i] = frame
 		end
 	end
 end
@@ -615,52 +608,28 @@ local function moving()
 	-- don't allow moving while in combat
 	if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
 	
-	local data, frame, name, spellIcon, slotLink;
 	for i = 1, #Filger["spells"], 1 do
-		data = Filger["spells"][i];
-		
-		frame = CreateFrame("Frame", "FilgerAnchor"..i, UIParent);
-		frame.Id = i;
-		frame.Name = data.Name;
-		frame.Direction = data.Direction or "DOWN";
-		frame.IconSide = data.IconSide or "LEFT";
-		frame.Interval = data.Interval or 3;
-		frame.Mode = data.Mode or "ICON";
-		frame.Alpha = data.Alpha or 1;
-		frame.BarWidth = data.BarWidth or 200;
-		frame.setPoint = data.setPoint or "CENTER";
-		frame:SetWidth(Filger["spells"][i][1] and Filger["spells"][i][1].size or 100);
-		frame:SetHeight(Filger["spells"][i][1] and Filger["spells"][i][1].size or 20);
-		
-		if (enable) then
-			for j = 1, #Filger["spells"][i], 1 do
-				data = Filger["spells"][i][j];
-				if (not active[i]) then
-					active[i] = {};
-				end
-				if (data.spellID) then
-					_, _, spellIcon = GetSpellInfo(data.spellID)
-				else
-					slotLink = GetInventoryItemLink("player", data.slotID);
-					if (slotLink) then
-						name, _, _, _, _, _, _, _, _, spellIcon = GetItemInfo(slotLink);
+		local data = Filger["spells"][i]
+		frame = Filger["frame_list"][i]
+		frame.actives = {}
+		if enable then			
+			for j = 1, math.min(4,#Filger["spells"][i]), 1 do
+				local data = Filger["spells"][i][j]
+				local name, icon
+				if data.spellID then
+					name, _, icon = GetSpellInfo(data.spellID)
+				elseif data.slotID then
+					local slotLink = GetInventoryItemLink("player", data.slotID)
+					if slotLink then
+						name, _, _, _, _, _, _, _, _, icon = GetItemInfo(slotLink)
 					end
 				end
-				table.insert(active[i], { data = data, icon = spellIcon, count = 9, duration = 0, expirationTime = 0, spid = data.spellID or data.slotID });
-				if (j > 3) then 
-					break;
-				end
+				frame.actives[j] = {data = data, name = name, icon = icon, count = 9, start = 0, duration = 0}
 			end
-			Update(frame);
-		else
-			for index, value in ipairs(active[i]) do
-				active[i] = {};
-			end
-			Update(frame);
 		end
+		Filger.DisplayActives(frame)
 	end
 
-	
 	for i = 1, getn(I.MoverFrames) do
 		if I.MoverFrames[i] then		
 			if enable then			
