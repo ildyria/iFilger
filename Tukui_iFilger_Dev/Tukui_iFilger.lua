@@ -270,18 +270,20 @@ function Filger:OnEvent(event, unit)
 					elseif data.filter == "IBUFF" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) then
 						local spn
 						spn, _, icon = GetSpellInfo(data.spellID)
-						name, _, _, _, _, _, _, _, _, _, spid = Filger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
+						name = Filger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
 						if not name then
 							found = true
 							name = spn
+							spid = data.spellID
 						end
 					elseif data.filter == "IDEBUFF" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) then
 						local spn
 						spn, _, icon = GetSpellInfo(data.spellID)
-						name, _, _, _, _, _, _, _, _, _, spid  = Filger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
+						name = Filger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
 						if not name then
 							found = true
 							name = spn
+							spid = data.spellID
 						end
 					elseif data.filter == "CD" and (not data.spec or data.spec == ptt) then
 						if data.spellID then
