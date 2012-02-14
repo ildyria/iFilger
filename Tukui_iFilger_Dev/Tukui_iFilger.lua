@@ -15,8 +15,6 @@ if iFilgerBuffConfig then
 end
 
 local class = select(2, UnitClass("player"));
-local classcolor = RAID_CLASS_COLORS[class];
-local active, bars = {}, {};
 local Filger = {}
 Filger["frame_list"] = {}
 local time, Update;
@@ -67,7 +65,7 @@ end
 -- Tooltip functions
 ------------------------------------------------------------
 
-function Filger:TooltipOnEnter(self)
+function Filger:TooltipOnEnter()
 	if self.spellID > 20 then -- coz slot ID... need to work on that soon : creating LUA error when mouseover a trinket tooltip
 		local str = "spell:%s"
 		local BadTotems = {
@@ -86,7 +84,7 @@ function Filger:TooltipOnEnter(self)
 	end
 end
 
-function Filger:TooltipOnLeave(self)
+function Filger:TooltipOnLeave()
         GameTooltip:Hide()
 end
 
@@ -98,7 +96,7 @@ end
 
 
 
-function Filger:UpdateCD(elapsed)
+function Filger:UpdateCD()
 	local time = self.value.start + self.value.duration - GetTime()
 	if time < 0 then
 		local frame = self:GetParent()
@@ -164,6 +162,8 @@ function Filger:DisplayActives()
 				aura.count:Point("BOTTOMRIGHT", 1, -1)
 				aura.count:SetJustifyH("CENTER")
 			end
+			-- spellID
+			aura.spellID = 0
 			-- insert aura
 			self.auras[index] = aura
 		end
@@ -172,7 +172,7 @@ function Filger:DisplayActives()
 		-- next
 		index = index + 1
 	end
-	-- Update texture, count, cd, size, opacity
+	-- Update texture, count, cd, size, opacity, spid
 	local totalWidth = 0
 	index = 1
 	for activeIndex, value in pairs(self.actives) do
@@ -198,6 +198,8 @@ function Filger:DisplayActives()
 			aura:SetScript("OnUpdate", nil)
 			aura.cooldown:Hide()
 		end
+		
+		aura.spellID = value.spid
 		if C.Filger.tooltip then
 			aura:EnableMouse(true)
 			aura:SetScript("OnEnter", Filger.TooltipOnEnter)
@@ -246,13 +248,13 @@ function Filger:OnEvent(event, unit)
 		if Filger["spells"][id] then
 			for i = 1, #Filger["spells"][id], 1 do
 				local data = Filger["spells"][id][i]
---				if not data.spec or data.spec == ptt then
 					local found = false
-					local name, icon, count, duration, start
+					local name, icon, count, duration, start, spid
+					spid = 0
 					if data.filter == "BUFF" and (not data.spec or data.spec == ptt) then
 						local caster, spn, expirationTime
 						spn, _, icon = GetSpellInfo(data.spellID)
-						name, _, _, count, _, duration, expirationTime, caster = Filger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
+						name, _, _, count, _, duration, expirationTime, caster, _, _, spid = Filger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
 						if name and (data.caster == "all" or data.caster == caster) then
 							start = expirationTime - duration
 							found = true
@@ -260,7 +262,7 @@ function Filger:OnEvent(event, unit)
 					elseif data.filter == "DEBUFF" and (not data.spec or data.spec == ptt) then
 						local caster, spn, expirationTime
 						spn, _, icon = GetSpellInfo(data.spellID)
-						name, _, _, count, _, duration, expirationTime, caster = Filger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
+						name, _, _, count, _, duration, expirationTime, caster, _, _, spid = Filger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
 						if name and (data.caster == "all" or data.caster == caster) then
 							start = expirationTime - duration
 							found = true
@@ -268,7 +270,7 @@ function Filger:OnEvent(event, unit)
 					elseif data.filter == "IBUFF" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) then
 						local spn
 						spn, _, icon = GetSpellInfo(data.spellID)
-						name = Filger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
+						name, _, _, _, _, _, _, _, _, _, spid = Filger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
 						if not name then
 							found = true
 							name = spn
@@ -276,7 +278,7 @@ function Filger:OnEvent(event, unit)
 					elseif data.filter == "IDEBUFF" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) then
 						local spn
 						spn, _, icon = GetSpellInfo(data.spellID)
-						name = Filger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
+						name, _, _, _, _, _, _, _, _, _, spid  = Filger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
 						if not name then
 							found = true
 							name = spn
@@ -285,6 +287,7 @@ function Filger:OnEvent(event, unit)
 						if data.spellID then
 							name, _, icon = GetSpellInfo(data.spellID)
 							start, duration = GetSpellCooldown(name)
+							spid = data.spellID
 						elseif data.slotID then
 							local slotLink = GetInventoryItemLink("player", data.slotID)
 							if slotLink then
@@ -314,11 +317,11 @@ function Filger:OnEvent(event, unit)
 						if data.trigger == "BUFF" then
 							local spn
 							spn, _, icon = GetSpellInfo(data.spellID)
-							name = Filger:UnitBuff("player", data.spellID, spn, data.absID)
+							name, _, _, _, _, _, _, _, _, _, spid = Filger:UnitBuff("player", data.spellID, spn, data.absID)
 						elseif data.trigger == "DEBUFF" then
 							local spn
 							spn, _, icon = GetSpellInfo(data.spellID)
-							name = Filger:UnitDebuff("player", data.spellID, spn, data.absID)
+							name, _, _, _, _, _, _, _, _, _, spid = Filger:UnitDebuff("player", data.spellID, spn, data.absID)
 						end
 						if name then
 							if data.slotID then
@@ -333,13 +336,14 @@ function Filger:OnEvent(event, unit)
 					if found then
 						if not self.actives then self.actives = {} end
 						if not self.actives[i] then
-							self.actives[i] = {data = data, name = name, icon = icon, count = count, start = start, duration = duration}
+							self.actives[i] = {data = data, name = name, icon = icon, count = count, start = start, duration = duration, spid = spid}
 							needUpdate = true
 						else
-							if data.filter ~= "ICD" and (self.actives[i].count ~= count or self.actives[i].start ~= start or self.actives[i].duration ~= duration) then
+							if data.filter ~= "ICD" and (self.actives[i].count ~= count or self.actives[i].start ~= start or self.actives[i].duration ~= duration or self.actives[i].spid ~= spid) then
 								self.actives[i].count = count
 								self.actives[i].start = start
 								self.actives[i].duration = duration
+								self.actives[i].spid = spid
 								needUpdate = true
 							end
 						end
@@ -348,7 +352,6 @@ function Filger:OnEvent(event, unit)
 							self.actives[i] = nil -- remove BUFF/DEBUFF/CD(only when BUFF/DEBUFF modified, CD are removed in UpdateCD)
 							needUpdate = true
 						end
---					end
 				end
 			end
 		end
@@ -581,7 +584,7 @@ end
 
 
 ------------------------------------------------------------
--- checkzone for cleverzone check
+-- checkzone for clever zone check
 ------------------------------------------------------------
 
 function Filger:checkzone()
@@ -657,7 +660,7 @@ local function moving()
 						name, _, _, _, _, _, _, _, _, icon = GetItemInfo(slotLink)
 					end
 				end
-				frame.actives[j] = {data = data, name = name, icon = icon, count = 9, start = 0, duration = 0}
+				frame.actives[j] = {data = data, name = name, icon = icon, count = 9, start = 0, duration = 0, spid = data.spellID}
 			end
 		end
 		Filger.DisplayActives(frame)
