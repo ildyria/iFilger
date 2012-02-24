@@ -63,8 +63,6 @@ end
 local Filger_Panels;
 if iFilgerConfig then 
 	Filger_Panels = iFilgerConfig["Filger_Panels"]
-else
-	Filger_Panels = C.Filger_Panels
 end
 
 -- load all of them even if we don't use some of them (like pvp in pve & so...)

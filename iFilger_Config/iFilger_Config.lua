@@ -275,8 +275,18 @@ C["Filger_Spells"] = {
 			{ spellID = 22959, unitId = "target", caster = "all", filter = "DEBUFF"},
 			-- Shadow and Flame (Warlock)
 			{ spellID = 17800, unitId = "target", caster = "all", filter = "DEBUFF"},
+			-- Deep Freeze
+			{ spellID = 44572, unitId = "target", caster = "all", filter = "DEBUFF" }, 
 			-- Freeze
 			{ spellID = 33395, unitId = "target", caster = "all", filter = "DEBUFF" }, 
+			-- Frost Nova
+			{ spellID = 122, unitId = "target", caster = "all", filter = "DEBUFF" }, 
+			-- Improved Cone of Cold (root)
+			{ spellID = 83302, unitId = "target", caster = "all", filter = "DEBUFF" }, 
+			-- Frostbolt (slow)
+--			{ spellID = 116, unitId = "target", caster = "all", filter = "DEBUFF", spec = 3 }, 
+			-- Cone of Cold (slow)
+--			{ spellID = 120, unitId = "target", caster = "all", filter = "DEBUFF" }, 
 			-- Stolen Time (2T13)
 			{ spellID = 105785, unitId = "player", caster = "player", filter = "BUFF" }, 
 		},
@@ -328,7 +338,7 @@ C["Filger_Spells"] = {
 			-- Combustion
 --			{ spellID = 11129, caster = "all", filter = "ACD", incombat = false },
 			-- Deep Freeze
-			{ spellID = 44572, caster = "all", filter = "ACD", incombat = false },
+			{ spellID = 44572, caster = "all", filter = "ACD", incombat = false, spec = 3 },
 			-- Living Bomb
 			{ spellID = 44457, unitId = "target", caster = "player", filter = "IDEBUFF", incombat = false, spec = 2 }, 
 		},

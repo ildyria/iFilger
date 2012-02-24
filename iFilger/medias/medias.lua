@@ -11,7 +11,7 @@ C["media"] = {
 	["normTex"] = [[Interface\AddOns\iFilger\medias\textures\normTex]], -- texture used for iFilger
 	["glowTex"] = [[Interface\AddOns\iFilger\medias\textures\glowTex]], -- the glow text around some frame.
 	["blank"] = [[Interface\AddOns\iFilger\medias\textures\blank]], -- the main texture for all borders/panels
-	["bordercolor"] = C.general.bordercolor or { .6,.6,.6 }, -- border color of iFilger panels
+	["bordercolor"] = { .6,.6,.6 }, -- border color of iFilger panels
 	["altbordercolor"] = { .4,.4,.4 }, -- alternative border color, mainly for unitframes text panels.
 	["backdropcolor"] = { .1,.1,.1 }, -- background color of tukui panels
 	}

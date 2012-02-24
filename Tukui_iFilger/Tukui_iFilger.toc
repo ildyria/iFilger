@@ -4,7 +4,7 @@
 ## Notes: Minimal buff/debuff/proc tracking for Tukui
 ## Editor: FourOne, Jasje, Ildyria
 ## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, mTx, SinaC, Hydra
-## Version: 4.5
+## Version: 5.0a
 ## RequiredDeps: Tukui, iFilger_Config
 
 Tukui_iFilger.xml

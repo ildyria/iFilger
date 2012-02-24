@@ -1,9 +1,0 @@
-## Interface: 40300
-## Author: Ildyria
-## Title: |cff1784d1iFilger|r ConfigUI
-## Notes: Config Panel for iFilger
-## Credits: Hydra
-## Version: 0.1
-## RequiredDeps: iFilger_Config
-
-load.xml
