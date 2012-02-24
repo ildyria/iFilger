@@ -67,7 +67,7 @@ p. "Elv":https://github.com/Elv22 , "Tukz":https://github.com/tukz , "Jasje":htt
 
 h3. What's next ? 
 
-p. I'm currently updating the main core of Tukui_iFilger (thx SinaC, memory used divided by about 2). I have to do the same for iFilger.
+p. I need to put bar option back (for iFilger & Tukui_iFilger).
 I may try to make an ingame config ui, but I don't realy know how, so don't expect that mutch.
 
 h3. WARNING
