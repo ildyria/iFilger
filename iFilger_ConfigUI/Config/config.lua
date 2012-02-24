@@ -6,7 +6,7 @@ C["General"] = {
 }
 
 
-if iFilgerBuffConfig then 
-	C["Filger_Spells"] = iFilgerBuffConfig["Filger_Spells"]
-	C["Filger_Panels"] = iFilgerBuffConfig["Filger_Panels"]
+if iFilgerConfig then 
+	C["Filger_Spells"] = iFilgerConfig["Filger_Spells"]
+	C["Filger_Panels"] = iFilgerConfig["Filger_Panels"]
 end

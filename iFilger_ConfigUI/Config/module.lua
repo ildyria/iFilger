@@ -8,8 +8,8 @@ local size = {}
 
 
 local Filger_Spells;
-if iFilgerBuffConfig then 
-	Filger_Spells = iFilgerBuffConfig["Filger_Spells"]
+if iFilgerConfig then 
+	Filger_Spells = iFilgerConfig["Filger_Spells"]
 end
 
 local iFilgerconfigPanel = CreateFrame("Frame", "iFilgerConfig", UIParent)

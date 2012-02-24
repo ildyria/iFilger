@@ -1,10 +1,11 @@
-﻿----------------------------------------------------------------------------
+----------------------------------------------------------------------------
 -- Per Class Config (overwrite general)
 -- Class need to be UPPERCASE
 ----------------------------------------------------------------------------
-local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
+local myclass = select(2, UnitClass("player"))
+local myname = select(1, UnitName("player"))
 
-if I.myclass == "PRIEST" then
+if myclass == "PRIEST" then
 	-- do some config!
 end
 
@@ -13,15 +14,15 @@ end
 -- Name need to be case sensitive
 ----------------------------------------------------------------------------
 
-if I.myname == "Ildyria" then
-	C.general.cleverzone = true
---	C.general.tooltip = false
-	iFilgerBuffConfig["Filger_Spells"]["ALL"][3].Enable = false -- disable ICD
+if myname == "Ildyria" then
+	iFilgerConfig["Filger_Config"].cleverzone = true
+	iFilgerConfig["Filger_Config"].tooltip = true
+	iFilgerConfig["Filger_Spells"]["TANKS"][3].Enable = false
 	-- yeah my default config is not really like default iFilger.
 end
 
-if I.myname == "Nâmi" then
-	for index, value in ipairs(iFilgerBuffConfig["Filger_Spells"]["PVP"]) do
+if myname == "N�mi" then
+	for index, value in ipairs(iFilgerConfig["Filger_Spells"]["PVP"]) do
 		value.Enable = false
 	end
 end

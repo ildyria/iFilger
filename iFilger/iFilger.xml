@@ -3,7 +3,6 @@
 	<Script file="core\init.lua"/>
 	<Script file="core\constants.lua"/>	
 	<Script file="config\config.lua"/>
-	<Script file="config\profiles.lua"/>
 	<Script file="medias\medias.lua"/>
 	<Script file="core\uiscale.lua"/>
 	<Script file="core\api.lua"/>

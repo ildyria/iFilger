@@ -11,8 +11,8 @@ local _, _, _, isElvUIenabled = GetAddOnInfo("ElvUI")
 local _, _, _, isTukuienabled = GetAddOnInfo("Tukui")
 local _, _, _, isiFilgerConfigenabled = GetAddOnInfo("iFilger_Config")
 
-if iFilgerBuffConfig then 
-	C["cooldown"] = iFilgerBuffConfig["Filger_Cooldown"]
+if iFilgerConfig then 
+	C["cooldown"] = iFilgerConfig["Filger_Cooldown"]
 end
 
 if isOmniCCenabled or isncCooldownenabled or isElvUIenabled or isTukuienabled or not(isiFilgerConfigenabled) or C["cooldown"].enable ~= true then

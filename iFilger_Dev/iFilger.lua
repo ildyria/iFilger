@@ -8,9 +8,9 @@ local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, vari
 local _, _, _, isiFilgerConfigenabled = GetAddOnInfo("iFilger_Config")
 
 local iFilger_Spells, iFilger_Config;
-if iFilgerBuffConfig then 
-	iFilger_Spells = iFilgerBuffConfig["Filger_Spells"]
-	iFilger_Config = iFilgerBuffConfig["Filger_Config"]
+if iFilgerConfig then 
+	iFilger_Spells = iFilgerConfig["Filger_Spells"]
+	iFilger_Config = iFilgerConfig["Filger_Config"]
 end
 
 local class = select(2, UnitClass("player"));

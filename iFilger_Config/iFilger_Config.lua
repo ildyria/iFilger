@@ -3,7 +3,7 @@ local C = {}
 C["Filger_Config"] = {
 	["cleverzone"] = false,								-- load only PVP in PVP zones and PVE in PVE zones (require to reload the 1st time you enter the pve zone)
 	["tooltip"] = true,									-- tooltip on mouseover buffs, some people wanted it. I don't.
-	["TooltipMover"] = true,							-- tooltip on TooltipMover for ElvUI users.
+	["TooltipMover"] = true,							-- tooltip on TooltipMover for ElvUI and Tukui users.
 }
 
 C["Filger_Cooldown"] = { -- will be disabled if Tukui / ElvUI / OmniCC / ncCooldown is enabled
@@ -2812,4 +2812,4 @@ C["Filger_Spells"] = {
 	},
 }
 
-iFilgerBuffConfig = C
+iFilgerConfig = C
