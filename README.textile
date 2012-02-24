@@ -67,8 +67,8 @@ p. "Elv":https://github.com/Elv22 , "Tukz":https://github.com/tukz , "Jasje":htt
 
 h3. What's next ? 
 
-p. I've in mind to make config a little more easier coz now, i need to keep update both version (stand alone and not).
-I may try to make iFilger_config seperate to the addon so it doesn't depend on which version you want to use (stand alone or not).
+p. I'm currently updating the main core of Tukui_iFilger (thx SinaC, memory used divided by about 2). I have to do the same for iFilger.
+I may try to make an ingame config ui, but I don't realy know how, so don't expect that mutch.
 
 h3. WARNING
 
