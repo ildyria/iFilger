@@ -1,5 +1,17 @@
 local C = {}
 
+C["Filger_Config"] = {
+	["cleverzone"] = false,								-- load only PVP in PVP zones and PVE in PVE zones (require to reload the 1st time you enter the pve zone)
+	["tooltip"] = true,									-- tooltip on mouseover buffs, some people wanted it. I don't.
+	["TooltipMover"] = true,							-- tooltip on TooltipMover for ElvUI users.
+}
+
+C["Filger_Cooldown"] = { -- will be disabled if Tukui / ElvUI / OmniCC / ncCooldown is enabled
+	["enable"] = true,									-- do i really need to explain this?
+	["treshold"] = 8,									-- show decimal under X seconds and text turn red
+	["fontsize"] = 20,									--the base font size to use at a scale of 1
+}
+
 C["Filger_Panels"] = {
 	["MAGE"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
@@ -649,6 +661,8 @@ C["Filger_Spells"] = {
 			{ spellID = 348, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Shadowflame
 			{ spellID = 47960, unitId = "target", caster = "player", filter = "DEBUFF" },
+            -- felstorm
+			{ spellID = 89751, unitId = "pet", caster = "all", filter = "BUFF" },
 		},
 		{
 			Name = "Buffs and Debuffs CC",

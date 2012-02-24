@@ -2,12 +2,10 @@
 	Filger
 	Copyright (c) 2009, Nils Ruesch
 ]]
-local I, C, L = unpack(Tukui) -- Import: I - functions, constants, variables; C - config; L - locales
 
-local _, _, _, isiFilgerenabled = GetAddOnInfo("iFilger")
-if isiFilgerenabled == 1 then
-	return
-end
+local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
+
+local _, _, _, isiFilgerConfigenabled = GetAddOnInfo("iFilger_Config")
 
 local iFilger_Spells, iFilger_Config;
 if iFilgerBuffConfig then 
@@ -66,6 +64,20 @@ end
 -- Tooltip functions
 ------------------------------------------------------------
 
+local _, _, _, isElvUIenabled = GetAddOnInfo("ElvUI")
+local _, _, _, isTukuienabled = GetAddOnInfo("Tukui")
+local TooltipAnchor;
+if isElvUIenabled and iFilger_Config.TooltipMover then
+	TooltipAnchor = "TooltipMover"
+elseif isTukuienabled and iFilger_Config.TooltipMover then
+	TooltipAnchor = "TukuiTooltipAnchor"
+else
+	iFilger_Config.TooltipMover = false
+end
+
+isElvUIenabled = nil
+isTukuienabled = nil
+
 function iFilger:TooltipOnEnter()
 	if self.spellID > 20 then -- coz slot ID... need to work on that soon : creating LUA error when mouseover a trinket tooltip
 		local str = "spell:%s"
@@ -76,7 +88,7 @@ function iFilger:TooltipOnEnter()
 		}
 		GameTooltip:ClearLines()
 		if iFilger_Config.TooltipMover then
-			GameTooltip:SetOwner(_G["TukuiTooltipAnchor"], "ANCHOR_TOPRIGHT", 0, 7)
+			GameTooltip:SetOwner(_G[TooltipAnchor], "ANCHOR_TOPRIGHT", 0, 7)
 		else
 			GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
 		end
@@ -163,7 +175,7 @@ function iFilger:DisplayActives()
 				aura.count = _G[aura.count:GetName()]
 			else
 				aura.count = aura:CreateFontString("$parentCount", "OVERLAY")
-				aura.count:SetFont(C["media"].uffont, 14, "OUTLINE")
+				aura.count:SetFont(C["media"].font, 14, "OUTLINE")
 				aura.count:Point("BOTTOMRIGHT", 1, -1)
 				aura.count:SetJustifyH("CENTER")
 			end
@@ -205,7 +217,7 @@ function iFilger:DisplayActives()
 		end
 		
 		aura.spellID = value.spid
-		if iFilger_Config.tooltip then
+		if iFilger_Config then
 			aura:EnableMouse(true)
 			aura:SetScript("OnEnter", iFilger.TooltipOnEnter)
 			aura:SetScript("OnLeave", iFilger.TooltipOnLeave)
@@ -731,35 +743,3 @@ end
 SLASH_RESETIFILGER1 = "/rifilger"
 SLASH_RESETIFILGER2 = "/resetifilger"
 SlashCmdList.RESETIFILGER = positionsetup
-
-
--------------------------------------------------------
--- DEBUG
--------------------------------------------------------
-
-local DatatextColor = I.RGBToHex(unpack(C.media.datatextcolor1))
-local kiloByteString = "%d "..DatatextColor.."kb".."|r"
-local megaByteString = "%.2f "..DatatextColor.."mb".."|r"
-
-
-
----------------------------------
--- formatMemory : b => kb or mb
----------------------------------
-
-local function formatMem(memory)
-	local mult = 10^1
-	if memory > 999 then
-		local mem = ((memory/1024) * mult) / mult
-		return string.format(megaByteString, mem)
-	else
-		local mem = (memory * mult) / mult
-		return string.format(kiloByteString, mem)
-	end
-end
-
-
-local iFilgerDebug = CreateFrame("Frame", "iFilger_Debug", UIParent)
-iFilgerDebug:RegisterEvent("UNIT_AURA");
-iFilgerDebug:RegisterEvent("PLAYER_TARGET_CHANGED");
-iFilgerDebug:RegisterEvent("PLAYER_ENTERING_WORLD");
