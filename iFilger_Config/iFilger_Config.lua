@@ -283,6 +283,8 @@ C["Filger_Spells"] = {
 			{ spellID = 122, unitId = "target", caster = "all", filter = "DEBUFF" }, 
 			-- Improved Cone of Cold (root)
 			{ spellID = 83302, unitId = "target", caster = "all", filter = "DEBUFF" }, 
+			-- Ring of Frost
+			{ spellID = 82691, unitId = "target", caster = "all", filter = "DEBUFF" }, 
 			-- Frostbolt (slow)
 --			{ spellID = 116, unitId = "target", caster = "all", filter = "DEBUFF", spec = 3 }, 
 			-- Cone of Cold (slow)
@@ -295,7 +297,7 @@ C["Filger_Spells"] = {
 			Enable = true,
 			Direction = "RIGHT",
 			Interval = 4,
-			Mode = "ICON",
+			Mode = "BAR",
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = 60, 
@@ -326,7 +328,7 @@ C["Filger_Spells"] = {
 			Direction = "HORIZONTAL",
 			Interval = 4,
 			Mode = "ICON",
-			Alpha = 0.5,
+			Alpha = 0.75,
 --			BarWidth = 150,
 			Size = 47, 
 			setPoint = { "BOTTOM", "iFilgerMageInvertAura", 0, 22 },
