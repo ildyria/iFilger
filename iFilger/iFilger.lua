@@ -3,9 +3,8 @@
 	Copyright (c) 2009, Nils Ruesch
 ]]
 
-local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
-local _, _, _, isiFilgerConfigenabled = GetAddOnInfo("iFilger_Config")
+local I, C, L = unpack(select(2, ...)) -- Import: I - functions, constants, variables; C - config; L - locales
 
 local iFilger_Spells, iFilger_Config;
 if iFilgerConfig then 
@@ -13,8 +12,9 @@ if iFilgerConfig then
 	iFilger_Config = iFilgerConfig["Filger_Config"]
 end
 
-local class = select(2, UnitClass("player"));
+local class = select(2, UnitClass("player"))
 local iFilger = {}
+local classcolor = RAID_CLASS_COLORS[class]
 iFilger["frame_list"] = {}
 local time, Update;
 
@@ -115,6 +115,16 @@ end
 
 function iFilger:UpdateCD()
 	local time = self.value.start + self.value.duration - GetTime()
+
+	if (self:GetParent().Mode == "BAR") then
+		self.statusbar:SetValue(time);
+		if time <= 60 then
+			self.time:SetFormattedText("%.1f",(time));
+		else
+			self.time:SetFormattedText("%d:%.2d",(time/60),(time%60));
+		end
+	end
+
 	if time < 0 then
 		local frame = self:GetParent()
 		frame.actives[self.activeIndex] = nil
@@ -153,6 +163,7 @@ function iFilger:DisplayActives()
 					aura:Point("TOP", previous, "BOTTOM", 0, -self.Interval)
 				end
 			end
+
 			-- icon
 			if aura.icon then
 				aura.icon = _G[aura.icon:GetName()]
@@ -162,23 +173,93 @@ function iFilger:DisplayActives()
 				aura.icon:Point("BOTTOMRIGHT", -2, 2)
 				aura.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 			end
-			-- cooldown
-			if aura.cooldown then
-				aura.cooldown = _G[aura.cooldown:GetName()]
+
+			if (self.Mode == "ICON") then
+
+				-- cooldown
+				if aura.cooldown then
+					aura.cooldown = _G[aura.cooldown:GetName()]
+				else
+					aura.cooldown = CreateFrame("Cooldown", "$parentCD", aura, "CooldownFrameTemplate")
+					aura.cooldown:SetAllPoints(aura.icon)
+					aura.cooldown:SetReverse()
+				end
+
+				-- count
+				if aura.count then
+					aura.count = _G[aura.count:GetName()]
+				else
+					aura.count = aura:CreateFontString("$parentCount", "OVERLAY")
+					aura.count:SetFont(C["media"].pixelfont, 14, "OUTLINE")
+					aura.count:Point("BOTTOMRIGHT", 1, -1)
+					aura.count:SetJustifyH("CENTER")
+				end
 			else
-				aura.cooldown = CreateFrame("Cooldown", "$parentCD", aura, "CooldownFrameTemplate")
-				aura.cooldown:SetAllPoints(aura.icon)
-				aura.cooldown:SetReverse()
+				if (aura.statusbar) then
+					aura.statusbar = _G[aura.statusbar:GetName()]
+				else
+					aura.statusbar = CreateFrame("StatusBar", "$parentStatusBar", aura);
+					aura.statusbar:SetWidth(I.Scale(self.BarWidth - 2));
+					aura.statusbar:SetHeight(I.Scale(5));
+					aura.statusbar:SetStatusBarTexture(C.media.normTex);
+					aura.statusbar:SetStatusBarColor(classcolor.r, classcolor.g, classcolor.b, 1);
+					if ( self.IconSide == "LEFT" ) then
+						aura.statusbar:SetPoint("BOTTOMLEFT", aura, "BOTTOMRIGHT", 6, 2);
+					elseif ( self.IconSide == "RIGHT" ) then
+						aura.statusbar:SetPoint("BOTTOMRIGHT", aura, "BOTTOMLEFT", -6, 2);
+					end
+				end
+				aura.statusbar:SetMinMaxValues(0, 1);
+				aura.statusbar:SetValue(0);
+				
+				if (aura.bg)then
+					aura.bg = _G[aura.bg:GetName()]
+				else
+					aura.bg = CreateFrame("Frame","$parentBG", aura.statusbar)
+					aura.bg:SetPoint("TOPLEFT", I.Scale(-2), I.Scale(2))
+					aura.bg:SetPoint("BOTTOMRIGHT", I.Scale(2), I.Scale(-2))
+					aura.bg:SetFrameStrata("BACKGROUND")
+					aura.bg:SetTemplate("Hydra")
+				end
+				
+				if (aura.background)then
+					aura.background = _G[aura.background:GetName()]
+				else
+					aura.background = aura.statusbar:CreateTexture(nil, "BACKGROUND");
+					aura.background:SetAllPoints();
+					aura.background:SetTexture(C.media.normTex);
+					aura.background:SetVertexColor(0, 0, 0, 0.5);
+				end
+				
+				if (aura.time)then
+					aura.time = _G[aura.time:GetName()]
+				else			
+					aura.time = aura.statusbar:CreateFontString("$parentTime", "ARTWORK");
+					aura.time:SetFont(C.media.pixelfont, 14, "MONOCHROMEOUTLINE");
+					aura.time:SetPoint("BOTTOMRIGHT", aura.statusbar, I.Scale(6), I.Scale(8));
+					aura.time:SetJustifyH("RIGHT");
+				end
+				
+				if (aura.count) then
+					aura.count = _G[aura.count:GetName()]
+				else
+					aura.count = aura:CreateFontString("$parentCount", "ARTWORK");
+					aura.count:SetFont(C["media"].pixelfont, 16, "MONOCHROMEOUTLINE");
+					aura.count:SetPoint("BOTTOMRIGHT", I.Scale(-2), I.Scale(2));
+					aura.count:SetJustifyH("CENTER");
+				end
+				
+				if (aura.spellname)then
+					aura.spellname = _G[aura.spellname:GetName()]
+				else
+					aura.spellname = aura.statusbar:CreateFontString("$parentSpellName", "ARTWORK");
+					aura.spellname:SetFont(C.media.pixelfont, 14, "MONOCHROMEOUTLINE");
+					aura.spellname:SetPoint("BOTTOMLEFT", aura.statusbar, I.Scale(-2), I.Scale(8));
+					aura.spellname:SetPoint("RIGHT", aura.time, "LEFT");
+					aura.spellname:SetJustifyH("LEFT");
+				end
 			end
-			-- count
-			if aura.count then
-				aura.count = _G[aura.count:GetName()]
-			else
-				aura.count = aura:CreateFontString("$parentCount", "OVERLAY")
-				aura.count:SetFont(C["media"].font, 14, "OUTLINE")
-				aura.count:Point("BOTTOMRIGHT", 1, -1)
-				aura.count:SetJustifyH("CENTER")
-			end
+			
 			-- spellID
 			aura.spellID = 0
 			-- insert aura
@@ -194,6 +275,12 @@ function iFilger:DisplayActives()
 	index = 1
 	for activeIndex, value in pairs(self.actives) do
 		local aura = self.auras[index]
+
+		aura.spellName = GetSpellInfo( value.spid );
+		if (self.Mode == "BAR") then
+			aura.spellname:SetText(aura.spellName);
+		end
+
 		aura.icon:SetTexture(value.icon)
 		if value.count and value.count > 1 then
 			aura.count:SetText(value.count)
@@ -201,23 +288,37 @@ function iFilger:DisplayActives()
 		else
 			aura.count:Hide()
 		end
-		if value.duration and value.duration > 0 then
-			CooldownFrame_SetTimer(aura.cooldown, value.start, value.duration, 1)
-			if value.data.filter == "CD" or value.data.filter == "ICD" then
-				aura.value = value
-				aura.activeIndex = activeIndex
-				aura:SetScript("OnUpdate", iFilger.UpdateCD)
-			else
-				aura:SetScript("OnUpdate", nil)
-			end
-			aura.cooldown:Show()
-		else
-			aura:SetScript("OnUpdate", nil)
-			aura.cooldown:Hide()
-		end
 		
+		if value.duration and value.duration > 0 then
+			if (self.Mode == "ICON") then
+				CooldownFrame_SetTimer(aura.cooldown, value.start, value.duration, 1)
+				if value.data.filter == "CD" or value.data.filter == "ICD" then
+					aura.value = value
+					aura.activeIndex = activeIndex
+					aura:SetScript("OnUpdate", iFilger.UpdateCD)
+				else
+					aura:SetScript("OnUpdate", nil)
+				end
+				aura.cooldown:Show()
+			else
+				aura.statusbar:SetMinMaxValues(0, value.duration);
+				aura.value = value
+				aura:SetScript("OnUpdate", iFilger.UpdateCD);
+			end
+		else
+			if (self.Mode == "ICON") then
+				aura.cooldown:Hide();
+			else
+				aura.statusbar:SetMinMaxValues(0, 1);
+				aura.statusbar:SetValue(1);
+				aura.time:SetText("");
+			end
+			aura:SetScript("OnUpdate", nil)
+		end
+
 		aura.spellID = value.spid
-		if iFilger_Config then
+		
+		if iFilger_Config.tooltip then
 			aura:EnableMouse(true)
 			aura:SetScript("OnEnter", iFilger.TooltipOnEnter)
 			aura:SetScript("OnLeave", iFilger.TooltipOnLeave)
@@ -332,6 +433,7 @@ function iFilger:OnEvent(event, unit)
 						if name and (duration or 0) > 1.5 then
 							found = false
 						end
+						duration = 0
 					elseif data.filter == "ICD" and (not data.spec or data.spec == ptt) then
 						if data.trigger == "BUFF" then
 							local spn
@@ -568,11 +670,16 @@ function iFilger:UpdatesFramesList ()
 			frame.Mode = data.Mode or "ICON"
 			frame.Size = data.Size or 20
 			frame.Alpha = data.Alpha or 1.0
+			frame.BarWidth = data.BarWidth or 200
 			frame.setPoint = data.setPoint or "CENTER"
 			frame:Width(data.Size or 20)
 			frame:Height(data.Size or 20)
 			frame:Point(unpack(data.setPoint))
 			frame:SetAlpha(data.Alpha or 1.0)
+			
+			if(data.Mode ~= "ICON" and frame.Direction ~= "DOWN" and frame.Direction ~= "UP") then -- check if bar + right or left => ugly !
+				frame.Direction = "UP";
+			end
 			
 			local CDFound = false
 			local focusFound = false
