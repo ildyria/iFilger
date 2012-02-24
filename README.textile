@@ -67,8 +67,7 @@ p. "Elv":https://github.com/Elv22 , "Tukz":https://github.com/tukz , "Jasje":htt
 
 h3. What's next ? 
 
-p. I need to put bar option back (for iFilger & Tukui_iFilger).
-I may try to make an ingame config ui, but I don't realy know how, so don't expect that mutch.
+p. I may try to make an ingame config ui, but I don't realy know how, so don't expect that mutch.
 
 h3. WARNING
 
