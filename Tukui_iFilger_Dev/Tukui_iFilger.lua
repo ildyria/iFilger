@@ -300,21 +300,21 @@ function Filger:OnEvent(event, unit)
 						if name and (duration or 0) > 1.5 then
 							found = true
 						end
-					-- elseif data.filter == "ACD" and (not data.incombat or InCombatLockdown()) then
-						-- name, _, icon = GetSpellInfo(data.spellID)
-						-- spid = data.spellID;
-						-- start, duration, enabled = GetSpellCooldown(name)
-						-- found = true
-						-- if(not enabled) then
-							-- name = nil
-							-- found = false
-						-- elseif(enabled == 0 or (start > 0 and duration > 0)) then
-							-- name = nil
-							-- found = false
-						-- end
-						-- if name and (duration or 0) > 1.5 then
-							-- found = false
-						-- end
+					elseif data.filter == "ACD" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) then
+						name, _, icon = GetSpellInfo(data.spellID)
+						spid = data.spellID;
+						start, duration, enabled = GetSpellCooldown(name)
+						found = true
+						if(not enabled) then
+							name = nil
+							found = false
+						elseif(enabled == 0 or (start > 0 and duration > 1.5)) then
+							name = nil
+							found = false
+						end
+						if name and (duration or 0) > 1.5 then
+							found = false
+						end
 					elseif data.filter == "ICD" and (not data.spec or data.spec == ptt) then
 						if data.trigger == "BUFF" then
 							local spn
@@ -341,7 +341,7 @@ function Filger:OnEvent(event, unit)
 							self.actives[i] = {data = data, name = name, icon = icon, count = count, start = start, duration = duration, spid = spid}
 							needUpdate = true
 						else
-							if data.filter ~= "ICD" and (self.actives[i].count ~= count or self.actives[i].start ~= start or self.actives[i].duration ~= duration or self.actives[i].spid ~= spid) then
+							if data.filter ~= "ICD" and data.filter ~= "ACD" and (self.actives[i].count ~= count or self.actives[i].start ~= start or self.actives[i].duration ~= duration or self.actives[i].spid ~= spid) then
 								self.actives[i].count = count
 								self.actives[i].start = start
 								self.actives[i].duration = duration
@@ -351,7 +351,7 @@ function Filger:OnEvent(event, unit)
 						end
 					else
 						if data.filter ~= "ICD" and self.actives and self.actives[i] then
-							self.actives[i] = nil -- remove BUFF/DEBUFF/CD(only when BUFF/DEBUFF modified, CD are removed in UpdateCD)
+							self.actives[i] = nil -- remove BUFF/DEBUFF/ACD (only when BUFF/DEBUFF modified, CD are removed in UpdateCD)
 							needUpdate = true
 						end
 				end
