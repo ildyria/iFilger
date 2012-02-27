@@ -339,8 +339,6 @@ C["Filger_Spells"] = {
 			{ spellID = 6117, unitId = "player", caster = "all", filter = "IBUFF", incombat = false, spec = 1 },
 			-- Combustion
 --			{ spellID = 11129, caster = "all", filter = "ACD", incombat = false },
-			-- Deep Freeze
-			{ spellID = 44572, caster = "all", filter = "ACD", incombat = false, spec = 3 },
 			-- Living Bomb
 			{ spellID = 44457, unitId = "target", caster = "player", filter = "IDEBUFF", incombat = false, spec = 2 }, 
 		},
@@ -1165,7 +1163,7 @@ C["Filger_Spells"] = {
 			-- Suffering -- Legendary buff
 			{ spellID = 109959, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Nightmare -- Legendary buff
-			{ spellID = 109959, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 109955, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Shadows of the Destroyer -- Legendary buff
 			{ spellID = 109941, unitId = "player", caster = "player", filter = "BUFF" },
 		},
