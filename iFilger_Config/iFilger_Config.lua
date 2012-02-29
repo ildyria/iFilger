@@ -2375,6 +2375,8 @@ C["Filger_Spells"] = {
 			-- Racials --
 			-- War Stomp
 			{ spellID = 20549, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Arcane Torrent
+			{ spellID = 28730, unitId = "player", caster = "all", filter = "DEBUFF" },
 		},
 	},
 	["PVE"] = {

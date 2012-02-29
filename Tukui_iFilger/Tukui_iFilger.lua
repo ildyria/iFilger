@@ -397,6 +397,7 @@ function iFilger:OnEvent(event, unit)
 							start, duration = GetSpellCooldown(name)
 							spid = data.spellID
 						elseif data.slotID then
+							spid = data.slotID
 							local slotLink = GetInventoryItemLink("player", data.slotID)
 							if slotLink then
 								name, _, _, _, _, _, _, _, _, icon = GetItemInfo(slotLink)
@@ -773,7 +774,7 @@ local function moving()
 						name, _, _, _, _, _, _, _, _, icon = GetItemInfo(slotLink)
 					end
 				end
-				frame.actives[j] = {data = data, name = name, icon = icon, count = 9, start = 0, duration = 0, spid = data.spellID}
+				frame.actives[j] = {data = data, name = name, icon = icon, count = 9, start = 0, duration = 0, spid = data.spellID or data.slotID}
 			end
 		end
 		iFilger.DisplayActives(frame)
