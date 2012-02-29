@@ -1115,7 +1115,7 @@ C["Filger_Spells"] = {
 			-- Vendetta
 			{ spellID = 14177, filter = "CD" },
 			-- Cold Blood
-			{ spellID = 51713, filter = "CD" },
+			{ spellID = 14177, filter = "CD" },
 			-- Vanish
 			{ spellID = 1856, filter = "CD" },
 		},
