@@ -4,6 +4,7 @@
 ## Notes: Config Panel for iFilger
 ## Credits: Hydra
 ## Version: 0.1
+## DefaultState: disabled
 ## RequiredDeps: iFilger_Config
 
 load.xml

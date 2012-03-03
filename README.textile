@@ -67,8 +67,13 @@ p. "Elv":https://github.com/Elv22 , "Tukz":https://github.com/tukz , "Jasje":htt
 
 h3. What's next ? 
 
-p. I may try to make an ingame config ui, but I don't realy know how, so don't expect that mutch.
+p. Find the reason why buffs doesn't appears in the order defined in config.lua, that might be usefull for class gameplay works with DoTs or Buffs to keep active.
+Try to make an ingame config ui, but I don't realy know how, so don't expect that mutch.
+Slash Command need some reworks
+
 
 h3. WARNING
 
-p. It seams the memory used by the addon still increase slowly during long fight and come back to normal value at the end. There may be a small memory leak and i can't find that b**** again >_<
+p. WIP in iFilger_ConfigUI, if you don't want LUA ERROR, DO NOT ENABLE IT ! I can't play WoW ATM, so i'm blind coding and i can't check if my code works or not.
+
+p.	It seams the memory used by the addon still increase slowly during long fight and come back to normal value at the end. There may be a small memory leak and i can't find that b**** again >_<
