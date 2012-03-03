@@ -76,4 +76,4 @@ h3. WARNING
 
 p. WIP in iFilger_ConfigUI, if you don't want LUA ERROR, DO NOT ENABLE IT ! I can't play WoW ATM, so i'm blind coding and i can't check if my code works or not.
 
-p.	It seams the memory used by the addon still increase slowly during long fight and come back to normal value at the end. There may be a small memory leak and i can't find that b**** again >_<
+p. It seams the memory used by the addon still increase slowly during long fight and come back to normal value at the end. There may be a small memory leak and i can't find that b**** again >_<
