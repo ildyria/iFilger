@@ -69,7 +69,6 @@ h3. What's next ?
 
 p. Find the reason why buffs doesn't appears in the order defined in config.lua, that might be usefull for class gameplay works with DoTs or Buffs to keep active.
 Try to make an ingame config ui, but I don't realy know how, so don't expect that mutch.
-Slash Command need some reworks
 
 
 h3. WARNING

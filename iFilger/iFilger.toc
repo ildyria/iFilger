@@ -6,6 +6,7 @@
 ## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, mTx, SinaC
 ## Version: 5.2
 ## RequiredDeps: iFilger_Config
+## OptionalDeps: iFilger_ConfigUI
 ## Notes: Power Aura Like, skinned for Tukui / ElvUI.
 
 iFilger.xml

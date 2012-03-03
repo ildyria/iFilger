@@ -6,5 +6,6 @@
 ## Version: 0.1
 ## DefaultState: disabled
 ## RequiredDeps: iFilger_Config
+## SavedVariablesPerCharacter: iFilgerConfigUISavedVariables
 
 load.xml
