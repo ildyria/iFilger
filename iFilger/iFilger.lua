@@ -410,7 +410,8 @@ function iFilger:OnEvent(event, unit)
 								start, duration = GetSpellCooldown(data.spellID)
 							else
 								start, duration = GetSpellCooldown(name)
-							end							spid = data.spellID
+							end
+							spid = data.spellID
 						elseif data.slotID then
 							spid = data.slotID
 							local slotLink = GetInventoryItemLink("player", data.slotID)
