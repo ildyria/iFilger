@@ -337,6 +337,8 @@ C["Filger_Spells"] = {
 			{ spellID = 30482, unitId = "player", caster = "all", filter = "IBUFF", incombat = false, spec = 2 },
 			-- Mage Armor
 			{ spellID = 6117, unitId = "player", caster = "all", filter = "IBUFF", incombat = false, spec = 1 },
+			-- Ice Barrier
+--			{ spellID = 11426, unitId = "player", caster = "all", filter = "ACD", incombat = false, spec = 3 },
 			-- Combustion
 --			{ spellID = 11129, caster = "all", filter = "ACD", incombat = false },
 			-- Living Bomb
@@ -823,6 +825,8 @@ C["Filger_Spells"] = {
 			Size = 32,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
+			-- Charge (cat)
+			{ spellID = 49376, filter = "CD", absID = true },
 			-- Starsurge
 			{ spellID = 78674, filter = "CD" },
 			-- Starfall
@@ -1699,13 +1703,11 @@ C["Filger_Spells"] = {
 			{ spellID = 52610, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Owlkin Frenzy
 			{ spellID = 48391, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Berserker Rage *
+			-- Berserker Rage
 			{ spellID = 18499, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Wrecking Crew  *
-			{ spellID = 57519, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Death Wish  *
+			-- Death Wish
 			{ spellID = 12292, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Bastion of Defense  *
+			-- Bastion of Defense
 			{ spellID = 29594, unitId = "target", caster = "all", filter = "BUFF" },
 		},
 	},

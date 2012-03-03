@@ -406,8 +406,11 @@ function iFilger:OnEvent(event, unit)
 					elseif data.filter == "CD" and (not data.spec or data.spec == ptt) then
 						if data.spellID then
 							name, _, icon = GetSpellInfo(data.spellID)
-							start, duration = GetSpellCooldown(name)
-							spid = data.spellID
+							if data.absID then
+								start, duration = GetSpellCooldown(data.spellID)
+							else
+								start, duration = GetSpellCooldown(name)
+							end							spid = data.spellID
 						elseif data.slotID then
 							spid = data.slotID
 							local slotLink = GetInventoryItemLink("player", data.slotID)
