@@ -2383,7 +2383,7 @@ C["Filger_Spells"] = {
 	},
 	["PVE"] = {
 		{
-			Name = "Cataclysm debuff list by jasje", -- taken from aurawatch.lua
+			Name = "Cataclysm debuff", -- list by jasje, taken from aurawatch.lua
 			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,

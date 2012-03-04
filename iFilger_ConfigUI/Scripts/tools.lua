@@ -30,7 +30,7 @@ F.CreatePanel = function(f, w, h, a1, p, a2, x, y)
 	})
 	
 	f:SetBackdropColor(unpack(C["General"].BackdropColor))
-	f:SetBackdropBorderColor(unpack(C["General"].BorderColor))
+	f:SetBackdropBorderColor(unpack(C["General"].BorderColorConfig))
 end
 
 F.Kill = function(object)
@@ -46,7 +46,7 @@ F.SetBorder = function(frame)
 	if frame:GetFrameStrata() == "BACKGROUND" then frame:SetFrameStrata("LOW") end
 
 	frame:SetBackdropColor(.075, .075, .075, 0.6)
-	frame:SetBackdropBorderColor(unpack(C["General"].BorderColor))
+	frame:SetBackdropBorderColor(unpack(C["General"].BorderColorConfig))
 	
 	local border = CreateFrame("Frame", nil, frame)
 	border:SetPoint("TOPLEFT", frame, "TOPLEFT", F.Scale(-1), F.Scale(1))
@@ -55,7 +55,7 @@ F.SetBorder = function(frame)
 	border:SetFrameLevel(1)
 	border:SetBackdrop { edgeFile = C.blank, edgeSize = F.Scale(3), insets = {left = 0, right = 0, top = 0, bottom = 0} }
 	border:SetBackdropColor(unpack(C["General"].BackdropColor))
-	border:SetBackdropBorderColor(unpack(C["General"].BorderColor))
+	border:SetBackdropBorderColor(unpack(C["General"].BorderColorConfig))
 end
 
 local CreateBackdrop = function(f)
@@ -71,7 +71,7 @@ local CreateBackdrop = function(f)
 	  insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
 	})
 	b:SetBackdropColor(unpack(C["General"].BackdropColor))
-	b:SetBackdropBorderColor(unpack(C["General"].BorderColor))
+	b:SetBackdropBorderColor(unpack(C["General"].BorderColorConfig))
 
 	if f:GetFrameLevel() - 1 >= 0 then
 		b:SetFrameLevel(f:GetFrameLevel() - 1)
