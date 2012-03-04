@@ -3,18 +3,8 @@ local C, F, L = unpack(select(2, ...))
 ---------------------------------------------------------------------------------------------------------------------------------------
 --													TODO LIST
 --
---	/!\ /!\	add saved variables (mandatory) http://www.wowwiki.com/Saving_variables_between_game_sessions
---	/!\ /!\	Reset button so we can go back to initial config -- DONE (IN THEORY...)
---	  /!\	add Enable
---	  /!\	add Size
---	  /!\	add Direction
---			add Interval
---			add Alpha
---			add Mode
---			add IconSide
---			add BarWidth
---			add lots of other things
---
+-- 			Coding finished.
+--			TO DO : KILL BUGS !
 --
 --
 ---------------------------------------------------------------------------------------------------------------------------------------
@@ -25,8 +15,8 @@ local C, F, L = unpack(select(2, ...))
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 --local ipairs = ipairs
-local myPlayerRealm = GetCVar("realmName")
-local myPlayerName  = UnitName("player")
+--local myPlayerRealm = GetCVar("realmName")				-- not usefull yet, maybe later, let's comment that while it's useless
+--local myPlayerName  = UnitName("player")					-- not usefull yet, maybe later, let's comment that while it's useless
 local myClass = select(2, UnitClass("player"));
 local tabs = {  											-- List of headers and number of tabs inside each ones
 	[1] = {
@@ -57,7 +47,6 @@ local tabs = {  											-- List of headers and number of tabs inside each one
 local header = {}											-- List of headers (frames)
 local tab = {}												-- List of tab (frames)
 local options = {}											-- List of options (frames)
-C["tempdata"] = {}											-- List of savedvariables => easier to work with
 
 local iFilger_Spells										-- list of spells we want to modify
 if iFilgerConfig then 
@@ -109,8 +98,7 @@ local create_panel = function ()
 	configApply:EnableMouse(true)
 	configApply:SetScript("OnEnter", function(self) self.text:SetTextColor(1,0,0) end)
 	configApply:SetScript("OnLeave", function(self) self.text:SetTextColor(1,1,1) end)
---	configApply:SetScript("OnMouseDown", function() iFilgerconfigPanel:Hide() end)
-	configApply:SetScript("OnClick", function(self) ReloadUI() end)
+	configApply:SetScript("OnClick", function(self) ReloadUI(); end)
 
 	configApply.text = configApply:CreateFontString(nil, "OVERLAY")
 	configApply.text:SetFont(C.font, 14)
@@ -189,7 +177,75 @@ local create_tab_head = function(i,name)
 	header[i]:SetScript("OnMouseDown", function() open_tab(i) end)  -- IDK if it will work as intended..
 end
 
+---------------------------------------------------------------------------------------------------------------------------------------
+--		FUNCTION CREATE OPTION
+---------------------------------------------------------------------------------------------------------------------------------------
 
+local create_option = function(indicetab,option,value,ypos)
+
+	options[indicetab] = CreateFrame("Frame", nil, iFilgerconfigPanel)
+
+	if type(value) == "boolean" then
+		options[indicetab][option] = options[indicetab]:CreateFontString(nil, "OVERLAY")
+		options[indicetab][option]:SetFont(C.font, 14)
+		options[indicetab][option]:SetPoint("TOPLEFT", iFilgerconfigPanel, "TOPLEFT", 20, -35 - ypos )
+		options[indicetab][option]:SetShadowColor(0,0,0)
+		options[indicetab][option]:SetShadowOffset(1.25, -1.25)
+		options[indicetab][option]:SetText(option.." : ")
+		options[indicetab][option].button = CreateFrame("CheckButton", "iFilgerConfig"..indicetab..option, options[indicetab], "ChatConfigCheckButtonTemplate")
+		options[indicetab][option].button:SetPoint("TOPRIGHT", iFilgerconfigPanel, "TOPRIGHT", F.Scale(-50), F.Scale(-35 - ypos))
+		options[indicetab][option].button:SetChecked(value)
+		options[indicetab][option].button:SetScript("OnClick", function(self) SetValue(indicetab,option,(self:GetChecked() and true or false)) end)
+	elseif type(value) == "number" or type(value) == "string" then
+		options[indicetab][option] = options[indicetab]:CreateFontString(nil, "OVERLAY")
+		options[indicetab][option]:SetFont(C.font, 14)
+		options[indicetab][option]:SetPoint("TOPLEFT", iFilgerconfigPanel, "TOPLEFT", F.Scale(20), F.Scale(-35 - ypos) )
+		options[indicetab][option]:SetShadowColor(0,0,0)
+		options[indicetab][option]:SetShadowOffset(1.25, -1.25)
+		options[indicetab][option]:SetText(option.." : ")
+
+		options[indicetab][option].editbox = CreateFrame("EditBox", nil, options[indicetab])
+		options[indicetab][option].editbox:SetAutoFocus(false)
+		options[indicetab][option].editbox:SetMultiLine(false)
+		options[indicetab][option].editbox:SetWidth(100)
+		options[indicetab][option].editbox:SetHeight(20)
+		options[indicetab][option].editbox:SetMaxLetters(255)
+		options[indicetab][option].editbox:SetTextInsets(3,0,0,0)
+		options[indicetab][option].editbox:SetBackdrop({
+			bgFile = [=[Interface\Addons\iFilger_ConfigUI\media\textures\blank]=], 
+			tiled = false,
+		})
+		options[indicetab][option].editbox:SetBackdropColor(0,0,0,0.5)
+		options[indicetab][option].editbox:SetBackdropBorderColor(0,0,0,1)
+		options[indicetab][option].editbox:SetPoint("TOPRIGHT", iFilgerconfigPanel, "TOPRIGHT", F.Scale(-50), F.Scale(-35 - ypos))
+		options[indicetab][option].editbox:SetText(value)
+
+		local okbutton = CreateFrame("Button", nil, options[indicetab])
+		okbutton:SetHeight(options[indicetab][option].editbox:GetHeight())
+		okbutton:SetWidth(options[indicetab][option].editbox:GetHeight())
+		okbutton:SetTemplate("Default")
+		okbutton:SetPoint("LEFT", editbox, "RIGHT", 2, 0)
+		
+		local oktext = okbutton:CreateFontString(nil,"OVERLAY",nil)
+		oktext:SetFont(C.font,12)
+		oktext:SetText("OK")
+		oktext:SetPoint("CENTER", T.Scale(1), 0)
+		oktext:SetJustifyH("CENTER")
+		okbutton:Hide()
+
+		if type(value) == "number" then
+			options[indicetab][option].editbox:SetScript("OnEscapePressed", function(self) okbutton:Hide() self:ClearFocus() self:SetText(value) end)
+			options[indicetab][option].editbox:SetScript("OnChar", function(self) okbutton:Show() end)
+			options[indicetab][option].editbox:SetScript("OnEnterPressed", function(self) okbutton:Hide() self:ClearFocus() SetValue(indicetab,option,tonumber(self:GetText())) end)
+			okbutton:SetScript("OnMouseDown", function(self) options[indicetab][option].editbox:ClearFocus() self:Hide() SetValue(indicetab,option,tonumber(options[indicetab][option].editbox:GetText())) end)
+		else
+			options[indicetab][option].editbox:SetScript("OnEscapePressed", function(self) okbutton:Hide() self:ClearFocus() self:SetText(value) end)
+			options[indicetab][option].editbox:SetScript("OnChar", function(self) okbutton:Show() end)
+			options[indicetab][option].editbox:SetScript("OnEnterPressed", function(self) okbutton:Hide() self:ClearFocus() SetValue(indicetab,option,tostring(self:GetText())) end)
+			okbutton:SetScript("OnMouseDown", function(self) options[indicetab][option].editbox:ClearFocus() self:Hide() SetValue(indicetab,option,tostring(options[indicetab][option].editbox:GetText())) end)
+		end
+	end
+end
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 --		FUNCTION CREATE TAB
@@ -207,7 +263,7 @@ local create_tab = function(data,indicetab,j,i)
 	end
 	tab[indicetab]:EnableMouse(true)
 	tab[indicetab]:SetFrameStrata("LOW")
-	tab[indicetab]:SetScript("OnMouseDown", function() open_tab(indicetab,j) end)  -- IDK if it will work as intended..
+	tab[indicetab]:SetScript("OnMouseDown", function() open_tab(indicetab,j) end)  					-- IDK if it will work as intended..
 
 	-- tab name
 	tab[indicetab].text = iFilgerconfigPanel:CreateFontString(nil, "OVERLAY")
@@ -217,43 +273,16 @@ local create_tab = function(data,indicetab,j,i)
 	tab[indicetab].text:SetShadowOffset(1.25, -1.25)
 	tab[indicetab].text:SetText(data.Name)
 
-
 	-- tab options
-	options[indicetab] = CreateFrame("Frame", nil, iFilgerconfigPanel)
-
-	-- options : Enable
-	options[indicetab].Enable = options[indicetab]:CreateFontString(nil, "OVERLAY")
-	options[indicetab].Enable:SetFont(C.font, 14)
-	options[indicetab].Enable:SetPoint("TOPLEFT", iFilgerconfigPanel, "TOPLEFT", 40, -35 )
-	options[indicetab].Enable:SetShadowColor(0,0,0)
-	options[indicetab].Enable:SetShadowOffset(1.25, -1.25)
-	options[indicetab].Enable:SetText(" : Enable")
-	options[indicetab].Enable.button = CreateFrame("CheckButton", "iFilgerConfigEnable"..indicetab, iFilgerconfigPanel, "ChatConfigCheckButtonTemplate")
-	options[indicetab].Enable.button:SetPoint("RIGHT", options[indicetab].Enable, "LEFT", F.Scale(-5), F.Scale(-1))
---	options[indicetab].Enable.button:SetBackdropBorderColor(unpack(C["General"].BorderColor)) - to test later
-	options[indicetab].Enable.button:SetChecked(false)
-
-	-- options : Size
-	options[indicetab].Size = options[indicetab]:CreateFontString(nil, "OVERLAY")
-	options[indicetab].Size:SetFont(C.font, 14)
-	options[indicetab].Size:SetPoint("TOPLEFT", iFilgerconfigPanel, "TOPLEFT", 40, -70 )
-	options[indicetab].Size:SetShadowColor(0,0,0)
-	options[indicetab].Size:SetShadowOffset(1.25, -1.25)
-	options[indicetab].Size:SetText(" : Size")
-	options[indicetab].Size.Editbox = CreateFrame("EditBox", "iFilgerConfigSizeEdit"..indicetab, iFilgerconfigPanel)
-	options[indicetab].Size.Editbox:SetFont(C.font, 14)
-	options[indicetab].Size.Editbox:SetWidth(20)
-	options[indicetab].Size.Editbox:SetHeight(15)
-	options[indicetab].Size.Editbox:SetPoint("RIGHT", options[indicetab].Size, "LEFT", F.Scale(-5), F.Scale(-1))
-	options[indicetab].Size.Editbox:SetMaxLetters(3)
-	options[indicetab].Size.Editbox:SetAutoFocus(false)
-	options[indicetab].Size.Editbox:EnableKeyboard(true)
-	options[indicetab].Size.Editbox:EnableMouse(true)
---	options[indicetab].Size.Editbox:SetBackdropBorderColor(unpack(C["General"].BorderColor)) - to test later
-	options[indicetab].Size.Editbox:SetScript("OnMouseDown", function(self) self:SetAutoFocus(true) end)
-	options[indicetab].Size.Editbox:SetScript("OnEscapePressed", function(self) self:SetAutoFocus(false) self:ClearFocus() end)
---	options[indicetab].Size.Editbox:SetScript("OnEnterPressed", OnEnterPressedWidth)
-	options[indicetab].Size.Editbox:SetText(data.Size)
+	create_option(indicetab,"Name",data.Name,25)
+	create_option(indicetab,"Enable",data.Enable,50)
+	create_option(indicetab,"Size",data.Size,75)
+	create_option(indicetab,"Direction",data.Direction,100)
+	create_option(indicetab,"IconSide",data.IconSide,125)
+	create_option(indicetab,"Interval",data.Interval,150)
+	create_option(indicetab,"Mode",data.Mode,175)
+	create_option(indicetab,"Alpha",data.Alpha,200)
+	create_option(indicetab,"BarWidth",data.BarWidth,225)
 end
 
 
@@ -264,8 +293,15 @@ end
 
 local hide_tab_content = function(indicetab)
 	options[indicetab]:Hide()
-	options[indicetab].Size.Editbox:Hide()
+	options[indicetab].Name.Editbox:Hide()
 	options[indicetab].Enable.button:Hide()
+	options[indicetab].Size.Editbox:Hide()
+	options[indicetab].Direction.Editbox:Hide()
+	options[indicetab].IconSide.Editbox:Hide()
+	options[indicetab].Interval.Editbox:Hide()
+	options[indicetab].Mode.Editbox:Hide()
+	options[indicetab].Alpha.Editbox:Hide()
+	options[indicetab].barWidth.Editbox:Hide()
 end
 
 
@@ -276,8 +312,15 @@ end
 
 local show_tab_content = function(indicetab)
 	options[indicetab]:Show()
-	options[indicetab].Size.Editbox:Show()
+	options[indicetab].Name.Editbox:Show()
 	options[indicetab].Enable.button:Show()
+	options[indicetab].Size.Editbox:Show()
+	options[indicetab].Direction.Editbox:Show()
+	options[indicetab].IconSide.Editbox:Show()
+	options[indicetab].Interval.Editbox:Show()
+	options[indicetab].Mode.Editbox:Show()
+	options[indicetab].Alpha.Editbox:Show()
+	options[indicetab].barWidth.Editbox:Show()
 end
 
 
@@ -339,6 +382,18 @@ local show_tab = function(i)
 	show_tab_content(tabs[i]["tablist"][1])
 end
 
+---------------------------------------------------------------------------------------------------------------------------------------
+--	Saves Values
+---------------------------------------------------------------------------------------------------------------------------------------
+
+local function SetValue(group,option,value)	
+	--Determine if we should be copying our default settings to our player settings, this only happens if we're not using player settings by default
+	if value ~= "" then
+		iFilgerConfigUISavedVariables[group][option] = value
+	end
+end
+
+
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------
@@ -357,7 +412,7 @@ local numtab
 for j = 1, #tabs, 1 do
 	if tabs[j].name ~= "HUNTER/DRUID/ROGUE" or ((myClass == "HUNTER" or myClass == "DRUID" or myClass == "ROGUE") and tabs[j].name == "HUNTER/DRUID/ROGUE") then
 		create_tab_head(j,tabs[j].name)							-- create tab header
-		numtab = #iFilger_Spells[tabs[j].name]			-- get number of tab in the header
+		numtab = #iFilger_Spells[tabs[j].name]					-- get number of tab in the header
 		for i = 1, numtab, 1 do
 			indicetab = indicetab + 1							-- increase tab id
 			data = iFilger_Spells[tabs[j].name][i]				-- get data about the current tab
@@ -379,12 +434,11 @@ end
 --	LOAD SAVED VARIABLES
 ---------------------------------------------------------------------------------------------------------------------------------------
 
--- Saved Variables
-local SaveVariables = function(self, event)
-	local data = {}
-	local indicetab = 0
-	local numtab
-	if event == "ADDON_LOADED" then
+local SaveVariables = function(self, event, arg1)
+	if arg1 == "iFilger_ConfigUI" then					-- this should secure loading. We don't want to begin loading saved variables when they are not yet aviable...
+		local data = {}
+		local indicetab = 0
+		local numtab
 		if iFilgerConfigUISavedVariables == nil then	-- there are no saved variables, let's load the default config ! 
 			iFilgerConfigUISavedVariables = {}			-- let's create an empty table
 
@@ -404,20 +458,19 @@ local SaveVariables = function(self, event)
 						iFilgerConfigUISavedVariables[indicetab].Size = data.Size or 20
 						iFilgerConfigUISavedVariables[indicetab].Alpha = data.Alpha or 1.0
 						iFilgerConfigUISavedVariables[indicetab].BarWidth = data.BarWidth or 200
-						iFilgerConfigUISavedVariables[indicetab].setPoint = data.setPoint or "CENTER"
 					end
 
 				end
 			end
 
 		end
-		
+			
 		indicetab = 0
 		if iFilgerConfigUISavedVariables then  -- there are saved variables, let's load them !
 		-- Put this will overwrite profiles.
 			for j = 1, #tabs, 1 do
 				if tabs[j].name ~= "HUNTER/DRUID/ROGUE" or ((myClass == "HUNTER" or myClass == "DRUID" or myClass == "ROGUE") and tabs[j].name == "HUNTER/DRUID/ROGUE") then
-					numtab = #iFilger_Spells[tabs[j].name]			-- get number of tab in the header
+					numtab = #iFilger_Spells[tabs[j].name]							-- get number of tab in the header
 
 					for i = 1, numtab, 1 do
 						indicetab = indicetab + 1									-- increase tab id
@@ -431,65 +484,28 @@ local SaveVariables = function(self, event)
 						iFilger_Spells[tabs[j].name][i].Size = data.Size or 20
 						iFilger_Spells[tabs[j].name][i].Alpha = data.Alpha or 1.0
 						iFilger_Spells[tabs[j].name][i].Barwidth = data.BarWidth or 200
-						iFilger_Spells[tabs[j].name][i].setPoint = data.setPoint or "CENTER"
 						
-						C["tempdata"][indicetab].Name = data.Name
-						C["tempdata"][indicetab].Direction = data.Direction or "UP"
-						C["tempdata"][indicetab].IconSide = data.IconSide or "LEFT"
-						C["tempdata"][indicetab].Interval = data.Interval or 3
-						C["tempdata"][indicetab].Mode = data.Mode or "ICON"
-						C["tempdata"][indicetab].Size = data.Size or 20
-						C["tempdata"][indicetab].Alpha = data.Alpha or 1.0
-						C["tempdata"][indicetab].Barwidth = data.BarWidth or 200
-						C["tempdata"][indicetab].setPoint = data.setPoint or "CENTER"
+						tab[indicetab].text:SetText(data.Name)	-- set tab name (even if supposed already done)
+						options[indicetab].Name.editbox:SetText(data.Name or "blabla")				-- set Name
+						options[indicetab].Size.editbox:SetText(data.Size or 20)					-- set Size
+						options[indicetab].Direction.editbox:SetText(data.Direction or "UP")		-- set Direction
+						options[indicetab].IconSide.editbox:SetText(data.IconSide or "LEFT")		-- set IconSide
+						options[indicetab].Interval.Editbox:SetText(data.Interval or 3)				-- set Interval
+						options[indicetab].Mode.editbox:SetText(data.Mode or "ICON")				-- set Mode
+						options[indicetab].Alpha.editbox:SetText(data.Alpha or 1.0)					-- set Alpha
+						options[indicetab].Barwidth.editbox:SetText(data.Barwidth or 200)			-- set Barwidth
+						if data.Enable	then options[indicetab].Enable.button:SetChecked() end		-- set Enable
 					end
 
 				end
 			end
 		end
-		
-	elseif event == "PLAYER_LOGOUT" then
-		for i = 1, #C["tempdata"], 1 do
-			data = C["tempdata"][i]			-- get data about the current tab
-
-			iFilgerConfigUISavedVariables[i].Name = data.Name
-			iFilgerConfigUISavedVariables[i].Direction = data.Direction or "UP"
-			iFilgerConfigUISavedVariables[i].IconSide = data.IconSide or "LEFT"
-			iFilgerConfigUISavedVariables[i].Interval = data.Interval or 3
-			iFilgerConfigUISavedVariables[i].Mode = data.Mode or "ICON"
-			iFilgerConfigUISavedVariables[i].Size = data.Size or 20
-			iFilgerConfigUISavedVariables[i].Alpha = data.Alpha or 1.0
-			iFilgerConfigUISavedVariables[i].BarWidth = data.BarWidth or 200
-			iFilgerConfigUISavedVariables[i].setPoint = data.setPoint or "CENTER"
-		end
-	end
-	
-	-- And now we set all vars in config panel ! 
-	for i = 1, #C["tempdata"], 1 do
-		data = C["tempdata"][i]			-- get data about the current tab
-		
-		tab[indicetab].text:SetText(data.Name)										-- set tab name (even if supposed already done)
-		options[indicetab].Size.Editbox:SetText(data.Size)							-- set Size
-		if data.Enable	then options[indicetab].Enable.button:SetChecked() end		-- set Enable
-
-
-		-- iFilgerConfigUISavedVariables[i].Name = data.Name
-		-- iFilgerConfigUISavedVariables[i].Direction = data.Direction or "UP"
-		-- iFilgerConfigUISavedVariables[i].IconSide = data.IconSide or "LEFT"
-		-- iFilgerConfigUISavedVariables[i].Interval = data.Interval or 3
-		-- iFilgerConfigUISavedVariables[i].Mode = data.Mode or "ICON"
-		-- iFilgerConfigUISavedVariables[i].Size = data.Size or 20
-		-- iFilgerConfigUISavedVariables[i].Alpha = data.Alpha or 1.0
-		-- iFilgerConfigUISavedVariables[i].BarWidth = data.BarWidth or 200
-		-- iFilgerConfigUISavedVariables[i].setPoint = data.setPoint or "CENTER"
 	end
 end
 
 local saver = CreateFrame("FRAME")
 saver:RegisterEvent("ADDON_LOADED")
-saver:RegisterEvent("PLAYER_LOGOUT")
 saver:SetScript("OnEvent", SaveVariables)
-
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 --	TOOGLE FUNCTION + SLASH COMMAND
@@ -501,5 +517,5 @@ local EnableConfig = function()
 	end
 end
 
-SLASH_IFILGERCONFIG1 = "/iFilger"										-- slash command will need some rework later i guess... :/
+SLASH_IFILGERCONFIG1 = "/iFilger"
 SlashCmdList["IFILGERCONFIG"] = EnableConfig
