@@ -684,9 +684,7 @@ saver:SetScript("OnEvent", SaveVariables)
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 local EnableConfig = function()
-	if select(1, UnitName("player")) == "Ildyria" then					-- let's make sure nobody use this while it's not ready to use. :P
 		ToggleFrame(iFilgerconfigPanel)
-	end
 end
 
 SLASH_IFILGERCONFIG1 = "/iFilger"
