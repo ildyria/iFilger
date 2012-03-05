@@ -688,6 +688,6 @@ local EnableConfig = function()
 		ToggleFrame(iFilgerconfigPanel)
 	end
 end
-ToggleFrame(iFilgerconfigPanel)
+
 SLASH_IFILGERCONFIG1 = "/iFilger"
 SlashCmdList["IFILGERCONFIG"] = EnableConfig
