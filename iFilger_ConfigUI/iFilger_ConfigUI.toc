@@ -3,9 +3,10 @@
 ## Title: |cff1784d1iFilger|r |cffffffffConfigUI|r
 ## Notes: Config Panel for iFilger
 ## Credits: Hydra, Tukz
-## Version: 0.2
+## Version: 1.0
 ## DefaultState: disabled
 ## RequiredDeps: iFilger_Config
-## SavedVariablesPerCharacter: iFilgerConfigUISavedVariables
+## SavedVariables: iFilgerConfigUISV
+## SavedVariablesPerCharacter: iFilgerConfigUISVPC
 
 load.xml
