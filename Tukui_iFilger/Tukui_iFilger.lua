@@ -258,10 +258,34 @@ function iFilger:DisplayActives()
 		-- next
 		index = index + 1
 	end
+
+	-- Sort actives
+	if not self.sortedIndex then self.sortedIndex = {} end
+
+	-- Clear sorted (it would be easier to recreate self.sortedIndex or use a local array but this would not be GC-friendly)
+	for n in pairs(self.sortedIndex) do
+		self.sortedIndex[n] = 999 -- dummy high value
+	end
+
+	local activeCount = 1
+	for n in pairs(self.actives) do
+		self.sortedIndex[activeCount] = n
+		activeCount = activeCount + 1
+	end
+	table.sort(self.sortedIndex)
+
+
 	-- Update texture, count, cd, size, opacity, spid
 	local totalWidth = 0
 	index = 1
-	for activeIndex, value in pairs(self.actives) do
+
+	--	for activeIndex, value in pairs(self.actives) do
+	for n in pairs(self.sortedIndex) do
+		if n >= activeCount then
+			break -- sortedIndex may be greater than actives
+		end
+		local activeIndex = self.sortedIndex[n]
+		local value = self.actives[activeIndex] -- Get sorted active
 		local aura = self.auras[index]
 
 		aura.spellName = GetSpellInfo( value.spid );
@@ -359,16 +383,16 @@ function iFilger:OnEvent(event, unit)
 					spid = 0
 					if data.filter == "BUFF" and (not data.spec or data.spec == ptt) then
 						local caster, spn, expirationTime
-						spn, _, icon = GetSpellInfo(data.spellID)
-						name, _, _, count, _, duration, expirationTime, caster, _, _, spid = iFilger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
+						spn, _, _ = GetSpellInfo(data.spellID)
+						name, _, icon, count, _, duration, expirationTime, caster, _, _, spid = iFilger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
 						if name and (data.caster == "all" or data.caster == caster) then
 							start = expirationTime - duration
 							found = true
 						end
 					elseif data.filter == "DEBUFF" and (not data.spec or data.spec == ptt) then
 						local caster, spn, expirationTime
-						spn, _, icon = GetSpellInfo(data.spellID)
-						name, _, _, count, _, duration, expirationTime, caster, _, _, spid = iFilger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
+						spn, _, _ = GetSpellInfo(data.spellID)
+						name, _, icon, count, _, duration, expirationTime, caster, _, _, spid = iFilger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
 						if name and (data.caster == "all" or data.caster == caster) then
 							start = expirationTime - duration
 							found = true
@@ -414,7 +438,11 @@ function iFilger:OnEvent(event, unit)
 					elseif data.filter == "ACD" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) then
 						name, _, icon = GetSpellInfo(data.spellID)
 						spid = data.spellID;
-						start, duration, enabled = GetSpellCooldown(name)
+						if data.absID then
+							start, duration, enabled = GetSpellCooldown(data.spellID)
+						else
+							start, duration, enabled = GetSpellCooldown(name)
+						end
 						found = true
 						if(not enabled) then
 							name = nil
@@ -453,11 +481,10 @@ function iFilger:OnEvent(event, unit)
 							self.actives[i] = {data = data, name = name, icon = icon, count = count, start = start, duration = duration, spid = spid}
 							needUpdate = true
 						else
-							if data.filter ~= "ICD" and data.filter ~= "ACD" and (self.actives[i].count ~= count or self.actives[i].start ~= start or self.actives[i].duration ~= duration or self.actives[i].spid ~= spid) then
+							if data.filter ~= "ICD" and data.filter ~= "ACD" and (self.actives[i].count ~= count or self.actives[i].start ~= start or self.actives[i].duration ~= duration) then
 								self.actives[i].count = count
 								self.actives[i].start = start
 								self.actives[i].duration = duration
-								self.actives[i].spid = spid
 								needUpdate = true
 							end
 						end
@@ -510,6 +537,7 @@ function iFilger:UpdateSpellList(zone)
 		for i = 1, #iFilger_Spells["ALL"], 1 do
 			-- merge similar spell-list (compare using Name and merge flag set) otherwise add another spell-list
 			if iFilger_Spells["ALL"][i].Enable then
+				loading = true
 				local merge = false
 				local spellListAll = iFilger_Spells["ALL"][i]
 				local enable = spellListAll
@@ -531,7 +559,6 @@ function iFilger:UpdateSpellList(zone)
 					--I.Print("MERGING SPELLS FROM "..spellListAll.Name)
 					for j = 1, #spellListAll, 1 do
 						table.insert( spellListClass, spellListAll[j] )
-						loading = true
 					end
 				end
 			end
@@ -689,8 +716,8 @@ function iFilger:UpdatesFramesList ()
 			end
 			if CDFound then frame:RegisterEvent("SPELL_UPDATE_COOLDOWN") end
 			if CDFound then frame:RegisterEvent("SPELL_UPDATE_USABLE") end
-			if targetFound then frame:RegisterEvent("PLAYER_TARGET_CHANGED") end
 			if focusFound then frame:RegisterEvent("PLAYER_FOCUS_CHANGED") end
+			frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 			frame:RegisterEvent("UNIT_AURA")
 			frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 			frame:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")

@@ -289,7 +289,7 @@ local create_option = function(indicetab,option,value,ypos)
 		optionstxt[option].help:SetPoint("TOP", iFilgerconfigPanel, "TOP", -40, -35 - ypos )
 		optionstxt[option].help.text = optionstxt[option].help:CreateFontString(nil, "OVERLAY")
 		optionstxt[option].help.text:SetFont(C.font, 12)
-		optionstxt[option].help.text:SetPoint("CENTER", optionstxt[option].help, "CENTER", 0, -1 )
+		optionstxt[option].help.text:SetPoint("CENTER", optionstxt[option].help, "CENTER", 0, 1 )
 		optionstxt[option].help.text:SetShadowColor(0,0,0)
 		optionstxt[option].help.text:SetShadowOffset(1.25, -1.25)
 		optionstxt[option].help.text:SetTextColor(1,1,0)
@@ -481,9 +481,9 @@ end
 local create_tab_head = function(i,name)
 	header[i] = CreateFrame("Frame", nil, iFilgerconfigPanel)
 	if(i == 1) then
-		F.CreatePanel(header[i], 100, 25, "TOPRIGHT", iFilgerconfigPanel, "TOPLEFT", F.Scale(-5), F.Scale(-30))
+		F.CreatePanel(header[i], 125, 25, "TOPRIGHT", iFilgerconfigPanel, "TOPLEFT", F.Scale(-5), F.Scale(-30))
 	else
-		F.CreatePanel(header[i], 100, 25, "TOP", header[i-1], "BOTTOM", 0, F.Scale(-5))
+		F.CreatePanel(header[i], 125, 25, "TOP", header[i-1], "BOTTOM", 0, F.Scale(-5))
 	end
 	header[i]:EnableMouse(true)
 	header[i]:SetFrameStrata("LOW")
@@ -520,9 +520,9 @@ local create_tab = function(data,indicetab,j,i)
 
 	tab[indicetab] = CreateFrame("Frame", nil, iFilgerconfigPanel)
 	if(i == 1) then
-		F.CreatePanel(tab[indicetab], 100, 20, "TOP", header[j], "BOTTOM", 0, F.Scale(-2))			-- anchor to header if 1st
+		F.CreatePanel(tab[indicetab], 125, 20, "TOP", header[j], "BOTTOM", 0, F.Scale(-2))			-- anchor to header if 1st
 	else
-		F.CreatePanel(tab[indicetab], 100, 20, "TOP", tab[indicetab-1], "BOTTOM", 0, F.Scale(-2))	-- anchor to previous tab else
+		F.CreatePanel(tab[indicetab], 125, 20, "TOP", tab[indicetab-1], "BOTTOM", 0, F.Scale(-2))	-- anchor to previous tab else
 	end
 	tab[indicetab]:EnableMouse(true)
 	tab[indicetab]:SetFrameStrata("LOW")

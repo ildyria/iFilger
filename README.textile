@@ -66,7 +66,7 @@ p. "Elv":https://github.com/Elv22 , "Tukz":https://github.com/tukz , "Jasje":htt
 
 h3. What's next ? 
 
-p. Find the reason why buffs doesn't appears in the order defined in config.lua, that might be usefull for class gameplay works with DoTs or Buffs to keep active.
+p. Maybe do some localisation for the config.
 
 
 h3. WARNING
