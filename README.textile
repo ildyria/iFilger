@@ -22,17 +22,24 @@ p. "Latest Version":https://github.com/ildyria/iFilger/zipball/master
 
 h3. Installation
 
-p. Download the zip file and unzip it. You will find the README, a folder named *iFilger*, a folder named *iFilger_Config* and a folder named *Tukui_iFilger*. Copy the three folders (iFilger, iFilger_Config and Tukui_iFilger +not ildyria-iFilger-somerandomnumbers+) into you World of Warcraft\Interface\AddOns\ folder.
+p. Download the zip file and unzip it. You will find the README and four folders named : *iFilger*, *iFilger_Config*, *iFilger_ConfigUI*, *Tukui_iFilger*. Copy the four folders (iFilger, iFilger_Config, iFilger_ConfigUI and Tukui_iFilger +not ildyria-iFilger-somerandomnumbers+) into you World of Warcraft\Interface\AddOns\ folder.
 
 p. Tukui_iFilger is for those who already have Tukui (dependant version).
 iFilger is for the one who do not have Tukui (stand alone version).
 !http://i40.servimg.com/u/f40/11/00/34/63/both10.jpg!
+iFilger_ConfigUI is an optional ingame configuration interface (not required to use iFilger/Tukui_iFilger).
 
 p. Launch the game and enjoy !
 
 h3. Configuration and moving bars
 
-p. All configuration must be done by directly editing config/config.lua.
+p. Resizing, moving & some other options can be done ingame using the ConfigUI.
+
+<pre>
+	To opening the ConfigUI, use /ifilger
+</pre>
+
+p. All other configuration (like adding a groupe of buffs, managing buffs...) must be done by directly editing iFilger_Config/Config.lua.
 
 p. A guide can be found "here":http://www.tukui.org/forums/topic.php?id=19087 .
 
@@ -45,7 +52,7 @@ p. Moving the bars
 
 h3. Screenshots
 
-p. In configuration :
+p. In configuration (moving bars) :
 "Mage":http://wisdom.biv.free.fr/WoW/Mage.jpg
 "Hunter":http://wisdom.biv.free.fr/WoW/Hunt.jpg
 "Druid":http://wisdom.biv.free.fr/WoW/druid.jpg
@@ -57,6 +64,9 @@ p. In configuration :
 "Paladin":http://wisdom.biv.free.fr/WoW/Paladin.jpg
 "Warrior":http://wisdom.biv.free.fr/WoW/War.jpg
 
+p. Using the ConfigUI :
+!http://i40.servimg.com/u/f40/11/00/34/63/config10.jpg!
+
 p. In real situation :
 "Getting perfect by a rogue":http://i40.servimg.com/u/f40/11/00/34/63/wowscr29.jpg
 
@@ -66,11 +76,5 @@ p. "Elv":https://github.com/Elv22 , "Tukz":https://github.com/tukz , "Jasje":htt
 
 h3. What's next ? 
 
-p. Maybe do some localisation for the config.
-
-
-h3. WARNING
-
-p. WIP in iFilger_ConfigUI, if you don't want LUA ERROR, DO NOT ENABLE IT ! I can't play WoW ATM, so i'm blind coding and i can't check if my code works or not.
-
-p. It seams the memory used by the addon still increase slowly during long fight and come back to normal value at the end. There may be a small memory leak and i can't find that b**** again >_<
+p. Localisation is done, but German, Spanish and others versions are needed. If you feel like helping me, i would gladly appreciate it !
+IDK, maybe "that":http://www.tukui.org/forums/topic.php?id=19087&page=7#post-148049

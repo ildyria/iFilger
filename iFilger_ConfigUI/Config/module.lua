@@ -59,39 +59,39 @@ end
 
 local help = {
 	["Name"] = {
-		"The name of the sub-section, what else ?",
+		L["H_Name"], --"The name of the sub-section, what else ?",
 	},
 	["Enable"] = {
-		"Enable or not the sub-section.",
+		L["H_Enable"], --"Enable or not the sub-section.",
 	},
 	["Size"] = {
-		"Size of the Icons",
-		"Must be a positive number",
+		L["H_Size1"], --"Size of the Icons",
+		L["H_Size2"], --"Must be a positive number",
 	},
 	["Direction"] = {
-		"Direction of expending :",
-		"UP, DOWN, LEFT, RIGHT or HORIZONTAL",
+		L["H_Direction1"], --"Direction of expending :",
+		L["H_Direction2"], --"UP, DOWN, LEFT, RIGHT or HORIZONTAL",
 	},
 	["IconSide"] = {
-		"Position of the Icon in bar config mode :",
-		"LEFT or RIGHT",
+		L["H_IconSide1"], --"Position of the Icon in bar config mode :",
+		L["H_IconSide2"], --"LEFT or RIGHT",
 	},
 	["Interval"] = {
-		"Interval between Icons/Bars",
+		L["H_Interval"], --"Interval between Icons/Bars",
 	},
 	["Mode"] = {
-		"Display mode : ",
-		"ICON or BAR",
+		L["H_Mode1"], --"Display mode : ",
+		L["H_Mode2"], --"ICON or BAR",
 	},
 	["Alpha"] = {
-		"Transparency :",
-		"Float between 0 (invisible) and 1 (mat)",
+		L["H_Alpha1"], --"Transparency :",
+		L["H_Alpha2"], --"Float between 0 (invisible) and 1 (mat)",
 	},
 	["BarWidth"] = {
-		"Width of the Bar (Bar Mode required)",
+		L["H_BarWidth"], --"Width of the Bar (Bar Mode required)",
 	},
 	["Merge"] = {
-		"Enable Merging when Name is the same.",
+		L["H_Merge"], --"Enable Merging when Name is the same.",
 	},
 }
 
@@ -147,7 +147,7 @@ configApply:SetScript("OnLeave", function(self) self.text:SetTextColor(unpack(C[
 
 configApply.text = configApply:CreateFontString(nil, "OVERLAY")
 configApply.text:SetFont(C.font, 14)
-configApply.text:SetText("Apply")
+configApply.text:SetText(L["Apply"])
 configApply.text:SetPoint("CENTER", configApply, 0, -1)
 
 local configReset = CreateFrame("Frame", "iFilgerConfigReset", iFilgerconfigPanel)
@@ -163,7 +163,7 @@ end)
 
 configReset.text = configReset:CreateFontString(nil, "OVERLAY")
 configReset.text:SetFont(C.font, 14)
-configReset.text:SetText("Reset Config")
+configReset.text:SetText(L["Reset Config"])
 configReset.text:SetPoint("CENTER", configReset, 0, -1)
 
 local configMove = CreateFrame("Button", "iFilgerConfigMove", iFilgerconfigPanel, "SecureActionButtonTemplate")
@@ -178,7 +178,7 @@ configMove:SetScript("OnLeave", function(self) self.text:SetTextColor(unpack(C["
 
 configMove.text = configMove:CreateFontString(nil, "OVERLAY")
 configMove.text:SetFont(C.font, 14)
-configMove.text:SetText("Move Buffs")
+configMove.text:SetText(L["Move Buffs"])
 configMove.text:SetPoint("CENTER", configMove, 0, -1)
 
 local configResetPosition = CreateFrame("Button", "iFilgerConfigMove", iFilgerconfigPanel, "SecureActionButtonTemplate")
@@ -193,7 +193,7 @@ configResetPosition:SetScript("OnLeave", function(self) self.text:SetTextColor(u
 
 configResetPosition.text = configResetPosition:CreateFontString(nil, "OVERLAY")
 configResetPosition.text:SetFont(C.font, 14)
-configResetPosition.text:SetText("Reset Buff Position")
+configResetPosition.text:SetText(L["Reset Buff Position"])
 configResetPosition.text:SetPoint("CENTER", configResetPosition, 0, -1)
 
 ---------------------------------------------------------------------------------------------------------------------------------------
@@ -281,12 +281,12 @@ local create_option = function(indicetab,option,value,ypos)
 		optionstxt[option].text:SetPoint("TOPLEFT", iFilgerconfigPanel, "TOPLEFT", 20, -35 - ypos )
 		optionstxt[option].text:SetShadowColor(0,0,0)
 		optionstxt[option].text:SetShadowOffset(1.25, -1.25)
-		optionstxt[option].text:SetText(option.." : ")
+		optionstxt[option].text:SetText(L[option].." : ")
 
 		optionstxt[option].help = CreateFrame("Frame", nil, iFilgerconfigPanel)
 		optionstxt[option].help:SetHeight(20)
 		optionstxt[option].help:SetWidth(20)
-		optionstxt[option].help:SetPoint("TOP", iFilgerconfigPanel, "TOP", -40, -35 - ypos )
+		optionstxt[option].help:SetPoint("TOP", iFilgerconfigPanel, "TOP", 10, -35 - ypos )
 		optionstxt[option].help.text = optionstxt[option].help:CreateFontString(nil, "OVERLAY")
 		optionstxt[option].help.text:SetFont(C.font, 12)
 		optionstxt[option].help.text:SetPoint("CENTER", optionstxt[option].help, "CENTER", 0, 1 )

@@ -190,8 +190,8 @@ function iFilger:DisplayActives()
 					aura.count = _G[aura.count:GetName()]
 				else
 					aura.count = aura:CreateFontString("$parentCount", "OVERLAY")
-					aura.count:SetFont(C["media"].pixelfont, 14, "OUTLINE")
-					aura.count:Point("BOTTOMRIGHT", 1, -1)
+					aura.count:SetFont(C["media"].pixelfont, 20, "OUTLINE")
+					aura.count:Point("BOTTOMRIGHT", -1, 1)
 					aura.count:SetJustifyH("CENTER")
 				end
 			else
