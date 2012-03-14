@@ -240,7 +240,7 @@ local function SetValue(group,option,value)
 	-- check values...
 	if option == "Size" and (type(value) ~= "number" or value < 1 ) then
 		savevalue = false
-	elseif option == "Direction" and value ~= "UP" and value ~= "DOWN" and value ~= "RIGHT" and value ~= "LEFT" and value ~= "HORIZONTAl" then
+	elseif option == "Direction" and value ~= "UP" and value ~= "DOWN" and value ~= "RIGHT" and value ~= "LEFT" and value ~= "HORIZONTAL" then
 		savevalue = false
 	elseif option == "IconSide" and value ~= "LEFT" and value ~= "RIGHT" then
 		savevalue = false
