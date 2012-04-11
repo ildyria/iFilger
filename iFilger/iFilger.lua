@@ -327,6 +327,7 @@ function iFilger:DisplayActives()
 			else
 				aura.statusbar:SetMinMaxValues(0, value.duration);
 				aura.value = value
+				aura.activeIndex = activeIndex
 				aura:SetScript("OnUpdate", iFilger.UpdateCD);
 			end
 		else

@@ -315,6 +315,7 @@ function iFilger:DisplayActives()
 			else
 				aura.statusbar:SetMinMaxValues(0, value.duration);
 				aura.value = value
+				aura.activeIndex = activeIndex
 				aura:SetScript("OnUpdate", iFilger.UpdateCD);
 			end
 		else
@@ -701,22 +702,9 @@ function iFilger:UpdatesFramesList ()
 				frame.Direction = "UP";
 			end
 			
-			local CDFound = false
-			local focusFound = false
-			local targetFound = false
-			for j = 1, #iFilger["spells"][i], 1 do
-				local data = iFilger["spells"][i][j]
-				if data.filter == "CD" or data.filter == "ACD" then
-					CDFound = true
-				elseif data.unitID == "target" then
-					targetFound = true
-				elseif data.unitID == "focus" then
-					focusFound = true
-				end
-			end
-			if CDFound then frame:RegisterEvent("SPELL_UPDATE_COOLDOWN") end
-			if CDFound then frame:RegisterEvent("SPELL_UPDATE_USABLE") end
-			if focusFound then frame:RegisterEvent("PLAYER_FOCUS_CHANGED") end
+			frame:RegisterEvent("SPELL_UPDATE_COOLDOWN")
+			frame:RegisterEvent("SPELL_UPDATE_USABLE")
+			frame:RegisterEvent("PLAYER_FOCUS_CHANGED")
 			frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 			frame:RegisterEvent("UNIT_AURA")
 			frame:RegisterEvent("PLAYER_ENTERING_WORLD")

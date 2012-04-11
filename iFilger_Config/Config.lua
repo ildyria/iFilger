@@ -1122,6 +1122,8 @@ C["Filger_Spells"] = {
 			{ spellID = 14177, filter = "CD" },
 			-- Vanish
 			{ spellID = 1856, filter = "CD" },
+			-- Cheating Death ICD
+			{ spellID = 45182, filter = "ICD", trigger = "BUFF", duration = 90 },
 		},
 		{
 			Name = "Buffs and Debuffs",
