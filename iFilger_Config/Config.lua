@@ -4,6 +4,10 @@ C["Filger_Config"] = {
 	["cleverzone"] = false,								-- load only PVP in PVP zones and PVE in PVE zones (require to reload the 1st time you enter the pve zone)
 	["tooltip"] = true,									-- tooltip on mouseover buffs, some people wanted it. I don't.
 	["TooltipMover"] = true,							-- tooltip on TooltipMover for ElvUI and Tukui users.
+	["FlashIcon"] = true,								-- Flash when time left is below a threshold in ICON mode.
+	["FlashBar"] = false,								-- Flash when time left is below a threshold in BAR mode.
+	["FlashThreshold"] = 5,								-- Threshold from which icons start flashing.
+	["FlashDuration"] = 0.5,							-- Duration of each flash smaller => quicker.
 }
 
 C["Filger_Cooldown"] = { -- will be disabled if Tukui / ElvUI / OmniCC / ncCooldown is enabled

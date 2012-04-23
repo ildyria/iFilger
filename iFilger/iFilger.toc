@@ -4,7 +4,7 @@
 ## Notes: Minimal buff/debuff/proc tracking
 ## Editor: FourOne, Jasje, Ildyria
 ## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, mTx, SinaC
-## Version: 5.4
+## Version: 5.5
 ## RequiredDeps: iFilger_Config
 ## OptionalDeps: iFilger_ConfigUI
 ## Notes: Power Aura Like, skinned for Tukui / ElvUI.

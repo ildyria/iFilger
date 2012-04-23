@@ -108,12 +108,78 @@ end
 
 
 ------------------------------------------------------------
+-- Flash functions
+------------------------------------------------------------
+
+local StartFlash = function(self, duration)
+	if not self.anim then
+		self.anim = self:CreateAnimationGroup("Flash")
+		
+		self.anim.fadein = self.anim:CreateAnimation("ALPHA", "FadeIn")
+		self.anim.fadein:SetChange(1)
+		self.anim.fadein:SetOrder(2)
+
+		self.anim.fadeout = self.anim:CreateAnimation("ALPHA", "FadeOut")
+		self.anim.fadeout:SetChange(-1)
+		self.anim.fadeout:SetOrder(1)
+	end
+
+	self.anim.fadein:SetDuration(duration)
+	self.anim.fadeout:SetDuration(duration)
+	self.anim:Play()
+end
+
+local StopFlash = function(self)
+	if self.anim then
+		self.anim:Finish()
+	end
+end
+
+function iFilger:Flash()
+	local time = self.value.start + self.value.duration - GetTime()
+
+	if time < 0 then
+		StopFlash(self)
+	end
+	
+	if time < iFilger_Config.FlashThreshold then
+		StartFlash(self, iFilger_Config.FlashDuration)
+	end
+end
+
+
+
+------------------------------------------------------------
 -- Function Update
 ------------------------------------------------------------
 
 
 
-function iFilger:UpdateCD()
+function iFilger:UpdateCDwithFlash()
+	local time = self.value.start + self.value.duration - GetTime()
+
+	if (self:GetParent().Mode == "BAR") then
+		self.statusbar:SetValue(time);
+		if time <= 60 then
+			self.time:SetFormattedText("%.1f",(time));
+		else
+			self.time:SetFormattedText("%d:%.2d",(time/60),(time%60));
+		end
+	end
+
+	if time < 0 then
+		local frame = self:GetParent()
+		frame.actives[self.activeIndex] = nil
+		self:SetScript("OnUpdate", nil)
+		iFilger.DisplayActives(frame)
+	end
+	
+	iFilger.Flash(self)
+end
+
+
+
+function iFilger:UpdateCDwithoutFlash()
 	local time = self.value.start + self.value.duration - GetTime()
 
 	if (self:GetParent().Mode == "BAR") then
@@ -132,6 +198,14 @@ function iFilger:UpdateCD()
 		iFilger.DisplayActives(frame)
 	end
 end
+
+-- yeah, ugly, i know... but nevermind ! xD
+
+
+
+------------------------------------------------------------
+-- Function Display
+------------------------------------------------------------
 
 function iFilger:DisplayActives()
 	if not self.actives then return end
@@ -319,16 +393,29 @@ function iFilger:DisplayActives()
 				if value.data.filter == "CD" or value.data.filter == "ICD" then
 					aura.value = value
 					aura.activeIndex = activeIndex
-					aura:SetScript("OnUpdate", iFilger.UpdateCD)
+					if iFilger_Config.FlashIcon then
+						aura:SetScript("OnUpdate", iFilger.UpdateCDwithFlash)
+					else
+						aura:SetScript("OnUpdate", iFilger.UpdateCDwithoutFlash)
+					end
 				else
-					aura:SetScript("OnUpdate", nil)
+					aura.value = value
+					if iFilger_Config.FlashIcon then
+						aura:SetScript("OnUpdate", iFilger.Flash)
+					else
+						aura:SetScript("OnUpdate", nil)
+					end
 				end
 				aura.cooldown:Show()
 			else
 				aura.statusbar:SetMinMaxValues(0, value.duration);
 				aura.value = value
 				aura.activeIndex = activeIndex
-				aura:SetScript("OnUpdate", iFilger.UpdateCD);
+				if iFilger_Config.FlashBar then
+					aura:SetScript("OnUpdate", iFilger.UpdateCDwithFlash)
+				else
+					aura:SetScript("OnUpdate", iFilger.UpdateCDwithoutFlash)
+				end
 			end
 		else
 			if (self.Mode == "ICON") then

@@ -14,6 +14,14 @@ L["Alpha"] = "Alpha"
 L["BarWidth"] = "Bar Width"
 L["Merge"] = "Merge"
 
+L["cleverzone"] = "Clever Zone"
+L["tooltip"] = "Tooltip"
+L["TooltipMover"] = "Tooltip Mover"
+L["FlashIcon"] = "Flash (Icons)"
+L["FlashBar"] = "Flash (Bars)"
+L["FlashThreshold"] = "Flash Threshold"
+L["FlashDuration"] = "Flash Duration"
+
 -- option help
 L["H_Name"] = "The name of the sub-section, what else ?"
 L["H_Enable"] = "Enable or not the sub-section."
@@ -30,6 +38,18 @@ L["H_Alpha1"] = "Transparency :"
 L["H_Alpha2"] = "Float between 0 (invisible) and 1 (mat)"
 L["H_BarWidth"] = "Width of the Bar (Bar Mode required)"
 L["H_Merge"] = "Enable Merging when Name is the same."
+
+L["H_cleverzone1"] = "Clever Zone :"
+L["H_cleverzone2"] = "Load only PVP in PVP zones and PVE in PVE zones"
+L["H_cleverzone3"] = "(require to reload the 1st time you enter the pve zone)"
+L["H_tooltip"] = "Tooltip on mouseover buffs"
+L["H_TooltipMover"] = "Tooltip on TooltipMover for ElvUI and Tukui users."
+L["H_FlashIcon"] = "Flash when time left is below the threshold in ICON mode."
+L["H_FlashBar"] = "Flash when time left is below a threshold in BAR mode."
+L["H_FlashThreshold1"] = "Threshold from which icons start flashing."
+L["H_FlashThreshold2"] = "Must be greater than 1."
+L["H_FlashDuration1"] = "Duration of each flash."
+L["H_FlashDuration2"] = "Must be a positive number, smaller => quicker."
 
 -- buttons
 L["Apply"] = "Apply"

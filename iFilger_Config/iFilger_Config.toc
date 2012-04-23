@@ -3,6 +3,6 @@
 ## Title: |cff1784d1iFilger|r |cffffffffconfig|r
 ## Notes: Config files for iFilger / Tukui_iFilger.
 ## Credits: Nils Ruesch, FourOne, Jasje, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, mTx, SinaC, Elv, Tukz, Epicgrim
-## Version: 1.8
+## Version: 1.9
 
 load.xml
