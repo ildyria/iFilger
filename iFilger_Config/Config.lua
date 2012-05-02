@@ -325,6 +325,8 @@ C["Filger_Spells"] = {
 			{ spellID = 31642, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Cauterize	
 			{ spellID = 87023, unitId = "player", caster = "player", filter = "DEBUFF" },
+			-- Imp Blink	
+			{ spellID = 46989, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Mage InvertAura",
@@ -1452,6 +1454,10 @@ C["Filger_Spells"] = {
 			{ spellID = 31821, filter = "CD" },
 			-- Zealotry
 			{ spellID = 85696, filter = "CD" },
+			-- Hand of Freedom
+			{ spellID = 1044, filter = "CD" },
+			-- Sacred Shield
+			{ spellID = 96263, filter = "ICD", trigger = "BUFF", duration = 60 },
 		},	
 		{
 			Name = "Buffs and Debuffs",
@@ -1576,6 +1582,8 @@ C["Filger_Spells"] = {
 			{ spellID = 90174, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Saint's Vigor - 2T13 Heal
 			{ spellID = 105742, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Sacred Shield
+			{ spellID = 96263, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 	},
 	["WARRIOR"] = {  ---------------------------------------------------- Warrior
@@ -1650,6 +1658,8 @@ C["Filger_Spells"] = {
 			{ spellID = 8647, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Colossus Smash
 			{ spellID = 86346, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Slaughter
+			{ spellID = 84586, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Cooldown",
@@ -2071,7 +2081,9 @@ C["Filger_Spells"] = {
 			-- Divine Guardian
 			{ spellID = 70940, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Holy Shield
-			{ spellID = 20925, unitId = "target", caster = "all", filter = "BUFF" },
+--			{ spellID = 20925, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Sacred Shield
+			{ spellID = 96263, unitId = "target", caster = "all", filter = "BUFF" },
 
 			-- Hunter --
 			-- Deterrence
@@ -2559,7 +2571,7 @@ C["Filger_Spells"] = {
 			-- The Widow's Kiss
 			{ spellID = 99476, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Fixate (Heroic)
-			{ spellID = 99526, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 99526, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			-- Volatile Poison (Heroic)
 			{ spellID = 99278, unitId = "player", caster = "all", filter = "DEBUFF" },
 		-- Baleroc	
@@ -2586,7 +2598,11 @@ C["Filger_Spells"] = {
 			-- Burning Wound 
 			{ spellID = 101239, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Fixate
-			{ spellID = 99849, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 99849, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
+			-- Magma Trap Vulnerability
+			{ spellID = 100238, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Superheated
+			{ spellID = 100594, unitId = "player", caster = "all", filter = "DEBUFF" },
 
 --   INCOMPLETE, NEED LOTS OF TEST AND FEED BACK  -- 
 -- Dragon Soul
@@ -2662,6 +2678,71 @@ C["Filger_Spells"] = {
 			{ spellID = 105445, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Tetanus
 			{ spellID = 109603, unitId = "player", caster = "all", filter = "DEBUFF" },
+		},
+		{
+			Name = "WotLK debuff",
+			Enable = false,
+			Direction = "LEFT",
+			Interval = 4,
+			Mode = "ICON",
+			BarWidth = 150,			
+			Alpha = 1,
+			Size = 47,
+			setPoint = { "BOTTOMRIGHT", "iFilgerPveDeBuffs", 0, 22 },
+			
+
+	-- ICC
+		-- Deathbringer Saurfang
+			-- Mark of the Fallen Champion
+			{ spellID = 72293, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Festergut
+			-- Inoculated
+			{ spellID = 72103, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Rotface
+			-- Mutated Infection
+			{ spellID = 71224, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Professor Putricide
+			-- Unbound Plague
+			{ spellID = 72856, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--Plague Sickness
+			{ spellID = 73117, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Gas Variable
+			{ spellID = 70353, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Ooze Variable
+			{ spellID = 70352, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Bloodqueen Lana'thel
+			-- Pact of the Darkfallen
+			{ spellID = 71340, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Swarming Shadows
+			{ spellID = 71861, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Essence of the Blood Queen
+			{ spellID = 71473, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Sindragosa
+			-- Frost Bomb
+			{ spellID = 71053, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Instability
+			{ spellID = 69766, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Unchained Magic
+			{ spellID = 69762, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Mystic Buffet
+			{ spellID = 70128, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Arthas - The Lich King
+			-- Necrotic Plague
+			{ spellID = 73912, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Halion
+			--Fiery Combustion/Feurige Einäscherung (Halion)
+			{ spellID = 74562, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--Soul Consumption/Seelenverzehrung (Halion)
+			{ spellID = 74792, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
+	-- Blackwing Descent
+		-- Magmaw
+			-- Constricting Chains
+			{ spellID = 91911, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Parasitic Infection
+			{ spellID = 94679, unitId = "player", caster = "all", filter = "DEBUFF" },
+		-- Omintron Defense System	
+			-- Poison Soaked Shell	
+			{ spellID = 79835, unitId = "player", caster = "all", filter = "DEBUFF" },
 		},
 	},
 	["TANKS"] = {

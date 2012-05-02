@@ -19,7 +19,7 @@ if myname == "Ildyria" then
 	iFilgerConfig["Filger_Config"].tooltip = true
 	iFilgerConfig["Filger_Spells"]["TANKS"][3].Enable = false
 	iFilgerConfig["Filger_Spells"]["ALL"][2].Enable = false
-	iFilgerConfig["Filger_Spells"]["ALL"][3].Enable = false
+	iFilgerConfig["Filger_Spells"]["ALL"][3].Enable = true
 	-- yeah my default config is not really like default iFilger.
 end
 
