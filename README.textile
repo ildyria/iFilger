@@ -76,5 +76,8 @@ p. "Elv":https://github.com/Elv22 , "Tukz":https://github.com/tukz , "Jasje":htt
 
 h3. What's next ? 
 
+p. ConfigUI must be done so it recognise if new sub sections have been added or deleted. That way reset should be mandatory.
+Adding a *Merge With* option, because having 3 times the same name (Cooldown), you don't realy know what is in that sub section (ICD or racials ?).
+
 p. Localisation is done, but German, Spanish and others versions are needed. If you feel like helping me, i would gladly appreciate it !
-IDK, maybe "that":http://www.tukui.org/forums/topic.php?id=19087&page=7#post-148049
+
