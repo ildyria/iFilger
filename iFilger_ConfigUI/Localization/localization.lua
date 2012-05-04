@@ -72,6 +72,14 @@ if client == "frFR" then -- French
 	L["BarWidth"] = "Largeur de la barre"
 	L["Merge"] = "Fusionner"
 
+	L["cleverzone"] = "Zone intelligente"
+	L["tooltip"] = "Tooltip"
+	L["TooltipMover"] = "Ancre Tooltip"
+	L["FlashIcon"] = "Flash (Icons)"
+	L["FlashBar"] = "Flash (Barres)"
+	L["FlashThreshold"] = "Seuil de Flash"
+	L["FlashDuration"] = "Rapidité du Flash"
+
 	-- option help
 	L["H_Name"] = "Le nom du groupe."
 	L["H_Enable"] = "Activer ou non le groupe."
@@ -88,6 +96,18 @@ if client == "frFR" then -- French
 	L["H_Alpha2"] = "Nombre entre 0 (invisible) et 1 (opaque)"
 	L["H_BarWidth"] = "Largeur de la barre (Mode Barre requis)"
 	L["H_Merge"] = "Active la fusion des groupes quand les noms sont les mêmes."
+
+	L["H_cleverzone1"] = "Zone intelligente :"
+	L["H_cleverzone2"] = "Charge le PVP seulement dans les zones PVP et le PVE dans les zones PVE."
+	L["H_cleverzone3"] = "(un /rl est nécessaire quand vous entrez dans une instance)"
+	L["H_tooltip"] = "Affiche un Tooltip lorsqu'on passe la souris sur les buffs."
+	L["H_TooltipMover"] = "Ancre du Tooltip sur l'ancre définie par ElvUI ou Tukui."
+	L["H_FlashIcon"] = "Flash quand le temps restant est inférieur au seuil fixé en mode ICON."
+	L["H_FlashBar"] = "Flash quand le temps restant est inférieur au seuil fixé en mode BAR."
+	L["H_FlashThreshold1"] = "Seuil à partir du quel le Flash commence."
+	L["H_FlashThreshold2"] = "Doit être suppérieur à 1."
+	L["H_FlashDuration1"] = "Durée de chaque flash."
+	L["H_FlashDuration2"] = "Doit être un nombre positif, plus il est petit, plus le flash sera rapide."
 
 	-- buttons
 	L["Apply"] = "Appliquer"
