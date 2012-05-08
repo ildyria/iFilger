@@ -634,7 +634,7 @@ function iFilger:UpdateSpellList(zone)
 					spellListClass = iFilger["spells"][j]
 					local mergeAll = spellListAll.Merge or false
 					local mergeClass = spellListClass.Merge or false
-					if ( spellListClass.Name == spellListAll.Name and ( mergeAll or mergeClass ) ) then
+					if ( spellListClass.Name == spellListAll.Mergewith and ( mergeAll or mergeClass ) ) then
 						merge = true
 						break
 					end

@@ -86,6 +86,9 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerBuffTargetHeal", w = 200, h = 20, anchor = "TOPLEFT", x = 164, y = -268, text = "Heal Buff Target" },
 		{ name = "iFilgerBuffPlayerHeal", w = 200, h = 20, anchor = "TOPRIGHT", x = -164, y = -268, text = "Heal Buff Player" },
 		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerTargetDebuff", w = 160, h = 20, anchor = "TOPLEFT", x = 37, y = -110, text = "Target Debuff" },
+		{ name = "iFilgerPlayerBuff", w = 160, h = 20, anchor = "TOPRIGHT", x = -42, y = -110, text = "Player Buff" },
+		{ name = "iFilgerLavaBurst", w = 90, h = 20, anchor = "CENTER", x = 0, y = -55, text = "Lava Burst" },
 	},
 	["WARRIOR"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
@@ -1275,8 +1278,6 @@ C["Filger_Spells"] = {
 			{ spellID = 974, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Riptide
 			{ spellID = 61295, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Lightning Shield
-			{ spellID = 324, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Water Shield
 			{ spellID = 52127, unitId = "player", caster = "player", filter = "BUFF" },
 		},
@@ -1354,8 +1355,6 @@ C["Filger_Spells"] = {
 
 			-- Maelstorm Weapon
 			{ spellID = 53817, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Clearcasting
-			{ spellID = 16246, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Tidal Waves
 			{ spellID = 51562, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Focused Insight
@@ -1384,8 +1383,6 @@ C["Filger_Spells"] = {
 
 			-- Shamanistic Rage
 			{ spellID = 30823, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Elemental Mastery
-			{ spellID = 16166, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Totem
 			{ spellID = 77661, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Hex
@@ -1395,13 +1392,13 @@ C["Filger_Spells"] = {
 			-- Storm Strike
 			{ spellID = 17364, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Earth Shock
-			{ spellID = 8042, unitId = "target", caster = "player", filter = "DEBUFF" },
+			{ spellID = 8042, unitId = "target", caster = "player", filter = "DEBUFF", spec = 2 },
 			-- Frost Shock
 			{ spellID = 8056, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Flame Shock
-			{ spellID = 8050, unitId = "target", caster = "player", filter = "DEBUFF" },
+			{ spellID = 8050, unitId = "target", caster = "player", filter = "DEBUFF", spec = 2 },
 			-- Spiritwalker's Grace
-			{ spellID = 79206, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 79206, unitId = "player", caster = "player", filter = "BUFF", spec = 3 },
 		},
 		{
 			Name = "Focus",
@@ -1420,6 +1417,57 @@ C["Filger_Spells"] = {
 			{ spellID = 51514, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Bind Elemental
 			{ spellID = 76780, unitId = "focus", caster = "all", filter = "DEBUFF" },
+		},
+		{
+			Name = "Debuffs Elem",
+			Enable = true,
+			Direction = "RIGHT",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = 37,
+			setPoint = { "BOTTOMLEFT", "iFilgerTargetDebuff", 0, 22 },
+
+			-- Flame Shock
+			{ spellID = 8050, unitId = "target", caster = "player", filter = "DEBUFF", spec = 1 },
+			-- Thunderstrom
+			{ spellID = 51490, filter = "CD" },
+			-- Earth  Shock
+			{ spellID = 8042, filter = "CD", spec = 1},
+		},
+		{
+			Name = "Buffs Elem",
+			Enable = true,
+			Direction = "LEFT",
+			Interval = 4,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = 37,
+			setPoint = { "BOTTOMRIGHT", "iFilgerPlayerBuff", 0, 22 },
+
+			-- Clearcasting
+			{ spellID = 16246, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Spiritwalker's Grace
+			{ spellID = 79206, unitId = "player", caster = "player", filter = "BUFF", spec = 1 },
+			-- Elemental Mastery
+			{ spellID = 16166, unitId = "player", caster = "player", filter = "BUFF" },
+
+		},
+		{
+			Name = "Lava Burst",
+			Enable = true,
+			Direction = "DOWN",
+			Interval = 4,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = 37,
+			setPoint = { "TOP", "iFilgerLavaBurst", -0, -23 },
+
+			-- Lava Burst
+			{ spellID = 51505, filter = "CD", spec = 1 },
 		},
 	},	
 	["PALADIN"] = { ---------------------------------------------------- Paladin
@@ -1957,13 +2005,14 @@ C["Filger_Spells"] = {
 			{ spellID = 24378, unitId = "player", caster = "all", filter = "BUFF", absID = true },
 		},
 		{
-			Name = "Cooldown", -- (racial)
+			Name = "Racials", -- (racial)
 			Enable = true,
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 			Merge = true,
+			Mergewith = "Cooldown",
 --			BarWidth = 150,
 			Size = 52,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
@@ -1998,13 +2047,14 @@ C["Filger_Spells"] = {
 			{ spellID = 20589, filter = "CD" }, 
 		},
 		{
-			Name = "Cooldown", -- (ICD)
+			Name = "ICD", -- (ICD)
 			Enable = true,
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 			Merge = true,
+			Mergewith = "Cooldown",
 --			BarWidth = 150,
 			Size = 37,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
@@ -2678,6 +2728,8 @@ C["Filger_Spells"] = {
 			{ spellID = 105445, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Tetanus
 			{ spellID = 109603, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Corrupting Parasite -- HM
+			{ spellID = 108649, unitId = "player", caster = "all", filter = "DEBUFF" },
 		},
 		{
 			Name = "WotLK debuff",
