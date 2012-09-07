@@ -903,7 +903,7 @@ C["Filger_Spells"] = {
 
 			--SPECIAL PETS
 			-- Wrathstorm
-			{ spellID = 119915, filter = "CD" },
+--			{ spellID = 119915, filter = "CD" },
 			-- Wrathstorm 
 			{ spellID = 115831, filter = "CD" },
 			-- Axe Toss
@@ -913,17 +913,17 @@ C["Filger_Spells"] = {
 			-- Cauterize Master
 			{ spellID = 119899, filter = "CD" },
 			-- Cauterize Master
-			{ spellID = 119905, filter = "CD" },
+--			{ spellID = 119905, filter = "CD" },
 			-- Optical Blast
 			{ spellID = 119911, filter = "CD" },
 			-- Optical Blast
-			{ spellID = 115781, filter = "CD" },
+--			{ spellID = 115781, filter = "CD" },
 			-- Clone Magic
 			{ spellID = 115284, filter = "CD" },
 			-- Mesmerize
 			{ spellID = 115268, filter = "CD" },
 			-- Fellash
-			{ spellID = 115770, filter = "CD" },
+--			{ spellID = 115770, filter = "CD" },
 			-- Fellash
 			{ spellID = 119913, filter = "CD" },
 			
@@ -933,25 +933,25 @@ C["Filger_Spells"] = {
 			-- Spell Lock (Felhunter)
 			{ spellID = 19647 , filter = "CD" },
 			-- Spell Lock (Felhunter)
-			{ spellID = 119910  , filter = "CD" },
+--			{ spellID = 119910  , filter = "CD" },
 			-- Spell Lock (Felhunter)
-			{ spellID = 132409  , filter = "CD" },
+--			{ spellID = 132409  , filter = "CD" },
 			-- Whiplash
 			{ spellID = 6360  , filter = "CD" },
 			-- Whiplash
-			{ spellID = 119909 , filter = "CD" },
+--			{ spellID = 119909 , filter = "CD" },
 			-- Seduction
 			{ spellID = 6358 , filter = "CD" },
 			-- Seduction
-			{ spellID = 132412 , filter = "CD" },
+--			{ spellID = 132412 , filter = "CD" },
 			-- Singe Magic
 			{ spellID = 89808 , filter = "CD" },
 			-- Singe Magic
-			{ spellID = 132411 , filter = "CD" },
+--			{ spellID = 132411 , filter = "CD" },
 			-- Cauterize Master
-			{ spellID = 119899 , filter = "CD" },
+--			{ spellID = 119899 , filter = "CD" },
 			-- Cauterize Master
-			{ spellID = 119905 , filter = "CD" },
+--			{ spellID = 119905 , filter = "CD" },
 			-- Suffering (Voidwalker)
 			{ spellID = 17735, filter = "CD" },
 			-- Shadow Bulwark (Voidwalker)
@@ -1530,8 +1530,6 @@ C["Filger_Spells"] = {
 			{ spellID = 974, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Riptide
 			{ spellID = 61295, unitId = "target", caster = "player", filter = "BUFF" },
-			-- Ancestral Fortitude
-			{ spellID = 85838, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Hearthliving
 			{ spellID = 51945, unitId = "target", caster = "player", filter = "BUFF" },
 		},
@@ -1546,6 +1544,8 @@ C["Filger_Spells"] = {
 			Size = 37,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
+			-- Stone Bulwark Totem
+			{ spellID = 108270, filter = "CD" },
 			-- Grounding Totem
 			{ spellID = 8177, filter = "CD" },
 			-- Tremor Totem
@@ -1560,7 +1560,7 @@ C["Filger_Spells"] = {
 			{ spellID = 30823, filter = "CD" },
 			-- Mana Tide Totem
 			{ spellID = 16190, filter = "CD" },
-			-- Nature's Swiftness
+			-- Ancestral Swiftness
 			{ spellID = 16188, filter = "CD" },
 			-- Fire Elemental Totem
 			{ spellID = 2894, filter = "CD" },
@@ -1584,16 +1584,24 @@ C["Filger_Spells"] = {
 			Size = 60,
 			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
 
+			-- Ancestral Swiftness
+			{ spellID = 16188, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Maelstorm Weapon
 			{ spellID = 53817, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Tidal Waves
 			{ spellID = 51564, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Unleash Life
 			{ spellID = 73685, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Nature's Guardian
+			{ spellID = 31616, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Riptide
 			{ spellID = 61295, caster = "all", filter = "ACD", incombat = false },
+			-- Grounding Totem
+			{ spellID = 8178, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Stone Bulwark Totem
+			{ spellID = 114893, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Spirit Link Totem
-			{ spellID = 98008, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 98007, unitId = "player", caster = "player", filter = "BUFF" },			
 			-- Spiritual Stimulus (2T13)
 			{ spellID = 105763, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Timewalker (4T13 heal)
@@ -1610,10 +1618,21 @@ C["Filger_Spells"] = {
 			Size = 37,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
 
+			-- Earth Shield
+			{ spellID = 974, unitId = "player", caster = "player", filter = "BUFF" },		
+			-- Astral Shift
+			{ spellID = 108271, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Spirit Walk
+			{ spellID = 58875, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Ancestral Guidance
+			{ spellID = 108281, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Ghost Wolf
+			{ spellID = 2645, unitId = "player", caster = "player", filter = "BUFF" },
+
 			-- Shamanistic Rage
 			{ spellID = 30823, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Totem
-			{ spellID = 77661, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 77661, unitId = "target", caster = "all", filter = "DEBUFF", spec = 2 },
 			-- Hex
 			{ spellID = 51514, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Bind Elemental
@@ -1626,6 +1645,8 @@ C["Filger_Spells"] = {
 			{ spellID = 8056, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Flame Shock
 			{ spellID = 8050, unitId = "target", caster = "player", filter = "DEBUFF", spec = 2 },
+			-- Earthgrab
+			{ spellID = 64695, unitId = "target", caster = "player", filter = "DEBUFF" },		
 			-- Spiritwalker's Grace
 			{ spellID = 79206, unitId = "player", caster = "player", filter = "BUFF", spec = 3 },
 		},
@@ -1660,6 +1681,8 @@ C["Filger_Spells"] = {
 
 			-- Flame Shock
 			{ spellID = 8050, unitId = "target", caster = "player", filter = "DEBUFF", spec = 1 },
+			-- Searing Totem
+			{ spellID = 77661, unitId = "target", caster = "player", filter = "DEBUFF", spec = 1 },
 			-- Thunderstrom
 			{ spellID = 51490, filter = "CD" },
 			-- Earth  Shock
@@ -1695,6 +1718,9 @@ C["Filger_Spells"] = {
 			Size = 37,
 			setPoint = { "TOP", "iFilgerLavaBurst", -0, -23 },
 
+
+			-- Lava Surge
+			{ spellID = 77762, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Lava Burst
 			{ spellID = 51505, filter = "CD", spec = 1 },
 		},
