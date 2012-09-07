@@ -839,6 +839,8 @@ C["Filger_Spells"] = {
 			Size = 33,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 0, 22 },
 
+			-- Command Demon
+			{ spellID = 119898, filter = "CD" },
 			-- Kil'jaeden's Cunning
 			{ spellID = 119049, filter = "CD" },
 			-- Archimonde's Vengeance
