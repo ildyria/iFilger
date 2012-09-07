@@ -62,7 +62,9 @@ C["Filger_Panels"] = {
 	},
 	["HUNTER"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
-		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
+--		{ name = "", w = 100, h = 21, anchor = "BOTTOMLEFT", x = -85, y = -250, text = "Player Buffs" },
+		{ name = "iFilgerPlayerBuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Player Buffs" },
+		{ name = "iFilgerTargetDebuff", w = 200, h = 20, anchor = "TOP", x = 0, y = -160, text = "Target Debuff" },
 		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
 		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
 		{ name = "iFilgerRage", w = 165, h = 20, anchor = "CENTER", x = 0, y = -20, text = "Rage Buffs" },
@@ -1220,23 +1222,21 @@ C["Filger_Spells"] = {
 
 			-- Lock and Load
 			{ spellID = 56453, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Quick Shots
-			{ spellID = 6150, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Improved Steady Shot
 			{ spellID = 53224, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Rapid Fire
-			{ spellID = 3045, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Ready, Set, Aim
 			{ spellID = 82925, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Fire!
 			{ spellID = 82926, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Master Tactician
-			{ spellID = 34837, unitId = "player", caster = "player", filter = "BUFF" },
-			-- The Beast Within
-			{ spellID = 34692, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Cobra Strikes
+			{ spellID = 53257, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Focus Fire
+			{ spellID = 82692, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Thrill of the Hunt
+			{ spellID = 34720, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Player Buffs",
 			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
@@ -1244,7 +1244,35 @@ C["Filger_Spells"] = {
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = 37,
-			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
+			setPoint = { "BOTTOMLEFT", "iFilgerPlayerBuff", 0, 24 },
+
+			-- Rapid Fire
+			{ spellID = 3045, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Mend Pet
+			{ spellID = 136, unitId = "pet", caster = "player", filter = "BUFF" },
+			-- Spirit Mend
+			{ spellID = 90361, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Deterrence
+			{ spellID = 19263, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Sniper Training
+			{ spellID = 64420, unitId = "player", caster = "player", filter = "BUFF" },
+			-- The Beast Within
+			{ spellID = 34471, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Camouflage
+			{ spellID = 51755, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Posthaste
+			{ spellID = 118922, unitId = "player", caster = "player", filter = "BUFF" },
+		},
+		{
+			Name = "Target Debuffs",
+			Enable = true,
+			Direction = "HORIZONTAL",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = 37,
+			setPoint = { "TOP", "iFilgerTargetDebuff", 0, -24 },
 
 			-- Wyvern Sting
 			{ spellID = 19386, unitId = "target", caster = "all", filter = "DEBUFF" },
@@ -1261,9 +1289,9 @@ C["Filger_Spells"] = {
 			-- Hunter's Mark
 			{ spellID = 1130, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Piercing Shots 
-			{ spellID = 63468, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Sniper Training
-			{ spellID = 64420, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 63468, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- A Murder of Crows
+			{ spellID = 131894, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
 		{
 			Name = "Focus",
@@ -1280,6 +1308,8 @@ C["Filger_Spells"] = {
 			{ spellID = 19386, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Silencing Shot
 			{ spellID = 34490, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Freezing Trap
+			{ spellID = 3355, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},	
 	["ROGUE"] = { ---------------------------------------------------- Rogue
@@ -1314,7 +1344,7 @@ C["Filger_Spells"] = {
 			{ spellID = 45182, filter = "ICD", trigger = "BUFF", duration = 90 },
 		},
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Player Buffs",
 			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
@@ -1324,6 +1354,8 @@ C["Filger_Spells"] = {
 			Size = 37,
 			setPoint = { "BOTTOMRIGHT", "iFilgerPlayerBuff", 0, 22 },
 
+			-- Blade Flurry
+			{ spellID = 13877, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Sprint
 			{ spellID = 2983, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Cloak of Shadows
@@ -1334,8 +1366,6 @@ C["Filger_Spells"] = {
 			{ spellID = 5277, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Envenom
 			{ spellID = 32645, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Overkill
-			{ spellID = 58426, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Slice and Dice
 			{ spellID = 5171, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Recuperate
@@ -1352,6 +1382,20 @@ C["Filger_Spells"] = {
 			{ spellID = 84746, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Deep Insight
 			{ spellID = 84747, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Master of subtlety
+			{ spellID = 31665, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Combat Readiness
+			{ spellID = 74001, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Feint
+			{ spellID = 1966, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Shroud of Concealment
+			{ spellID = 114018, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Shadow Blades
+			{ spellID = 121471, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Burst of Speed
+			{ spellID = 108212, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Shadow Walk
+			{ spellID = 114842, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Suffering -- Legendary buff
 			{ spellID = 109959, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Nightmare -- Legendary buff
@@ -1360,7 +1404,7 @@ C["Filger_Spells"] = {
 			{ spellID = 109941, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Target Debuffs",
 			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
@@ -1378,32 +1422,36 @@ C["Filger_Spells"] = {
 			{ spellID = 2094, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Sap
 			{ spellID = 6770, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Revealing Strike
+			{ spellID = 84617, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Rupture
 			{ spellID = 1943, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Garrote
 			{ spellID = 703, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Gouge
 			{ spellID = 1776, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Expose Armor
-			{ spellID = 8647, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Crimson Tempest
+			{ spellID = 122233, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Weakened Armor
+			{ spellID = 113746, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Dismantle
 			{ spellID = 51722, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Deadly Poison / Tödliches Gift
+			-- Deadly Poison
 			{ spellID = 2818, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Mind-numbing Poison / Gedankenbenebelndes Gift
-			{ spellID = 5760, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Crippling Poison / Verkrüppelndes Gift
-			{ spellID = 3409, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Wound Poison / Wundgift
-			{ spellID = 8679, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Mind Paralysis
+			{ spellID = 115194, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Debilitating Poison
+			{ spellID = 115196, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Wound Poison
+			{ spellID = 8680, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Find Weakness
 			{ spellID = 91023, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Hemorrhage
-			{ spellID = 16511, unitId = "target", caster = "player", filter = "DEBUFF", absID = true  },
-			-- Glyph of Hemorrhage 
 			{ spellID = 89775, unitId = "target", caster = "player", filter = "DEBUFF", absID = true  },
 			-- Vendetta
 			{ spellID = 79140, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Nerve Strike
+			{ spellID = 112947, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
 		{
 			Name = "Focus",
@@ -1438,6 +1486,16 @@ C["Filger_Spells"] = {
 			{ spellID = 57934, caster = "all", filter = "ACD", incombat = true },
 			-- Fury of the Destroyer -- Legendary buff
 			{ spellID = 109949, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Vanish
+			{ spellID = 1856, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Cheating death
+			{ spellID = 45182, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Combat Insight
+			{ spellID = 74002, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Blindside
+			{ spellID = 121153, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Subterfuge
+			{ spellID = 115192, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 	},		
 	["SHAMAN"] = { ---------------------------------------------------- Shaman
