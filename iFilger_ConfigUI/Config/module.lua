@@ -1,17 +1,6 @@
 local C, F, L = unpack(select(2, ...))
 
 ---------------------------------------------------------------------------------------------------------------------------------------
---													TODO LIST
---
--- 			Coding finished.
---			TO DO : KILL BUGS !
---
---
----------------------------------------------------------------------------------------------------------------------------------------
-
-
-
----------------------------------------------------------------------------------------------------------------------------------------
 --		BEGIN SCRIPT
 ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -134,6 +123,7 @@ local help = {
 local iFilgerconfigPanel = CreateFrame("Frame", "iFilgerConfig", UIParent)
 F.CreatePanel(iFilgerconfigPanel, 300, 400, "CENTER", UIParent, "CENTER", 0, 100)
 F.SetBorder(iFilgerconfigPanel)
+iFilgerconfigPanel:ThickBorder()
 iFilgerconfigPanel:EnableMouse(true)
 iFilgerconfigPanel:SetMovable(true)
 iFilgerconfigPanel:RegisterForDrag("LeftButton")
@@ -143,19 +133,21 @@ iFilgerconfigPanel:Hide()
 
 local configTitle = CreateFrame("Frame", "iFilgerConfigTitle", iFilgerconfigPanel)
 F.CreatePanel(configTitle, 1, 24, "TOPLEFT", UIParent, "TOPLEFT", 0, 0)
+configTitle:ThickBorder()
 configTitle:SetPoint("TOPLEFT", F.Scale(4), F.Scale(-4))
 configTitle:SetPoint("TOPRIGHT", F.Scale(-31), F.Scale(-4))
 configTitle:SetFrameStrata("MEDIUM")
 
 configTitle.text = configTitle:CreateFontString(nil, "OVERLAY")
 configTitle.text:SetFont(C.font, 14)
-configTitle.text:SetText("|cff1784d1iFilger|r |cffffffffConfigUI|r")
+configTitle.text:SetText(L["iFilger"])
 configTitle.text:SetPoint("CENTER")
 
 local configClose = CreateFrame("Frame", "iFilgerConfigClose", iFilgerconfigPanel)
 F.CreatePanel(configClose, 24, 24, "TOPRIGHT", iFilgerconfigPanel, "TOPRIGHT", -4, -4)
 configClose:SetFrameStrata("MEDIUM")
 configClose:EnableMouse(true)
+configClose:ThickBorder()
 configClose:SetScript("OnEnter", function(self) self.text:SetTextColor(unpack(C["General"].Red)) end)
 configClose:SetScript("OnLeave", function(self) self.text:SetTextColor(unpack(C["General"].White)) end)
 configClose:SetScript("OnMouseDown", function() iFilgerconfigPanel:Hide() end)
@@ -168,6 +160,7 @@ configClose.text:SetPoint("CENTER", configClose, 0, 0)
 local configApply = CreateFrame("Button", "iFilgerConfigApply", iFilgerconfigPanel, "SecureActionButtonTemplate")
 F.CreatePanel(configApply, 147, 25, "TOPRIGHT", iFilgerconfigPanel, "BOTTOMRIGHT", 0, -5)
 configApply:EnableMouse(true)
+configApply:ThickBorder()
 configApply:RegisterForClicks("AnyUp")
 configApply:SetAttribute("type1", "macro")
 configApply:SetAttribute("macrotext1", "/reload")
@@ -183,6 +176,7 @@ configApply.text:SetPoint("CENTER", configApply, 0, -1)
 local configReset = CreateFrame("Frame", "iFilgerConfigReset", iFilgerconfigPanel)
 F.CreatePanel(configReset, 147, 25, "TOPLEFT", iFilgerconfigPanel, "BOTTOMLEFT", 0, -5)
 configReset:SetFrameStrata("MEDIUM")
+configReset:ThickBorder()
 configReset:EnableMouse(true)
 configReset:SetScript("OnEnter", function(self) self.text:SetTextColor(unpack(C["General"].Red)) end)
 configReset:SetScript("OnLeave", function(self) self.text:SetTextColor(unpack(C["General"].White)) end)
@@ -199,6 +193,7 @@ configReset.text:SetPoint("CENTER", configReset, 0, -1)
 local configMove = CreateFrame("Button", "iFilgerConfigMove", iFilgerconfigPanel, "SecureActionButtonTemplate")
 F.CreatePanel(configMove, 147, 25, "TOP", configApply, "BOTTOM", 0, F.Scale(-5))
 configMove:EnableMouse(true)
+configMove:ThickBorder()
 configMove:RegisterForClicks("AnyUp")
 configMove:SetAttribute("type1", "macro")
 configMove:SetAttribute("macrotext1", "/mifilger")
@@ -214,9 +209,10 @@ configMove.text:SetPoint("CENTER", configMove, 0, -1)
 local configResetPosition = CreateFrame("Button", "iFilgerConfigMove", iFilgerconfigPanel, "SecureActionButtonTemplate")
 F.CreatePanel(configResetPosition, 147, 25, "TOP", configReset, "BOTTOM", 0, F.Scale(-5))
 configResetPosition:EnableMouse(true)
+configResetPosition:ThickBorder()
 configResetPosition:RegisterForClicks("AnyUp")
 configResetPosition:SetAttribute("type1", "macro")
-configResetPosition:SetAttribute("macrotext1", "/mifilger")
+configResetPosition:SetAttribute("macrotext1", "/rifilger")
 configResetPosition:SetFrameStrata("MEDIUM")
 configResetPosition:SetScript("OnEnter", function(self) self.text:SetTextColor(unpack(C["General"].Red)) end)
 configResetPosition:SetScript("OnLeave", function(self) self.text:SetTextColor(unpack(C["General"].White)) end)
@@ -254,10 +250,10 @@ iFilgerConfigMessage:SetBackdropBorderColor(.075, .075, .075, 0)
 
 iFilgerConfigMessage.text1 = iFilgerConfigMessage:CreateFontString(nil, "OVERLAY")
 iFilgerConfigMessage.text1:SetFont(C.font, 12)
-iFilgerConfigMessage.text1:SetPoint("CENTER", iFilgerConfigMessage, "CENTER", 0, F.Scale(-1))
+iFilgerConfigMessage.text1:SetPoint("CENTER", iFilgerConfigMessage, "CENTER", 0, 0)
 iFilgerConfigMessage.text1:SetShadowColor(0,0,0)
 iFilgerConfigMessage.text1:SetShadowOffset(1.25, -1.25)
-iFilgerConfigMessage.text1:SetText("If you config your |cff1784d1iFilger|r by LUA and\nstill wish to use the ConfigUI,\ndon't forget to click on |cff1784d1Reset Config|r\neach time you modify the config.lua")
+iFilgerConfigMessage.text1:SetText(L["Config"])
 
 
 
@@ -376,6 +372,7 @@ local create_option = function(indicetab,option,value,ypos)
 
 	if type(value) == "boolean" then
 		options[indicetab][option].button = CreateFrame("CheckButton", "iFilgerConfig"..indicetab..option, options[indicetab][option], "ChatConfigCheckButtonTemplate")
+		F.SkinCheckBox(options[indicetab][option].button)
 		options[indicetab][option].button:SetPoint("TOPLEFT", iFilgerconfigPanel, "TOPRIGHT", F.Scale(-105), F.Scale(-35 - ypos))
 		options[indicetab][option].button:SetScript("OnClick", function(self) SetValue(indicetab,option,(self:GetChecked() and true or false)) end)
 	elseif type(value) == "number" or type(value) == "string" then
@@ -574,6 +571,7 @@ local create_tab_head = function(i,name)
 
 	header[i].status = "close"
 	header[i]:SetBackdropBorderColor(unpack(C["General"].BorderColorHeader))
+	header[i]:ThickBorder()
 	
 	header[i].text = header[i]:CreateFontString(nil, "OVERLAY")
 	header[i].text:SetFont(C.font, 12)
@@ -614,6 +612,7 @@ local create_tab = function(data,indicetab,j,i)
 
 	tab[indicetab].status = "close"
 	tab[indicetab]:SetBackdropBorderColor(unpack(C["General"].BorderColorTab))
+	tab[indicetab]:ThickBorder()
 
 	-- tab name
 	tab[indicetab].text = tab[indicetab]:CreateFontString(nil, "OVERLAY")
@@ -666,6 +665,8 @@ local TabRight = CreateFrame("Frame", "iFilgerConfigTabRight", iFilgerconfigPane
 F.CreatePanel(TabRight, 125, 25, "TOPLEFT", iFilgerconfigPanel, "TOPRIGHT", F.Scale(5), F.Scale(-30))
 TabRight:EnableMouse(true)
 TabRight:SetFrameStrata("LOW")
+TabRight:ThickBorder()
+TabRight:SetBackdropColor(.075, .075, .075, 0.7)
 
 TabRight.status = "close"
 TabRight:SetBackdropBorderColor(unpack(C["General"].BorderColorHeader))
@@ -675,7 +676,7 @@ TabRight.text:SetFont(C.font, 12)
 TabRight.text:SetPoint("CENTER", TabRight, "CENTER", 0, F.Scale(-1))
 TabRight.text:SetShadowColor(0,0,0)
 TabRight.text:SetShadowOffset(1.25, -1.25)
-TabRight.text:SetText("Global Config")
+TabRight.text:SetText(L["Global"])
 TabRight:SetScript("OnEnter", function(self) self:SetBackdropBorderColor(unpack(C["General"].ClassColor)) end)
 TabRight:SetScript("OnLeave", function(self)
 	if(self.status == "close") then
@@ -684,11 +685,12 @@ TabRight:SetScript("OnLeave", function(self)
 		self:SetBackdropBorderColor(unpack(C["General"].White))
 	end
 end)
+
 TabRight:SetScript("OnMouseDown", function()
-		close_all_tab()
-		iFilgerConfigMessage:Hide()
-		iFilgerglobalconfigOptions:Show()
-	end)
+	close_all_tab()
+	iFilgerConfigMessage:Hide()
+	iFilgerglobalconfigOptions:Show()
+end)
 
 
 
@@ -762,6 +764,7 @@ local create_global_option = function(option,value,ypos)
 
 	if type(value) == "boolean" then
 		Goptions[option].button = CreateFrame("CheckButton", "iFilgerConfigGlobal"..option, Goptions[option], "ChatConfigCheckButtonTemplate")
+		F.SkinCheckBox(Goptions[option].button)
 		Goptions[option].button:SetPoint("TOPLEFT", iFilgerconfigPanel, "TOPRIGHT", F.Scale(-105), F.Scale(-35 - ypos))
 		Goptions[option].button:SetScript("OnClick", function(self) SetGlobalValue(option,(self:GetChecked() and true or false)) end)
 	elseif type(value) == "number" then

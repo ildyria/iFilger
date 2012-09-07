@@ -28,6 +28,7 @@ function iFilger:UnitBuff(unitID, inSpellID, spn, absID)
 	if absID then
 		for i = 1, 40, 1 do
 			local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitBuff(unitID, i)
+			if not GetSpellInfo(id) then return; end
 			if not name then break end
 			if inSpellID == spellID then
 				return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
@@ -49,6 +50,7 @@ function iFilger:UnitDebuff(unitID, inSpellID, spn, absID)
 	if absID then
 		for i = 1, 40, 1 do
 			local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitDebuff(unitID, i)
+			if not GetSpellInfo(id) then return; end
 			if not name then break end
 			if inSpellID == spellID then
 				return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
@@ -253,7 +255,7 @@ function iFilger:DisplayActives()
 				else
 					aura.count = aura:CreateFontString("$parentCount", "OVERLAY")
 					aura.count:SetFont(C["media"].pixelfont, 14, "OUTLINE")
-					aura.count:Point("BOTTOMRIGHT", 1, -1)
+					aura.count:Point("BOTTOMRIGHT", -1, 1)
 					aura.count:SetJustifyH("CENTER")
 				end
 			else
@@ -460,7 +462,7 @@ end
 
 function iFilger:OnEvent(event, unit)
 	if event == "SPELL_UPDATE_COOLDOWN" or event == "SPELL_UPDATE_USABLE" or event == "ACTIVE_TALENT_GROUP_CHANGED" or event == "PLAYER_TARGET_CHANGED" or event == "PLAYER_FOCUS_CHANGED" or event == "PLAYER_ENTERING_WORLD" or event == "UNIT_AURA" and (unit == "target" or unit == "player" or unit == "pet" or unit == "focus") then
-		local ptt = GetPrimaryTalentTree()
+		local ptt = GetSpecialization()
 		local needUpdate = false
 		local id = self.Id
 		if iFilger["spells"][id] then
@@ -473,6 +475,9 @@ function iFilger:OnEvent(event, unit)
 						local caster, spn, expirationTime
 						spn, _, _ = GetSpellInfo(data.spellID)
 						name, _, icon, count, _, duration, expirationTime, caster, _, _, spid = iFilger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
+						if icon and data.icon then
+							icon = data.icon
+						end
 						if name and (data.caster == "all" or data.caster == caster) then
 							start = expirationTime - duration
 							found = true
@@ -481,6 +486,9 @@ function iFilger:OnEvent(event, unit)
 						local caster, spn, expirationTime
 						spn, _, _ = GetSpellInfo(data.spellID)
 						name, _, icon, count, _, duration, expirationTime, caster, _, _, spid = iFilger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
+						if icon and data.icon then
+							icon = data.icon
+						end
 						if name and (data.caster == "all" or data.caster == caster) then
 							start = expirationTime - duration
 							found = true
@@ -489,6 +497,9 @@ function iFilger:OnEvent(event, unit)
 						local spn
 						spn, _, icon = GetSpellInfo(data.spellID)
 						name = iFilger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
+						if icon and data.icon then
+							icon = data.icon
+						end
 						if not name then
 							found = true
 							name = spn
@@ -498,6 +509,9 @@ function iFilger:OnEvent(event, unit)
 						local spn
 						spn, _, icon = GetSpellInfo(data.spellID)
 						name = iFilger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
+						if icon and data.icon then
+							icon = data.icon
+						end
 						if not name then
 							found = true
 							name = spn
@@ -519,6 +533,9 @@ function iFilger:OnEvent(event, unit)
 								name, _, _, _, _, _, _, _, _, icon = GetItemInfo(slotLink)
 								start, duration = GetInventoryItemCooldown("player", data.slotID)
 							end
+						end
+						if icon and data.icon then
+							icon = data.icon
 						end
 						if name and (duration or 0) > 1.5 then
 							found = true
@@ -542,6 +559,9 @@ function iFilger:OnEvent(event, unit)
 						if name and (duration or 0) > 1.5 then
 							found = false
 						end
+						if icon and data.icon then
+							icon = data.icon
+						end
 						duration = 0
 					elseif data.filter == "ICD" and (not data.spec or data.spec == ptt) then
 						if data.trigger == "BUFF" then
@@ -552,6 +572,9 @@ function iFilger:OnEvent(event, unit)
 							local spn
 							spn, _, icon = GetSpellInfo(data.spellID)
 							name, _, _, _, _, _, _, _, _, _, spid = iFilger:UnitDebuff("player", data.spellID, spn, data.absID)
+						end
+						if icon and data.icon then
+							icon = data.icon
 						end
 						if name then
 							if data.slotID then

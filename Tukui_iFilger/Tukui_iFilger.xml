@@ -2,6 +2,6 @@
 	<Script file="core\functions.lua"/>
 	<Script file="config\config.lua"/>
 	<Script file="core\panels.lua"/>
-	<Script file="core\debug.lua"/>
+<!--	<Script file="core\debug.lua"/>-->
 	<Script file="Tukui_iFilger.lua"/>
 </Ui>

@@ -3,12 +3,11 @@
 	<Script file="core\init.lua"/>
 	<Script file="core\constants.lua"/>	
 	<Script file="config\config.lua"/>
-	<Script file="medias\medias.lua"/>
+	<Script file="media\media.lua"/>
 	<Script file="core\uiscale.lua"/>
 	<Script file="core\api.lua"/>
 	<Script file="core\functions.lua"/>
 	<Script file="core\panels.lua"/>
 	<Script file="core\cooldowns.lua"/>	
-	<Script file="developer\test.lua"/>	
 	<Script file="ifilger.lua"/>
 </Ui>

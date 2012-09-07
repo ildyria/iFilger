@@ -1,10 +1,10 @@
-﻿## Interface: 40300
-## Author: Nils Ruesch, Affli, Elv, Tukz
+﻿## Interface: 50001
+## Author: Nils Ruesch, Affli, Elv, Tukz, Ildyria
 ## Title: |cffC495DDTukui |r|cff1784d1iFilger|r
 ## Notes: Minimal buff/debuff/proc tracking for Tukui
-## Editor: FourOne, Jasje, Ildyria
-## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, mTx, SinaC, Hydra
-## Version: 5.5
+## Editor: FourOne, Jasje
+## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, mTx, SinaC, Hydra, Pat
+## Version: 5.6
 ## RequiredDeps: Tukui, iFilger_Config
 ## OptionalDeps: iFilger_ConfigUI
 

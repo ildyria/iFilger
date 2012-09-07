@@ -4,8 +4,13 @@ local C, F, L = unpack(select(2, ...))
 C.blank = [[Interface\AddOns\iFilger_ConfigUI\media\blank]]
 C.font = [=[Interface\AddOns\iFilger_ConfigUI\media\font.ttf]=]
 
--- Functions, credit Tukui (Tukz / nightcracker)
+local client = GetLocale()
 
+if client == "koKR" then
+	C.font = [=[Interface\AddOns\iFilger_ConfigUI\media\batang.ttf]=]
+end
+
+-- Functions, credit Tukui (Tukz / nightcracker)
 local UIscale = min(2, max(.64, 768/string.match(({GetScreenResolutions()})[GetCurrentResolution()], "%d+x(%d+)")))
 local mult = 768/string.match(GetCVar("gxResolution"), "%d+x(%d+)")/UIscale
 local Scale = function(x)
@@ -15,6 +20,7 @@ end
 F.Scale = function(x) return Scale(x) end
 
 F.CreatePanel = function(f, w, h, a1, p, a2, x, y)
+	
 	local sh = Scale(h)
 	local sw = Scale(w)
 	f:SetFrameLevel(1)
@@ -144,4 +150,65 @@ F.Delay = function(delay, func, ...)
 	
 	tinsert(waitTable, {delay, func, {...}})
 	return true
+end
+
+local function innerBorder(f)
+	if f.innerborder then f.innerborder:Show() return end
+	f.innerborder = CreateFrame("Frame", nil, f)
+	f.innerborder:SetPoint("TOPLEFT", mult, -mult)
+	f.innerborder:SetPoint("BOTTOMRIGHT", -mult, mult)
+	f.innerborder:SetBackdrop({
+		edgeFile = C.blank, 
+		edgeSize = mult, 
+		insets = { left = mult, right = mult, top = mult, bottom = mult }
+	})
+	f.innerborder:SetBackdropBorderColor(0,0,0)
+	
+end
+
+local function outerBorder(f)
+	if f.outerborder then f.outerborder:Show() return end
+	f.outerborder = CreateFrame("Frame", nil, f)
+	f.outerborder:SetPoint("TOPLEFT", -mult, mult)
+	f.outerborder:SetPoint("BOTTOMRIGHT", mult, -mult)
+	f.outerborder:SetBackdrop({
+		edgeFile = C.blank, 
+		edgeSize = mult, 
+		insets = { left = mult, right = mult, top = mult, bottom = mult }
+	})
+	f.outerborder:SetBackdropBorderColor(0,0,0)
+	
+end
+
+local function ThickBorder(f, force)
+	if f.backdrop and not force then
+		outerBorder(f.backdrop)
+		innerBorder(f.backdrop)
+	else
+		outerBorder(f)
+		innerBorder(f)
+	end
+end
+
+local function addapi(object)
+	local mt = getmetatable(object).__index
+	if not object.ThickBorder then mt.ThickBorder = ThickBorder end
+	if not object.InnerBorder then mt.Innerborder = innerBorder end
+	if not object.OuterBorder then mt.Outerborder = outerBorder end
+end
+
+local handled = {["Frame"] = true}
+local object = CreateFrame("Frame")
+addapi(object)
+addapi(object:CreateTexture())
+addapi(object:CreateFontString())
+
+object = EnumerateFrames()
+while object do
+	if not handled[object:GetObjectType()] then
+		addapi(object)
+		handled[object:GetObjectType()] = true
+	end
+
+	object = EnumerateFrames(object)
 end

@@ -37,7 +37,11 @@ I.CreateMover = function(name, w, h, anchor, x, y, color, text)
 end
 
 I.CreateMoverFrames = function(frame, w, h, anchor, x, y, color, text)
-	frame:CreatePanel("Transparent",w, h,anchor, "UIParent" , "CENTER", x, y)
+--	frame:CreatePanel("Transparent",w, h,anchor, "UIParent" , "CENTER", x, y)
+	frame:SetTemplate("Transparent")
+	frame:Size(w, h)
+	frame:Point(anchor, "UIParent" , "CENTER", x, y)
+
 	frame:SetMovable(true)
 	if(color == "class")
 	then

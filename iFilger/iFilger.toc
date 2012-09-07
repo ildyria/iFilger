@@ -1,10 +1,10 @@
-﻿## Interface: 40300
+﻿## Interface: 50001
 ## Author: Nils Ruesch, Affli, Elv, Tukz
 ## Title: |cff1784d1iFilger|r
 ## Notes: Minimal buff/debuff/proc tracking
-## Editor: FourOne, Jasje, Ildyria
+## Editor: FourOne, Jasje, Ildyria, Pat
 ## Credits: Nils Ruesch, Shestak, Affli, Garagar, hidekki, Sapz, Asphyxia, mTx, SinaC
-## Version: 5.5
+## Version: 5.6
 ## RequiredDeps: iFilger_Config
 ## OptionalDeps: iFilger_ConfigUI
 ## Notes: Power Aura Like, skinned for Tukui / ElvUI.

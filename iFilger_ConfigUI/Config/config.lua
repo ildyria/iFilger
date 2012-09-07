@@ -9,6 +9,6 @@ C["General"] = {
 	["BorderColorHeader"] = {.39, .39, .39, 1},
 	["BorderColorTab"] = {.2, .2, .2, 1},
 	["ClassColor"] = {RAID_CLASS_COLORS[myClass].r,RAID_CLASS_COLORS[myClass].g,RAID_CLASS_COLORS[myClass].b},
-	["White"] = {1,1,1},
-	["Red"] = {1,0,0},
+	["White"] = {1, 1, 1},
+	["Red"] = {1, 0, 0},
 }

@@ -1,7 +1,15 @@
 ﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
-	<Script file="Scripts\initialize.lua"/>
-	<Script file="Config\config.lua"/>
-	<Script file="Scripts\tools.lua"/>
-	<Script file="localization\localization.lua"/>
-	<Script file="Config\module.lua"/>
+	<Script file="scripts\initialize.lua"/>
+	<Script file="scripts\tools.lua"/>
+	
+	<Script file="locale\english.lua"/>
+	<Script file="locale\french.lua"/>
+	<Script file="locale\german.lua"/>
+	<Script file="locale\russian.lua"/>
+	<Script file="locale\korean.lua"/>
+	<Script file="locale\spanish.lua"/>
+	<Script file="locale\portuguese.lua"/>
+	
+	<Script file="config\config.lua"/>
+	<Script file="config\module.lua"/>
 </Ui>
