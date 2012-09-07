@@ -42,11 +42,13 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
 	},
 	["WARLOCK"] = {
+		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
 		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
 		{ name = "iFilgerTargetCCDebuff", w = 160, h = 20, anchor = "TOPLEFT", x = 37, y = -110, text = "Target CC Debuff" },
 		{ name = "iFilgerTargetDoTDebuff", w = 160, h = 20, anchor = "TOPRIGHT", x = -100, y = -110, text = "Target DoT Debuff" },
 		{ name = "iFilgerProcs", w = 90, h = 20, anchor = "CENTER", x = 0, y = -55, text = "Procs" },
 		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "TOPRIGHT", x = -42, y = -150, text = "Cooldowns" },
+		{ name = "iFilgerPetCooldowns", w = 160, h = 20, anchor = "TOPLEFT", x = 42, y = -150, text = "Pet Cooldowns" },
 	},
 	["DRUID"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
@@ -454,8 +456,6 @@ C["Filger_Spells"] = {
 			{ spellID = 120517, filter = "CD" },
 			-- Holy Word: Chastise
 			{ spellID = 88625, filter = "CD" },
-			-- Holy Word: Sanctuary
-			{ spellID = 88686, filter = "CD" }, 
 			-- Hymn of Hope
 			{ spellID = 64901, filter = "CD" },
 			-- Inner Focus
@@ -701,6 +701,8 @@ C["Filger_Spells"] = {
 			Size = 37,
 			setPoint = { "TOP", "iFilgerProcs", -0, -23 },
 
+			-- Kil'jaeden's Cunning
+			{ spellID = 119049, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Backlash
 			{ spellID = 34936, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Apocalypse T12 4P
@@ -769,6 +771,8 @@ C["Filger_Spells"] = {
 			{ spellID = 18223, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Fear
 			{ spellID = 5782, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Blood Fear
+			{ spellID = 111397, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Banish
 			{ spellID = 710, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Howl of Terror
@@ -779,8 +783,6 @@ C["Filger_Spells"] = {
 			{ spellID = 1098, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Demon Charge
 			{ spellID = 54785, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Soul Swap
-			{ spellID = 86121, unitId = "player", caster = "player", filter = "BUFF" },		
 			-- Dark Intent
 			{ spellID = 109773, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Soulstone Resurrection
@@ -788,6 +790,42 @@ C["Filger_Spells"] = {
 			-- Hand of Gul'dan
 			{ spellID = 105174, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
+		{
+			Name = "Player Buffs",
+			Enable = true,
+			Direction = "RIGHT",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = 37, 
+			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
+			
+			
+			-- Dark Soul: Misery
+			{ spellID = 113860, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Dark Soul: Instability
+			{ spellID = 113858, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Dark Soul: Knowledge
+			{ spellID = 113861, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Soul Swap
+			{ spellID = 86121, unitId = "player", caster = "player", filter = "BUFF" },		
+			-- Twilight Ward
+			{ spellID = 6229, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Unending Resolve
+			{ spellID = 104773, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Burning Rush
+			{ spellID = 111400, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Dark Regeneration
+			{ spellID = 108359, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Dark Bargain
+			{ spellID = 110913, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Sacrificial Pact
+			{ spellID = 108416, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Soul Link
+			{ spellID = 108415, unitId = "player", caster = "player", filter = "BUFF" },
+			
+		}
 		{
 			Name = "Cooldown",
 			Enable = true,
@@ -799,6 +837,22 @@ C["Filger_Spells"] = {
 			Size = 33,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 0, 22 },
 
+			-- Kil'jaeden's Cunning
+			{ spellID = 119049, filter = "CD" },
+			-- Archimonde's Vengeance
+			{ spellID = 108505, filter = "CD" },
+			-- Grimoire of Service
+			{ spellID = 108501, filter = "CD" },
+			-- Unbound Will
+			{ spellID = 108482, filter = "CD" },
+ 			-- Blood Fear
+			{ spellID = 111397, filter = "CD" },
+			-- Sacrificial Pact
+			{ spellID = 108416, filter = "CD" },
+			-- Dark Bargain
+			{ spellID = 110913, filter = "CD" },
+			-- Dark Regeneration
+			{ spellID = 108359, filter = "CD" },
 			-- Demon Soul
 			{ spellID = 77801, filter = "CD" },
 			-- Infernal
@@ -825,12 +879,6 @@ C["Filger_Spells"] = {
 			{ spellID = 30283, filter = "CD" },
 			-- Chaos Bolt
 			{ spellID = 116858, filter = "CD" },
-			-- Suffering (Voidwalker)
-			{ spellID = 17735, filter = "CD" },
-			-- Spell Lock (Felhunter)
-			{ spellID = 19647, filter = "CD" },
-			-- Devour Magic (Felhunter)
-			{ spellID = 19505, filter = "CD" },
 			-- Soul Harvest
 			{ spellID = 101976, filter = "CD" },
 			-- Felstorm
@@ -839,6 +887,73 @@ C["Filger_Spells"] = {
 			{ spellID = 74434, filter = "CD" },
 			-- Hand of Gul'dan
 			{ spellID = 105174, filter = "CD" },
+		},
+		{
+			Name = "Pet Cooldown",
+			Enable = true,
+			Direction = "RIGHT",
+			Interval = 4,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = 33,
+			setPoint = { "BOTTOMLEFT", "iFilgerPetCooldowns", 0, 22 },
+
+			--SPECIAL PETS
+			-- Wrathstorm
+			{ spellID = 119915, filter = "CD" },
+			-- Wrathstorm 
+			{ spellID = 115831, filter = "CD" },
+			-- Axe Toss
+			{ spellID = 89766, filter = "CD" },
+			-- Sear Magic
+			{ spellID = 115276, filter = "CD" },
+			-- Cauterize Master
+			{ spellID = 119899, filter = "CD" },
+			-- Cauterize Master
+			{ spellID = 119905, filter = "CD" },
+			-- Optical Blast
+			{ spellID = 119911, filter = "CD" },
+			-- Optical Blast
+			{ spellID = 115781, filter = "CD" },
+			-- Clone Magic
+			{ spellID = 115284, filter = "CD" },
+			-- Mesmerize
+			{ spellID = 115268, filter = "CD" },
+			-- Fellash
+			{ spellID = 115770, filter = "CD" },
+			-- Fellash
+			{ spellID = 119913, filter = "CD" },
+			
+			-- NORMAL PETS
+			-- Devour Magic (Felhunter)
+			{ spellID = 19505, filter = "CD" },
+			-- Spell Lock (Felhunter)
+			{ spellID = 19647 , filter = "CD" },
+			-- Spell Lock (Felhunter)
+			{ spellID = 119910  , filter = "CD" },
+			-- Spell Lock (Felhunter)
+			{ spellID = 132409  , filter = "CD" },
+			-- Whiplash
+			{ spellID = 6360  , filter = "CD" },
+			-- Whiplash
+			{ spellID = 119909 , filter = "CD" },
+			-- Seduction
+			{ spellID = 6358 , filter = "CD" },
+			-- Seduction
+			{ spellID = 132412 , filter = "CD" },
+			-- Singe Magic
+			{ spellID = 89808 , filter = "CD" },
+			-- Singe Magic
+			{ spellID = 132411 , filter = "CD" },
+			-- Cauterize Master
+			{ spellID = 119899 , filter = "CD" },
+			-- Cauterize Master
+			{ spellID = 119905 , filter = "CD" },
+			-- Suffering (Voidwalker)
+			{ spellID = 17735, filter = "CD" },
+			-- Shadow Bulwark (Voidwalker)
+			{ spellID = 132413 , filter = "CD" },
 		},
 		{
 			Name = "Focus",
@@ -2535,10 +2650,14 @@ C["Filger_Spells"] = {
 			{ spellID = 54786, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Fear
 			{ spellID = 5782, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Blood Fear
+			{ spellID = 111397, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Howl of Terror
 			{ spellID = 5484, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Seduction (Succubus)
 			{ spellID = 6358, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Mesmerize (Succubus)
+			{ spellID = 115268, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Shadowfury
 			{ spellID = 30283, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Spell Lock (Felhunter)
@@ -2553,6 +2672,8 @@ C["Filger_Spells"] = {
 			{ spellID = 63311, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Havoc
 			{ spellID = 80240, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			-- Archimonde's Vengeance
+			{ spellID = 108505, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			
 			-- Warrior --
 			--Hamstring
