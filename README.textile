@@ -72,7 +72,7 @@ p. In real situation :
 
 h3. Credits
 
-p. "Elv":https://github.com/Elv22 , "Tukz":https://github.com/tukz , "Jasje":https://github.com/Jasje , "Nils Ruesch":http://blog.shantalya.de , "Shestak":https://github.com/Shestak , "Affli":https://github.com/affli , "Garagar":https://github.com/budha, hidekki , Sapz , "Asphyxia":https://github.com/Asphyxia , "FourOne":https://github.com/FourOne , "mTx":https://github.com/mTx87 , "Varuljin":https://github.com/varuljin , "SinaC":https://github.com/SinaC 
+p. "Elv":https://github.com/Elv22 , "Tukz":https://github.com/tukz , "Jasje":https://github.com/Jasje , "Nils Ruesch":http://blog.shantalya.de , "Pat":https://github.com/Pat-/iFilger , "Shestak":https://github.com/Shestak , "Affli":https://github.com/affli , "Garagar":https://github.com/budha, hidekki , Sapz , "Asphyxia":https://github.com/Asphyxia , "FourOne":https://github.com/FourOne , "mTx":https://github.com/mTx87 , "Varuljin":https://github.com/varuljin , "SinaC":https://github.com/SinaC 
 
 h3. What's next ? 
 
