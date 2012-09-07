@@ -825,7 +825,7 @@ C["Filger_Spells"] = {
 			-- Soul Link
 			{ spellID = 108415, unitId = "player", caster = "player", filter = "BUFF" },
 			
-		}
+		},
 		{
 			Name = "Cooldown",
 			Enable = true,
