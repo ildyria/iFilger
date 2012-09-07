@@ -56,6 +56,7 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerBuffPlayerHeal", w = 200, h = 20, anchor = "TOPRIGHT", x = -164, y = -268, text = "Heal Buff Player" },
 		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
 		{ name = "iFilgerRage", w = 165, h = 20, anchor = "CENTER", x = 0, y = -20, text = "Rage Buffs" },
+		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
 	},
 	["HUNTER"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
@@ -689,8 +690,10 @@ C["Filger_Spells"] = {
 			{ spellID = 172, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Immolate
 			{ spellID = 348, unitId = "target", caster = "player", filter = "DEBUFF" },
-            -- Felstorm
-			{ spellID = 89751, unitId = "pet", caster = "all", filter = "BUFF" },
+			-- Haunt
+			{ spellID = 48181, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Seed of Corruption
+			{ spellID = 27243, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
 		{
 			Name = "Buffs and Debuffs CC",
@@ -703,18 +706,20 @@ C["Filger_Spells"] = {
 			Size = 37,
 			setPoint = { "BOTTOMRIGHT", "iFilgerTargetDoTDebuff", 58, 22},
 			
+			-- Shadowflame
+			{ spellID = 47960, unitId = "target", caster = "player", filter = "DEBUFF" },
+            -- Felstorm
+			{ spellID = 89751, unitId = "pet", caster = "all", filter = "BUFF" },
 			-- Curse of the Elements
-			{ spellID = 1490, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 1490, unitId = "target", caster = "all", filter = "DEBUFF" },			
+			-- Curse of Emfeeblement
+			{ spellID = 109466, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Curse of Exhaustion
 			{ spellID = 18223, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Fear
 			{ spellID = 5782, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Banish
 			{ spellID = 710, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Haunt
-			{ spellID = 48181, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Seed of Corruption
-			{ spellID = 27243, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Howl of Terror
 			{ spellID = 5484, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Mortal Coil
@@ -729,6 +734,8 @@ C["Filger_Spells"] = {
 			{ spellID = 109773, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Soulstone Resurrection
 			{ spellID = 20707, unitId = "target", caster = "player", filter = "BUFF" },	
+			-- Hand of Gul'dan
+			{ spellID = 105174, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
 		{
 			Name = "Cooldown",
@@ -813,15 +820,19 @@ C["Filger_Spells"] = {
 			Size = 32,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
-			-- Charge (cat)
-			{ spellID = 49376, filter = "CD", absID = true },
+			-- Displacer Beast
+			{ spellID = 102280, filter = "CD", absID = true },
+			-- Wild Charge
+			{ spellID = 102401, filter = "CD", absID = true },
 			-- Starsurge
 			{ spellID = 78674, filter = "CD" },
 			-- Starfall
 			{ spellID = 48505, filter = "CD" },
+			-- Frenzied Regeneration
+			{ spellID = 22842, filter = "CD" },
 		},
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Buffs Player Heal",
 			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
@@ -839,11 +850,9 @@ C["Filger_Spells"] = {
 			{ spellID = 8936, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Wild Growth
 			{ spellID = 48438, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Starfall
-			{ spellID = 48505, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Buffs Target Heal",
 			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
@@ -863,6 +872,38 @@ C["Filger_Spells"] = {
 			{ spellID = 48438, unitId = "target", caster = "player", filter = "BUFF" },
 		},
 		{
+			Name = "Buffs player",
+			Enable = true,
+			Direction = "RIGHT",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = 37, 
+			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
+			
+			-- Incarnation: Tree of Life
+			{ spellID = 117679, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Incarnation: King of the Jungle
+			{ spellID = 102543, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Incarnation: Son of Ursoc
+			{ spellID = 102558, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Incarnation: Chosen of Elune
+			{ spellID = 102560, unitId = "player", caster = "player", filter = "BUFF" },
+			
+			-- Celestial Alignment
+			{ spellID = 112071, unitId = "player", caster = "player", filter = "BUFF" },
+
+			-- Savage Roar
+			{ spellID = 52610, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Nature's Vigil
+			{ spellID = 124974, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Nature's Grasp
+			{ spellID = 16689, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Dash
+			{ spellID = 1850, unitId = "player", caster = "player", filter = "BUFF" },
+		},
+		{
 			Name = "Druid Procs",
 			Enable = true,
 			Direction = "RIGHT",
@@ -873,40 +914,49 @@ C["Filger_Spells"] = {
 			Size = 60,
 			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
 
+
 			-- Nature's Grace
 			{ spellID = 16886, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Harmony (Healer Mastery Buff)
 			{ spellID = 100977, unitId = "player", caster = "player", filter = "BUFF" },
+
 			-- Eclipse (Lunar)
 			{ spellID = 48518, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Eclipse (Solar)
 			{ spellID = 48517, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Shooting Stars
 			{ spellID = 93400, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Savage Roar
-			{ spellID = 52610, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Owlkin Frenzy
+			{ spellID = 48391, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Lunar Shower
+			{ spellID = 81192, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Starfall
+			{ spellID = 48505, unitId = "player", caster = "player", filter = "BUFF" },
+
 			-- Survival Instincts
 			{ spellID = 61336, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Tree of Life
-			{ spellID = 33891, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Ironbark
+			{ spellID = 102342, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Might of Ursoc
+			{ spellID = 106922, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Enrage
+			{ spellID = 5229, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Stampeding Roar
+			{ spellID = 106898, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Berserk - Cat
+			{ spellID = 106951, unitId = "player", caster = "player", filter = "BUFF", absID = true },
+			-- Berserk - Bear
+			{ spellID = 50334, unitId = "player", caster = "player", filter = "BUFF", absID = true },
+			-- Tiger's Fury
+			{ spellID = 5217, unitId = "player", caster = "player", filter = "BUFF" },
+			
 			-- Clearcasting
 			{ spellID = 16870, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Innervate
 			{ spellID = 29166, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Barkskin
 			{ spellID = 22812, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Owlkin Frenzy
-			{ spellID = 48391, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Lunar Shower
-			{ spellID = 81192, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Predetor's Swiftness
-			{ spellID = 69369, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Stampede
-			{ spellID = 81022, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Berserk
-			{ spellID = 50334, unitId = "player", caster = "player", filter = "BUFF", absID = true },
-			-- Tiger's Fury
-			{ spellID = 5217, unitId = "player", caster = "player", filter = "BUFF" },
+			
 			-- Glyph of Barkskin
 			{ spellID = 63058, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Tranquility
@@ -915,7 +965,7 @@ C["Filger_Spells"] = {
 			{ spellID = 105713, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Debuffs Target",
 			Enable = true,
 			Direction = "LEFT",
 			Interval = 3,
@@ -2450,6 +2500,8 @@ C["Filger_Spells"] = {
 			{ spellID = 18223, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Shadowsnare (Glyph of Shadowflame)
 			{ spellID = 63311, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Havoc
+			{ spellID = 80240, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			
 			-- Warrior --
 			--Hamstring
@@ -3117,6 +3169,8 @@ C["Filger_Spells"] = {
 			{ spellID = 1160, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Thunderclap (war)
 			{ spellID = 6343, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Weakened Armor (Druid)
+			{ spellID = 113746, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Infected Wounds (Druid)
 			{ spellID = 48484, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Demoralizing Roar (Druid)
