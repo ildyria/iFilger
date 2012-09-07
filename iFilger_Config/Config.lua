@@ -426,30 +426,74 @@ C["Filger_Spells"] = {
 			Size = 37,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
-			-- Dispersion
-			{ spellID = 47585, filter = "CD" }, 
-			-- Guardian Spirit
-			{ spellID = 47788, filter = "CD" }, 
-			-- Holy Word: Sanctuary
-			{ spellID = 88686, filter = "CD" }, 
-			-- Inner Focus
-			{ spellID = 89485, filter = "CD" }, 
-			-- Penance
-			{ spellID = 47540, filter = "CD" }, 
-			-- Circle of Healing
-			{ spellID = 34861, filter = "CD" },
-			-- Prayer of Mending
-			{ spellID = 33076, filter = "CD" },
-			-- Psychic Scream
-			{ spellID = 8122, filter = "CD" }, 
-			-- Shadowfiend
-			{ spellID = 34433, filter = "CD" },
+			-- Angelic Bulwark
+			{ spellID = 114214, filter = "ICD", trigger = "BUFF", duration = 90 },
 			-- Archangel
 			{ spellID = 81700, filter = "CD" },
+			-- Cascade
+			{ spellID = 121135, filter = "CD" },
+			-- Circle of Healing
+			{ spellID = 34861, filter = "CD" },
 			-- Desperate Prayer
 			{ spellID = 19236, filter = "CD" },
+			-- Dispersion
+			{ spellID = 47585, filter = "CD" }, 
+			-- Divine Hymn
+			{ spellID = 64843, filter = "CD" },
+			-- Divine Star
+			{ spellID = 110744, filter = "CD" },
+			-- Dominate Mind
+			{ spellID = 605, filter = "CD" },
+			-- Fade
+			{ spellID = 586, filter = "CD" },
+			-- Fear Ward
+			{ spellID = 6346, filter = "CD" },
+			-- Guardian Spirit
+			{ spellID = 47788, filter = "CD" }, 
+			-- Halo
+			{ spellID = 120517, filter = "CD" },
 			-- Holy Word: Chastise
 			{ spellID = 88625, filter = "CD" },
+			-- Holy Word: Sanctuary
+			{ spellID = 88686, filter = "CD" }, 
+			-- Hymn of Hope
+			{ spellID = 64901, filter = "CD" },
+			-- Inner Focus
+			{ spellID = 89485, filter = "CD" }, 
+			-- Leap of Faith
+			{ spellID = 73325, filter = "CD" },
+			-- Lightwell
+			{ spellID = 724, filter = "CD" },
+			-- Mass Dispel
+			{ spellID = 32375, filter = "CD" },
+			-- Penance
+			{ spellID = 47540, filter = "CD" }, 
+			-- Power Infusion
+			{ spellID = 10060, filter = "CD" },
+			-- Power Word: Barrier
+			{ spellID = 62618, filter = "CD" },
+			-- Prayer of Mending
+			{ spellID = 33076, filter = "CD" },
+			-- Psychic Horror
+			{ spellID = 64044, filter = "CD" },
+			-- Psychic Scream
+			{ spellID = 8122, filter = "CD" }, 
+			-- Purify
+			{ spellID = 527, filter = "CD" },
+			-- Shadowfiend
+			{ spellID = 34433, filter = "CD" },
+			-- Silence
+			{ spellID = 15487, filter = "CD" },
+			-- Spectral Guise
+			{ spellID = 112833, filter = "CD" },
+			-- Spirit Shell
+			{ spellID = 109964, filter = "CD" },
+			-- Vampiric Embrace
+			{ spellID = 15286, filter = "CD" },
+			-- Void Tendrils
+			{ spellID = 108920, filter = "CD" },
+			-- Void Shift
+			{ spellID = 108968, filter = "CD" },
 		},
 		{
 			Name = "Buffs and Debuffs",
@@ -524,6 +568,12 @@ C["Filger_Spells"] = {
 			{ spellID = 123266, unitId = "player", caster = "all", filter = "BUFF", absID = true },
 			-- Divine Insight : PoM
 			{ spellID = 123267, unitId = "player", caster = "all", filter = "BUFF", absID = true },
+			-- Twist of Fate
+			{ spellID = 123254, unitId = "player", caster = "player", filter = "BUFF", spec = 1 },
+			-- Twist of Fate
+			{ spellID = 123254, unitId = "player", caster = "player", filter = "BUFF", spec = 2 },
+			-- Angelic Bulwark
+			{ spellID = 114214, unitId = "player", caster = "player", filter = "BUFF" },
 		},	
 		{
 			Name = "Buffs and Debuffs HEAL",
@@ -579,7 +629,7 @@ C["Filger_Spells"] = {
 			{ spellID = 34914, unitId = "focus", caster = "player", filter = "DEBUFF" },
 		},
 		{	
-			Name = "Cooldown procs",
+			Name = "Cooldown DPS",
 			Enable = true,
 			Direction = "UP",
 			Interval = 3,
@@ -595,7 +645,7 @@ C["Filger_Spells"] = {
 			{ spellID = 14914, filter = "CD" },
 		},
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Buffs DPS",
 			Enable = true,
 			Direction = "LEFT",
 			Interval = 4,
@@ -609,14 +659,15 @@ C["Filger_Spells"] = {
 			{ spellID = 47585, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Surge of Darkness
 			{ spellID = 87160, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Divine Insight
+			-- Divine Insight - Shadow
 			{ spellID = 124430, unitId = "player", caster = "all", filter = "BUFF", absID = true },
 			-- Glyph of Mind Spike
 			{ spellID = 81292, unitId = "player", caster = "all", filter = "BUFF" },
-			
+			-- Twist of Fate
+			{ spellID = 123254, unitId = "player", caster = "player", filter = "BUFF", spec = 3},
 		},
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Debuffs DPS",
 			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
