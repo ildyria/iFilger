@@ -891,6 +891,11 @@ C["Filger_Spells"] = {
 			{ spellID = 74434, filter = "CD" },
 			-- Hand of Gul'dan
 			{ spellID = 105174, filter = "CD" },
+			-- Havoc
+			{ spellID = 80240, filter = "CD" },
+			-- Flames of Xoroth
+			{ spellID = 120451, filter = "CD" },
+			
 		},
 		{
 			Name = "Pet Cooldown",
