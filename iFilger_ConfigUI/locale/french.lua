@@ -21,7 +21,7 @@ if client == "frFR" then
 	L["cleverzone"] = "Zone intelligente"
 	L["tooltip"] = "Infobulle"
 	L["TooltipMover"] = "Ancre des infobulles"
-	L["FlashIcon"] = "Flash (Icênes)"
+	L["FlashIcon"] = "Flash (Icônes)"
 	L["FlashBar"] = "Flash (Barres)"
 	L["FlashThreshold"] = "Seuil de Flash"
 	L["FlashDuration"] = "Rapiditée du Flash"
