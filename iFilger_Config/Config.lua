@@ -895,6 +895,8 @@ C["Filger_Spells"] = {
 			{ spellID = 80240, filter = "CD" },
 			-- Flames of Xoroth
 			{ spellID = 120451, filter = "CD" },
+			-- Carrion Swarm
+			{ spellID = 103967, filter = "CD" },
 			
 		},
 		{
@@ -2552,6 +2554,14 @@ C["Filger_Spells"] = {
 			{ spellID = 33206, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Power Infusion
 			{ spellID = 10060, unitId = "target", caster = "all", filter = "BUFF" },
+			
+			-- Warlock --
+			-- Dark Apotheosis
+			{ spellID = 114168, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Metamorphosis
+			{ spellID = 103958, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Unending Resolve
+			{ spellID = 104773, unitId = "target", caster = "all", filter = "BUFF" },			
 
 		},
 		{
@@ -2757,7 +2767,11 @@ C["Filger_Spells"] = {
 			{ spellID = 31117, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Aftermath
 			{ spellID = 109784, unitId = "player", caster = "all", filter = "DEBUFF" },
-			--Curse of Exhaustion
+			-- Curse of the Elements
+			{ spellID = 1490, unitId = "player", caster = "all", filter = "DEBUFF" },			
+			-- Curse of Emfeeblement
+			{ spellID = 109466, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Curse of Exhaustion
 			{ spellID = 18223, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Shadowsnare (Glyph of Shadowflame)
 			{ spellID = 63311, unitId = "player", caster = "all", filter = "DEBUFF" },
