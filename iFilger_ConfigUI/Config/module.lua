@@ -5,6 +5,7 @@ local C, F, L = unpack(select(2, ...))
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 local myClass = select(2, UnitClass("player"));
+
 local tabs = {  											-- List of headers and number of tabs inside each ones
 	[1] = {
 		name = myClass,										--	"MAGE","DEATHKNIGHT","PRIEST";"WARLOCK","DRUID","HUNTER","ROGUE","PALADIN","SHAMAN","WARRIOR","HUNTER/DRUID/ROGUE",
@@ -85,33 +86,66 @@ local help = {
 		L["H_BarWidth"], --"Width of the Bar (Bar Mode required)",
 	},
 	["Merge"] = {
-		L["H_Merge"], --"Enable Merging when Name is the same.",
+		L["H_Merge"], --"Enable Merging.",
+	},
+	["Mergewith"] = {
+		L["H_Mergewith"], --"Name of the list to merge with if Merge is enabled.",
 	},
 	["cleverzone"] = {
-		L["H_cleverzone1"],
-		L["H_cleverzone2"],
-		L["H_cleverzone3"],
+		L["H_cleverzone1"], --"Clever Zone:"
+		L["H_cleverzone2"], --"Load only PvP in PvP zones and PvE in PvE zones"
+		L["H_cleverzone3"], --"(Required to reload the first time you enter a PvE zone)"
 	},
 	["tooltip"] = {
-		L["H_tooltip"],
+		L["H_tooltip"], --"Tooltip on icons"
 	},
 	["TooltipMover"] = {
-		L["H_TooltipMover"],
+		L["H_TooltipMover"], --"Tooltip on TooltipMover for ElvUI and Tukui users."
 	},
 	["FlashIcon"] = {
-		L["H_FlashIcon"],
+		L["H_FlashIcon"], --"Flash when time left is below the threshold in icon mode."
 	},
 	["FlashBar"] = {
-		L["H_FlashBar"],
+		L["H_FlashBar"], --"Flash when time left is below the threshold in bar mode."
 	},
 	["FlashThreshold"] = {
-		L["H_FlashThreshold1"],
-		L["H_FlashThreshold2"],
+		L["H_FlashThreshold1"], --"Threshold when icons start flashing."
+		L["H_FlashThreshold2"], --"Must be greater than 1."
 	},
 	["FlashDuration"] = {
-		L["H_FlashDuration1"],
-		L["H_FlashDuration2"],
+		L["H_FlashDuration1"], -- "Duration of each flash."
+		L["H_FlashDuration2"], -- "Must be a positive number, smaller => quicker."
 	},
+}
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+--		HELP TOOLTIP
+---------------------------------------------------------------------------------------------------------------------------------------
+
+local helptooltip = function (self,option)
+		GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
+		for i = 1, #help[option], 1 do
+			GameTooltip:AddLine(help[option][i], .6, .6, .6)
+		end
+		GameTooltip:Show()
+end
+
+
+StaticPopupDialogs["RESET_IFILGER"] = {
+	text = "Are you sure you want to reset all of your settings to Default?",
+	OnAccept = function() 
+		iFilgerConfigUISV = nil
+		iFilgerConfigUISVPC = nil
+		ReloadUI() 
+	end,
+	OnCancel = function() ToggleFrame(iFilgerconfigPanel) end,
+	button1 = ACCEPT,
+	button2 = CANCEL,
+	timeout = 0,
+	whileDead = 1,
+	preferredIndex = 3,
 }
 
 
@@ -121,7 +155,7 @@ local help = {
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 local iFilgerconfigPanel = CreateFrame("Frame", "iFilgerConfig", UIParent)
-F.CreatePanel(iFilgerconfigPanel, 300, 400, "CENTER", UIParent, "CENTER", 0, 100)
+F.CreatePanel(iFilgerconfigPanel, 300, 400, "CENTER", UIParent, "CENTER", -300, 100)
 F.SetBorder(iFilgerconfigPanel)
 iFilgerconfigPanel:ThickBorder()
 iFilgerconfigPanel:EnableMouse(true)
@@ -156,6 +190,11 @@ configClose.text = configClose:CreateFontString(nil, "OVERLAY")
 configClose.text:SetFont(C.font, 14)
 configClose.text:SetText("X")
 configClose.text:SetPoint("CENTER", configClose, 0, 0)
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+--		CREATE BOTTOM BUTTONS
+---------------------------------------------------------------------------------------------------------------------------------------
 
 local configApply = CreateFrame("Button", "iFilgerConfigApply", iFilgerconfigPanel, "SecureActionButtonTemplate")
 F.CreatePanel(configApply, 147, 25, "TOPRIGHT", iFilgerconfigPanel, "BOTTOMRIGHT", 0, -5)
@@ -222,6 +261,113 @@ configResetPosition.text:SetFont(C.font, 14)
 configResetPosition.text:SetText(L["Reset Buff Position"])
 configResetPosition.text:SetPoint("CENTER", configResetPosition, 0, -1)
 
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+--	LOAD SAVED VARIABLES BEFORE CREATING THE UI so we can use them
+---------------------------------------------------------------------------------------------------------------------------------------
+
+local SaveVariables = function(self, event, arg1)
+	if arg1 == "iFilger_ConfigUI_Beta" then					-- this should secure loading. We don't want to begin loading saved variables when they are not yet aviable...
+		local data = {}
+		local indicetab = 0
+		local numtab
+		if iFilgerConfigUISV == nil then	-- there are no saved variables, let's load the default config ! 
+			iFilgerConfigUISV = {}			-- let's create an empty table
+			iFilgerConfigUISV["cleverzone"] = iFilger_Config["cleverzone"] or false
+			iFilgerConfigUISV["tooltip"] = iFilger_Config["tooltip"] or false
+			iFilgerConfigUISV["TooltipMover"] = iFilger_Config["TooltipMover"] or false
+			iFilgerConfigUISV["FlashIcon"] = iFilger_Config["FlashIcon"] or false
+			iFilgerConfigUISV["FlashBar"] = iFilger_Config["FlashBar"] or false
+			iFilgerConfigUISV["FlashThreshold"] = iFilger_Config["FlashThreshold"] or 5
+			iFilgerConfigUISV["FlashDuration"] = iFilger_Config["FlashDuration"] or 0.5
+		end
+
+		if iFilgerConfigUISVPC == nil then	-- there are no saved variables, let's load the default config ! 
+			iFilgerConfigUISVPC = {}			-- let's create an empty table
+			for j = 1, #tabs, 1 do
+				numtab = #iFilger_Spells[tabs[j].name]			-- get number of tab in the header
+				for i = 1, numtab, 1 do
+					indicetab = indicetab + 1							-- increase tab id
+					data = iFilger_Spells[tabs[j].name][i]				-- get data about the current 
+
+--					table.insert(tabs[j].tablist,indicetab)
+					iFilgerConfigUISVPC[indicetab] = {}
+					iFilgerConfigUISVPC[indicetab].Name = data.Name or "trolololo"
+					iFilgerConfigUISVPC[indicetab].Enable = data.Enable or false
+					iFilgerConfigUISVPC[indicetab].Direction = data.Direction or "UP"
+					iFilgerConfigUISVPC[indicetab].IconSide = data.IconSide or "LEFT"
+					iFilgerConfigUISVPC[indicetab].Interval = data.Interval or 3
+					iFilgerConfigUISVPC[indicetab].Mode = data.Mode or "ICON"
+					iFilgerConfigUISVPC[indicetab].Size = data.Size or 20
+					iFilgerConfigUISVPC[indicetab].Alpha = data.Alpha or 1.0
+					iFilgerConfigUISVPC[indicetab].BarWidth = data.BarWidth or 150
+					iFilgerConfigUISVPC[indicetab].Merge = data.Merge or false
+					iFilgerConfigUISVPC[indicetab].Mergewith = data.Mergewith or "Nothing"
+					iFilgerConfigUISVPC[indicetab].setPoint = data.setPoint
+
+					for k = 1, #data, 1 do
+						table.insert(iFilgerConfigUISVPC[indicetab],data[k])
+					end
+				end
+			end
+		end
+			
+		-- CARE this will overwrite profiles.
+		if iFilgerConfigUISV then  -- there are saved variables, let's load them !
+			iFilger_Config["cleverzone"] = iFilgerConfigUISV["cleverzone"] or false
+			iFilger_Config["tooltip"] = iFilgerConfigUISV["tooltip"] or false
+			iFilger_Config["TooltipMover"] = iFilgerConfigUISV["TooltipMover"] or false
+			iFilger_Config["FlashIcon"] = iFilgerConfigUISV["FlashIcon"] or false
+			iFilger_Config["FlashBar"] = iFilgerConfigUISV["FlashBar"] or false
+			iFilger_Config["FlashThreshold"] = iFilgerConfigUISV["FlashThreshold"] or 5
+			iFilger_Config["FlashDuration"] = iFilgerConfigUISV["FlashDuration"] or 0.5
+		end
+
+		indicetab = 0
+		if iFilgerConfigUISVPC then  -- there are saved variables, let's load them !
+			for j = 1, #tabs, 1 do
+				numtab = #iFilger_Spells[tabs[j].name]							-- get number of tab in the header
+				for i = 1, numtab, 1 do
+					indicetab = indicetab + 1									-- increase tab id
+					data = iFilgerConfigUISVPC[indicetab]						-- get data about the current tab
+					iFilger_Spells[tabs[j].name][i] = {}						-- let's empty that shit !
+					for k,_ in pairs(iFilger_Spells[tabs[j].name][i]) do
+						iFilger_Spells[tabs[j].name][i][k] = nil
+					end
+					iFilger_Spells[tabs[j].name][i].Name = data.Name
+					iFilger_Spells[tabs[j].name][i].Enable = data.Enable
+					iFilger_Spells[tabs[j].name][i].Size = data.Size or 20
+					iFilger_Spells[tabs[j].name][i].Direction = data.Direction or "UP"
+					iFilger_Spells[tabs[j].name][i].IconSide = data.IconSide or "LEFT"
+					iFilger_Spells[tabs[j].name][i].Interval = data.Interval or 3
+					iFilger_Spells[tabs[j].name][i].Mode = data.Mode or "ICON"
+					iFilger_Spells[tabs[j].name][i].Alpha = data.Alpha or 1.0
+					iFilger_Spells[tabs[j].name][i].BarWidth = data.BarWidth or 150
+					iFilger_Spells[tabs[j].name][i].Merge = data.Merge
+					iFilger_Spells[tabs[j].name][i].Mergewith = data.Mergewith or "Nothing"
+					iFilger_Spells[tabs[j].name][i].setPoint = data.setPoint
+
+					for k = 1, #data, 1 do
+						table.insert(iFilger_Spells[tabs[j].name][i],data[k])
+					end
+				end
+			end
+		end
+	end
+end
+
+local saver = CreateFrame("FRAME")
+saver:RegisterEvent("ADDON_LOADED")
+saver:SetScript("OnEvent", SaveVariables)
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+--		CREATE OPTIONS
+---------------------------------------------------------------------------------------------------------------------------------------
+
 local iFilgerconfigOptions = CreateFrame("Frame", "iFilgerConfigOptions", iFilgerconfigPanel)
 F.CreatePanel(iFilgerconfigOptions, 150, 350, "TOPLEFT", iFilgerconfigPanel, "TOPLEFT", 0, 0)
 iFilgerconfigOptions:SetPoint("TOPLEFT", F.Scale(4), F.Scale(-4))
@@ -231,6 +377,70 @@ iFilgerconfigOptions:SetBackdropColor(.075, .075, .075, 0)
 iFilgerconfigOptions:SetBackdropBorderColor(.075, .075, .075, 0)
 iFilgerconfigOptions:Hide()
 
+---------------------------------------------------------------------------------------------------------------------------------------
+--		CREATE SPELL LIST SLIDER + OPTION FRAME
+---------------------------------------------------------------------------------------------------------------------------------------
+
+local iFilgerconfigSpellList = CreateFrame("Frame", "iFilgerconfigSpellList", iFilgerconfigPanel)
+F.CreatePanel(iFilgerconfigSpellList, 160, 370, "TOPLEFT", iFilgerconfigPanel, "TOPRIGHT", 5, -30)
+iFilgerconfigSpellList:ThickBorder()
+iFilgerconfigSpellList:SetFrameStrata("MEDIUM")
+iFilgerconfigSpellList:Show()
+
+local iFilgerconfigSpellListScrollFrame = CreateFrame("ScrollFrame", "iFilgerconfigSpellListScrollFrame", iFilgerconfigSpellList)
+iFilgerconfigSpellListScrollFrame:SetPoint("TOPLEFT",5,-5)
+iFilgerconfigSpellListScrollFrame:SetWidth(150)
+iFilgerconfigSpellListScrollFrame:SetHeight(355)
+iFilgerconfigSpellListScrollFrame:SetFrameStrata("MEDIUM")
+iFilgerconfigSpellListScrollFrame:Show()
+
+local iFilgerconfigSpellListSlider = CreateFrame("Slider", "iFilgerconfigSpellListSlider", iFilgerconfigSpellListScrollFrame)
+iFilgerconfigSpellListSlider:SetPoint("TOPRIGHT",0,0)
+iFilgerconfigSpellListSlider:SetWidth(20)
+iFilgerconfigSpellListSlider:SetHeight(360)
+iFilgerconfigSpellListSlider:SetThumbTexture("Interface\\Buttons\\UI-ScrollBar-Knob")
+iFilgerconfigSpellListSlider:SetOrientation("VERTICAL")
+iFilgerconfigSpellListSlider:SetValueStep(20)
+iFilgerconfigSpellListSlider:SetScript("OnValueChanged", function(self,value) iFilgerconfigSpellListScrollFrame:SetVerticalScroll(value) end)
+iFilgerconfigSpellListSlider:SetTemplate("Default")
+local r,g,b,a = unpack(C["General"].BorderColorConfig)
+iFilgerconfigSpellListSlider:SetBackdropColor(r,g,b,0.2)
+
+local iFilgerconfigSpellListFrame = CreateFrame("Frame", "iFilgerconfigSpellListFrame", iFilgerconfigSpellListScrollFrame)
+iFilgerconfigSpellListFrame:SetPoint("TOPLEFT",0,0)
+iFilgerconfigSpellListFrame:SetWidth(120)
+iFilgerconfigSpellListFrame:SetHeight(355)
+iFilgerconfigSpellListFrame.list = {}
+
+iFilgerconfigSpellListSlider:SetMinMaxValues(0, 1)--(offset == 0 and 1 or offset-12*25))
+iFilgerconfigSpellListSlider:SetValue(0)
+iFilgerconfigSpellListScrollFrame:SetScrollChild(iFilgerconfigSpellListFrame)
+iFilgerconfigSpellListSlider:Show()
+local x
+iFilgerconfigSpellListScrollFrame:EnableMouseWheel(true)
+iFilgerconfigSpellListScrollFrame:SetScript("OnMouseWheel", function(self, delta)
+	if iFilgerconfigSpellListSlider:IsShown() then
+		if delta < 0 then
+			x = iFilgerconfigSpellListSlider:GetValue()
+			iFilgerconfigSpellListSlider:SetValue(x + 10)
+		elseif delta > 0 then
+			x = iFilgerconfigSpellListSlider:GetValue()			
+			iFilgerconfigSpellListSlider:SetValue(x - 30)	
+		end
+	end
+end)
+
+
+local iFilgerconfigSpell = CreateFrame("Frame", "iFilgerconfigSpell", iFilgerconfigSpellList)
+F.CreatePanel(iFilgerconfigSpell, 250, 370, "TOPLEFT", iFilgerconfigSpellList, "TOPRIGHT", 5, 0)
+iFilgerconfigSpell:ThickBorder()
+iFilgerconfigSpell:SetFrameStrata("MEDIUM")
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+--		CREATE GLOBAL CONFIG OPTION
+---------------------------------------------------------------------------------------------------------------------------------------
+
 local iFilgerglobalconfigOptions = CreateFrame("Frame", "iFilgerGlobalConfigOptions", iFilgerconfigPanel)
 F.CreatePanel(iFilgerglobalconfigOptions, 150, 350, "TOPLEFT", iFilgerconfigPanel, "TOPLEFT", 0, 0)
 iFilgerglobalconfigOptions:SetPoint("TOPLEFT", F.Scale(4), F.Scale(-4))
@@ -239,6 +449,10 @@ iFilgerglobalconfigOptions:SetFrameStrata("LOW")
 iFilgerglobalconfigOptions:SetBackdropColor(.075, .075, .075, 0)
 iFilgerglobalconfigOptions:SetBackdropBorderColor(.075, .075, .075, 0)
 iFilgerglobalconfigOptions:Hide()
+
+---------------------------------------------------------------------------------------------------------------------------------------
+--		CREATE "WELCOME MESSAGE"
+---------------------------------------------------------------------------------------------------------------------------------------
 
 local iFilgerConfigMessage = CreateFrame("Frame", "iFilgerConfigMessage", iFilgerconfigPanel)
 F.CreatePanel(iFilgerConfigMessage, 150, 350, "CENTER", iFilgerconfigPanel, "CENTER", 0, 0)
@@ -257,42 +471,11 @@ iFilgerConfigMessage.text1:SetText(L["Config"])
 
 
 
-	
----------------------------------------------------------------------------------------------------------------------------------------
---		HELP TOOLTIP
----------------------------------------------------------------------------------------------------------------------------------------
-
-local helptooltip = function (self,option)
-		GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
-		for i = 1, #help[option], 1 do
-			GameTooltip:AddLine(help[option][i], .6, .6, .6)
-		end
-		GameTooltip:Show()
-end
-
-
-StaticPopupDialogs["RESET_IFILGER"] = {
-	text = "Are you sure you want to reset all of your settings to Default?",
-	OnAccept = function() 
-		iFilgerConfigUISV = nil
-		iFilgerConfigUISVPC = nil
-		ReloadUI() 
-	end,
-	OnCancel = function() ToggleFrame(iFilgerconfigPanel) end,
-	button1 = ACCEPT,
-	button2 = CANCEL,
-	timeout = 0,
-	whileDead = 1,
-	preferredIndex = 3,
-}
-
-
-
 ---------------------------------------------------------------------------------------------------------------------------------------
 --	Saves Values (saved variable function)
 ---------------------------------------------------------------------------------------------------------------------------------------
 
-local function SetValue(group,option,value)	
+local function SetValue(option,value)	
 	--Determine if we should be copying our default settings to our player settings, this only happens if we're not using player settings by default
 	local savevalue = true
 
@@ -318,15 +501,131 @@ local function SetValue(group,option,value)
 	end
 
 	if savevalue then
-		iFilgerConfigUISVPC[group][option] = value
+		iFilgerConfigUISVPC[options.ID][option] = value
 	else
-		if (type(iFilgerConfigUISVPC[group][option]) ~= "boolean") then  -- set Value back
-			options[group][option].editbox:SetText(iFilgerConfigUISVPC[group][option])
+		if (type(iFilgerConfigUISVPC[options.ID][option]) ~= "boolean") then  -- set Value back
+			options[option].editbox:SetText(iFilgerConfigUISVPC[options.ID][option])
 		else
-			if iFilgerConfigUISVPC[group][option] then options[group][option].button:SetChecked(true) else options[group][option].button:SetChecked(false) end		-- set Enable
+			if iFilgerConfigUISVPC[options.ID][option] then options[option].button:SetChecked(true) else options[option].button:SetChecked(false) end		-- set Enable
 		end 
 	end
 
+end
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+--		FUNCTION Show Spell List
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+local function ShowSpellList()
+	local list = iFilgerConfigUISVPC[options.ID]
+	local Framelist = iFilgerconfigSpellListFrame.list
+	local data = {}
+	local index = 0
+	for i = 1, #list, 1 do
+		index = index + 1
+		data = list[i]
+		
+		if not Framelist[i] then
+		
+			Framelist[i] = CreateFrame("Frame", "iFilgerconfigSpellListFrame"..i, iFilgerconfigSpellListFrame)
+			Framelist[i]:Width(25)
+			Framelist[i]:Height(25)
+			Framelist[i]:SetTemplate("Default")
+			Framelist[i]:SetFrameStrata("MEDIUM")
+			-- anchor
+			if i == 1 then
+				Framelist[i]:Point("TOPLEFT", iFilgerconfigSpellListFrame, "TOPLEFT", 0, 0)
+			else
+				Framelist[i]:Point("TOP", previous, "BOTTOM", 0, -5)
+			end
+
+			-- icon
+			Framelist[i].icon = Framelist[i]:CreateTexture("$parentIcon", "ARTWORK")
+			Framelist[i].icon:Point("TOPLEFT", 2, -2)
+			Framelist[i].icon:Point("BOTTOMRIGHT", -2, 2)
+			Framelist[i].icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+			
+			-- spellID
+			Framelist[i].spellID = 0
+			
+
+
+			Framelist[i].delbutton = CreateFrame("Frame", "Delbutton"..i, Framelist[i])
+			F.CreatePanel(Framelist[i].delbutton, 50, 25, "LEFT", Framelist[i], "RIGHT", 5, 0)
+			Framelist[i].delbutton:EnableMouse(true)
+			Framelist[i].delbutton:ThickBorder()
+--			Framelist[i].delbutton:SetBackdropBorderColor(1,1,1,1)
+			Framelist[i].delbutton.text = Framelist[i].delbutton:CreateFontString(nil,"OVERLAY",nil)
+			Framelist[i].delbutton.text:SetFont(C.font,12)
+			Framelist[i].delbutton.text:SetText(L["Del"])
+			Framelist[i].delbutton.text:SetPoint("CENTER", 0, 0)
+			Framelist[i].delbutton.text:SetJustifyH("CENTER")
+			Framelist[i].delbutton:SetScript("OnEnter", function(self) self.text:SetTextColor(unpack(C["General"].Red)) end)
+			Framelist[i].delbutton:SetScript("OnLeave", function(self) self.text:SetTextColor(unpack(C["General"].White)) end)
+			Framelist[i].delbutton:SetScript("OnMouseDown", function() table.remove(iFilgerConfigUISVPC[options.ID],i); ShowSpellList() end)  -- IDK if it will work as intended..
+			
+			-- ToolTip
+			Framelist[i]:EnableMouse(true)
+			Framelist[i]:SetScript("OnEnter", function(self)
+				if self.spellID > 20 then -- coz slot ID... need to work on that soon : creating LUA error when mouseover a trinket tooltip
+					local str = "spell:%s"
+					local BadTotems = {
+					[8076] = 8075,
+					[8972] = 8071,
+					[5677] = 5675,
+					}
+					GameTooltip:ClearLines()
+					GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT", 0, 7)
+					if BadTotems[self.spell] then
+						GameTooltip:SetHyperlink(format(str, BadTotems[self.spellID]))
+					else
+						GameTooltip:SetHyperlink(format(str, self.spellID))
+					end
+					GameTooltip:Show()
+				end
+			end)
+			Framelist[i]:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
+
+		end
+		
+		Framelist[i].spellID = data.spellID or data.slotID
+		if data.icon then 
+			Framelist[i].icon:SetTexture(data.icon)
+		elseif data.spellID then
+			local _,_,icon = GetSpellInfo(data.spellID)
+			Framelist[i].icon:SetTexture(icon)
+		else
+			local slotLink = GetInventoryItemLink("player", data.slotID)
+			if slotLink then
+				_, _, _, _, _, _, _, _, _, icon = GetItemInfo(slotLink)
+				Framelist[i].icon:SetTexture(icon)
+			end
+		end
+		Framelist[i]:Show()
+
+		-- save previous
+		previous = Framelist[i]
+	end
+	
+	iFilgerconfigSpellListFrame:SetHeight(index*25)
+	local offset = (index-12)*30
+	if offset > 0 then
+		iFilgerconfigSpellListSlider:SetMinMaxValues(0, offset)
+		iFilgerconfigSpellListSlider:Show()
+	else
+		iFilgerconfigSpellListSlider:SetMinMaxValues(0, 0)
+		iFilgerconfigSpellListSlider:Hide()
+	end
+	
+	for j = index+1, #Framelist, 1 do
+		Framelist[j]:Hide()
+	end
+
+	iFilgerconfigSpellListSlider:SetValue(0)
+	iFilgerconfigSpellList:Show()
 end
 
 
@@ -335,92 +634,137 @@ end
 --		FUNCTION CREATE OPTION
 ---------------------------------------------------------------------------------------------------------------------------------------
 
-local create_option = function(indicetab,option,value,ypos)
+local create_option = function(option,value,ypos)
 
-	if indicetab == 1 then 
-		optionstxt[option] = CreateFrame("Frame", nil, iFilgerconfigOptions)
-		optionstxt[option].text = optionstxt[option]:CreateFontString(nil, "OVERLAY")
-		optionstxt[option].text:SetFont(C.font, 14)
-		optionstxt[option].text:SetPoint("TOPLEFT", iFilgerconfigOptions, "TOPLEFT", 20, -35 - ypos )
-		optionstxt[option].text:SetShadowColor(0,0,0)
-		optionstxt[option].text:SetShadowOffset(1.25, -1.25)
-		optionstxt[option].text:SetText(L[option].." : ")
+	optionstxt[option] = CreateFrame("Frame", nil, iFilgerconfigOptions)
+	optionstxt[option].text = optionstxt[option]:CreateFontString(nil, "OVERLAY")
+	optionstxt[option].text:SetFont(C.font, 14)
+	optionstxt[option].text:SetPoint("TOPLEFT", iFilgerconfigOptions, "TOPLEFT", 20, -35 - ypos )
+	optionstxt[option].text:SetShadowColor(0,0,0)
+	optionstxt[option].text:SetShadowOffset(1.25, -1.25)
+	optionstxt[option].text:SetText(L[option].." : ")
 
-		optionstxt[option].help = CreateFrame("Frame", nil, iFilgerconfigOptions)
-		optionstxt[option].help:SetHeight(20)
-		optionstxt[option].help:SetWidth(20)
-		optionstxt[option].help:SetPoint("TOP", iFilgerconfigOptions, "TOP", 10, -35 - ypos )
-		optionstxt[option].help.text = optionstxt[option].help:CreateFontString(nil, "OVERLAY")
-		optionstxt[option].help.text:SetFont(C.font, 12)
-		optionstxt[option].help.text:SetPoint("CENTER", optionstxt[option].help, "CENTER", 0, 1 )
-		optionstxt[option].help.text:SetShadowColor(0,0,0)
-		optionstxt[option].help.text:SetShadowOffset(1.25, -1.25)
-		optionstxt[option].help.text:SetTextColor(1,1,0)
-		optionstxt[option].help.text:SetJustifyH("CENTER")
-		optionstxt[option].help.text:SetText("(?)")
-		optionstxt[option].help:SetScript("OnEnter", function(self)
-			helptooltip(self,option)
-		end)
-		optionstxt[option].help:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
-	end
+	optionstxt[option].help = CreateFrame("Frame", nil, iFilgerconfigOptions)
+	optionstxt[option].help:SetHeight(20)
+	optionstxt[option].help:SetWidth(20)
+	optionstxt[option].help:SetPoint("TOP", iFilgerconfigOptions, "TOP", 10, -35 - ypos )
+	optionstxt[option].help.text = optionstxt[option].help:CreateFontString(nil, "OVERLAY")
+	optionstxt[option].help.text:SetFont(C.font, 12)
+	optionstxt[option].help.text:SetPoint("CENTER", optionstxt[option].help, "CENTER", 0, 1 )
+	optionstxt[option].help.text:SetShadowColor(0,0,0)
+	optionstxt[option].help.text:SetShadowOffset(1.25, -1.25)
+	optionstxt[option].help.text:SetTextColor(1,1,0)
+	optionstxt[option].help.text:SetJustifyH("CENTER")
+	optionstxt[option].help.text:SetText("(?)")
+	optionstxt[option].help:SetScript("OnEnter", function(self)
+		helptooltip(self,option)
+	end)
+	optionstxt[option].help:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
 
-	if options[indicetab] == nil then
-		options[indicetab] = {}
-	end
+	options[option] = CreateFrame("Frame", nil, iFilgerconfigPanel)
+	options[option].value = 0
 
-	options[indicetab][option] = CreateFrame("Frame", nil, iFilgerconfigPanel)
-
-	if type(value) == "boolean" then
-		options[indicetab][option].button = CreateFrame("CheckButton", "iFilgerConfig"..indicetab..option, options[indicetab][option], "ChatConfigCheckButtonTemplate")
-		F.SkinCheckBox(options[indicetab][option].button)
-		options[indicetab][option].button:SetPoint("TOPLEFT", iFilgerconfigPanel, "TOPRIGHT", F.Scale(-105), F.Scale(-35 - ypos))
-		options[indicetab][option].button:SetScript("OnClick", function(self) SetValue(indicetab,option,(self:GetChecked() and true or false)) end)
-	elseif type(value) == "number" or type(value) == "string" then
-		options[indicetab][option].editbox = CreateFrame("EditBox", "iFilgerConfig"..indicetab..option, options[indicetab][option])
-		options[indicetab][option].editbox:SetAutoFocus(false)
-		options[indicetab][option].editbox:SetMultiLine(false)
-		options[indicetab][option].editbox:SetWidth(100)
-		options[indicetab][option].editbox:SetHeight(20)
-		options[indicetab][option].editbox:SetFontObject(GameFontNormal)		
-		options[indicetab][option].editbox:SetPoint("TOPLEFT", iFilgerconfigPanel, "TOPRIGHT", F.Scale(-105), F.Scale(-35 - ypos))
-		options[indicetab][option].editbox:SetTextColor(1,1,1)
-		options[indicetab][option].editbox:SetMaxLetters(25)
-		options[indicetab][option].editbox:SetTextInsets(3,0,0,0)
-		options[indicetab][option].editbox:SetBackdrop({
+	if option == "Name" then
+		options[option].editbox = CreateFrame("EditBox", "iFilgerConfig"..option, options[option])
+		options[option].editbox:SetAutoFocus(false)
+		options[option].editbox:SetMultiLine(false)
+		options[option].editbox:SetWidth(100)
+		options[option].editbox:SetHeight(20)
+		options[option].editbox:SetFontObject(GameFontNormal)		
+		options[option].editbox:SetPoint("TOPLEFT", iFilgerconfigPanel, "TOPRIGHT", F.Scale(-105), F.Scale(-35 - ypos))
+		options[option].editbox:SetTextColor(1,1,1)
+		options[option].editbox:SetMaxLetters(25)
+		options[option].editbox:SetTextInsets(3,0,0,0)
+		options[option].editbox:SetBackdrop({
 			bgFile = [=[Interface\Addons\iFilger_ConfigUI\media\textures\blank]=], 
 			tiled = false,
 		})
-		options[indicetab][option].editbox:SetBackdropColor(0,0,0,0.5)
-		options[indicetab][option].editbox:SetBackdropBorderColor(1,1,1,1)
---		options[indicetab][option].editbox:SetText(option)
+		options[option].editbox:SetBackdropColor(0,0,0,0.5)
+		options[option].editbox:SetBackdropBorderColor(1,1,1,1)
+	elseif value == "boolean" then
+		options[option].button = CreateFrame("CheckButton", "iFilgerConfig"..option, options[option], "ChatConfigCheckButtonTemplate")
+		F.SkinCheckBox(options[option].button)
+		options[option].button:SetPoint("TOPLEFT", iFilgerconfigPanel, "TOPRIGHT", F.Scale(-105), F.Scale(-35 - ypos))
+		options[option].button:SetScript("OnClick", function(self) SetValue(option,(self:GetChecked() and true or false)) end)
+	elseif value == "number" or value == "string" then
+		options[option].editbox = CreateFrame("EditBox", "iFilgerConfig"..option, options[option])
+		options[option].editbox:SetAutoFocus(false)
+		options[option].editbox:SetMultiLine(false)
+		options[option].editbox:SetWidth(100)
+		options[option].editbox:SetHeight(20)
+		options[option].editbox:SetFontObject(GameFontNormal)		
+		options[option].editbox:SetPoint("TOPLEFT", iFilgerconfigPanel, "TOPRIGHT", F.Scale(-105), F.Scale(-35 - ypos))
+		options[option].editbox:SetTextColor(1,1,1)
+		options[option].editbox:SetMaxLetters(25)
+		options[option].editbox:SetTextInsets(3,0,0,0)
+		options[option].editbox:SetBackdrop({
+			bgFile = [=[Interface\Addons\iFilger_ConfigUI\media\textures\blank]=], 
+			tiled = false,
+		})
+		options[option].editbox:SetBackdropColor(0,0,0,0.5)
+		options[option].editbox:SetBackdropBorderColor(1,1,1,1)
+--		options[option].editbox:SetText(option)
 		
-		options[indicetab][option].okbutton = CreateFrame("Button", nil, options[indicetab][option])
-		options[indicetab][option].okbutton:SetHeight(options[indicetab][option].editbox:GetHeight())
-		options[indicetab][option].okbutton:SetWidth(options[indicetab][option].editbox:GetHeight())
-		options[indicetab][option].okbutton:SetPoint("RIGHT", options[indicetab][option].editbox, "LEFT", -2, 0)
-		options[indicetab][option].okbutton:SetBackdropBorderColor(1,1,1,1)
+		options[option].okbutton = CreateFrame("Button", nil, options[option])
+		options[option].okbutton:SetHeight(options[option].editbox:GetHeight())
+		options[option].okbutton:SetWidth(options[option].editbox:GetHeight())
+		options[option].okbutton:SetPoint("RIGHT", options[option].editbox, "LEFT", -2, 0)
+		options[option].okbutton:SetBackdropBorderColor(1,1,1,1)
 		
-		options[indicetab][option].oktext = options[indicetab][option].okbutton:CreateFontString(nil,"OVERLAY",nil)
-		options[indicetab][option].oktext:SetFont(C.font,12)
-		options[indicetab][option].oktext:SetText("OK")
-		options[indicetab][option].oktext:SetPoint("CENTER", F.Scale(1), 0)
-		options[indicetab][option].oktext:SetJustifyH("CENTER")
-		options[indicetab][option].okbutton:Hide()
+		options[option].oktext = options[option].okbutton:CreateFontString(nil,"OVERLAY",nil)
+		options[option].oktext:SetFont(C.font,12)
+		options[option].oktext:SetText("OK")
+		options[option].oktext:SetPoint("CENTER", F.Scale(1), 0)
+		options[option].oktext:SetJustifyH("CENTER")
+		options[option].okbutton:Hide()
 
-		if type(value) == "number" then
-			options[indicetab][option].editbox:SetScript("OnEscapePressed", function(self) options[indicetab][option].okbutton:Hide() self:ClearFocus() self:SetText(value) end)
-			options[indicetab][option].editbox:SetScript("OnChar", function(self) options[indicetab][option].okbutton:Show() end)
-			options[indicetab][option].editbox:SetScript("OnEnterPressed", function(self) options[indicetab][option].okbutton:Hide() self:ClearFocus() SetValue(indicetab,option,tonumber(self:GetText())) end)
-			options[indicetab][option].okbutton:SetScript("OnMouseDown", function(self) options[indicetab][option].editbox:ClearFocus() self:Hide() SetValue(indicetab,option,tonumber(options[indicetab][option].editbox:GetText())) end)
+		if value == "number" then
+			options[option].editbox:SetScript("OnEscapePressed", function(self) options[option].okbutton:Hide() self:ClearFocus() self:SetText(options[option].value) end)
+			options[option].editbox:SetScript("OnChar", function(self) options[option].okbutton:Show() end)
+			options[option].editbox:SetScript("OnEnterPressed", function(self) options[option].okbutton:Hide() self:ClearFocus() SetValue(option,tonumber(self:GetText())) end)
+			options[option].okbutton:SetScript("OnMouseDown", function(self) options[option].editbox:ClearFocus() self:Hide() SetValue(option,tonumber(options[option].editbox:GetText())) end)
 		else
-			options[indicetab][option].editbox:SetScript("OnEscapePressed", function(self) options[indicetab][option].okbutton:Hide() self:ClearFocus() self:SetText(value) end)
-			options[indicetab][option].editbox:SetScript("OnChar", function(self) options[indicetab][option].okbutton:Show() end)
-			options[indicetab][option].editbox:SetScript("OnEnterPressed", function(self) options[indicetab][option].okbutton:Hide() self:ClearFocus() SetValue(indicetab,option,tostring(self:GetText())) end)
-			options[indicetab][option].okbutton:SetScript("OnMouseDown", function(self) options[indicetab][option].editbox:ClearFocus() self:Hide() SetValue(indicetab,option,tostring(options[indicetab][option].editbox:GetText())) end)
+			options[option].editbox:SetScript("OnEscapePressed", function(self) options[option].okbutton:Hide() self:ClearFocus() self:SetText(options[option].value) end)
+			options[option].editbox:SetScript("OnChar", function(self) options[option].okbutton:Show() end)
+			options[option].editbox:SetScript("OnEnterPressed", function(self) options[option].okbutton:Hide() self:ClearFocus() SetValue(option,tostring(self:GetText())) end)
+			options[option].okbutton:SetScript("OnMouseDown", function(self) options[option].editbox:ClearFocus() self:Hide() SetValue(option,tostring(options[option].editbox:GetText())) end)
 		end
 	end
 end
 
+create_option("Name","string",25)
+create_option("Enable","boolean",50)
+create_option("Size","number",75)
+create_option("Direction","string",100)
+create_option("IconSide","string",125)
+create_option("Interval","number",150)
+create_option("Mode","string",175)
+create_option("Alpha","number",200)
+create_option("BarWidth","number",225)
+create_option("Merge","boolean",250)
+create_option("Mergewith","string",275)
+
+
+-- options["SpellList"] = CreateFrame("Frame", nil, iFilgerconfigOptions)
+-- F.CreatePanel(options["SpellList"], 125, 25, "TOP", iFilgerconfigOptions, "BOTTOM", 0, F.Scale(-5))
+-- options["SpellList"]:EnableMouse(true)
+-- options["SpellList"]:SetFrameStrata("MEDIUM")
+
+-- options["SpellList"]:SetBackdropBorderColor(unpack(C["General"].BorderColorHeader))
+-- options["SpellList"]:ThickBorder()
+
+-- options["SpellList"].text = options["SpellList"]:CreateFontString(nil, "OVERLAY")
+-- options["SpellList"].text:SetFont(C.font, 12)
+-- options["SpellList"].text:SetPoint("CENTER", options["SpellList"], "CENTER", 0, F.Scale(-1))
+-- options["SpellList"].text:SetShadowColor(0,0,0)
+-- options["SpellList"].text:SetShadowOffset(1.25, -1.25)
+-- options["SpellList"].text:SetText("Spell List")
+
+-- options["SpellList"]:SetScript("OnEnter", function(self) self.text:SetTextColor(unpack(C["General"].ClassColor)) end)
+-- options["SpellList"]:SetScript("OnLeave", function(self) self.text:SetTextColor(unpack(C["General"].White)) end)
+-- options["SpellList"]:SetScript("OnMouseDown", function() ShowSpellList() end)  -- IDK if it will work as intended..
+
+options["ID"] = 0
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------
@@ -429,16 +773,25 @@ end
 
  local hide_tab_content = function(indicetab)
 	iFilgerconfigOptions:Hide()
-	options[indicetab].Name:Hide()
-	options[indicetab].Enable:Hide()
-	options[indicetab].Size:Hide()
-	options[indicetab].Direction:Hide()
-	options[indicetab].IconSide:Hide()
-	options[indicetab].Interval:Hide()
-	options[indicetab].Mode:Hide()
-	options[indicetab].Alpha:Hide()
-	options[indicetab].BarWidth:Hide()
-	options[indicetab].Merge:Hide()
+	options.Name:Hide()
+	options.Enable:Hide()
+	options.Size:Hide()
+	options.Direction:Hide()
+	options.IconSide:Hide()
+	options.Interval:Hide()
+	options.Mode:Hide()
+	options.Alpha:Hide()
+	options.BarWidth:Hide()
+	options.Merge:Hide()
+	options.Mergewith:Hide()
+	-- options.SpellList:Hide()
+	iFilgerconfigSpellList:Hide()
+	if iFilgerconfigSpellListFrame.list[1] then
+		for i = 1, #iFilgerconfigSpellListFrame.list, 1  do
+			iFilgerconfigSpellListFrame.list[i]:Hide()
+		end
+	end
+	iFilgerconfigSpell:Hide()
 end
 
 
@@ -449,16 +802,41 @@ end
 
 local show_tab_content = function(indicetab)
 	iFilgerconfigOptions:Show()
-	options[indicetab].Name:Show()
-	options[indicetab].Enable:Show()
-	options[indicetab].Size:Show()
-	options[indicetab].Direction:Show()
-	options[indicetab].IconSide:Show()
-	options[indicetab].Interval:Show()
-	options[indicetab].Mode:Show()
-	options[indicetab].Alpha:Show()
-	options[indicetab].BarWidth:Show()
-	options[indicetab].Merge:Show()
+	options.Name:Show()
+	options.Enable:Show()
+	options.Size:Show()
+	options.Direction:Show()
+	options.IconSide:Show()
+	options.Interval:Show()
+	options.Mode:Show()
+	options.Alpha:Show()
+	options.BarWidth:Show()
+	options.Merge:Show()
+	options.Mergewith:Show()
+	-- options.SpellList:Show()
+	
+	local data = iFilgerConfigUISVPC[indicetab]
+	options.Name.editbox:SetText(data.Name or "blabla")				-- set Name
+	if data.Enable	then options.Enable.button:SetChecked() end		-- set Enable
+	options.Size.editbox:SetText(data.Size or 20)					-- set Size
+	options.Direction.editbox:SetText(data.Direction or "UP")		-- set Direction
+	options.IconSide.editbox:SetText(data.IconSide or "LEFT")		-- set IconSide
+	options.Interval.editbox:SetText(data.Interval or 3)			-- set Interval
+	options.Mode.editbox:SetText(data.Mode or "ICON")				-- set Mode
+	options.Alpha.editbox:SetText(data.Alpha or 1.0)				-- set Alpha
+	options.BarWidth.editbox:SetText(data.BarWidth or 150)			-- set Barwidth
+	if data.Merge	then options.Merge.button:SetChecked() end		-- set Merge
+	options.Mergewith.editbox:SetText(data.Mergewith or "Nothing")	-- set Mergewith
+	options.Size.value = data.Size or 20							-- set Size
+	options.Direction.value = data.Direction or "UP"				-- set Direction
+	options.IconSide.value = data.IconSide or "LEFT"				-- set IconSide
+	options.Interval.value = data.Interval or 3						-- set Interval
+	options.Mode.value = data.Mode or "ICON"						-- set Mode
+	options.Alpha.value = data.Alpha or 1.0							-- set Alpha
+	options.BarWidth.value = data.BarWidth or 150					-- set Barwidth
+	options.Mergewith.value = data.Mergewith or "Nothing"			-- set Mergewith
+	options.ID = indicetab
+	ShowSpellList()
 end
 
 
@@ -562,13 +940,14 @@ end
 local create_tab_head = function(i,name)
 	header[i] = CreateFrame("Frame", nil, iFilgerconfigPanel)
 	if(i == 1) then
-		F.CreatePanel(header[i], 125, 25, "TOPRIGHT", iFilgerconfigPanel, "TOPLEFT", F.Scale(-5), F.Scale(-30))
+		F.CreatePanel(header[i], 125, 25, "TOPRIGHT", iFilgerconfigPanel, "TOPLEFT", F.Scale(-5), F.Scale(-70))
 	else
 		F.CreatePanel(header[i], 125, 25, "TOP", header[i-1], "BOTTOM", 0, F.Scale(-5))
 	end
 	header[i]:EnableMouse(true)
 	header[i]:SetFrameStrata("LOW")
 
+	header[i].ID = i
 	header[i].status = "close"
 	header[i]:SetBackdropBorderColor(unpack(C["General"].BorderColorHeader))
 	header[i]:ThickBorder()
@@ -596,7 +975,7 @@ end
 --		FUNCTION CREATE TAB
 ---------------------------------------------------------------------------------------------------------------------------------------
 
-local create_tab = function(data,indicetab,j,i)
+local create_tab = function(Name,indicetab,j,i)
 
 	table.insert(tabs[j].tablist,indicetab)
 
@@ -609,7 +988,8 @@ local create_tab = function(data,indicetab,j,i)
 	tab[indicetab]:EnableMouse(true)
 	tab[indicetab]:SetFrameStrata("LOW")
 	tab[indicetab]:SetScript("OnMouseDown", function() open_tab(indicetab,j) end)  					-- IDK if it will work as intended..
-
+	
+	tab[indicetab].ID = indicetab
 	tab[indicetab].status = "close"
 	tab[indicetab]:SetBackdropBorderColor(unpack(C["General"].BorderColorTab))
 	tab[indicetab]:ThickBorder()
@@ -620,7 +1000,7 @@ local create_tab = function(data,indicetab,j,i)
 	tab[indicetab].text:SetPoint("CENTER", tab[indicetab], "CENTER", 0, F.Scale(-1))
 	tab[indicetab].text:SetShadowColor(0,0,0)
 	tab[indicetab].text:SetShadowOffset(1.25, -1.25)
-	tab[indicetab].text:SetText(data.Name)
+	tab[indicetab].text:SetText(Name)
 	tab[indicetab].text:SetTextColor(unpack(C["General"].BorderColorConfig))
 	tab[indicetab]:SetScript("OnEnter", function(self)	self.text:SetTextColor(unpack(C["General"].ClassColor)) end)
 	tab[indicetab]:SetScript("OnLeave", function(self)
@@ -630,30 +1010,6 @@ local create_tab = function(data,indicetab,j,i)
 			self.text:SetTextColor(unpack(C["General"].White))
 		end
 	end)
-	
-	-- secure data to prevent nil from happening...
-	data.Name = data.Name or "blabla"
-	data.Enable = data.Enable or false
-	data.Size = data.Size or 20
-	data.Direction = data.Direction or "RIGHT"
-	data.IconSide = data.IconSide or "LEFT"
-	data.Interval = data.Interval or 3
-	data.Mode = data.Mode or "ICON"
-	data.Alpha = data.Alpha or 1
-	data.BarWidth = data.BarWidth or 200
-	data.Merge = data.Merge or false
-	
-	-- tab options
-	create_option(indicetab,"Name",data.Name,25)
-	create_option(indicetab,"Enable",data.Enable,50)
-	create_option(indicetab,"Size",data.Size,75)
-	create_option(indicetab,"Direction",data.Direction,100)
-	create_option(indicetab,"IconSide",data.IconSide,125)
-	create_option(indicetab,"Interval",data.Interval,150)
-	create_option(indicetab,"Mode",data.Mode,175)
-	create_option(indicetab,"Alpha",data.Alpha,200)
-	create_option(indicetab,"BarWidth",data.BarWidth,225)
-	create_option(indicetab,"Merge",data.Merge,250)
 end
 
 
@@ -662,7 +1018,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 local TabRight = CreateFrame("Frame", "iFilgerConfigTabRight", iFilgerconfigPanel)
-F.CreatePanel(TabRight, 125, 25, "TOPLEFT", iFilgerconfigPanel, "TOPRIGHT", F.Scale(5), F.Scale(-30))
+F.CreatePanel(TabRight, 125, 25, "TOPRIGHT", iFilgerconfigPanel, "TOPLEFT", F.Scale(-5), F.Scale(-30))
 TabRight:EnableMouse(true)
 TabRight:SetFrameStrata("LOW")
 TabRight:ThickBorder()
@@ -690,6 +1046,13 @@ TabRight:SetScript("OnMouseDown", function()
 	close_all_tab()
 	iFilgerConfigMessage:Hide()
 	iFilgerglobalconfigOptions:Show()
+	if iFilgerConfigUISV["cleverzone"]	then Goptions.cleverzone.button:SetChecked() end
+	if iFilgerConfigUISV["tooltip"]	then Goptions.tooltip.button:SetChecked() end
+	if iFilgerConfigUISV["TooltipMover"]	then Goptions.TooltipMover.button:SetChecked() end
+	if iFilgerConfigUISV["FlashIcon"]	then Goptions.FlashIcon.button:SetChecked() end
+	if iFilgerConfigUISV["FlashBar"]	then Goptions.FlashBar.button:SetChecked() end
+	Goptions.FlashThreshold.editbox:SetText(iFilgerConfigUISV["FlashThreshold"] or 5)
+	Goptions.FlashDuration.editbox:SetText(iFilgerConfigUISV["FlashDuration"] or 0.5)
 end)
 
 
@@ -829,7 +1192,7 @@ for j = 1, #tabs, 1 do
 		numtab = #iFilger_Spells[tabs[j].name]					-- get number of tab in the header
 		for i = 1, numtab, 1 do
 			indicetab = indicetab + 1							-- increase tab id
-			data = iFilger_Spells[tabs[j].name][i]				-- get data about the current tab
+			data = iFilger_Spells[tabs[j].name][i].Name				-- get data about the current tab
 			create_tab(data,indicetab,j,i)						-- create tab and options
 		end
 	end
@@ -843,14 +1206,11 @@ for j = 2, #tabs, 1 do
 	header[j]:SetPoint("TOP", header[j-1], "BOTTOM", 0, F.Scale(-5))	-- let's put them ones under the others
 end
 
--- OPEN FIRST TAB AT LEAST 
---show_tab(1)
-
 ---------------------------------------------------------------------------------------------------------------------------------------
 --	LOAD SAVED VARIABLES
 ---------------------------------------------------------------------------------------------------------------------------------------
-local SaveVariables = function(self, event, arg1)
-	if arg1 == "iFilger_ConfigUI" then					-- this should secure loading. We don't want to begin loading saved variables when they are not yet aviable...
+--[[local SaveVariables = function(self, event, arg1)
+	if arg1 == "iFilger_ConfigUI_Beta" then					-- this should secure loading. We don't want to begin loading saved variables when they are not yet aviable...
 		local data = {}
 		local indicetab = 0
 		local numtab
@@ -884,6 +1244,10 @@ local SaveVariables = function(self, event, arg1)
 					iFilgerConfigUISVPC[indicetab].Alpha = data.Alpha or 1.0
 					iFilgerConfigUISVPC[indicetab].BarWidth = data.BarWidth or 150
 					iFilgerConfigUISVPC[indicetab].Merge = data.Merge or false
+					iFilgerConfigUISVPC[indicetab].setPoint = data.setPoint
+					for k = 1, #data, 1 do
+						table.insert(iFilgerConfigUISVPC[indicetab],data[k])
+					end
 				end
 			end
 		end
@@ -912,7 +1276,8 @@ local SaveVariables = function(self, event, arg1)
 				numtab = #iFilger_Spells[tabs[j].name]							-- get number of tab in the header
 				for i = 1, numtab, 1 do
 					indicetab = indicetab + 1									-- increase tab id
-					data = iFilgerConfigUISVPC[indicetab]				-- get data about the current tab
+					data = iFilgerConfigUISVPC[indicetab]						-- get data about the current tab
+					iFilger_Spells[tabs[j].name][i] = {}						-- let's empty that shit !
 					iFilger_Spells[tabs[j].name][i].Name = data.Name
 					iFilger_Spells[tabs[j].name][i].Enable = data.Enable
 					iFilger_Spells[tabs[j].name][i].Size = data.Size or 20
@@ -923,6 +1288,11 @@ local SaveVariables = function(self, event, arg1)
 					iFilger_Spells[tabs[j].name][i].Alpha = data.Alpha or 1.0
 					iFilger_Spells[tabs[j].name][i].BarWidth = data.BarWidth or 150
 					iFilger_Spells[tabs[j].name][i].Merge = data.Merge
+					iFilger_Spells[tabs[j].name][i].setPoint = data.setPoint
+
+					for k = 1, #data, 1 do
+						table.insert(iFilger_Spells[tabs[j].name][i],data[k])
+					end
 					
 					tab[indicetab].text:SetText(data.Name)	-- set tab name (even if supposed already done)
 					options[indicetab].Name.editbox:SetText(data.Name or "blabla")				-- set Name
@@ -943,7 +1313,7 @@ end
 
 local saver = CreateFrame("FRAME")
 saver:RegisterEvent("ADDON_LOADED")
-saver:SetScript("OnEvent", SaveVariables)
+saver:SetScript("OnEvent", SaveVariables)]]
 
 
 
