@@ -5,7 +5,7 @@ local client = GetLocale()
 if client == "esES" or client == "esMX" then
 	-- option name
 	L["iFilger"] = "|cffffffffConfiguración de|r |cff1784d1iFilger|r"
-	L["Config"] = "Si configuras |cff1784d1iFilger|r por Lua y aún\ndeseas usar la interfaz de configuración,\nno olvides hacer click en |cff1784d1Resetear Configuración|r\ncada vez que modifiques config.lua"
+	L["Config"] = "Si configuras |cff1784d1iFilger|r por Lua y aún\ndeseas usar la interfaz de configuración,\nno olvides hacer clic en |cff1784d1Resetear Configuración|r\ncada vez que modifiques config.lua"
 
 	L["Name"] = "Nombre"
 	L["Enable"] = "Activar"
@@ -20,7 +20,7 @@ if client == "esES" or client == "esMX" then
 
 	L["cleverzone"] = "Zona inteligente"
 	L["tooltip"] = "Consejo Emergente"
-	L["TooltipMover"] = "Tooltip Mover"
+	L["TooltipMover"] = "Mover Tooltip"
 	L["FlashIcon"] = "Destello (Iconos)"
 	L["FlashBar"] = "Destello (Barras)"
 	L["FlashThreshold"] = "Umbral de Destello"

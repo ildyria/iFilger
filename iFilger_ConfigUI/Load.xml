@@ -9,8 +9,6 @@
 	<Script file="locale\korean.lua"/>
 	<Script file="locale\spanish.lua"/>
 	<Script file="locale\portuguese.lua"/>
-	<Script file="locale\chinese.lua"/>
-	<Script file="locale\taiwan.lua"/>
 	
 	<Script file="config\config.lua"/>
 	<Script file="config\module.lua"/>

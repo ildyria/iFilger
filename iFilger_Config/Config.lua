@@ -264,7 +264,7 @@ C["Filger_Spells"] = {
 			-- Combustion
 			{ spellID = 11129, filter = "CD" }, 
 			-- Cauterize
-			{ spellID = 87023, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 87023, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 		},	
 		{
 			Name = "Buffs and Debuffs",
@@ -344,7 +344,7 @@ C["Filger_Spells"] = {
 			-- Blazing Speed
 			{ spellID = 108843, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Cauterize	
-			{ spellID = 87024, unitId = "player", caster = "player", filter = "DEBUFF" },
+			{ spellID = 87024, unitId = "player", caster = "player", filter = "DEBUFF", absID = true },
 			-- Alter Time
 			{ spellID = 110909, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Temporal Shield	
