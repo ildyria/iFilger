@@ -269,7 +269,7 @@ configResetPosition.text:SetPoint("CENTER", configResetPosition, 0, -1)
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 local SaveVariables = function(self, event, arg1)
-	if arg1 == "iFilger_ConfigUI_Beta" then					-- this should secure loading. We don't want to begin loading saved variables when they are not yet aviable...
+	if arg1 == "iFilger_ConfigUI" then					-- this should secure loading. We don't want to begin loading saved variables when they are not yet aviable...
 		local data = {}
 		local indicetab = 0
 		local numtab
