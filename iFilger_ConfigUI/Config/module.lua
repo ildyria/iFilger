@@ -817,7 +817,11 @@ local show_tab_content = function(indicetab)
 	
 	local data = iFilgerConfigUISVPC[indicetab]
 	options.Name.editbox:SetText(data.Name or "blabla")				-- set Name
-	if data.Enable	then options.Enable.button:SetChecked() end		-- set Enable
+	if data.Enable	then											-- set Enable
+		options.Enable.button:SetChecked()
+	else
+		options.Enable.button:SetChecked(false)
+	end
 	options.Size.editbox:SetText(data.Size or 20)					-- set Size
 	options.Direction.editbox:SetText(data.Direction or "UP")		-- set Direction
 	options.IconSide.editbox:SetText(data.IconSide or "LEFT")		-- set IconSide
@@ -825,7 +829,11 @@ local show_tab_content = function(indicetab)
 	options.Mode.editbox:SetText(data.Mode or "ICON")				-- set Mode
 	options.Alpha.editbox:SetText(data.Alpha or 1.0)				-- set Alpha
 	options.BarWidth.editbox:SetText(data.BarWidth or 150)			-- set Barwidth
-	if data.Merge	then options.Merge.button:SetChecked() end		-- set Merge
+	if data.Merge	then											-- set Merge
+		options.Merge.button:SetChecked() 
+	else 
+		options.Merge.button:SetChecked(false) 
+	end
 	options.Mergewith.editbox:SetText(data.Mergewith or "Nothing")	-- set Mergewith
 	options.Size.value = data.Size or 20							-- set Size
 	options.Direction.value = data.Direction or "UP"				-- set Direction
