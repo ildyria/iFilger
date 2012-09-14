@@ -16,6 +16,7 @@ C["Filger_Config"] = {
 		["PRIEST"] = 1,									-- Priest changes
 		["WARLOCK"] = 1,								-- Locks changes
 		["DRUID"] = 1,									-- Druids changes
+		["SHAMAN"] = 1,									-- shaman changes
 		["HUNTER"] = 1,									-- Hunt changes
 		["ROGUE"] = 1,									-- Rogue changes
 		["PALADIN"] = 1,								-- Paladin changes
