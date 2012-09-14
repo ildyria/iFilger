@@ -337,7 +337,7 @@ iFilgerconfigSpellList:SetFrameStrata("MEDIUM")
 iFilgerconfigSpellList:Show()
 
 local iFilgerScrollArea = CreateFrame("ScrollFrame", "iFilgerScrollArea", iFilgerconfigSpellList, "UIPanelScrollFrameTemplate")
-iFilgerScrollArea:Point("TOPLEFT", iFilgerconfigSpellList, "TOPLEFT", 8, -30)
+iFilgerScrollArea:Point("TOPLEFT", iFilgerconfigSpellList, "TOPLEFT", 8, -15)
 iFilgerScrollArea:Point("BOTTOMRIGHT", iFilgerconfigSpellList, "BOTTOMRIGHT", -30, 8)
 
 F.SkinScrollBar(iFilgerScrollAreaScrollBar)
@@ -905,7 +905,7 @@ local function ShowSpellList()
 --			Framelist[i].ID = 0
 
 			Framelist[i].delbutton = CreateFrame("Frame", "Delbutton"..i, Framelist[i])
-			F.CreatePanel(Framelist[i].delbutton, 50, 25, "LEFT", Framelist[i], "RIGHT", 5, 0)
+			F.CreatePanel(Framelist[i].delbutton, 50, 25, "LEFT", Framelist[i], "RIGHT", 5, -2)
 			Framelist[i].delbutton:EnableMouse(true)
 			Framelist[i].delbutton.text = Framelist[i].delbutton:CreateFontString(nil,"OVERLAY",nil)
 			Framelist[i].delbutton.text:SetFont(C.font, 12)
@@ -917,10 +917,7 @@ local function ShowSpellList()
 			Framelist[i].delbutton:SetScript("OnMouseDown", function() table.remove(iFilgerConfigUISVPC[options.ID],i); ShowSpellList() end)
 			
 			Framelist[i].editbutton = CreateFrame("Frame", "Editbutton"..i, Framelist[i])
-			F.CreatePanel(Framelist[i].editbutton, 50, 25, "LEFT", Framelist[i], "RIGHT", 60, 0)
-			if i == 1 then
-				Framelist[i].editbutton:SetPoint("LEFT", Framelist[i], "RIGHT", 60, -0.5)
-			end
+			F.CreatePanel(Framelist[i].editbutton, 50, 25, "LEFT", Framelist[i].delbutton, "RIGHT", 5, 0)
 			Framelist[i].editbutton:EnableMouse(true)
 			Framelist[i].editbutton.text = Framelist[i].editbutton:CreateFontString(nil,"OVERLAY",nil)
 			Framelist[i].editbutton.text:SetFont(C.font, 12)
