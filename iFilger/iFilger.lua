@@ -25,7 +25,6 @@ function iFilger:UnitBuff(unitID, inSpellID, spn, absID)
 	if absID then
 		for i = 1, 40, 1 do
 			local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitBuff(unitID, i)
-			if not GetSpellInfo(id) then return; end
 			if not name then break end
 			if inSpellID == spellID then
 				return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
@@ -47,7 +46,6 @@ function iFilger:UnitDebuff(unitID, inSpellID, spn, absID)
 	if absID then
 		for i = 1, 40, 1 do
 			local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitDebuff(unitID, i)
-			if not GetSpellInfo(id) then return; end
 			if not name then break end
 			if inSpellID == spellID then
 				return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
