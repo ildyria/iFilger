@@ -446,9 +446,9 @@ local SaveVariables = function(self, event, arg1)
 			iFilgerConfigVersion["ALL"] = iFilger_Config["Config Version"]["ALL"]
 
 			iFilgerConfigUISVPC = {}			-- let's create an empty table
-			local temp = {}
-			temp["remove"] = -1
-			temp["Cooldown"] = 0
+			-- local temp = {}
+			-- temp["remove"] = -1
+			-- temp["Cooldown"] = 0
 			for j = 1, #tabs, 1 do
 				numtab = #iFilger_Spells[tabs[j].name]			-- get number of tab in the header
 				for i = 1, numtab, 1 do
@@ -469,23 +469,23 @@ local SaveVariables = function(self, event, arg1)
 					iFilgerConfigUISVPC[indicetab].Mergewith = data.Mergewith or "Nothing"
 					iFilgerConfigUISVPC[indicetab].setPoint = data.setPoint
 
-					if data.Name == "Cooldown" then
-						temp["Cooldown"] = indicetab
-					end
-					if data.Mergewith == "Cooldown" then
-						temp["remove"] = temp["remove"] + #data
-					end
+					-- if data.Name == "Cooldown" then
+						-- temp["Cooldown"] = indicetab
+					-- end
+					-- if data.Mergewith == "Cooldown" then
+						-- temp["remove"] = temp["remove"] + #data
+					-- end
 
 					for k = 1, #data, 1 do
 						table.insert(iFilgerConfigUISVPC[indicetab],data[k])
 					end
 				end
 			end
-			if temp["Cooldown"] ~= 0 then
-				for i = (#iFilgerConfigUISVPC[temp["Cooldown"]] - temp["remove"]), #iFilgerConfigUISVPC[temp["Cooldown"]], 1 do
-					iFilgerConfigUISVPC[temp["Cooldown"]][i] = nil -- remove useless spell ID...
-				end
-			end
+			-- if temp["Cooldown"] ~= 0 then
+				-- for i = (#iFilgerConfigUISVPC[temp["Cooldown"]] - temp["remove"]), #iFilgerConfigUISVPC[temp["Cooldown"]], 1 do
+					-- iFilgerConfigUISVPC[temp["Cooldown"]][i] = nil -- remove useless spell ID...
+				-- end
+			-- end
 		end
 			
 		-- CARE this will overwrite profiles.
