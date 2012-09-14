@@ -505,7 +505,7 @@ function iFilger:OnEvent(event, unit)
 							found = true
 						end
 					elseif data.filter == "IBUFF" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) then
-						local spn
+						local spn, icon
 						spn, _, icon = GetSpellInfo(data.spellID)
 						name = iFilger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
 						if icon and data.icon then
