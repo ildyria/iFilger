@@ -337,15 +337,14 @@ iFilgerconfigSpellList:SetFrameStrata("MEDIUM")
 iFilgerconfigSpellList:Show()
 
 local iFilgerScrollArea = CreateFrame("ScrollFrame", "iFilgerScrollArea", iFilgerconfigSpellList, "UIPanelScrollFrameTemplate")
-iFilgerScrollArea:Point("TOPLEFT", iFilgerconfigSpellList, "TOPLEFT", 8, -15)
+iFilgerScrollArea:Point("TOPLEFT", iFilgerconfigSpellList, "TOPLEFT", 8, -10)
 iFilgerScrollArea:Point("BOTTOMRIGHT", iFilgerconfigSpellList, "BOTTOMRIGHT", -30, 8)
-
 F.SkinScrollBar(iFilgerScrollAreaScrollBar)
 
 local iFilgerconfigSpellListFrame = CreateFrame("Frame", "iFilgerconfigSpellListFrame", iFilgerScrollArea)
-iFilgerconfigSpellListFrame:SetPoint("TOPLEFT",0,0)
-iFilgerconfigSpellListFrame:SetWidth(120)
-iFilgerconfigSpellListFrame:SetHeight(355)
+iFilgerconfigSpellListFrame:SetPoint("TOPLEFT", 0, 0)
+iFilgerconfigSpellListFrame:SetWidth(165)
+iFilgerconfigSpellListFrame:SetHeight(365)
 iFilgerconfigSpellListFrame.list = {}
 
 iFilgerScrollArea:SetScrollChild(iFilgerconfigSpellListFrame)
@@ -889,7 +888,7 @@ local function ShowSpellList()
 			Framelist[i]:SetFrameStrata("MEDIUM")
 			-- anchor
 			if i == 1 then
-				Framelist[i]:Point("TOPLEFT", iFilgerconfigSpellListFrame, "TOPLEFT", 0, 0)
+				Framelist[i]:Point("TOPLEFT", iFilgerconfigSpellListFrame, "TOPLEFT", 2, -3)
 			else
 				Framelist[i]:Point("TOP", previous, "BOTTOM", 0, -5)
 			end
@@ -905,7 +904,7 @@ local function ShowSpellList()
 --			Framelist[i].ID = 0
 
 			Framelist[i].delbutton = CreateFrame("Frame", "Delbutton"..i, Framelist[i])
-			F.CreatePanel(Framelist[i].delbutton, 50, 25, "LEFT", Framelist[i], "RIGHT", 5, -2)
+			F.CreatePanel(Framelist[i].delbutton, 50, 25, "LEFT", Framelist[i], "RIGHT", 5, 0)
 			Framelist[i].delbutton:EnableMouse(true)
 			Framelist[i].delbutton.text = Framelist[i].delbutton:CreateFontString(nil,"OVERLAY",nil)
 			Framelist[i].delbutton.text:SetFont(C.font, 12)
@@ -918,6 +917,9 @@ local function ShowSpellList()
 			
 			Framelist[i].editbutton = CreateFrame("Frame", "Editbutton"..i, Framelist[i])
 			F.CreatePanel(Framelist[i].editbutton, 50, 25, "LEFT", Framelist[i].delbutton, "RIGHT", 5, 0)
+			if i == 1 then
+				Framelist[i].editbutton:SetPoint("LEFT", Framelist[i].delbutton, "RIGHT", 5, 0.5)
+			end
 			Framelist[i].editbutton:EnableMouse(true)
 			Framelist[i].editbutton.text = Framelist[i].editbutton:CreateFontString(nil,"OVERLAY",nil)
 			Framelist[i].editbutton.text:SetFont(C.font, 12)
