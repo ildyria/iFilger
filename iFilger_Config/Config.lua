@@ -8,6 +8,19 @@ C["Filger_Config"] = {
 	["FlashBar"] = false,								-- Flash when time left is below a threshold in BAR mode.
 	["FlashThreshold"] = 5,								-- Threshold from which icons start flashing.
 	["FlashDuration"] = 0.5,							-- Duration of each flash smaller => quicker.
+	["autoupdate"] = false,								-- Automaticaly update the config.
+	["Config Version"] = {								-- To warn thoses who use ingame Config that their database is outdated.
+														-- We need to filter the class, if MAGE is updated but not DK why should we make a reset for the DK ???
+		["MAGE"] = 1,									-- Mages changes
+		["DEATHKNIGHT"] = 1,							-- DK changes
+		["PRIEST"] = 1,									-- Priest changes
+		["WARLOCK"] = 1,								-- Locks changes
+		["DRUID"] = 1,									-- Druids changes
+		["HUNTER"] = 1,									-- Hunt changes
+		["ROGUE"] = 1,									-- Rogue changes
+		["PALADIN"] = 1,								-- Paladin changes
+		["ALL"] = 1,									-- ALL/PVP/PVE and everything elses changes (reset for every class)
+	}
 }
 
 C["Filger_Cooldown"] = { -- will be disabled if Tukui / ElvUI / OmniCC / ncCooldown is enabled
@@ -62,7 +75,6 @@ C["Filger_Panels"] = {
 	},
 	["HUNTER"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
---		{ name = "", w = 100, h = 21, anchor = "BOTTOMLEFT", x = -85, y = -250, text = "Player Buffs" },
 		{ name = "iFilgerPlayerBuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Player Buffs" },
 		{ name = "iFilgerTargetDebuff", w = 200, h = 20, anchor = "TOP", x = 0, y = -160, text = "Target Debuff" },
 		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
@@ -264,7 +276,7 @@ C["Filger_Spells"] = {
 			-- Combustion
 			{ spellID = 11129, filter = "CD" }, 
 			-- Cauterize
-			{ spellID = 87023, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
+			{ spellID = 87024, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 		},	
 		{
 			Name = "Buffs and Debuffs",
@@ -344,13 +356,15 @@ C["Filger_Spells"] = {
 			-- Blazing Speed
 			{ spellID = 108843, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Cauterize	
-			{ spellID = 87024, unitId = "player", caster = "player", filter = "DEBUFF", absID = true },
+			{ spellID = 87023, unitId = "player", caster = "player", filter = "DEBUFF", absID = true },
 			-- Alter Time
 			{ spellID = 110909, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Temporal Shield	
 			{ spellID = 115610, unitId = "player", caster = "player", filter = "DEBUFF" },
 			-- Ice Floes
 			{ spellID = 108839, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Glyph of Remove Curse
+			{ spellID = 115701, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Mage InvertAura",
@@ -388,7 +402,7 @@ C["Filger_Spells"] = {
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = FS, 
+			Size = 36, 
 			setPoint = { "TOP", "iFilgerInterrupt", 0, -22 },
 			
 			-- Frostbolt
@@ -2533,9 +2547,7 @@ C["Filger_Spells"] = {
 			-- Arcane Power
 			{ spellID = 12042, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Icy Veins
-			{ spellID = 12472, unitId = "target", caster = "all", filter = "BUFF" },			
-			-- Impact
---			{ spellID = 64343, unitId = "target", caster = "all", filter = "BUFF" },
+			{ spellID = 12472, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Fingers Of Frost
 --			{ spellID = 83074, unitId = "target", caster = "all", filter = "BUFF"},
 
@@ -2554,6 +2566,8 @@ C["Filger_Spells"] = {
 			{ spellID = 33206, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Power Infusion
 			{ spellID = 10060, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Guardian Spirit
+			{ spellID = 47788, unitId = "target", caster = "all", filter = "BUFF" },
 			
 			-- Warlock --
 			-- Dark Apotheosis
@@ -2561,8 +2575,10 @@ C["Filger_Spells"] = {
 			-- Metamorphosis
 			{ spellID = 103958, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Unending Resolve
-			{ spellID = 104773, unitId = "target", caster = "all", filter = "BUFF" },			
+			{ spellID = 104773, unitId = "target", caster = "all", filter = "BUFF" },	
 
+			-- Horde Flag --
+			{ spellID = 23333, unitId = "target", caster = "all", filter = "BUFF" },	
 		},
 		{
 			-- Here we track pvp debuffs on ourself
