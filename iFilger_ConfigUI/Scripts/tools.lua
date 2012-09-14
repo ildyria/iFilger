@@ -10,6 +10,35 @@ if client == "koKR" then
 	C.font = [=[Interface\AddOns\iFilger_ConfigUI\media\batang.ttf]=]
 end
 
+local function GetTemplate(t)
+	if t == "iFilger" then
+		borderr, borderg, borderb = .6, .6, .6
+		backdropr, backdropg, backdropb = .1, .1, .1
+	elseif t == "ClassColor" then
+		local c = I.oUF_colors.class[class]
+		borderr, borderg, borderb = c[1], c[2], c[3]
+		backdropr, backdropg, backdropb = unpack(C["General"].BackdropColor)
+	elseif t == "Elv" then
+		borderr, borderg, borderb = .3, .3, .3
+		backdropr, backdropg, backdropb = .1, .1, .1	
+	elseif t == "Duffed" then
+		borderr, borderg, borderb = .2, .2, .2
+		backdropr, backdropg, backdropb = .02, .02, .02
+	elseif t == "Dajova" then
+		borderr, borderg, borderb = .05, .05, .05
+		backdropr, backdropg, backdropb = .1, .1, .1
+	elseif t == "Eclipse" then
+		borderr, borderg, borderb = .1, .1, .1
+		backdropr, backdropg, backdropb = 0, 0, 0
+	elseif t == "Hydra" then
+		borderr, borderg, borderb = .2, .2, .2
+		backdropr, backdropg, backdropb = .075, .075, .075
+	else
+		borderr, borderg, borderb = unpack(C["General"].BorderColorConfig)
+		backdropr, backdropg, backdropb = unpack(C["General"].BackdropColor)
+	end
+end
+
 -- Functions, credit Tukui (Tukz / nightcracker)
 local UIscale = min(2, max(.64, 768/string.match(({GetScreenResolutions()})[GetCurrentResolution()], "%d+x(%d+)")))
 local mult = 768/string.match(GetCVar("gxResolution"), "%d+x(%d+)")/UIscale
@@ -18,6 +47,35 @@ local Scale = function(x)
 end
 
 F.Scale = function(x) return Scale(x) end
+
+local function SetTemplate(f, t, tex)
+	if tex then texture = C.normTex else texture = C.blank end
+	
+	GetTemplate(t)
+		
+	f:SetBackdrop({
+	  bgFile = texture, 
+	  edgeFile = C.blank, 
+	  tile = false, tileSize = 0, edgeSize = mult, 
+	  insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
+	})
+	
+	if t == "Transparent" then backdropa = 0.8 else backdropa = 1 end
+	
+	f:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
+	f:SetBackdropBorderColor(borderr, borderg, borderb)
+end
+
+local function Point(obj, arg1, arg2, arg3, arg4, arg5)
+	-- anyone has a more elegant way for this?
+	if type(arg1)=="number" then arg1 = Scale(arg1) end
+	if type(arg2)=="number" then arg2 = Scale(arg2) end
+	if type(arg3)=="number" then arg3 = Scale(arg3) end
+	if type(arg4)=="number" then arg4 = Scale(arg4) end
+	if type(arg5)=="number" then arg5 = Scale(arg5) end
+
+	obj:SetPoint(arg1, arg2, arg3, arg4, arg5)
+end
 
 F.CreatePanel = function(f, w, h, a1, p, a2, x, y)
 	
@@ -190,11 +248,75 @@ local function ThickBorder(f, force)
 	end
 end
 
+F.SkinScrollBar = function(frame)
+	if _G[frame:GetName().."BG"] then _G[frame:GetName().."BG"]:SetTexture(nil) end
+	if _G[frame:GetName().."Track"] then _G[frame:GetName().."Track"]:SetTexture(nil) end
+
+	if _G[frame:GetName().."Top"] then
+		_G[frame:GetName().."Top"]:SetTexture(nil)
+	end
+	
+	if _G[frame:GetName().."Bottom"] then
+		_G[frame:GetName().."Bottom"]:SetTexture(nil)
+	end
+	
+	if _G[frame:GetName().."Middle"] then
+		_G[frame:GetName().."Middle"]:SetTexture(nil)
+	end
+
+	if _G[frame:GetName().."ScrollUpButton"] and _G[frame:GetName().."ScrollDownButton"] then
+		StripTextures(_G[frame:GetName().."ScrollUpButton"])
+		SetTemplate(_G[frame:GetName().."ScrollUpButton"], "Default", true)
+		if not _G[frame:GetName().."ScrollUpButton"].texture then
+			_G[frame:GetName().."ScrollUpButton"].texture = _G[frame:GetName().."ScrollUpButton"]:CreateTexture(nil, "OVERLAY")
+			Point(_G[frame:GetName().."ScrollUpButton"].texture, "TOPLEFT", 2, -2)
+			Point(_G[frame:GetName().."ScrollUpButton"].texture, "BOTTOMRIGHT", -2, 2)
+			_G[frame:GetName().."ScrollUpButton"].texture:SetTexture([[Interface\AddOns\iFilger_ConfigUI\Media\arrowup.tga]])
+			_G[frame:GetName().."ScrollUpButton"].texture:SetVertexColor(unpack(C["General"].BorderColorConfig))
+		end	
+		
+		StripTextures(_G[frame:GetName().."ScrollDownButton"])
+		SetTemplate(_G[frame:GetName().."ScrollDownButton"], "Default", true)
+	
+		if not _G[frame:GetName().."ScrollDownButton"].texture then
+			_G[frame:GetName().."ScrollDownButton"].texture = _G[frame:GetName().."ScrollDownButton"]:CreateTexture(nil, "OVERLAY")
+			Point(_G[frame:GetName().."ScrollDownButton"].texture, "TOPLEFT", 2, -2)
+			Point(_G[frame:GetName().."ScrollDownButton"].texture, "BOTTOMRIGHT", -2, 2)
+			_G[frame:GetName().."ScrollDownButton"].texture:SetTexture([[Interface\AddOns\iFilger_ConfigUI\Media\arrowdown.tga]])
+			_G[frame:GetName().."ScrollDownButton"].texture:SetVertexColor(unpack(C["General"].BorderColorConfig))
+		end				
+		
+		if not frame.trackbg then
+			frame.trackbg = CreateFrame("Frame", nil, frame)
+			Point(frame.trackbg, "TOPLEFT", _G[frame:GetName().."ScrollUpButton"], "BOTTOMLEFT", 0, -1)
+			Point(frame.trackbg, "BOTTOMRIGHT", _G[frame:GetName().."ScrollDownButton"], "TOPRIGHT", 0, 1)
+			SetTemplate(frame.trackbg, "Transparent")
+		end
+		
+		if frame:GetThumbTexture() then
+			if not thumbTrim then thumbTrim = 3 end
+			frame:GetThumbTexture():SetTexture(nil)
+			if not frame.thumbbg then
+				frame.thumbbg = CreateFrame("Frame", nil, frame)
+				Point(frame.thumbbg, "TOPLEFT", frame:GetThumbTexture(), "TOPLEFT", 2, -thumbTrim)
+				Point(frame.thumbbg, "BOTTOMRIGHT", frame:GetThumbTexture(), "BOTTOMRIGHT", -2, thumbTrim)
+				SetTemplate(frame.thumbbg, "Default", true)
+				if frame.trackbg then
+					frame.thumbbg:SetFrameLevel(frame.trackbg:GetFrameLevel())
+				end
+			end
+		end	
+	end	
+end
+
 local function addapi(object)
 	local mt = getmetatable(object).__index
 	if not object.ThickBorder then mt.ThickBorder = ThickBorder end
+	if not object.SetTemplate then mt.SetTemplate = SetTemplate end
+	if not object.Point then mt.Point = Point end
 	if not object.InnerBorder then mt.Innerborder = innerBorder end
 	if not object.OuterBorder then mt.Outerborder = outerBorder end
+	if not object.SkinScrollBar then mt.SkinScrollBar = SkinScrollBar end
 end
 
 local handled = {["Frame"] = true}

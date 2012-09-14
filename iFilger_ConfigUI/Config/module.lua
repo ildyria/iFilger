@@ -336,49 +336,19 @@ iFilgerconfigSpellList:ThickBorder()
 iFilgerconfigSpellList:SetFrameStrata("MEDIUM")
 iFilgerconfigSpellList:Show()
 
-local iFilgerconfigSpellListScrollFrame = CreateFrame("ScrollFrame", "iFilgerconfigSpellListScrollFrame", iFilgerconfigSpellList)
-iFilgerconfigSpellListScrollFrame:SetPoint("TOPLEFT",5,-5)
-iFilgerconfigSpellListScrollFrame:SetWidth(165)
-iFilgerconfigSpellListScrollFrame:SetHeight(355)
-iFilgerconfigSpellListScrollFrame:SetFrameStrata("MEDIUM")
-iFilgerconfigSpellListScrollFrame:Show()
+local iFilgerScrollArea = CreateFrame("ScrollFrame", "iFilgerScrollArea", iFilgerconfigSpellList, "UIPanelScrollFrameTemplate")
+iFilgerScrollArea:Point("TOPLEFT", iFilgerconfigSpellList, "TOPLEFT", 8, -30)
+iFilgerScrollArea:Point("BOTTOMRIGHT", iFilgerconfigSpellList, "BOTTOMRIGHT", -30, 8)
 
-local iFilgerconfigSpellListSlider = CreateFrame("Slider", "iFilgerconfigSpellListSlider", iFilgerconfigSpellListScrollFrame)
-iFilgerconfigSpellListSlider:SetPoint("TOPRIGHT",0,0)
-iFilgerconfigSpellListSlider:SetWidth(20)
-iFilgerconfigSpellListSlider:SetHeight(360)
-iFilgerconfigSpellListSlider:SetThumbTexture("Interface\\Buttons\\UI-ScrollBar-Knob")
-iFilgerconfigSpellListSlider:SetOrientation("VERTICAL")
-iFilgerconfigSpellListSlider:SetValueStep(20)
-iFilgerconfigSpellListSlider:SetScript("OnValueChanged", function(self,value) iFilgerconfigSpellListScrollFrame:SetVerticalScroll(value) end)
-iFilgerconfigSpellListSlider:SetTemplate("Default")
-local r,g,b,a = unpack(C["General"].BorderColorConfig)
-iFilgerconfigSpellListSlider:SetBackdropColor(r,g,b,0.2)
+F.SkinScrollBar(iFilgerScrollAreaScrollBar)
 
-local iFilgerconfigSpellListFrame = CreateFrame("Frame", "iFilgerconfigSpellListFrame", iFilgerconfigSpellListScrollFrame)
+local iFilgerconfigSpellListFrame = CreateFrame("Frame", "iFilgerconfigSpellListFrame", iFilgerScrollArea)
 iFilgerconfigSpellListFrame:SetPoint("TOPLEFT",0,0)
 iFilgerconfigSpellListFrame:SetWidth(120)
 iFilgerconfigSpellListFrame:SetHeight(355)
 iFilgerconfigSpellListFrame.list = {}
 
-iFilgerconfigSpellListSlider:SetMinMaxValues(0, 1)--(offset == 0 and 1 or offset-12*25))
-iFilgerconfigSpellListSlider:SetValue(0)
-iFilgerconfigSpellListScrollFrame:SetScrollChild(iFilgerconfigSpellListFrame)
-iFilgerconfigSpellListSlider:Show()
-local x
-iFilgerconfigSpellListScrollFrame:EnableMouseWheel(true)
-iFilgerconfigSpellListScrollFrame:SetScript("OnMouseWheel", function(self, delta)
-	if iFilgerconfigSpellListSlider:IsShown() then
-		if delta < 0 then
-			x = iFilgerconfigSpellListSlider:GetValue()
-			iFilgerconfigSpellListSlider:SetValue(x + 10)
-		elseif delta > 0 then
-			x = iFilgerconfigSpellListSlider:GetValue()			
-			iFilgerconfigSpellListSlider:SetValue(x - 30)	
-		end
-	end
-end)
-
+iFilgerScrollArea:SetScrollChild(iFilgerconfigSpellListFrame)
 
 local iFilgerconfigSpell = CreateFrame("Frame", "iFilgerconfigSpell", iFilgerconfigSpellList)
 F.CreatePanel(iFilgerconfigSpell, 250, 370, "TOPLEFT", iFilgerconfigSpellList, "TOPRIGHT", 5, 0)
@@ -937,9 +907,8 @@ local function ShowSpellList()
 			Framelist[i].delbutton = CreateFrame("Frame", "Delbutton"..i, Framelist[i])
 			F.CreatePanel(Framelist[i].delbutton, 50, 25, "LEFT", Framelist[i], "RIGHT", 5, 0)
 			Framelist[i].delbutton:EnableMouse(true)
-			Framelist[i].delbutton:ThickBorder()
 			Framelist[i].delbutton.text = Framelist[i].delbutton:CreateFontString(nil,"OVERLAY",nil)
-			Framelist[i].delbutton.text:SetFont(C.font,12)
+			Framelist[i].delbutton.text:SetFont(C.font, 12)
 			Framelist[i].delbutton.text:SetText(L["Del"])
 			Framelist[i].delbutton.text:SetPoint("CENTER", 0, 0)
 			Framelist[i].delbutton.text:SetJustifyH("CENTER")
@@ -948,11 +917,13 @@ local function ShowSpellList()
 			Framelist[i].delbutton:SetScript("OnMouseDown", function() table.remove(iFilgerConfigUISVPC[options.ID],i); ShowSpellList() end)
 			
 			Framelist[i].editbutton = CreateFrame("Frame", "Editbutton"..i, Framelist[i])
-			F.CreatePanel(Framelist[i].editbutton, 50, 25, "LEFT", Framelist[i].delbutton, "RIGHT", 5, 0)
+			F.CreatePanel(Framelist[i].editbutton, 50, 25, "LEFT", Framelist[i], "RIGHT", 60, 0)
+			if i == 1 then
+				Framelist[i].editbutton:SetPoint("LEFT", Framelist[i], "RIGHT", 60, -0.5)
+			end
 			Framelist[i].editbutton:EnableMouse(true)
-			Framelist[i].editbutton:ThickBorder()
 			Framelist[i].editbutton.text = Framelist[i].editbutton:CreateFontString(nil,"OVERLAY",nil)
-			Framelist[i].editbutton.text:SetFont(C.font,12)
+			Framelist[i].editbutton.text:SetFont(C.font, 12)
 			Framelist[i].editbutton.text:SetText(L["Edit"])
 			Framelist[i].editbutton.text:SetPoint("CENTER", 0, 0)
 			Framelist[i].editbutton.text:SetJustifyH("CENTER")
@@ -1005,20 +976,11 @@ local function ShowSpellList()
 	end
 	
 	iFilgerconfigSpellListFrame:SetHeight(index*25)
-	local offset = (index-12)*30
-	if offset > 0 then
-		iFilgerconfigSpellListSlider:SetMinMaxValues(0, offset)
-		iFilgerconfigSpellListSlider:Show()
-	else
-		iFilgerconfigSpellListSlider:SetMinMaxValues(0, 0)
-		iFilgerconfigSpellListSlider:Hide()
-	end
 	
 	for j = index+1, #Framelist, 1 do
 		Framelist[j]:Hide()
 	end
 
-	iFilgerconfigSpellListSlider:SetValue(0)
 	iFilgerconfigSpellList:Show()
 	iFilgerconfigSpell:Hide()
 end
