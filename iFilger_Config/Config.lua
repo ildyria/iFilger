@@ -19,7 +19,7 @@ C["Filger_Config"] = {
 		["SHAMAN"] = 1,                                 -- Shaman changes
 		["HUNTER"] = 1,									-- Hunt changes
 		["ROGUE"] = 1,									-- Rogue changes
-		["PALADIN"] = 1,								-- Paladin changes
+		["PALADIN"] = 1.2,								-- Paladin changes
 		["ALL"] = 1,									-- ALL/PVP/PVE and everything elses changes (reset for every class)
 	}
 }
@@ -1873,12 +1873,12 @@ C["Filger_Spells"] = {
 			{ spellID = 105809, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Bastion of Glory
 			{ spellID = 114637, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Bastion of Glory
-			{ spellID = 114637, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Sacred Shield
 			{ spellID = 20925, unitId = "player", caster = "player", filter = "BUFF", absID = true },
 			-- Eternal Flame
 			{ spellID = 114163, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Alabaster Shield
+			{ spellID = 121467, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Paladin Procs",

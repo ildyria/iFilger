@@ -616,8 +616,8 @@ create_spell_option("icon","string",250) -- icon
 spelloptions["action"] = "ADD"
 
 spelloptions["info"] = CreateFrame("Frame", nil, iFilgerconfigSpell)
-spelloptions["info"]:Width(25)
-spelloptions["info"]:Height(25)
+spelloptions["info"]:SetWidth(25)
+spelloptions["info"]:SetHeight(25)
 spelloptions["info"]:SetTemplate("Default")
 spelloptions["info"]:SetFrameStrata("MEDIUM")
 spelloptions["info"]:Point("TOPRIGHT", iFilgerconfigSpell, "TOPRIGHT", F.Scale(-5), F.Scale(-5))
@@ -882,8 +882,8 @@ local function ShowSpellList()
 		if not Framelist[i] then
 		
 			Framelist[i] = CreateFrame("Frame", "iFilgerconfigSpellListFrame"..i, iFilgerconfigSpellListFrame)
-			Framelist[i]:Width(25)
-			Framelist[i]:Height(25)
+			Framelist[i]:SetWidth(25)
+			Framelist[i]:SetHeight(25)
 			Framelist[i]:SetTemplate("Default")
 			Framelist[i]:SetFrameStrata("MEDIUM")
 			-- anchor
