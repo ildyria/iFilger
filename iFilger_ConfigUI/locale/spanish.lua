@@ -3,6 +3,7 @@ local C, F, L = unpack(select(2, ...))
 local client = GetLocale()
 
 if client == "esES" or client == "esMX" then
+
 	-- option name
 	L["iFilger"] = "|cffffffffConfigurar|r |cff1784d1iFilger|r"
 	L["Config"] = "Si configuras |cff1784d1iFilger|r por Lua y aún\ndeseas usar la interfaz de configuración,\nno olvides hacer clic en |cff1784d1Resetear Configuración|r\ncada vez que modifiques config.lua"
@@ -48,12 +49,12 @@ if client == "esES" or client == "esMX" then
 	L["H_Size1"] = "Tamaño de los Iconos"
 	L["H_Size2"] = "Tiene que ser un numero positivo"
 	L["H_Direction1"] = "Dirección de los iconos:"
-	L["H_Direction2"] = "|cffffffffARRIBA|r, |cffffffffABAJO|r, |cffffffffIZQUIERDA|r, |cffffffffDERECHA|r o |cffffffffHORIZONTAL|r"
+	L["H_Direction2"] = "|cffffffffUP|r, |cffffffffDOWN|r, |cffffffffLEFT|r, |cffffffffRIGHT|r o |cffffffffHORIZONTAL|r"
 	L["H_IconSide1"] = "Posición del icono en modo de barra:"
-	L["H_IconSide2"] = "|cffffffffIZQUIERDA|r or |cffffffffDERECHA|r"
+	L["H_IconSide2"] = "|cffffffffLEFT|r or |cffffffffRIGHT|r"
 	L["H_Interval"] = "Espacio entre iconos/barras"
 	L["H_Mode1"] = "Modo de muestra:"
-	L["H_Mode2"] = "|cffffffffICONO|r o |cffffffffBARRA|r"
+	L["H_Mode2"] = "|cffffffffICON|r o |cffffffffBAR|r"
 	L["H_Alpha1"] = "Transparencia:"
 	L["H_Alpha2"] = "Elige entre 1 (total) ó 0 (invisible)"
 	L["H_BarWidth"] = "Anchura de la barra (se requiere modo de barra)"
@@ -75,13 +76,13 @@ if client == "esES" or client == "esMX" then
 
 	L["H_spellID"] = "ID de Hechizo o Hueco : 13 ó 14 para abalorios"
 	L["H_filter1"] = "Lista de filtros disponibles : "
-	L["H_filter2"] = "|cffffffffBENEFICIO|r - Filtrando beneficios."
-	L["H_filter3"] = "|cffffffffPERJUICIO|r - Filtrando perjuicios."
-	L["H_filter4"] = "|cffffffffIBENEFICIO|r - Registrar un beneficio faltante."
-	L["H_filter5"] = "|cffffffffIPERJUICIO|r - Registrar un perjuicio faltante."
+	L["H_filter2"] = "|cffffffffBUFF|r - Filtrando beneficios."
+	L["H_filter3"] = "|cffffffffDEBUFF|r - Filtrando perjuicios."
+	L["H_filter4"] = "|cffffffffIBUFF|r - Registrar un beneficio faltante."
+	L["H_filter5"] = "|cffffffffIDEBUFF|r - Registrar un perjuicio faltante."
 	L["H_filter6"] = "|cffffffffCD|r - Registrar Cooldowns."
 	L["H_filter7"] = "|cffffffffACD|r - Registrar si un Cooldown está o no disponible, requiere que el taumaturgo se ajuste a \"all\""
-	L["H_filter8"] = "|cffffffffICD|r - Registrar Cooldowns Internos, requiere un disparador y duración"-- Spell Checked until here
+	L["H_filter8"] = "|cffffffffICD|r - Registrar Cooldowns Internos, requiere un disparador y duración"
 	L["H_unitId1"] = "Lista de IDs de Unidades disponible :"
 	L["H_unitId2"] = "|cffffffffplayer|r"
 	L["H_unitId3"] = "|cfffffffftarget|r"
@@ -95,8 +96,8 @@ if client == "esES" or client == "esMX" then
 	L["H_incombat"] = "Mostrar únicamente en combate"
 	L["H_spec"] = "Mostrar únicamente en la especialización (|cffffffff1|r |cffffffff2|r |cffffffff3|r or |cffffffff4|r)"
 	L["H_trigger1"] = "Disparador para ICD :"
-	L["H_trigger2"] = "|cffffffffBENEFICIO|r - El ICD empieza cuando se muestra el beneficio."
-	L["H_trigger3"] = "|cffffffffPERJUICIO|r - El ICD empieza cuando se muestra el perjuicio."
+	L["H_trigger2"] = "|cffffffffBUFF|r - El ICD empieza cuando se muestra el beneficio."
+	L["H_trigger3"] = "|cffffffffDEBUFF|r - El ICD empieza cuando se muestra el perjuicio."
 	L["H_trigger4"] = "|cffff0000/!\\ TEN EN CUANTO QUE EMPIEZA CUANDO|r"
 	L["H_trigger5"] = "|cffff0000SE ACTIVA EL DISPARADOR, NO CUANDO DESAPARECE.|r"
 	L["H_duration"] = "Duración del ICD en segundos"
@@ -109,7 +110,7 @@ if client == "esES" or client == "esMX" then
 	L["Cancel"] = "Cancelar"
 	L["Reset Config"] = "Reiniciar Ajustes"
 	L["Move Buffs"] = "Mover Beneficios"
-	L["Reset Buff Position"] = "Reiniciar la posición de los Beneficios"
+	L["Reset Buff Position"] = "Reiniciar las Posiciones"
 	L["Global"] = "Configuración Global"
 	L["Del"] = "Borrar"
 	L["Edit"] = "Editar"
