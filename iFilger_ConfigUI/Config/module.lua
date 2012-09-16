@@ -399,6 +399,7 @@ local SaveVariables = function(self, event, arg1)
 		local indicetab = 0
 		local numtab
 
+		-- if iFilgerConfigVersion == nil or not(iFilgerConfigVersion[myClass]) then		-- if ConfigVersion Check not created then we erase all current settings. Sorry everybody for that.
 		if iFilgerConfigVersion == nil then		-- if ConfigVersion Check not created then we erase all current settings. Sorry everybody for that.
 			iFilgerConfigUISV = nil
 			iFilgerConfigUISVPC = nil
