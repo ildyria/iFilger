@@ -1,5 +1,6 @@
 ﻿local C, F, L = unpack(select(2, ...))
   --Translated by 老虎007(wxnod@vip.qq.com)
+  --Translated by Ezra
 local client = GetLocale()
 
 if client == "zhTW" then
