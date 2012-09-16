@@ -120,8 +120,8 @@ if client == "zhTW" then
 	local myClass = select(2, UnitClass("player"));
 
 	L["VersionNotFound"] = "版本未找到, 清除已儲存的設定"
-	L["UpdateRequired"] = "你的設定版本已過期, 使用|cff1784d1iFilger|r前我們強烈建議您|cffff0000"..L["重置設定"].."|r"
-	L["WarningConfig"] = "設定項目已變更, 使用|cff1784d1iFilger|r前我們強烈建議您|cffff0000"..L["重置設定"]..""
+	L["UpdateRequired"] = "你的設定版本已過期, 使用|cff1784d1iFilger|r前我們強烈建議您|cffff0000"..L["Reset Config"].."|r"
+	L["WarningConfig"] = "設定項目已變更, 使用|cff1784d1iFilger|r前我們強烈建議您|cffff0000"..L["Reset Config"]..""
 	L["Updated"] = "|cff1784d1iFilger|r 已更新"
 	L["ClassVersion"] = myClass.." 版本 : "
 	L["AllVersion"] = ", 所有版本 : "
