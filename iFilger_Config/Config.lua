@@ -16,7 +16,7 @@ C["Filger_Config"] = {
 		["PRIEST"] = 1,									-- Priest changes
 		["WARLOCK"] = 1,								-- Locks changes
 		["DRUID"] = 1,									-- Druids changes
-		["SHAMAN"] = 1,                                 -- Shaman changes
+		["SHAMAN"] = 1.1,                                 -- Shaman changes
 		["HUNTER"] = 1,									-- Hunt changes
 		["ROGUE"] = 1,									-- Rogue changes
 		["PALADIN"] = 1.2,								-- Paladin changes
@@ -1620,6 +1620,8 @@ C["Filger_Spells"] = {
 			{ spellID = 31616, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Riptide
 			{ spellID = 61295, caster = "all", filter = "ACD", incombat = false },
+			-- Healing Stream Totem
+			{ spellID = 5394, caster = "all", filter = "ACD", incombat = false, spec = 3 },
 			-- Grounding Totem
 			{ spellID = 8178, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Stone Bulwark Totem
