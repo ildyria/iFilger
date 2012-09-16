@@ -98,7 +98,7 @@ if client == "esES" or client == "esMX" then
 	L["H_trigger1"] = "Disparador para ICD :"
 	L["H_trigger2"] = "|cffffffffBUFF|r - El ICD empieza cuando se muestra el beneficio."
 	L["H_trigger3"] = "|cffffffffDEBUFF|r - El ICD empieza cuando se muestra el perjuicio."
-	L["H_trigger4"] = "|cffff0000/!\\ TEN EN CUANTO QUE EMPIEZA CUANDO|r"
+	L["H_trigger4"] = "|cffff0000/!\\ TEN EN CUENTA QUE EMPIEZA CUANDO|r"
 	L["H_trigger5"] = "|cffff0000SE ACTIVA EL DISPARADOR, NO CUANDO DESAPARECE.|r"
 	L["H_duration"] = "Duración del ICD en segundos"
 	L["H_icon1"] = "Lo siento, la configuración de iconos es para"
