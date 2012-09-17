@@ -1,11 +1,11 @@
-local C, F, L = unpack(select(2, ...))
+﻿local C, F, L = unpack(select(2, ...))
 
 local client = GetLocale()
 
 if client == "frFR" then
 	-- option name
 	L["iFilger"] = "|cff1784d1iFilger|r |cffffffffConfiguration|r"
-	L["Config"] = "Si vous configurez |cff1784d1iFilger|r par code LUA etnsouhaitez tout de même utiliser l'interface graphique de configuration,nn'oubliez pas de cliquer sur |cff1784d1Reinitialiser la config|rnchaques fois que vous modifiez le config.lua"--updated
+	L["Config"] = "If you config your |cff1784d1iFilger|r by Lua and\nstill wish to use the configuration GUI,\ndon't forget to click on |cff1784d1Reset Config|r\neach time you modify the config.lua"
 
 	L["RESETMSG"] = "Etes vous sure de vouloir remplacer tout vos reglages avec ceux par défaut?"--updated
 
@@ -120,10 +120,10 @@ if client == "frFR" then
 	L["VersionNotFound"] = " Version pas trouvée,nettoyer les variables sauvegardées"
 	L["UpdateRequired"] = "Votre version n'est plus à jour.Nous vous recommandons de |cffff0000"..L["Reset Config"].."|r avant l utilisation de|cff1784d1iFilger|r."
 	L["WarningConfig"] = "Des changement ont été éffectués dans la config.\nNous vous recommandons de faire |cffff0000"..L["Reset Config"].."|r\navant l'utilisation de|cff1784d1iFilger|r."
-	L["Updated"] = "|cff1784d1iFilger|r a été mise à jour".
-	L["ClassVersion"] = ma Classe.." version : "
+	L["Updated"] = "|cff1784d1iFilger|r a été mise à jour."
+	L["ClassVersion"] = myClass.." version : "
 	L["AllVersion"] = ", Toutes versions : "
-	L["CurrentClassVersion"] = "Actuel "..maClasse.." version : "
+	L["CurrentClassVersion"] = "Actuel "..myClass.." version : "
 	L["CurrentAllVersion"] = ", TOUTES versions actuelle : "
 	L["AvailableClassVersion"] = "Disponible "..myClass.." version : "
 	L["AvailableAllVersion"] = ",TOUTES versions disponible : "
