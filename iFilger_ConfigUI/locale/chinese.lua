@@ -1,12 +1,13 @@
 ﻿local C, F, L = unpack(select(2, ...))
-  --Translated by 老虎007(wxnod@vip.qq.com)
 local client = GetLocale()
 
 if client == "zhCN" then
-	L["iFilger"] = "|cff1784d1iFilger|r |cffffffffConfiguration|r"
-	L["Config"] = "If you config your |cff1784d1iFilger|r by Lua and\nstill wish to use the configuration GUI,\ndon't forget to click on |cff1784d1Reset Config|r\neach time you modify the config.lua"
+	L["iFilger"] = "|cff1784d1iFilger|r |cffffffff设定界面|r"
+	L["Config"] = "如想编辑LUA和并同时使用游戏内设定界面来设定你的|cff1784d1iFilger|r , 每次修改config.lua后别忘记点击|cff1784d1Reset Config|r"
 
 	-- option name
+	L["RESETMSG"] = "你确定要重置所有设定至预设?"
+
 	L["Name"] = "名字"
 	L["Enable"] = "启用"
 	L["Size"] = "尺寸"
@@ -17,7 +18,9 @@ if client == "zhCN" then
 	L["Alpha"] = "透明度"
 	L["BarWidth"] = "计时条宽度"
 	L["Merge"] = "合并"
+	L["Mergewith"] = "与...合并"
 
+    L["autoupdate"] = "自动更新"
 	L["cleverzone"] = "智能区域"
 	L["tooltip"] = "提示框"
 	L["TooltipMover"] = "移动提示框"
@@ -25,6 +28,18 @@ if client == "zhCN" then
 	L["FlashBar"] = "闪烁计时条"
 	L["FlashThreshold"] = "闪烁临界"
 	L["FlashDuration"] = "闪烁持续时间"
+
+	L["AddSpell"] = "新增一个法术"
+	L["spellID"] = "法术ID或物品ID"
+	L["filter"] = "过滤"
+	L["unitId"] = "单位ID"
+	L["caster"] = "施法者"
+	L["absID"] = "绝对ID"
+	L["incombat"] = "战斗中"
+	L["spec"] = "天赋"
+	L["trigger"] = "触发内建冷却"
+	L["duration"] = "内建冷却时间"
+	L["icon"] = "图标"
 
 	-- option help
 	L["H_Name"] = "分组名称"
@@ -41,8 +56,10 @@ if client == "zhCN" then
 	L["H_Alpha1"] = "透明度:"
 	L["H_Alpha2"] = "从0（隐藏）到1（显示）选择"
 	L["H_BarWidth"] = "计时条宽度（需要计时条模式）"
-	L["H_Merge"] = "当名字一样时允许合并."
+	L["H_Merge"] = "允许合并."
+	L["H_Mergewith"] = "合并启用时, 与之合并的名称"
 
+	L["H_autoupdate"] = "自动更新设定"
 	L["H_cleverzone1"] = "智能区域:"
 	L["H_cleverzone2"] = "PVP区域时只加载PVP,PVE区域时只加载PVE"
 	L["H_cleverzone3"] = "(需要重新加载)"
@@ -50,15 +67,64 @@ if client == "zhCN" then
 	L["H_TooltipMover"] = "移动提示框针对ElvUI和Tukui用户."
 	L["H_FlashIcon"] = "当剩余时间少于临界时闪烁图标（需要图标模式）."
 	L["H_FlashBar"] = "当剩余时间少于临界时闪烁计时条（需要计时条模式）."
-	L["H_FlashThreshold1"] = "Threshold when icons start flashing."
+	L["H_FlashThreshold1"] = "闪动的阀值"
 	L["H_FlashThreshold2"] = "必须大于1."
 	L["H_FlashDuration1"] = "闪烁持续时间."
-	L["H_FlashDuration2"] = "必须是正数, smaller => quicker."
+	L["H_FlashDuration2"] = "必须是正数, 越小=越快."
+
+	L["H_spellID"] = "法术ID或物品ID : 13 或 14 代表饰品"
+	L["H_filter1"] = "可用过滤 : "
+	L["H_filter2"] = "|cffffffffBUFF|r - 过滤增益状态"
+	L["H_filter3"] = "|cffffffffDEBUFF|r - 过滤减益状态"
+	L["H_filter4"] = "|cffffffffIBUFF|r - 追踪看不见的增益状态"
+	L["H_filter5"] = "|cffffffffIDEBUFF|r - 追踪看不见的减益状态"
+	L["H_filter6"] = "|cffffffffCD|r - 追踪冷却"
+	L["H_filter7"] = "|cffffffffACD|r - 追踪一个冷却是否可用, 必须设定施法者为\"all\""
+	L["H_filter8"] = "|cffffffffICD|r - 追踪内建冷却, 须设定触发及冷却时间"
+	L["H_unitId1"] = "可用的单位ID :"
+	L["H_unitId2"] = "|cffffffffplayer|r"
+	L["H_unitId3"] = "|cfffffffftarget|r"
+	L["H_unitId4"] = "|cfffffffffocus|r"
+	L["H_unitId5"] = "|cffffffffpet|r"
+	L["H_unitId6"] = "|cfffffffftargettarget|r"
+	L["H_unitId7"] = "|cffffffffparty1|r ..."
+	L["H_unitId8"] = "|cffffffffarena1|r ..."
+	L["H_caster"] = "|cffffffffplayer|r or |cffffffffall|r - 只由自己施放或每个人"
+	L["H_absID"] = "法术ID完全一致时才显示"
+	L["H_incombat"] = "只在战斗中显示"
+	L["H_spec"] = "特定天赋显示 (|cffffffff1|r |cffffffff2|r |cffffffff3|r or |cffffffff4|r)"
+	L["H_trigger1"] = "触发内建冷却 :"
+	L["H_trigger2"] = "|cffffffffBUFF|r - 内建冷却开始于增益状态显示时"
+	L["H_trigger3"] = "|cffffffffDEBUFF|r - 内建冷却开始于减益状态显示时"
+	L["H_trigger4"] = "|cffff0000/!\\ 注意: 此项开始于|r"
+	L["H_trigger5"] = "|cffff0000触发出现, 并非消失才开始|r"
+	L["H_duration"] = "秒数表示内建冷却"
+	L["H_icon1"] = "抱歉, 图示设定只限于"
+	L["H_icon2"] = "|cffff0000进阶使用者|r 以及";
+	L["H_icon3"] = "LUA修改"
 
 	-- buttons
 	L["Apply"] = "应用"
+	L["Cancel"] = "取消"
 	L["Reset Config"] = "恢复默认"
 	L["Move Buffs"] = "移动buffs"
 	L["Reset Buff Position"] = "重置Buff位置"
-	L["Global Config"] = "总体配置"
+	L["Global"] = "一般设定"
+	L["Del"] = "删除"
+	L["Edit"] = "编辑"
+	L["Add"] = "新增"
+
+	-- update text
+	local myClass = select(2, UnitClass("player"));
+
+	L["VersionNotFound"] = "版本未找到, 清除已储存的设定"
+	L["UpdateRequired"] = "你的设定版本已过期, 使用|cff1784d1iFilger|r前我们强烈建议您|cffff0000"..L["Reset Config"].."|r"
+	L["WarningConfig"] = "设定项目已变更, 使用|cff1784d1iFilger|r前我们强烈建议您|cffff0000"..L["Reset Config"]..""
+	L["Updated"] = "|cff1784d1iFilger|r 已更新"
+	L["ClassVersion"] = myClass.." 版本 : "
+	L["AllVersion"] = ", 所有版本 : "
+	L["CurrentClassVersion"] = "当前 "..myClass.." 版本 : "
+	L["CurrentAllVersion"] = ", 当前 ALL 版本 : "
+	L["AvailableClassVersion"] = "可用的 "..myClass.." 版本 : "
+	L["AvailableAllVersion"] = ", 可用的 ALL 版本 : "
 end

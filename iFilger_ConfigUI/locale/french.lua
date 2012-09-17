@@ -3,62 +3,128 @@ local C, F, L = unpack(select(2, ...))
 local client = GetLocale()
 
 if client == "frFR" then
-	L["iFilger"] = "|cff1784d1iFilger|r |cffffffffConfiguration|r"
-	L["Config"] = "Si vous configurez |cff1784d1iFilger|r en modifiant les fichiers Lua \net souhaitez toujours utiliser l'outil de configuration graphique, \nn'oubliez pas de cliquer sur |cff1784d1reinitialiser la configuration|r\na chaque fois que vous effectué un changement dans config.lua"
-	
 	-- option name
-	L["Name"] = "Nom"
-	L["Enable"] = "Activer"
-	L["Size"] = "Taille"
-	L["Direction"] = "Direction"
-	L["IconSide"] = "Coté de l'icône"
-	L["Interval"] = "Intervalle"
-	L["Mode"] = "Mode"
-	L["Alpha"] = "Alpha"
-	L["BarWidth"] = "Largeur de la barre"
-	L["Merge"] = "Fusionner"
+	L["iFilger"] = "|cff1784d1iFilger|r |cffffffffConfiguration|r"
+	L["Config"] = "Si vous configurez |cff1784d1iFilger|r par code LUA et\nsouhaitez toujours utiliser l'interface graphique de configuration,\nn'oubliez pas de cliquer sur |cff1784d1Reinitialiser la config|r\nchaques fois que vous modifiez le config.lua"--updated
 
-	L["cleverzone"] = "Zone intelligente"
-	L["tooltip"] = "Infobulle"
-	L["TooltipMover"] = "Ancre des infobulles"
-	L["FlashIcon"] = "Flash (Icônes)"
-	L["FlashBar"] = "Flash (Barres)"
-	L["FlashThreshold"] = "Seuil de Flash"
-	L["FlashDuration"] = "Rapiditée du Flash"
+	L["RESETMSG"] = "Etes vous sure de vouloir remplacer tout vos reglages a defaut?"--updated
+
+	L["Name"] = "Nom"--updated
+	L["Enable"] = "Activé"--updated
+	L["Size"] = "Taille"--updated
+	L["Direction"] = "Direction"--updated
+	L["IconSide"] = "Coté de l'icone"--updated
+	L["Interval"] = "Ecart"--updated
+	L["Mode"] = "Mode"--updated
+	L["Alpha"] = "Alpha"--updated
+	L["BarWidth"] = "Longueur des barres"--updated
+	L["Merge"] = "Fusion"--updated
+	L["Mergewith"] = "fusionner avec"--updated
+
+	L["autoupdate"] = "Mise a jour automatique"--updated
+	L["cleverzone"] = "Zone habile" --?????--updated
+	L["tooltip"] = "Info-bulle"--updated
+	L["TooltipMover"] = "deplacement info-bulle"  -- mouais si  on veut lol --updated
+	L["FlashIcon"] = "Flash (Icones)"--updated
+	L["FlashBar"] = "Flash (Barres)"--updated
+	L["FlashThreshold"] = "seuil du  flash"--updated
+	L["FlashDuration"] = "durée du  flash"--updated
+
+	L["AddSpell"] = "Ajout d'un sort"--updated
+	L["spellID"] = "ID du sort ou ID de l'emplacement"--updated
+	L["filter"] = "Filtre"--updated
+	L["unitId"] = "Unit Id"--updated
+	L["caster"] = "Caster"--updated
+	L["absID"] = " ID Absolut"--updated
+	L["incombat"] = "En combat"--updated
+	L["spec"] = "Spec"--updated
+	L["trigger"] = "Declenchement pour ICD"--updated
+	L["duration"] = "Durée pour ICD"--updated
+	L["icon"] = "Icone"--updated
 
 	-- option help
-	L["H_Name"] = "Le nom du groupe."
-	L["H_Enable"] = "Activer ou non le groupe."
-	L["H_Size1"] = "Taille des icônes"
-	L["H_Size2"] = "Doit être un nombre positif"
-	L["H_Direction1"] = "Direction de l'extension :"
-	L["H_Direction2"] = "UP (vers le haut), DOWN (vers le bas), LEFT (vers la gauche), RIGHT (vers la droite) ou HORIZONTAL (centré)"
-	L["H_IconSide1"] = "Position de l'icône en mode Barre : "
-	L["H_IconSide2"] = "LEFT (gauche) ou RIGHT (droite)"
-	L["H_Interval"] = "Intervalle entre les Icônes/Barres"
-	L["H_Mode1"] = "Mode d'affichage : "
-	L["H_Mode2"] = "ICON (sous forme d'icônes) ou BAR (sous forme de barres)"
-	L["H_Alpha1"] = "Transparence :"
-	L["H_Alpha2"] = "Nombre entre 0 (invisible) et 1 (opaque)"
-	L["H_BarWidth"] = "Largeur de la barre (Mode Barre requis)"
-	L["H_Merge"] = "Active la fusion des groupes lorsque les noms sont identiques."
+	L["H_Name"] = "Nom de la sous-section"--updated
+	L["H_Enable"] = "Active ou Désactive cette sous-section."--updated
+	L["H_Size1"] = "Taille de l'icone"--updated
+	L["H_Size2"] = "doit etre un nombre positif"--updated
+	L["H_Direction1"] = "Direction des icones:"--updated
+	L["H_Direction2"] = "|cffffffffHAUT|r, |cffffffffBAS|r, |cffffffffGAUCHE|r, |cffffffffDROITE|r ou |cffffffffHORIZONTALE|r"--updated
+	L["H_IconSide1"] = "Position de 'l'icone en mode barre:"--updated
+	L["H_IconSide2"] = "|cffffffffGAUCHE|r ou |cffffffffDROITE|r"--updated
+	L["H_Interval"] = "espace entre icones/barres"--updated
+	L["H_Mode1"] = "mode affiché:"--updated
+	L["H_Mode2"] = "|cffffffffICONE|r ou |cffffffffBARRE|r"--updated
+	L["H_Alpha1"] = "Transparence:"--updated
+	L["H_Alpha2"] = "Choisie entre 1 (plein) ou 0 (invisible)"--updated
+	L["H_BarWidth"] = "Largeur de la barre (mode barre requis)"--updated
+	L["H_Merge"] = "Active la fusion."--updated
+	L["H_Mergewith"] = "Nom de la liste de fusion avec si la fusion est activée."--updated
 
-	L["H_cleverzone1"] = "Zone intelligente :"
-	L["H_cleverzone2"] = "Charge le module JcJ uniquement dans les zones JcJ et le module JcE dans les zones JcE."
-	L["H_cleverzone3"] = "(un /rl est requis lorsque vous entrez dans une instance)"
-	L["H_tooltip"] = "Affiche une bulle d'information (tooltip) lorsque l'on passe le curseur sur une icône ou barre."
-	L["H_TooltipMover"] = "Ancre des bulles d'information (tooltip) sur l'ancre définie par ElvUI ou Tukui."
-	L["H_FlashIcon"] = "Flash quand le temps restant est inférieur au seuil fixé en mode ICON."
-	L["H_FlashBar"] = "Flash quand le temps restant est inférieur au seuil fixé en mode BAR."
-	L["H_FlashThreshold1"] = "Seuil à partir du quel le Flash commence."
-	L["H_FlashThreshold2"] = "Doit être suppérieur à 1."
-	L["H_FlashDuration1"] = "Durée de chaque flash."
-	L["H_FlashDuration2"] = "Doit être un nombre positif, plus il est petit, plus le flash sera rapide."
+	L["H_autoupdate"] = " mettre à jour automatiquement la configuration."--updated
+	L["H_cleverzone1"] = "Zone Habile:"--updated
+	L["H_cleverzone2"] = "Chargez uniquement en PvP dans les zones PvP et PvE dans les zones PvE"--updated
+	L["H_cleverzone3"] = "(Nécessaire pour recharger la première fois que vous entrez dans une zone PvE)"--updated
+	L["H_tooltip"] = "Info-bulle sur icone"--updated
+	L["H_TooltipMover"] = "Info-bulle sur TooltipMover pour les utilisateurs ElvUI et Tukui."--updated
+	L["H_FlashIcon"] = "Flash lorsque le temps restant est inférieur au seuil en mode icone."--updated
+	L["H_FlashBar"] = "Flash lorsque le temps restant est inférieur au seuil en mode barre."--updated
+	L["H_FlashThreshold1"] = "Seuil quand l'icone commence a flasher."--updated
+	L["H_FlashThreshold2"] = "Doit etre superieur à 1."--updated
+	L["H_FlashDuration1"] = "Durée de chaques flashs."--updated
+	L["H_FlashDuration2"] = "Doit etre un nombre positif, plus petit => plus rapide."--updated
+
+	L["H_spellID"] = "ID du sort ou ID de l'emplacement : 13 ou 14 pour bijoux"--updated
+	L["H_filter1"] = "Listes des filtres disponibles : "--updated
+	L["H_filter2"] = "|cffffffffBUFF|r - filtrage des améliorations."--updated
+	L["H_filter3"] = "|cffffffffDEBUFF|r - filtrage des affaiblissements."--updated
+	L["H_filter4"] = "|cffffffffIBUFF|r - suivit d'une amélioration manquant."--updated
+	L["H_filter5"] = "|cffffffffIDEBUFF|r - suivit d'un affaiblissement manquant."--updated
+	L["H_filter6"] = "|cffffffffCD|r -suivit des recharges."--updated
+	L["H_filter7"] = "|cffffffffACD|r -suivit si un temps de recharge est disponible ou non, nécessitent une programmation lanceur de sorts à tout"--updated
+	L["H_filter8"] = "|cffffffffICD|r - suivit de la recharge interne,exige une declenchement  et une durée"--updated
+	L["H_unitId1"] = "Liste des unités disponibles:"--updated
+	L["H_unitId2"] = "|cffffffffjoueur|r"--updated
+	L["H_unitId3"] = "|cffffffffcible|r"--updated
+	L["H_unitId4"] = "|cfffffffffocus|r"--updated
+	L["H_unitId5"] = "|cfffffffffamilier|r"--updated
+	L["H_unitId6"] = "|cffffffffciblecible|r" --cible de la cible--updated
+	L["H_unitId7"] = "|cffffffffgroupe1|r ..."--updated
+	L["H_unitId8"] = "|cffffffffarene1|r ..."--updated
+	L["H_caster"] = "|cffffffffjoueur|r ou |cfffffffftout|r -seulement incanté par  le joueur ou tout le monde"--updated
+	L["H_absID"] = "Afficher seulement si l ID du  sort est  le meme"--updated
+	L["H_incombat"] = "Seulement affiché pendant le combat"--updated
+	L["H_spec"] = "Only show while in that spec (|cffffffff1|r |cffffffff2|r |cffffffff3|r or |cffffffff4|r)"
+	L["H_trigger1"] = "declenchement pour  ICD :"--updated
+	L["H_trigger2"] = "|cffffffffAMELIORATION|r - ICD commence quand l'amélioration se presente."--updated
+	L["H_trigger3"] = "|cffffffffDEBUFF|r - ICD commence quand l'affaiblissement se presente." --updated
+	L["H_trigger4"] = "|cffff0000/!\\ NOTE:CE QUI DEMARRE QUAND LE |r" --updated
+	L["H_trigger5"] = "|cffff0000DECLENCHEMENT COMMENCE,PAS QUAND IL DISPARAIT.|r" --updated
+	L["H_duration"] = "durée ICD en secondes" --updated
+	L["H_icon1"] = "Desolé, mais l'icone de configuration est  pour" --updated
+	L["H_icon2"] = "|cffff0000AVANCES UTILISATEURS|r et"; --updated
+	L["H_icon3"] = "Doivent etre effectuees par LUA." --updated
 
 	-- buttons
 	L["Apply"] = "Appliquer"
-	L["Reset Config"] = "Réinitialiser"
-	L["Move Buffs"] = "Déplacer les icônes"
-	L["Reset Buff Position"] = "Réinitialiser les positions"
-	L["Global"] = "Config. Globale"
+	L["Cancel"] = "Abandonner"
+	L["Reset Config"] = "Réinitialiser Config"
+	L["Move Buffs"] = "Deplacement des ameliorations"
+	L["Reset Buff Position"] = "Réinitialiser le placement des ameliorations"
+	L["Global"] = "configuration globale"
+	L["Del"] = "suppr"
+	L["Edit"] = "Editer"
+	L["Add"] = "Ajouter"
+
+	local myClass = select(2, UnitClass("player"));
+
+	L["VersionNotFound"] = " Version pas trouvée,nettoyer les variables sauvegardées"
+	L["UpdateRequired"] =  "Votre version n'est plus a jour.Nous vous recommandons de |cffff0000"..L["Reset Config"].."|r avant l utilisation de|cff1784d1iFilger|r."
+	L["WarningConfig"] = "Changement ont ete faites dans la config.\nNous vous recommandons de faire |cffff0000"..L["Reset Config"].."|r\navant l'utilisation de|cff1784d1iFilger|r."
+	L["Updated"] = "|cff1784d1iFilger|r a ete mise a jour".
+	L["ClassVersion"] = ma Classe.." version : "
+	L["AllVersion"] = ", Toutes versions : "
+	L["CurrentClassVersion"] = "Actuel "..maClasse.." version : "
+	L["CurrentAllVersion"] = ", TOUTES versions actuelle : "
+	L["AvailableClassVersion"] = "Disponible "..myClass.." version : "
+	L["AvailableAllVersion"] = ",TOUTES versions disponible : "
 end
