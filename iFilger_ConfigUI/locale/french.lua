@@ -5,7 +5,7 @@ local client = GetLocale()
 if client == "frFR" then
 	-- option name
 	L["iFilger"] = "|cff1784d1iFilger|r |cffffffffConfiguration|r"
-	L["Config"] = "If you config your |cff1784d1iFilger|r by Lua and\nstill wish to use the configuration GUI,\ndon't forget to click on |cff1784d1Reset Config|r\neach time you modify the config.lua"
+	L["Config"] = "Si vous configurez votre |cff1784d1iFilger|r en \n lua et souhaitez toujours utiliser l'interface \n graphique de configuration, n'oubliez pas de \n cliquer sur |cff1784d1Reset Config|r àchaque \n fois que vous modifiez le fichier config.lua"
 
 	L["RESETMSG"] = "Etes vous sure de vouloir remplacer tout vos reglages avec ceux par défaut?"--updated
 
