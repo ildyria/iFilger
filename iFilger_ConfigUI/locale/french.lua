@@ -5,9 +5,9 @@ local client = GetLocale()
 if client == "frFR" then
 	-- option name
 	L["iFilger"] = "|cff1784d1iFilger|r |cffffffffConfiguration|r"
-	L["Config"] = "If you config your |cff1784d1iFilger|r by Lua and\nstill wish to use the configuration GUI,\ndon't forget to click on |cff1784d1Reset Config|r\neach time you modify the config.lua"
+	L["Config"] = "Si vous configurez votre |cff1784d1iFilger|r \nen lua et souhaitez toujours utiliser \nl'interface graphique de configuration, \nn'oubliez pas de cliquer sur |cff1784d1Reset Config|r \nà chaque fois que vous modifiez \nle fichier config.lua"
 
-	L["RESETMSG"] = "Etes vous sure de vouloir remplacer tout vos reglages avec ceux par défaut?"--updated
+	L["RESETMSG"] = "Êtes-vous sûre de vouloir remplacer tous vos reglages avec ceux par défaut?"--updated
 
 	L["Name"] = "Nom"--updated
 	L["Enable"] = "Activé"--updated
@@ -24,11 +24,11 @@ if client == "frFR" then
 	L["autoupdate"] = "Mise à jour automatique"--updated
 	L["cleverzone"] = "Zone Intelligente" --updated
 	L["tooltip"] = "Info-bulle"--updated
-	L["TooltipMover"] = "déplacer l'info-bulle" --updated
+	L["TooltipMover"] = "Déplacer l'info-bulle" --updated
 	L["FlashIcon"] = "Flash (Icônes)"--updated
 	L["FlashBar"] = "Flash (Barres)"--updated
-	L["FlashThreshold"] = "seuil du  flash"--updated
-	L["FlashDuration"] = "durée du  flash"--updated
+	L["FlashThreshold"] = "Seuil du  flash"--updated
+	L["FlashDuration"] = "Durée du  flash"--updated
 
 	L["AddSpell"] = "Ajout d'un sort"--updated
 	L["spellID"] = "ID du sort"--updated
@@ -44,7 +44,7 @@ if client == "frFR" then
 
 	-- option help
 	L["H_Name"] = "Nom de la sous-section"--updated
-	L["H_Enable"] = "Active ou Désactive cette sous-section."--updated
+	L["H_Enable"] = "Active ou désactive cette sous-section."--updated
 	L["H_Size1"] = "Taille de l'icone"--updated
 	L["H_Size2"] = "doit etre un nombre positif"--updated
 	L["H_Direction1"] = "Direction des icônes:"--updated
@@ -58,11 +58,11 @@ if client == "frFR" then
 	L["H_Alpha2"] = "Choisir entre 1 (plein) ou 0 (invisible)"--updated
 	L["H_BarWidth"] = "Largeur de la barre (mode barre requis)"--updated
 	L["H_Merge"] = "Active la fusion."--updated
-	L["H_Mergewith"] = "Nom de la liste de fusion avec si la fusion est activée."--updated
+	L["H_Mergewith"] = "Nom de la liste de fusion si la fusion est activée."--updated
 
-	L["H_autoupdate"] = " mettre à jour automatiquement la configuration."--updated
+	L["H_autoupdate"] = " Mettre à jour automatiquement la configuration."--updated
 	L["H_cleverzone1"] = "Zone Intelligente:"--updated
-	L["H_cleverzone2"] = "Chargez uniquement en PvP dans les zones PvP et PvE dans les zones PvE"--updated
+	L["H_cleverzone2"] = "Charger uniquement en PvP dans les zones PvP et PvE dans les zones PvE"--updated
 	L["H_cleverzone3"] = "(Nécessaire pour recharger la première fois que vous entrez dans une zone PvE)"--updated
 	L["H_tooltip"] = "Info-bulle sur icône"--updated
 	L["H_TooltipMover"] = "Info-bulle sur TooltipMover pour les utilisateurs ElvUI et Tukui."--updated
@@ -70,8 +70,8 @@ if client == "frFR" then
 	L["H_FlashBar"] = "Flash lorsque le temps restant est inférieur au seuil en mode barre."--updated
 	L["H_FlashThreshold1"] = "Seuil quand l'icône commence à flasher."--updated
 	L["H_FlashThreshold2"] = "Doit être superieur à 1."--updated
-	L["H_FlashDuration1"] = "Durée de chaques flashs."--updated
-	L["H_FlashDuration2"] = "Doit etre un nombre positif, plus petit => plus rapide."--updated
+	L["H_FlashDuration1"] = "Durée de chaques flash."--updated
+	L["H_FlashDuration2"] = "Doit être un nombre positif, plus petit => plus rapide."--updated
 
 	L["H_spellID"] = "ID du sort ou ID de l'emplacement : 13 ou 14 pour bijoux"--updated
 	L["H_filter1"] = "Listes des filtres disponibles : "--updated
@@ -90,8 +90,8 @@ if client == "frFR" then
 	L["H_unitId6"] = "|cffffffffciblecible|r" --cible de la cible--updated
 	L["H_unitId7"] = "|cffffffffgroupe1|r ..."--updated
 	L["H_unitId8"] = "|cffffffffarene1|r ..."--updated
-	L["H_caster"] = "|cffffffffjoueur|r ou |cfffffffftout|r -seulement incanté par  le joueur ou tout le monde"--updated
-	L["H_absID"] = "Afficher seulement si l ID du  sort est  le meme"--updated
+	L["H_caster"] = "|cffffffffjoueur|r ou |cfffffffftout|r -seulement incanté par le joueur ou tout le monde"--updated
+	L["H_absID"] = "Afficher seulement si l'ID du  sort est  le meme"--updated
 	L["H_incombat"] = "Seulement affiché pendant le combat"--updated
 	L["H_spec"] = "Only show while in that spec (|cffffffff1|r |cffffffff2|r |cffffffff3|r or |cffffffff4|r)"
 	L["H_trigger1"] = "declenchement pour  ICD :"--updated
@@ -100,25 +100,25 @@ if client == "frFR" then
 	L["H_trigger4"] = "|cffff0000/!\\ NOTE:CE QUI DEMARRE QUAND LE |r" --updated
 	L["H_trigger5"] = "|cffff0000DECLENCHEMENT COMMENCE,PAS QUAND IL DISPARAIT.|r" --updated
 	L["H_duration"] = "durée ICD en secondes" --updated
-	L["H_icon1"] = "Desolé, mais l'icone de configuration est  pour" --updated
+	L["H_icon1"] = "Desolé, mais l'icone de configuration est pour" --updated
 	L["H_icon2"] = "|cffff0000AVANCES UTILISATEURS|r et"; --updated
-	L["H_icon3"] = "Doivent etre effectuees par LUA." --updated
+	L["H_icon3"] = "Doivent être effectuées par LUA." --updated
 
 	-- buttons
 	L["Apply"] = "Appliquer"
 	L["Cancel"] = "Abandonner"
 	L["Reset Config"] = "Réinitialiser Config"
-	L["Move Buffs"] = "Deplacement des ameliorations"
-	L["Reset Buff Position"] = "Réinitialiser le placement des ameliorations"
+	L["Move Buffs"] = "Déplacer les améliorations"
+	L["Reset Buff Position"] = "RAZ les positions"
 	L["Global"] = "configuration globale"
-	L["Del"] = "suppr"
+	L["Del"] = "Suppr"
 	L["Edit"] = "Editer"
 	L["Add"] = "Ajouter"
 
 	local myClass = select(2, UnitClass("player"));
 
-	L["VersionNotFound"] = " Version pas trouvée,nettoyer les variables sauvegardées"
-	L["UpdateRequired"] = "Votre version n'est plus à jour.Nous vous recommandons de |cffff0000"..L["Reset Config"].."|r avant l utilisation de|cff1784d1iFilger|r."
+	L["VersionNotFound"] = " Version non identifiable, nettoyez les variables sauvegardées"
+	L["UpdateRequired"] = "Votre version n'est plus à jour. Nous vous recommandons de |cffff0000"..L["Reset Config"].."|r avant l'utilisation d'|cff1784d1iFilger|r."
 	L["WarningConfig"] = "Des changement ont été éffectués dans la config.\nNous vous recommandons de faire |cffff0000"..L["Reset Config"].."|r\navant l'utilisation de|cff1784d1iFilger|r."
 	L["Updated"] = "|cff1784d1iFilger|r a été mise à jour."
 	L["ClassVersion"] = myClass.." version : "
