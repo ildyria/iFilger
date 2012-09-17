@@ -107,11 +107,11 @@ if client == "frFR" then
 	-- buttons
 	L["Apply"] = "Appliquer"
 	L["Cancel"] = "Abandonner"
-	L["Reset Config"] = "Réinitialiser Config"
-	L["Move Buffs"] = "Deplacement des ameliorations"
-	L["Reset Buff Position"] = "Réinitialiser le placement des ameliorations"
-	L["Global"] = "configuration globale"
-	L["Del"] = "suppr"
+	L["Reset Config"] = "Réinitialiser"
+	L["Move Buffs"] = "Déplacer les Icônes"
+	L["Reset Buff Position"] = "Réinitialiser les Positions"
+	L["Global"] = "Configuration Globale"
+	L["Del"] = "Suppr"
 	L["Edit"] = "Editer"
 	L["Add"] = "Ajouter"
 
