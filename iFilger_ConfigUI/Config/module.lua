@@ -1637,7 +1637,8 @@ end
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 local EnableConfig = function()
-		ToggleFrame(iFilgerconfigPanel)
+	if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
+	ToggleFrame(iFilgerconfigPanel)
 end
 
 SLASH_IFILGERCONFIG1 = "/iFilger"
