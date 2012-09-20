@@ -15,7 +15,7 @@ if client == "zhCN" then
 end
 
 if client == "zhTW" then 
-	C.font = [=[fonts\ARHei.ttf]=] 
+	C.font = [=[Fonts\bLEI00D.ttf]=] 
 end
 
 
