@@ -31,6 +31,24 @@ C["Filger_Cooldown"] = { -- will be disabled if Tukui / ElvUI / OmniCC / ncCoold
 	["fontsize"] = 20,									--the base font size to use at a scale of 1
 }
 
+--	List of available options for Panels:
+--		name
+--			= "name of the panel"
+--			(this name will be used in Spells options part where you specify what panel do you want to attach your icons (or bars) to)
+--		w
+--			= width of the panel in pixels
+--		h
+--			= height of the panel in pixels
+--		anchor
+--			= what point of the panel is used to determine panels position
+--			("TOP" / "BOTTOM" / "LEFT" / "RIGHT" / "CENTER" / "TOPLEFT" / "TOPRIGHT" / "BOTTOMLEFT" / "BOTTOMRIGHT"
+--		x
+--			= default anchor's position relative to the center of the screen, horizontal, in pixels
+--		y
+--			= default anchor's position relative to the center of the screen, vertical, in pixels
+--		text
+--			= label text that will be displayed on the panel
+
 C["Filger_Panels"] = {
 	["MAGE"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
@@ -131,8 +149,58 @@ C["Filger_Panels"] = {
 	},
 }
 
+--	List of available options:
+--		spellID	
+--			= any number up to 132122 or so
+--			(every spell has its unique spellID)
+--			(you can find out spellID by looking up the spell on wowhead and checking URL of the page - http://www.wowhead.com/spell=5782 - in this case spellID = 5782)
+--		unitId
+--			= "player" / "target" / "focus" / "pet" / "party1" / "arena1" / "targettarget" / "targettargettarget" / "party1target" / "pettarget" / "focustarget" 
+--			(note that you cannot use "targetfocus" and other similar options as you can only see your own focus)
+--		caster
+--			= "all" / "player" / "target" / "pet"
+--			(Whoever casted the spell. If set to all, anyone's spell get displayed)
+--		filter
+--			= "BUFF" / "DEBUFF" / "IBUFF" / "IDEBUFF" / "CD" / "ACD" / "ICD"
+--			(BUFF checks if buff is applied)
+--			(DEBUFF checks if debuff is applied)
+--			(IBUFF checks if buff is NOT applied)
+--			(IDEBUFF checks if debuff is NOT applied)
+--			(CD checks if spell is on cooldown)
+--			(ACD checks if spell is NOT on cooldown)
+--			(ICD checks for internal cooldown of the spell)
+--		trigger
+--			= "BUFF" / "DEBUFF"
+--			(works only with filter option set to ICD)
+--			(specifies if triggering spell applies buff or debuff)
+--		duration
+--			= any number (in seconds)
+--			(works only with filter option set to ICD)
+--			(specifies how long internal CD is)
+--		slotID
+--			= any number lower than 24
+--			(works only with filter option set to CD / ICD)
+--			(if slotID is specified, icon graphics will change to icon of item equipped in slot XX)
+--			(1 = head, 2 = neck, 3 = shoulder, 4 = shirt, 5 = chest, 6 = belt, 7 = legs, 8 = feet, 9 = wrist, 10 = gloves, 
+--			11 = finger 1, 12 = finger 2, 13 = trinket 1, 14 = trinket 2, 15 = back, 16 = main hand, 17 = off hand, 18 = ranged?, 19 = tabard, 
+--			20 = first bag (the rightmost one), 21 = second bag, 22 = third bag, 23 = fourth bag (the leftmost one)
+--		incombat
+--			= true
+--			(if incombat option is set to true, icon or bar will only show if in combat)
+--		spec
+--			= 1 / 2 / 3 / 4
+--			(icon or bar will only show if spec option is not specified or spec option matches your specialization number)
+--		absID
+--			= true
+--			(if set to true, spell will get displayed only if spell ID matches with spellID option, otherwise it will display if names match)
+--		icon
+--			= [[Interface\Icons\Spell_Frost_Frost]] / [[Interface\Icons\spell_mage_infernoblast]]
+--			(changes icon graphics to a texture path specified in this option)
+--			(specifying icon option, slotID option will cease to function)
+--			(you can list through thousands of icons at http://wowprogramming.com/utils/artbrowser/Interface/ICONS.list)
+
 C["Filger_Spells"] = {
-	["DEATHKNIGHT"] = {  ---------------------------------------------------- Death Knight -- A REVOIR
+	["DEATHKNIGHT"] = {  ---------------------------------------------------- Death Knight
 		{
 			Name = "Cooldown",
 			Enable = true,
