@@ -1,4 +1,4 @@
-local C, F, L = unpack(select(2, ...))
+﻿local C, F, L = unpack(select(2, ...))
 
 -- option name
 L["iFilger"] = "|cff1784d1iFilger|r |cffffffffConfiguration|r"

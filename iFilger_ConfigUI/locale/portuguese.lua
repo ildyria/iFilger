@@ -7,6 +7,8 @@ if client == "ptBR" or client == "ptPT" then
 	L["iFilger"] = "|cffffffffConfiguração|r |cff1784d1iFilger|r"
 	L["Config"] = "Se você configurar o seu |cff1784d1iFilger|r por código Lua e\nmesmo assim deseja usar a configuração em jogo,\nnão se esqueça de clicar em |cff1784d1Reset Config|r\ncada vez que modificar o ficheiro config.lua"
 
+	L["RESETMSG"] = "Are you sure you want to reset all of your settings to Default?"
+	
 	L["Name"] = "Nome"
 	L["Enable"] = "Activar"
 	L["Size"] = "Tamanho"
@@ -54,6 +56,37 @@ if client == "ptBR" or client == "ptPT" then
 	L["H_FlashThreshold2"] = "Tem de ser maior que 1."
 	L["H_FlashDuration1"] = "Duração de cada piscadela."
 	L["H_FlashDuration2"] = "Tem de ser um número positivo, mais pequeno => mais rápido."
+	
+	L["H_spellID"] = "Spell ID or slot ID : 13 or 14 for trinkets"
+	L["H_filter1"] = "List of available Filters : "
+	L["H_filter2"] = "|cffffffffBUFF|r - filtering buffs."
+	L["H_filter3"] = "|cffffffffDEBUFF|r - filtering debuffs."
+	L["H_filter4"] = "|cffffffffIBUFF|r - track a missing buff."
+	L["H_filter5"] = "|cffffffffIDEBUFF|r - track a missing debuff."
+	L["H_filter6"] = "|cffffffffCD|r - track cooldown."
+	L["H_filter7"] = "|cffffffffACD|r - track if a cooldown is available or not, require caster set to \"all\""
+	L["H_filter8"] = "|cffffffffICD|r - track Internal Cooldown, require trigger and duration"
+	L["H_unitId1"] = "List of available unitId :"
+	L["H_unitId2"] = "|cffffffffplayer|r"
+	L["H_unitId3"] = "|cfffffffftarget|r"
+	L["H_unitId4"] = "|cfffffffffocus|r"
+	L["H_unitId5"] = "|cffffffffpet|r"
+	L["H_unitId6"] = "|cfffffffftargettarget|r"
+	L["H_unitId7"] = "|cffffffffparty1|r ..."
+	L["H_unitId8"] = "|cffffffffarena1|r ..."
+	L["H_caster"] = "|cffffffffplayer|r or |cffffffffall|r - only cast by you or everyone"
+	L["H_absID"] = "Only show if the Sepll ID is exactly the same"
+	L["H_incombat"] = "Only show while in combat"
+	L["H_spec"] = "Only show while in that spec (|cffffffff1|r |cffffffff2|r |cffffffff3|r or |cffffffff4|r)"
+	L["H_trigger1"] = "Trigger for ICD :"
+	L["H_trigger2"] = "|cffffffffBUFF|r - ICD start when the buffs show up."
+	L["H_trigger3"] = "|cffffffffDEBUFF|r - ICD start when the debuff show up."
+	L["H_trigger4"] = "|cffff0000/!\\ NOTE THAT IT START WHEN THE|r"
+	L["H_trigger5"] = "|cffff0000TRIGGER SHOWS, NOT WHENT IT DISAPEAR.|r"
+	L["H_duration"] = "Duration for ICD in second"
+	L["H_icon1"] = "Sorry, but the icon config is for"
+	L["H_icon2"] = "|cffff0000ADVANCED USERS|r and";
+	L["H_icon3"] = "have to be done by LUA."
 
 	-- buttons
 	L["Apply"] = "Aplicar"
@@ -61,4 +94,21 @@ if client == "ptBR" or client == "ptPT" then
 	L["Move Buffs"] = "Mover os Buffs"
 	L["Reset Buff Position"] = "Restaurar a posição"
 	L["Global"] = "Configurações Globais"
+	L["Del"] = "Del"
+	L["Edit"] = "Edit"
+	L["Add"] = "Add"
+
+	-- update text 
+	local myClass = select(2, UnitClass("player"));
+
+	L["VersionNotFound"] = "Version not found, clearing saved variables."
+	L["UpdateRequired"] = "Your config version is outdated. We hightly advise you to do a |cffff0000"..L["Reset Config"].."|r before using |cff1784d1iFilger|r."
+	L["WarningConfig"] = "Changes have been made in the config.\nWe hightly advise you to do a |cffff0000"..L["Reset Config"].."|r\nbefore using |cff1784d1iFilger|r."
+	L["Updated"] = "|cff1784d1iFilger|r has been updated."
+	L["ClassVersion"] = myClass.." version : "
+	L["AllVersion"] = ", ALL version : "
+	L["CurrentClassVersion"] = "Current "..myClass.." version : "
+	L["CurrentAllVersion"] = ", current ALL version : "
+	L["AvailableClassVersion"] = "Available "..myClass.." version : "
+	L["AvailableAllVersion"] = ", available ALL version : "
 end
