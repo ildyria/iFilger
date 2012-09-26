@@ -21,7 +21,8 @@ C["Filger_Config"] = {
 		["WARRIOR"] = 1,								-- War changes
 		["ROGUE"] = 1,									-- Rogue changes
 		["PALADIN"] = 1.2,								-- Paladin changes
-		["ALL"] = 1,									-- ALL/PVP/PVE and everything elses changes (reset for every class)
+		["MONK"] = 1,									-- Monk changes
+		["ALL"] = 1.1,									-- ALL/PVP/PVE and everything elses changes (reset for every class)
 	}
 }
 
@@ -345,6 +346,10 @@ C["Filger_Spells"] = {
 			{ spellID = 12472, filter = "CD" }, 
 			-- Combustion
 			{ spellID = 11129, filter = "CD" }, 
+			-- Alter Time
+			{ spellID = 110909, filter = "CD" }, 
+			-- Presence of Mind
+			{ spellID = 12043, filter = "CD" }, 
 			-- Cauterize
 			{ spellID = 87024, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 		},	
@@ -2133,6 +2138,8 @@ C["Filger_Spells"] = {
 			-- Tiger Strikes
 			{ spellID = 120273, unitId = "player", caster = "player", filter = "BUFF" },
 			
+		},
+		{
 			Name = "Debuffs",
 			Enable = true,
 			Direction = "RIGHT",
@@ -2270,6 +2277,7 @@ C["Filger_Spells"] = {
 
 		-- Trinket Procs
 
+		--[[
 			-- 333/346
 			-- Cleansing Tears (Tear of Blood)
 			{ spellID = 91139, unitId = "player", caster = "player", filter = "BUFF" },
@@ -2375,6 +2383,7 @@ C["Filger_Spells"] = {
 			{ spellID = 107804, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Beast Fury - weapon agi DW
 			{ spellID = 109863, unitId = "player", caster = "player", filter = "BUFF" },
+		]]
 			
 		-- PvP Trinkets
 			-- Call of Conquest / Badge of Conquest
@@ -2409,6 +2418,7 @@ C["Filger_Spells"] = {
 			{ spellID = 55503, unitId = "player", caster = "player", filter = "BUFF" },
 
 		-- Item Enchants - Enchanting
+		--[[
 			-- Heartsong / Gesang des Herzens
 			{ spellID = 74224, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Avalanche / Lawine
@@ -2419,8 +2429,10 @@ C["Filger_Spells"] = {
 			{ spellID = 74241, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Landside
 			{ spellID = 74245, unitId = "player", caster = "all", filter = "BUFF" },
+			]]
 
 		-- Potions
+		--[[
 			-- Speed / Geschwindigkeit - Potion of Speed
 			{ spellID = 53908, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Wild Magic / Wilde Magie - Potion of Wild Magic
@@ -2431,6 +2443,7 @@ C["Filger_Spells"] = {
 			{ spellID = 79476, unitId = "player", caster = "all", filter = "BUFF" }, 
 			-- Golemblood Potion
 			{ spellID = 79634, unitId = "player", caster = "player", filter = "BUFF" },
+			]]
 
 		-- External Buffs
 			-- Tricks of the Trade
