@@ -37,6 +37,7 @@ L["incombat"] = "In combat"
 L["spec"] = "Spec"
 L["trigger"] = "Trigger for ICD"
 L["duration"] = "Duration for ICD"
+L["timeleft"] = "Time left"
 L["icon"] = "Icon"
 
 -- option help
@@ -97,6 +98,7 @@ L["H_trigger3"] = "|cffffffffDEBUFF|r - ICD start when the debuff show up."
 L["H_trigger4"] = "|cffff0000/!\\ NOTE THAT IT START WHEN THE|r"
 L["H_trigger5"] = "|cffff0000TRIGGER SHOWS, NOT WHENT IT DISAPEAR.|r"
 L["H_duration"] = "Duration for ICD in second"
+L["H_timeleft"] = "Only show if time remaining is below. Leave empty or 0 to disable."
 L["H_icon1"] = "Sorry, but the icon config is for"
 L["H_icon2"] = "|cffff0000ADVANCED USERS|r and";
 L["H_icon3"] = "have to be done by LUA."

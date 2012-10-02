@@ -174,6 +174,9 @@ local help = {
 	["duration"] = {
 		L["H_duration"], --"Duration for ICD in second"
 	},
+	["timeleft"] = {
+		L["H_timeleft"], --"Duration for ICD in second"
+	},
 	["icon"] = {
 		L["H_icon1"], -- "Sorry, but the icon config is for"
 		L["H_icon2"], -- "|cffff0000ADVANCED USERS|r and";
@@ -611,7 +614,8 @@ create_spell_option("incombat","boolean",150) -- true / false
 create_spell_option("spec","number",175) -- 1 2 3 4
 create_spell_option("trigger","string",200) -- BUFF / DEBUFF trigger for ICD
 create_spell_option("duration","number",225) -- duration of ICD
-create_spell_option("icon","string",250) -- icon
+create_spell_option("timeleft","number",250) -- timeleft
+create_spell_option("icon","string",275) -- icon
 -- /!\ ACD require caster = "all"
 
 spelloptions["action"] = "ADD"
@@ -680,6 +684,7 @@ local function LoadSpell(indicetab,i)
 	spelloptions["spec"].editbox:SetText(data.spec or "")					-- set spec
 	spelloptions["trigger"].editbox:SetText(data.trigger or "")				-- set trigger
 	spelloptions["duration"].editbox:SetText(data.duration or "")			-- set duration
+	spelloptions["timeleft"].editbox:SetText(data.timeleft or "")			-- set timeleft
 	if data.absID	then													-- set absID
 		spelloptions["absID"].button:SetChecked()
 	else
@@ -721,6 +726,7 @@ local function LoadSpell(indicetab,i)
 	spelloptions["spec"].value = data.spec							-- set spec
 	spelloptions["trigger"].value = data.trigger					-- set trigger
 	spelloptions["duration"].value = data.duration					-- set duration
+	spelloptions["timeleft"].value = data.timeleft					-- set timeleft
 	spelloptions["icon"].value = data.icon or "default"				-- set icon
 	
 	iFilgerconfigSpell:Show()
@@ -745,6 +751,7 @@ local function SaveSpell()
 	aura.spec = tonumber(spelloptions["spec"].editbox:GetText())
 	aura.trigger = tostring(spelloptions["trigger"].editbox:GetText())
 	aura.duration = tonumber(spelloptions["duration"].editbox:GetText())
+	aura.timeleft = tonumber(spelloptions["timeleft"].editbox:GetText())
 	aura.absID = spelloptions["absID"].button:GetChecked() and true or false
 	aura.incombat = spelloptions["incombat"].button:GetChecked() and true or false
 	aura.icon = spelloptions["icon"].value
@@ -776,19 +783,26 @@ local function SaveSpell()
 		aura.caster = nil
 		aura.unitId = nil
 		aura.absID = nil
+		aura.timeleft = nil
 	elseif aura.filter == "ACD" then
 		aura.caster = "all"
 		aura.unitId = nil
 		aura.absID = nil
+		aura.timeleft = nil
 	elseif aura.filter == "ICD" then
 		aura.caster = nil
 		aura.unitId = nil
+		aura.timeleft = nil
 	end
 	
 	if type(aura.spec) ~= "number" or aura.spec < 1 or aura.spec > 4 then
 		aura.spec = nil
 	end
 	
+	if type(aura.timeleft) ~= "number" or aura.timeleft < 1 then
+		aura.timeleft = nil
+	end
+
 	if aura.filter ~= "ICD" then
 		aura.trigger = nil
 		aura.duration = nil

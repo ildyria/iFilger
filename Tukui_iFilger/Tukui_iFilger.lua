@@ -482,6 +482,12 @@ function iFilger:OnEvent(event, unit)
 							start = expirationTime - duration
 							found = true
 						end
+						if name and found and data.timeleft and data.timeleft < (expirationTime - GetTime()) then
+							local triggerwhen = (expirationTime - data.timeleft)
+							if not self.updatetimes then self.updatetimes = {} end
+							self.updatetimes[i] = {data = data, name = name, icon = icon, count = count, start = start, duration = duration, spid = spid, triggerwhen = triggerwhen}
+							found = false
+						end
 					elseif data.filter == "DEBUFF" and (not data.spec or data.spec == ptt) then
 						local caster, spn, expirationTime
 						spn, _, _ = GetSpellInfo(data.spellID)
@@ -493,8 +499,14 @@ function iFilger:OnEvent(event, unit)
 							start = expirationTime - duration
 							found = true
 						end
+						if name and found and data.timeleft and data.timeleft < (expirationTime - GetTime()) then
+							local triggerwhen = (expirationTime - data.timeleft)
+							if not self.updatetimes then self.updatetimes = {} end
+							self.updatetimes[i] = {data = data, name = name, icon = icon, count = count, start = start, duration = duration, spid = spid, triggerwhen = triggerwhen}
+							found = false
+						end
 					elseif data.filter == "IBUFF" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) then
-						local spn
+						local spn, icon
 						spn, _, icon = GetSpellInfo(data.spellID)
 						name = iFilger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
 						if icon and data.icon then
@@ -604,7 +616,7 @@ function iFilger:OnEvent(event, unit)
 							self.actives[i] = nil -- remove BUFF/DEBUFF/ACD (only when BUFF/DEBUFF modified, CD are removed in UpdateCD)
 							needUpdate = true
 						end
-				end
+					end
 			end
 		end
 		
@@ -631,104 +643,56 @@ function iFilger:UpdateSpellList(zone)
 		iFilger["spells"][index] = nil
 	end
 	
-	if (iFilger_Spells[class]) then
-		for i = 1, #iFilger_Spells[class], 1 do
-			if (iFilger_Spells[class][i].Enable) then
-				table.insert(iFilger["spells"], iFilger_Spells[class][i])
-				loading = true
-			end
-		end
-		if (loading) then
-			loaded = loaded .. " " .. class
-			loading = false
-		end
+	myClass = select(2, UnitClass("player"))
+	local tabs = {  											-- List of headers and number of tabs inside each ones
+		[1] = myClass,										--	"MAGE","DEATHKNIGHT","PRIEST";"WARLOCK","DRUID","HUNTER","ROGUE","PALADIN","SHAMAN","WARRIOR","HUNTER/DRUID/ROGUE",
+		[2] = "ALL",
+		[3] = "PVP",
+		[4] = "PVE",
+		[5] = "TANKS",
+		[6] = "HUNTER/DRUID/ROGUE",
+	}
+	if myClass ~= "HUNTER" and myClass ~= "DRUID" and myClass ~= "ROGUE" then	-- remove the part we don't want.
+		tabs[6] = nil
 	end
 
-	if (iFilger_Spells["ALL"]) then
-		for i = 1, #iFilger_Spells["ALL"], 1 do
-			-- merge similar spell-list (compare using Name and merge flag set) otherwise add another spell-list
-			if iFilger_Spells["ALL"][i].Enable then
-				loading = true
-				local merge = false
-				local spellListAll = iFilger_Spells["ALL"][i]
-				local enable = spellListAll
-				local spellListClass = nil
-				for j = 1, #iFilger["spells"], 1 do
-					spellListClass = iFilger["spells"][j]
-					local mergeAll = spellListAll.Merge or false
-					local mergeClass = spellListClass.Merge or false
-					if ( spellListClass.Name == spellListAll.Mergewith and ( mergeAll or mergeClass ) ) then
-						merge = true
-						break
+	local cat
+	for i = 1, #tabs, 1 do
+		cat = tabs[i]
+		if (cat == "PVE" or cat == "TANKS" and (zone == "pve" or zone == "config")) or (cat == "PVP" and (zone == "pvp" or zone == "config")) or (cat ~= "PVP" and cat ~= "PVE") then
+			if (iFilger_Spells[cat]) then
+				for i = 1, #iFilger_Spells[cat], 1 do
+					-- merge similar spell-list (compare using Name and merge flag set) otherwise add another spell-list
+					if iFilger_Spells[cat][i].Enable then
+						loading = true
+						local merge = false
+						local spellListAll = iFilger_Spells[cat][i]
+						local enable = spellListAll
+						local spellListClass = nil
+						for j = 1, #iFilger["spells"], 1 do
+							spellListClass = iFilger["spells"][j]
+							local mergeAll = spellListAll.Merge or false
+							local mergeClass = spellListClass.Merge or false
+							if ( spellListClass.Name == spellListAll.Mergewith and ( mergeAll or mergeClass ) ) then
+								merge = true
+								break
+							end
+						end
+						if ( not merge or spellListClass == nil ) then
+							-- add another spell-list
+							table.insert(iFilger["spells"], iFilger_Spells[cat][i])
+						else
+							for j = 1, #spellListAll, 1 do
+								table.insert( spellListClass, spellListAll[j] )
+							end
+						end
 					end
 				end
-				if ( not merge or spellListClass == nil ) then
-					-- add another spell-list
-					table.insert(iFilger["spells"], iFilger_Spells["ALL"][i])
-				else
-					-- merge spell-list but class-specific position, direction, ...
-					--I.Print("MERGING SPELLS FROM "..spellListAll.Name)
-					for j = 1, #spellListAll, 1 do
-						table.insert( spellListClass, spellListAll[j] )
-					end
+				if (loading) then
+					loaded = loaded .. " " .. cat
+					loading = false
 				end
 			end
-		end
-		if (loading) then
-			loaded = loaded .. " ALL"
-			loading = false
-		end
-	end
-
-	if (iFilger_Spells["PVE"] and (zone == "pve" or zone == "config")) then
-		for i = 1, #iFilger_Spells["PVE"], 1 do
-			if (iFilger_Spells["PVE"][i].Enable) then
-				table.insert(iFilger["spells"], iFilger_Spells["PVE"][i])
-				loading = true
-			end
-		end
-		if (loading) then
-			loaded = loaded .. " PVE"
-			loading = false
-		end
-	end
-
-	if (iFilger_Spells["TANKS"] and (zone == "pve" or zone == "config")) then
-		for i = 1, #iFilger_Spells["TANKS"], 1 do
-			if (iFilger_Spells["TANKS"][i].Enable) then
-				table.insert(iFilger["spells"], iFilger_Spells["TANKS"][i])
-				loading = true
-			end
-		end
-		if (loading) then
-			loaded = loaded .. " TANKS"
-			loading = false
-		end
-	end
-
-	if (iFilger_Spells["PVP"] and (zone == "pvp" or zone == "config")) then
-		for i = 1, #iFilger_Spells["PVP"], 1 do
-			if (iFilger_Spells["PVP"][i].Enable) then
-				table.insert(iFilger["spells"], iFilger_Spells["PVP"][i])
-				loading = true
-			end
-		end
-		if (loading) then
-			loaded = loaded .. " PVP"
-			loading = false
-		end
-	end
-
-	if (iFilger_Spells["HUNTER/DRUID/ROGUE"] and (class == "HUNTER" or class == "DRUID" or class == "ROGUE")) then
-		for i = 1, #iFilger_Spells["HUNTER/DRUID/ROGUE"], 1 do
-			if (iFilger_Spells["HUNTER/DRUID/ROGUE"][i].Enable) then
-				table.insert(iFilger["spells"], iFilger_Spells["HUNTER/DRUID/ROGUE"][i])
-				loading = true
-			end
-		end
-		if (loading) then
-			loaded = loaded .. " PVP"
-			loading = false
 		end
 	end
 
@@ -770,7 +734,7 @@ function iFilger:CleanSpellList ()
 		end
 
 		if (#data == 0) then
-			I.Print("WARNING - EMPTY section -> "..data.Name.." !")
+			-- I.Print("WARNING - EMPTY section -> "..data.Name.." !")
 			table.insert(idx, i)
 		end
 	end
@@ -807,6 +771,33 @@ function iFilger:UpdatesFramesList ()
 			frame:Height(data.Size or 20)
 			frame:Point(unpack(data.setPoint))
 			frame:SetAlpha(data.Alpha or 1.0)
+			frame.updatetimes = {}
+			frame.timeSinceLastUpdate = 0
+			frame:SetScript("OnUpdate", function(self, elapsed)
+				local time = GetTime()
+				self.timeSinceLastUpdate = self.timeSinceLastUpdate + elapsed
+				local i,t, found
+				if self.timeSinceLastUpdate > 0.05 and #self.updatetimes ~= 0 then
+					for i, value in pairs(self.updatetimes) do
+						if time > value.triggerwhen then
+							if not self.actives then self.actives = {} end
+							if not self.actives[i] then
+								self.actives[i] = {data = value.data, name = value.name, icon = value.icon, count = value.count, start = value.start, duration = value.duration, spid = value.spid}
+								needUpdate = true
+							else
+								if self.actives[i].count ~= value.count or self.actives[i].start ~= value.start or self.actives[i].duration ~= value.duration then
+									self.actives[i].count = value.count
+									self.actives[i].start = value.start
+									self.actives[i].duration = value.duration
+								end
+							end
+							self.updatetimes[i] = nil
+						end
+						iFilger.DisplayActives(self)
+					end
+					self.timeSinceLastUpdate = 0
+				end
+			end)
 			
 			if(data.Mode ~= "ICON" and frame.Direction ~= "DOWN" and frame.Direction ~= "UP") then -- check if bar + right or left => ugly !
 				frame.Direction = "UP";

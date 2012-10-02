@@ -11,7 +11,7 @@ C["Filger_Config"] = {
 	["autoupdate"] = false,								-- Automaticaly update the config.
 	["Config Version"] = {								-- To warn thoses who use ingame Config that their database is outdated.
 														-- We need to filter the class, if MAGE is updated but not DK why should we make a reset for the DK ???
-		["MAGE"] = 1,									-- Mages changes
+		["MAGE"] = 1.1,									-- Mages changes
 		["DEATHKNIGHT"] = 1,							-- DK changes
 		["PRIEST"] = 1,									-- Priest changes
 		["WARLOCK"] = 1,								-- Locks changes
@@ -22,7 +22,7 @@ C["Filger_Config"] = {
 		["ROGUE"] = 1,									-- Rogue changes
 		["PALADIN"] = 1.2,								-- Paladin changes
 		["MONK"] = 1,									-- Monk changes
-		["ALL"] = 1.1,									-- ALL/PVP/PVE and everything elses changes (reset for every class)
+		["ALL"] = 1.2,									-- ALL/PVP/PVE and everything elses changes (reset for every class)
 	}
 }
 
@@ -55,13 +55,14 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
 		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerFocusBuffs", w = 225, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs / Debuffs" },
 		{ name = "iFilgerMageInvertAura", w = 200, h = 20, anchor = "BOTTOM", x = 0, y = 30, text = "Invert Auras/CD" },
 		{ name = "iFilgerInterrupt", w = 75, h = 20, anchor = "BOTTOM", x = 0, y = 10, text = "Interrupt" },
 	},
 	["DEATHKNIGHT"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
+		{ name = "iFilgerFocusBuffs", w = 225, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs / Debuffs" },
 		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
 	},
 	["PRIEST"] = {
@@ -73,11 +74,11 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerProcDps", w = 200, h = 20, anchor = "CENTER", x = 0, y = -250, text = "CD Dps" },
 		{ name = "iFilgerBuffDebuffHeal", w = 200, h = 20, anchor = "BOTTOMRIGHT", x = 98, y = -61, text = "Buff / Debuff Heal" },
 		{ name = "iFilgerBuffPlayerHeal", w = 200, h = 20, anchor = "TOPRIGHT", x = -164, y = -268, text = "Heal Buff Player" },
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerFocusBuffs", w = 225, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs / Debuffs" },
 	},
 	["WARLOCK"] = {
 		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 200, y = -55, text = "Buffs / Debuffs" },
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerFocusBuffs", w = 225, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs / Debuffs" },
 		{ name = "iFilgerTargetCCDebuff", w = 160, h = 20, anchor = "TOPLEFT", x = 37, y = -110, text = "Target CC Debuff" },
 		{ name = "iFilgerTargetDoTDebuff", w = 160, h = 20, anchor = "TOPRIGHT", x = -100, y = -110, text = "Target DoT Debuff" },
 		{ name = "iFilgerProcs", w = 90, h = 20, anchor = "CENTER", x = 0, y = -55, text = "Procs" },
@@ -90,7 +91,7 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerTargetDebuff", w = 200, h = 20, anchor = "TOPRIGHT", x = 118, y = -160, text = "Target Debuff" },
 		{ name = "iFilgerBuffTargetHeal", w = 200, h = 20, anchor = "TOPLEFT", x = 164, y = -268, text = "Heal Buff Target" },
 		{ name = "iFilgerBuffPlayerHeal", w = 200, h = 20, anchor = "TOPRIGHT", x = -164, y = -268, text = "Heal Buff Player" },
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerFocusBuffs", w = 225, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs / Debuffs" },
 		{ name = "iFilgerRage", w = 165, h = 20, anchor = "CENTER", x = 0, y = -20, text = "Rage Buffs" },
 		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
 	},
@@ -99,7 +100,7 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerPlayerBuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Player Buffs" },
 		{ name = "iFilgerTargetDebuff", w = 200, h = 20, anchor = "TOP", x = 0, y = -160, text = "Target Debuff" },
 		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerFocusBuffs", w = 225, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs / Debuffs" },
 		{ name = "iFilgerRage", w = 165, h = 20, anchor = "CENTER", x = 0, y = -20, text = "Rage Buffs" },
 	},
 	["ROGUE"] = {
@@ -107,7 +108,7 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerPlayerBuff", w = 160, h = 20, anchor = "TOPRIGHT", x = -42, y = -110, text = "Player Buff" },
 		{ name = "iFilgerProcs", w = 90, h = 20, anchor = "CENTER", x = 0, y = -55, text = "Procs" }, -- Procs LEGENDARY
 		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "TOPLEFT", x = 204, y = 63, text = "Target Cooldowns" },
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerFocusBuffs", w = 225, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs / Debuffs" },
 		{ name = "iFilgerRage", w = 165, h = 20, anchor = "CENTER", x = 0, y = -20, text = "Rage Buffs" },
 	},
 	["PALADIN"] = {
@@ -116,7 +117,7 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
 		{ name = "iFilgerBuffTargetHeal", w = 200, h = 20, anchor = "TOPLEFT", x = 164, y = -268, text = "Heal Buff Target" },
 		{ name = "iFilgerBuffPlayerHeal", w = 200, h = 20, anchor = "TOPRIGHT", x = -164, y = -268, text = "Heal Buff Player" },
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerFocusBuffs", w = 225, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs / Debuffs" },
 		{ name = "iFilgerPalyInvertAura", w = 200, h = 20, anchor = "BOTTOM", x = 0, y = 30, text = "Invert Auras/CD" },
 	},
 	["SHAMAN"] = {
@@ -125,7 +126,7 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
 		{ name = "iFilgerBuffTargetHeal", w = 200, h = 20, anchor = "TOPLEFT", x = 164, y = -268, text = "Heal Buff Target" },
 		{ name = "iFilgerBuffPlayerHeal", w = 200, h = 20, anchor = "TOPRIGHT", x = -164, y = -268, text = "Heal Buff Player" },
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerFocusBuffs", w = 225, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs / Debuffs" },
 		{ name = "iFilgerTargetDebuff", w = 160, h = 20, anchor = "TOPLEFT", x = 37, y = -110, text = "Target Debuff" },
 		{ name = "iFilgerPlayerBuff", w = 160, h = 20, anchor = "TOPRIGHT", x = -42, y = -110, text = "Player Buff" },
 		{ name = "iFilgerLavaBurst", w = 90, h = 20, anchor = "CENTER", x = 0, y = -55, text = "Lava Burst" },
@@ -133,11 +134,13 @@ C["Filger_Panels"] = {
 	["WARRIOR"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
+		{ name = "iFilgerFocusBuffs", w = 225, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs / Debuffs" },
 		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
 	},
 	["MONK"] = {
 		{ name = "iFilgerPlayerBuff", w = 160, h = 20, anchor = "TOPLEFT", x = -42, y = -110, text = "Player Buffs" },
 		{ name = "iFilgerTargetDebuff", w = 160, h = 20, anchor = "TOPLEFT", x = 37, y = -110, text = "Target Debuff" },
+		{ name = "iFilgerFocusBuffs", w = 225, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs / Debuffs" },
 		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
 	},
 	["ALL"] = {
@@ -178,6 +181,10 @@ C["Filger_Panels"] = {
 --			= any number (in seconds)
 --			(works only with filter option set to ICD)
 --			(specifies how long internal CD is)
+--		timeleft
+--			= any number (in seconds)
+--			(works only with filter option set to buff or debuff)
+--			(show icon only if time left is below)
 --		slotID
 --			= any number lower than 24
 --			(works only with filter option set to CD / ICD)
@@ -404,6 +411,12 @@ C["Filger_Spells"] = {
 			{ spellID = 46989, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Greater Invisibility
 			{ spellID = 110960, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Replendish Mana
+			{ spellID = 5405, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Rune of Power
+			{ spellID = 116014, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Invoker's Energy
+			{ spellID = 116257, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Mage Procs",
@@ -440,6 +453,10 @@ C["Filger_Spells"] = {
 			{ spellID = 108839, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Glyph of Remove Curse
 			{ spellID = 115701, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Invoker's Energy
+			{ spellID = 116257, unitId = "player", caster = "player", filter = "BUFF", timeleft = 5 },
+			-- Invoker's Absorption
+			{ spellID = 116267, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Mage InvertAura",
@@ -454,6 +471,8 @@ C["Filger_Spells"] = {
 			
 			-- Pyromaniac (fire damage increased by 10%, applyied by bomb)
 			{ spellID = 132210, unitId = "target", caster = "player", filter = "IDEBUFF", incombat = true, spec = 2 },
+			-- Frost Bomb
+			{ spellID = 112948, unitId = "target", caster = "player", filter = "IDEBUFF", incombat = true, spec = 3 },
 		},
 		{
 			Name = "Focus",  
@@ -467,7 +486,7 @@ C["Filger_Spells"] = {
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 			
 			-- Sheep mage
-			{ spellID = 118, unitId = "focus", caster = "player", filter = "DEBUFF" },
+			-- { spellID = 118, unitId = "focus", caster = "player", filter = "DEBUFF" },
 		},
 		{
 			Name = "Interrupt",  
@@ -709,9 +728,9 @@ C["Filger_Spells"] = {
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 
 			-- Shackle Undead
-			{ spellID = 9484, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 9484, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Psychic Scream
-			{ spellID = 8122, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 8122, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Shadow Word: Pain
 			{ spellID = 589, unitId = "focus", caster = "player", filter = "DEBUFF" },
 			-- Devouring Plague
@@ -1069,9 +1088,9 @@ C["Filger_Spells"] = {
 			-- Havoc
 			{ spellID = 80240, unitId = "focus", caster = "player", filter = "DEBUFF" },	
 			-- Fear
-			{ spellID = 5782, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 5782, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Banish
-			{ spellID = 710, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 710, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},
 	["DRUID"] = { ---------------------------------------------------- Druid
@@ -1283,9 +1302,9 @@ C["Filger_Spells"] = {
 			-- Hibernate
 			{ spellID = 2637, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Entangling Roots
-			{ spellID = 339, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 339, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Cyclone
-			{ spellID = 33786, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 33786, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},
 	["HUNTER"] = { ---------------------------------------------------- Hunter
@@ -1403,11 +1422,11 @@ C["Filger_Spells"] = {
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
 
 			-- Wyvern Sting
-			{ spellID = 19386, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 19386, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Silencing Shot
-			{ spellID = 34490, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 34490, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Freezing Trap
-			{ spellID = 3355, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 3355, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},	
 	["ROGUE"] = { ---------------------------------------------------- Rogue
@@ -1562,11 +1581,11 @@ C["Filger_Spells"] = {
 			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", "TOPRIGHT", 0, -22 },
 
 			-- Blind
-			{ spellID = 2094, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 2094, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Sap
-			{ spellID = 6770, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 6770, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Gouge
-			{ spellID = 1776, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 1776, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 		{
 			Name = "Rogue Procs",
@@ -1764,9 +1783,9 @@ C["Filger_Spells"] = {
 			-- Earth Shield
 			{ spellID = 974, unitId = "focus", caster = "player", filter = "BUFF" },
 			-- Hex
-			{ spellID = 51514, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 51514, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Bind Elemental
-			{ spellID = 76780, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 76780, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 		{
 			Name = "Debuffs Elem",
@@ -1884,9 +1903,9 @@ C["Filger_Spells"] = {
 			-- Beacon of Light -- player
 			{ spellID = 53563, unitId = "focus", caster = "player", filter = "BUFF" },
 			-- Hammer of Justice
-			{ spellID = 853, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 853, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Judgement
-			{ spellID = 20271, unitId = "focus", caster = "player", filter = "DEBUFF" },
+			-- { spellID = 20271, unitId = "focus", caster = "player", filter = "DEBUFF" },
 		},
 		{
 			Name = "Buffs and Debuffs",
@@ -2846,7 +2865,7 @@ C["Filger_Spells"] = {
 			{ spellID = 89766, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Banish
 			{ spellID = 710, unitId = "player", caster = "all", filter = "DEBUFF" },		
-			--Death Coil
+			--Mortal Coil
 			{ spellID = 6789, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Demon Leap
 			{ spellID = 54786, unitId = "player", caster = "all", filter = "DEBUFF" },
@@ -2904,6 +2923,250 @@ C["Filger_Spells"] = {
 			{ spellID = 20549, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Arcane Torrent
 			{ spellID = 28730, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Quaking Palm
+			{ spellID = 107079, unitId = "player", caster = "all", filter = "DEBUFF" },
+		},
+		{
+			-- Here we track pvp debuffs on focus
+			Name = "FOCUS PVP DEBUFF",
+			Enable = true,
+			Direction = "LEFT",
+			Interval = 6,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Merge = true,
+			Mergewith = "Cooldown",
+			Size = 70,
+			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
+			
+			-- Rogue --
+			--Kidney Shot
+			{ spellID = 408, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Blind
+			{ spellID = 2094, unitId = "focus", caster = "all", filter = "DEBUFF" },	
+			--Sap
+			{ spellID = 6770, unitId = "focus", caster = "all", filter = "DEBUFF" },			
+			--Smoke Bomb
+			{ spellID = 76577, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Garrote - Silence
+			{ spellID = 1330, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Dismantle
+			{ spellID = 51722, unitId = "focus", caster = "all", filter = "DEBUFF" },			
+			--Crippling Poison
+			-- { spellID = 3409, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Deadly Throw
+			{ spellID = 26679, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Gouge
+			{ spellID = 1776, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Cheap Shot
+			{ spellID = 1833, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			
+			-- Paladin --
+			--Hammer of Justice
+			{ spellID = 853, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Seal of Justice
+			{ spellID = 20170, unitId = "focus", caster = "all", filter = "DEBUFF" },	
+			--Repentance
+			{ spellID = 20066, unitId = "focus", caster = "all", filter = "DEBUFF" },			
+			--Holy Wrath
+			{ spellID = 2812, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Turn Evil
+			{ spellID = 10326, unitId = "focus", caster = "all", filter = "DEBUFF" },	
+			--Avenger's Shield
+			{ spellID = 31935, unitId = "focus", caster = "all", filter = "DEBUFF" },
+
+			-- Mage --
+			--Polymorph
+			{ spellID = 118, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Deep Freeze
+			{ spellID = 44572, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Ring of Frost
+			{ spellID = 82691, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Freeze (Water Elemental)
+			{ spellID = 33395, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Frost Nova
+			{ spellID = 122, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Blast Wave
+			-- { spellID = 11113, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Cone of Cold
+			-- { spellID = 120, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Frostbolt
+			-- { spellID = 116, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Frostfire Bolt
+			-- { spellID = 44614, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Slow
+			-- { spellID = 31589, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			
+			-- Death Kinght --
+			--Monstrous Blow (Super ghoul)
+			{ spellID = 91797, unitId = "focus", caster = "all", filter = "DEBUFF" },	
+			--Chains of Ice
+			{ spellID = 45524, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Strangulate
+			{ spellID = 47476, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Gnaw (Ghoul)
+			{ spellID = 47481, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Chilblains
+			{ spellID = 50041, unitId = "focus", caster = "all", filter = "DEBUFF" },	
+			--Dark Simulacrum
+			-- { spellID = 77606, unitId = "focus", caster = "all", filter = "DEBUFF" },	
+		
+			-- Druid --
+			--Bash (also Shaman Spirit Wolf ability)
+			{ spellID = 5211, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Cyclone
+			{ spellID = 33786, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Maim
+			{ spellID = 22570, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Pounce
+			{ spellID = 9005, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Solar Beam
+			{ spellID = 97547, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Entangling Roots
+			{ spellID = 339, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Feral Charge Effect
+			{ spellID = 45334, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Infected Wounds
+			-- { spellID = 48484, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Typhoon
+			-- { spellID = 61391, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			
+			-- Hunter --
+			--Freezing Trap Effect
+			{ spellID = 3355, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Intimidation
+			{ spellID = 24394, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Wyvern Sting
+			{ spellID = 19386, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Silencing Shot
+			{ spellID = 34490, unitId = "focus", caster = "all", filter = "DEBUFF" },			
+			--Scatter Shot
+			{ spellID = 19503, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Entrapment
+			{ spellID = 19185, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Concussive Barrage
+			-- { spellID = 35101, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Concussive Shot
+			-- { spellID = 5116, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Frost Trap Aura
+			-- { spellID = 13810, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Glyph of Freezing Trap
+			-- { spellID = 61394, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Sonic Blast (Bat)
+			{ spellID = 50519, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Snatch (Bird of Prey)
+			{ spellID = 50541, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Froststorm Breath (Chimera)
+			-- { spellID = 92380, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Pin (Crab)
+			{ spellID = 50245, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Bad Manner (Monkey)
+			{ spellID = 90337, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Venom Web Spray (Silithid)
+			{ spellID = 54706, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Web (Spider)
+			{ spellID = 4167, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			
+			-- Priest --
+			--Mind Control
+			{ spellID = 605, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Psychic Horror
+			{ spellID = 64044, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Psychic Scream
+			{ spellID = 8122, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Shackle Undead
+			{ spellID = 9484, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Sin and Punishment
+			{ spellID = 87204, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Paralysis
+			{ spellID = 87194, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Mind Flay
+			-- { spellID = 15407, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			
+			-- Shaman --
+			--Bind Elemental
+			{ spellID = 76780, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Earthquake
+			{ spellID = 61882, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Hex
+			{ spellID = 51514, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Earthgrab Totem
+			{ spellID = 51485, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Freeze (Frozen Power)
+			{ spellID = 63685, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Earthbind (5 second duration per pulse, but will keep re-applying the debuff as long as you stand within the pulse radius)
+			-- { spellID = 3600, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Frost Shock
+			{ spellID = 8056, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Frostbrand Attack
+			-- { spellID = 8034, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			
+			-- Warlock --
+			--Axe Toss (Felguard)
+			{ spellID = 89766, unitId = "focus", caster = "all", filter = "DEBUFF" },	
+			--Banish
+			{ spellID = 710, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Mortal Coil
+			{ spellID = 6789, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Demon Leap
+			{ spellID = 54786, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Fear
+			{ spellID = 5782, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Blood Fear
+			{ spellID = 111397, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Howl of Terror
+			{ spellID = 5484, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Seduction (Succubus)
+			{ spellID = 6358, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Mesmerize (Succubus)
+			{ spellID = 115268, unitId = "focus", caster = "all", filter = "DEBUFF" },	
+			--Shadowfury
+			{ spellID = 30283, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Spell Lock (Felhunter)
+			{ spellID = 24259, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Unstable Affliction
+			-- { spellID = 31117, unitId = "focus", caster = "all", filter = "DEBUFF" },	
+			--Aftermath
+			{ spellID = 109784, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Curse of the Elements
+			-- { spellID = 1490, unitId = "focus", caster = "all", filter = "DEBUFF" },			
+			-- Curse of Emfeeblement
+			-- { spellID = 109466, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Curse of Exhaustion
+			-- { spellID = 18223, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Shadowsnare (Glyph of Shadowflame)
+			-- { spellID = 63311, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Havoc
+			-- { spellID = 80240, unitId = "focus", caster = "all", filter = "DEBUFF" },	
+			-- Archimonde's Vengeance
+			-- { spellID = 108505, unitId = "focus", caster = "all", filter = "DEBUFF" },	
+			
+			-- Warrior --
+			--Hamstring
+			-- { spellID = 1715, unitId = "focus", caster = "all", filter = "DEBUFF" },		
+			--Charge Stun
+			{ spellID = 7922, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Heroic Leap
+			-- { spellID = 6544, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Intimidating Shout
+			{ spellID = 5246, unitId = "focus", caster = "all", filter = "DEBUFF" },	
+			--Shockwave
+			{ spellID = 46968, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Silenced - Gag Order
+			{ spellID = 18498, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Disarm
+			{ spellID = 676, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			--Piercing Howl
+			{ spellID = 12323, unitId = "focus", caster = "all", filter = "DEBUFF" },
+
+			-- Racials --
+			-- War Stomp
+			{ spellID = 20549, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Arcane Torrent
+			{ spellID = 28730, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Quaking Palm
+			{ spellID = 107079, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},
 	["PVE"] = {
