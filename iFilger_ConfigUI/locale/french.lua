@@ -7,7 +7,7 @@ if client == "frFR" then
 	L["iFilger"] = "|cff1784d1iFilger|r |cffffffffConfiguration|r"
 	L["Config"] = "Si vous configurez votre |cff1784d1iFilger|r \nen lua et souhaitez toujours utiliser \nl'interface graphique de configuration, \nn'oubliez pas de cliquer sur |cff1784d1Reset Config|r \nà chaque fois que vous modifiez \nle fichier config.lua"
 
-	L["RESETMSG"] = "Êtes-vous sûr de vouloir remplacer tous vos reglages avec ceux par défaut?"--updated
+	L["RESETMSG"] = "Êtes-vous sûr de vouloir remplacer tous vos réglages avec ceux par défaut?"--updated
 
 	L["Name"] = "Nom"--updated
 	L["Enable"] = "Activé"--updated
@@ -100,17 +100,17 @@ if client == "frFR" then
 	L["H_trigger4"] = "|cffff0000/!\\ NOTE:CE QUI DEMARRE QUAND LE |r" --updated
 	L["H_trigger5"] = "|cffff0000DECLENCHEMENT COMMENCE,PAS QUAND IL DISPARAIT.|r" --updated
 	L["H_duration"] = "durée ICD en seconde" --updated
-	L["H_icon1"] = "Desolé, mais l'icone de configuration est pour" --updated
+	L["H_icon1"] = "Desolé, mais l'icône de configuration est pour" --updated
 	L["H_icon2"] = "|cffff0000AVANCES UTILISATEURS|r et"; --updated
 	L["H_icon3"] = "Doivent être effectuées par LUA." --updated
 
 	-- buttons
 	L["Apply"] = "Appliquer"
 	L["Cancel"] = "Abandonner"
-	L["Reset Config"] = "Réinitialiser Config"
+	L["Reset Config"] = "Réinitialiser Config."
 	L["Move Buffs"] = "Déplacer les amélio."
 	L["Reset Buff Position"] = "RAZ positions"
-	L["Global"] = "config. globale"
+	L["Global"] = "Config. globale"
 	L["Del"] = "Suppr"
 	L["Edit"] = "Editer"
 	L["Add"] = "Ajouter"
@@ -118,13 +118,13 @@ if client == "frFR" then
 	local myClass = select(2, UnitClass("player"));
 
 	L["VersionNotFound"] = " Version non identifiable, nettoyez les variables sauvegardées"
-	L["UpdateRequired"] = "Votre version n'est plus à jour. Nous vous recommandons de |cffff0000"..L["Reset Config"].."|r avant l'utilisation d'|cff1784d1iFilger|r."
-	L["WarningConfig"] = "Des changements ont été éffectués dans la config.\nNous vous recommandons de faire |cffff0000"..L["Reset Config"].."|r\navant l'utilisation de|cff1784d1iFilger|r."
+	L["UpdateRequired"] = "Votre version n'est plus à jour. Nous vous recommandons de cliquer sur\n |cffff0000"..L["Reset Config"].."|r \navant l'utilisation d'|cff1784d1iFilger|r."
+	L["WarningConfig"] = "Des changements ont été\n éffectués dans la config.\nNous vous recommandons de faire un |cffff0000"..L["Reset Config"].."|r\navant l'utilisation d'|cff1784d1iFilger|r."
 	L["Updated"] = "|cff1784d1iFilger|r a été mis à jour."
 	L["ClassVersion"] = myClass.." version: "
 	L["AllVersion"] = ", Toutes versions: "
 	L["CurrentClassVersion"] = " "..myClass.." version: "
-	L["CurrentAllVersion"] = ", TOUTES versions actuelles: "
+	L["CurrentAllVersion"] = ", Ensemble des versions actuelles: "
 	L["AvailableClassVersion"] = " "..myClass.." version disponible: "
-	L["AvailableAllVersion"] = ",TOUTES versions disponibles: "
+	L["AvailableAllVersion"] = ",Ensemble des versions disponibles: "
 end
