@@ -7,7 +7,7 @@ if client == "frFR" then
 	L["iFilger"] = "|cff1784d1iFilger|r |cffffffffConfiguration|r"
 	L["Config"] = "Si vous configurez votre |cff1784d1iFilger|r \nen lua et souhaitez toujours utiliser \nl'interface graphique de configuration, \nn'oubliez pas de cliquer sur |cff1784d1Reset Config|r \nà chaque fois que vous modifiez \nle fichier config.lua"
 
-	L["RESETMSG"] = "Êtes-vous sûre de vouloir remplacer tous vos reglages avec ceux par défaut?"--updated
+	L["RESETMSG"] = "Êtes-vous sûr de vouloir remplacer tous vos reglages avec ceux par défaut?"--updated
 
 	L["Name"] = "Nom"--updated
 	L["Enable"] = "Activé"--updated
