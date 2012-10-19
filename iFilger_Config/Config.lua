@@ -474,7 +474,7 @@ C["Filger_Spells"] = {
 			setPoint = { "BOTTOM", "iFilgerMageInvertAura", 0, 22 },
 			
 			-- Rune of Power
-			{ spellID = 116014, unitId = "player", caster = "player", filter = "IBUFF" },
+			-- { spellID = 116014, unitId = "player", caster = "player", filter = "IBUFF" },
 			-- Pyromaniac (fire damage increased by 10%, applyied by bomb)
 			{ spellID = 132210, unitId = "target", caster = "player", filter = "IDEBUFF", incombat = true, spec = 2 },
 			-- Frost Bomb
