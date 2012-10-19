@@ -26,3 +26,10 @@ if myname == "Nâmi" then
 		value.Enable = false
 	end
 end
+
+if myname == "Wyxo" then
+	iFilgerConfig["Filger_Config"].cleverzone = true
+	iFilgerConfig["Filger_Config"].tooltip = true
+	iFilgerConfig["Filger_Spells"]["TANKS"][3].Enable = false
+	-- yeah my default config is not really like default iFilger.
+end
