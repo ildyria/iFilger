@@ -161,6 +161,10 @@ local help = {
 	["incombat"] = {
 		L["H_incombat"], --"Only show while in combat"
 	},
+	["known"] = {
+		L["H_known1"], -- "Only show if the SpellID is known by the player."
+		L["H_known2"], -- "|cffff0000/!\\ YOU HAVE TO BE SURE OF THE SPELLID|r"
+	},
 	["spec"] = {
 		L["H_spec"], --"Only show while in that spec : (|cffffffff1|r |cffffffff2|r |cffffffff3|r or |cffffffff4|r)"
 	},
@@ -611,11 +615,12 @@ create_spell_option("unitId","string",75) -- player / target / focus / pet / tar
 create_spell_option("caster","string",100) -- player / all
 create_spell_option("absID","boolean",125) -- true / false
 create_spell_option("incombat","boolean",150) -- true / false
-create_spell_option("spec","number",175) -- 1 2 3 4
-create_spell_option("trigger","string",200) -- BUFF / DEBUFF trigger for ICD
-create_spell_option("duration","number",225) -- duration of ICD
-create_spell_option("timeleft","number",250) -- timeleft
-create_spell_option("icon","string",275) -- icon
+create_spell_option("known","number",175) -- true / false
+create_spell_option("spec","number",200) -- 1 2 3 4
+create_spell_option("trigger","string",225) -- BUFF / DEBUFF trigger for ICD
+create_spell_option("duration","number",250) -- duration of ICD
+create_spell_option("timeleft","number",275) -- timeleft
+create_spell_option("icon","string",300) -- icon
 -- /!\ ACD require caster = "all"
 
 spelloptions["action"] = "ADD"
@@ -683,6 +688,7 @@ local function LoadSpell(indicetab,i)
 	spelloptions["caster"].editbox:SetText(data.caster or "")				-- set caster
 	spelloptions["spec"].editbox:SetText(data.spec or "")					-- set spec
 	spelloptions["trigger"].editbox:SetText(data.trigger or "")				-- set trigger
+	spelloptions["known"].editbox:SetText(data.known or "")					-- set known
 	spelloptions["duration"].editbox:SetText(data.duration or "")			-- set duration
 	spelloptions["timeleft"].editbox:SetText(data.timeleft or "")			-- set timeleft
 	if data.absID	then													-- set absID
@@ -724,6 +730,7 @@ local function LoadSpell(indicetab,i)
 	spelloptions["unitId"].value = data.unitId						-- set unitId
 	spelloptions["caster"].value = data.caster						-- set caster
 	spelloptions["spec"].value = data.spec							-- set spec
+	spelloptions["known"].value = data.known						-- set known
 	spelloptions["trigger"].value = data.trigger					-- set trigger
 	spelloptions["duration"].value = data.duration					-- set duration
 	spelloptions["timeleft"].value = data.timeleft					-- set timeleft
@@ -751,6 +758,7 @@ local function SaveSpell()
 	aura.spec = tonumber(spelloptions["spec"].editbox:GetText())
 	aura.trigger = tostring(spelloptions["trigger"].editbox:GetText())
 	aura.duration = tonumber(spelloptions["duration"].editbox:GetText())
+	aura.known = tonumber(spelloptions["known"].editbox:GetText())
 	aura.timeleft = tonumber(spelloptions["timeleft"].editbox:GetText())
 	aura.absID = spelloptions["absID"].button:GetChecked() and true or false
 	aura.incombat = spelloptions["incombat"].button:GetChecked() and true or false
@@ -795,10 +803,18 @@ local function SaveSpell()
 		aura.timeleft = nil
 	end
 	
+	if aura.filter ~= "IDEBUFF" and aura.filter ~= "IBUFF" then
+		aura.known = nil
+	end
+
 	if type(aura.spec) ~= "number" or aura.spec < 1 or aura.spec > 4 then
 		aura.spec = nil
 	end
 	
+	if type(aura.known) ~= "number" then
+		aura.known = nil
+	end
+
 	if type(aura.timeleft) ~= "number" or aura.timeleft < 1 then
 		aura.timeleft = nil
 	end

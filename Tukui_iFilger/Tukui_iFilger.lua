@@ -505,7 +505,7 @@ function iFilger:OnEvent(event, unit)
 							self.updatetimes[i] = {data = data, name = name, icon = icon, count = count, start = start, duration = duration, spid = spid, triggerwhen = triggerwhen}
 							found = false
 						end
-					elseif data.filter == "IBUFF" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) then
+					elseif data.filter == "IBUFF" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) and (not data.known or IsPlayerSpell(data.known)) then
 						local spn
 						spn, _, icon = GetSpellInfo(data.spellID)
 						name = iFilger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
@@ -517,7 +517,7 @@ function iFilger:OnEvent(event, unit)
 							name = spn
 							spid = data.spellID
 						end
-					elseif data.filter == "IDEBUFF" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) then
+					elseif data.filter == "IDEBUFF" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) and (not data.known or IsPlayerSpell(data.known)) then
 						local spn
 						spn, _, icon = GetSpellInfo(data.spellID)
 						name = iFilger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
