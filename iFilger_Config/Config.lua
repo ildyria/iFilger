@@ -27,7 +27,7 @@ C["Filger_Config"] = {
 }
 
 C["Filger_Cooldown"] = { -- will be disabled if Tukui / ElvUI / OmniCC / ncCooldown is enabled
-	["enable"] = true,									-- do i really need to explain this?
+	["enable"] = false,									-- do i really need to explain this?
 	["treshold"] = 8,									-- show decimal under X seconds and text turn red
 	["fontsize"] = 20,									--the base font size to use at a scale of 1
 }
@@ -2476,7 +2476,7 @@ C["Filger_Spells"] = {
 			{ spellID = 53908, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Wild Magic / Wilde Magie - Potion of Wild Magic
 			{ spellID = 53909, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Earthen Armor / Irdene Rüstung - Earthen Potion
+			-- Earthen Armor / Irdene Rï¿½stung - Earthen Potion
 			{ spellID = 79475, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Volcanic Power
 			{ spellID = 79476, unitId = "player", caster = "all", filter = "BUFF" }, 
@@ -3734,7 +3734,7 @@ C["Filger_Spells"] = {
 --DELETED			{ spellID = 93295, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Static Shock / Statischer Schock (Al'Akir)
 			{ spellID = 87873, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Acid Rain / Säureregen (Al'Akir)
+			-- Acid Rain / Sï¿½ureregen (Al'Akir)
 --DELETED			{ spellID = 93279, unitId = "player", caster = "all", filter = "DEBUFF" },
 -- Firelands
 		--Trash
@@ -3923,7 +3923,7 @@ C["Filger_Spells"] = {
 			-- Necrotic Plague
 --DELETED			{ spellID = 73912, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
 		-- Halion
-			--Fiery Combustion/Feurige Einäscherung (Halion)
+			--Fiery Combustion/Feurige Einï¿½scherung (Halion)
 			{ spellID = 74562, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Soul Consumption/Seelenverzehrung (Halion)
 			{ spellID = 74792, size = 68, unitId = "player", caster = "all", filter = "DEBUFF" },
@@ -3931,7 +3931,7 @@ C["Filger_Spells"] = {
 	},
 	["TANKS"] = {
 		{
-			Name = "Tanks CDs", -- requested by Nâmi@EU-Culte de la Rive noire 
+			Name = "Tanks CDs", -- requested by Nï¿½mi@EU-Culte de la Rive noire 
 			Enable = true,
 			Direction = "HORIZONTAL",
 			Interval = 4,

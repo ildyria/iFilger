@@ -39,13 +39,17 @@ local _G, select, pairs, ipairs, table, math, getn, format, unpack = _G, select,
 ------------------------------------------------------------
 
 function iFilger:UnitBuff(unitID, inSpellID, spn, absID)
-	for i = 1, 40, 1 do
-		local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitBuff(unitID, i)
-		if not GetSpellInfo(spellID) then return; end
-		if not name then break end
-		if (inSpellID == spellID) or (spn == name and not(absID)) then
-			return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
+	if absID then
+		for i = 1, 40, 1 do
+			local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitBuff(unitID, i)
+			if not GetSpellInfo(spellID) then return; end
+			if not name then break end
+			if inSpellID == spellID then
+				return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
+			end
 		end
+	else
+		return UnitBuff(unitID, spn)
 	end
 	return nil
 end
@@ -57,13 +61,17 @@ end
 ------------------------------------------------------------
 
 function iFilger:UnitDebuff(unitID, inSpellID, spn, absID)
-	for i = 1, 40, 1 do
-		local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitDebuff(unitID, i)
-		if not GetSpellInfo(spellID) then return; end
-		if not name then break end
-		if (inSpellID == spellID) or (spn == name and not(absID)) then
-			return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
+	if absID then
+		for i = 1, 40, 1 do
+			local name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID = UnitDebuff(unitID, i)
+			if not GetSpellInfo(spellID) then return; end
+			if not name then break end
+			if inSpellID == spellID then
+				return name, rank, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, shouldConsolidate, spellID
+			end
 		end
+	else
+		return UnitDebuff(unitID, spn)
 	end
 	return nil
 end
@@ -288,7 +296,16 @@ function iFilger:DisplayActives()
 					aura.count:SetFont(C["media"].pixelfont, 26, "OUTLINE")
 					aura.count:Point("BOTTOMRIGHT", 10, -10)
 					aura.count:SetJustifyH("CENTER")
-					aura.count:SetParent(aura.cooldown)
+				end
+				
+				-- text
+				if aura.text then
+					aura.text = _G[aura.text:GetName()]
+				else
+					aura.text = aura:CreateFontString("$parentText", "OVERLAY")
+					aura.text:SetFont(C["media"].font, 12, "OUTLINE")
+					aura.text:Point("BOTTOM", 0, -15)
+					aura.text:SetJustifyH("CENTER")
 				end
 			else
 				if (aura.statusbar) then
@@ -409,6 +426,13 @@ function iFilger:DisplayActives()
 			aura.count:Hide()
 		end
 		
+		if value.text then
+			aura.text:SetText(value.text)
+			aura.text:Show()
+		else
+			aura.text:Hide()
+		end
+		
 		if value.duration and value.duration > 0 then
 			if (self.Mode == "ICON") then
 				CooldownFrame_SetTimer(aura.cooldown, value.start, value.duration, 1)
@@ -486,7 +510,37 @@ function iFilger:DisplayActives()
 	end
 end
 
+local function ShortenString(string, numChars, dots)
+	assert(string, 'You need to provide a string to shorten. Usage: E:ShortenString(string, numChars, includeDots)')
+	assert(numChars, 'You need to provide a length to shorten the string to. Usage: E:ShortenString(string, numChars, includeDots)')
+	
+	local bytes = string:len()
+	if (bytes <= numChars) then
+		return string
+	else
+		local len, pos = 0, 1
+		while(pos <= bytes) do
+			len = len + 1
+			local c = string:byte(pos)
+			if (c > 0 and c <= 127) then
+				pos = pos + 1
+			elseif (c >= 192 and c <= 223) then
+				pos = pos + 2
+			elseif (c >= 224 and c <= 239) then
+				pos = pos + 3
+			elseif (c >= 240 and c <= 247) then
+				pos = pos + 4
+			end
+			if (len == numChars) then break end
+		end
 
+		if (len == numChars and pos <= bytes) then
+			return string:sub(1, pos - 1)..(dots and '...' or '')
+		else
+			return string
+		end
+	end
+end
 
 ------------------------------------------------------------
 -- Function OnEvent
@@ -502,9 +556,31 @@ function iFilger:OnEvent(event, unit)
 			for i = 1, #iFilger["spells"][id], 1 do
 				local data = iFilger["spells"][id][i]
 					local found = false
-					local name, icon, count, duration, start, spid
+					local pvp
+					local name, icon, count, duration, start, spid, text
 					spid = 0
-					if data.filter == "BUFF" and (not data.spec or data.spec == ptt) then
+					if data.filter == "PVP" then
+						local numEvents = C_LossOfControl.GetNumEvents()
+						if numEvents > 0 then
+							local locType, expirationTime, lockoutSchool, priority, displayType
+							locType, spid, text, icon, start, expirationTime, duration, lockoutSchool, priority, displayType = C_LossOfControl.GetEventInfo(data.spellID)
+							if(lockoutSchool and lockoutSchool ~= 0 and SchoolStringTable[lockoutSchool]) then
+								text = string.format(LOSS_OF_CONTROL_DISPLAY_INTERRUPT_SCHOOL, SchoolStringTable[lockoutSchool])
+							elseif text then
+								text = ShortenString(text, 8)
+							end
+							if icon then
+								name = "cc"..i
+								found = true
+							end
+							if name and found and data.timeleft and data.timeleft < (expirationTime - GetTime()) then
+								local triggerwhen = (expirationTime - data.timeleft)
+								if not self.updatetimes then self.updatetimes = {} end
+								self.updatetimes[i] = {data = data, name = name, icon = icon, count = count, start = start, duration = duration, spid = spid, text = text, triggerwhen = triggerwhen}
+								found = false
+							end
+						end
+					elseif data.filter == "BUFF" and (not data.spec or data.spec == ptt) then
 						local caster, spn, expirationTime
 						spn, _, _ = GetSpellInfo(data.spellID)
 						name, _, icon, count, _, duration, expirationTime, caster, _, _, spid = iFilger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
@@ -638,7 +714,7 @@ function iFilger:OnEvent(event, unit)
 					if found then
 						if not self.actives then self.actives = {} end
 						if not self.actives[i] then
-							self.actives[i] = {data = data, name = name, icon = icon, count = count, start = start, duration = duration, spid = spid}
+							self.actives[i] = {data = data, name = name, icon = icon, count = count, start = start, duration = duration, spid = spid, text = text}
 							needUpdate = true
 						else
 							if data.filter ~= "ICD" and data.filter ~= "ACD" and (self.actives[i].count ~= count or self.actives[i].start ~= start or self.actives[i].duration ~= duration) then
@@ -755,6 +831,9 @@ function iFilger:CleanSpellList ()
 		for j = 1, #data, 1 do
 			if (data[j].spellID) then
 				spn = GetSpellInfo(data[j].spellID)
+				if data[j].filter == "PVP" then 
+					spn = "CC"..j
+				end
 			else
 				local slotLink = GetInventoryItemLink("player", data[j].slotID);
 				if (slotLink) then
@@ -794,7 +873,7 @@ function iFilger:UpdatesFramesList ()
 		for i = 1, #iFilger["spells"], 1 do
 			local data = iFilger["spells"][i]
 			local frame = CreateFrame("Frame", "iFilgerFrame"..i.."_"..data.Name, UIParent)
-			--I.Print("FRAME CREATED:"..data.Name)
+			I.Print("FRAME CREATED:"..data.Name)
 			frame.Id = i
 			frame.Name = data.Name
 			frame.Direction = data.Direction or "UP"
@@ -820,13 +899,14 @@ function iFilger:UpdatesFramesList ()
 						if time > value.triggerwhen then
 							if not self.actives then self.actives = {} end
 							if not self.actives[i] then
-								self.actives[i] = {data = value.data, name = value.name, icon = value.icon, count = value.count, start = value.start, duration = value.duration, spid = value.spid}
+								self.actives[i] = {data = value.data, name = value.name, icon = value.icon, count = value.count, start = value.start, duration = value.duration, spid = value.spid, text = value.text}
 								needUpdate = true
 							else
-								if self.actives[i].count ~= value.count or self.actives[i].start ~= value.start or self.actives[i].duration ~= value.duration then
+								if self.actives[i].count ~= value.count or self.actives[i].start ~= value.start or self.actives[i].duration ~= value.duration or self.actives[i].text ~= value.text then
 									self.actives[i].count = value.count
 									self.actives[i].start = value.start
 									self.actives[i].duration = value.duration
+									self.actives[i].text = value.text
 								end
 							end
 							self.updatetimes[i] = nil

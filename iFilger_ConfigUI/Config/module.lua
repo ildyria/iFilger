@@ -27,15 +27,7 @@ local tabs = {  											-- List of headers and number of tabs inside each one
 		name = "TANKS",
 		tablist = {},
 	},
-	[6] = {
-		name = "HUNTER/DRUID/ROGUE",
-		tablist = {},
-	},
 }
-
-if myClass ~= "HUNTER" and myClass ~= "DRUID" and myClass ~= "ROGUE" then	-- remove the part we don't want.
-	tabs[6] = nil
-end
 
 local header = {}											-- List of headers (frames)
 local tab = {}												-- List of tab (frames)
@@ -1641,7 +1633,7 @@ local data = {}
 local indicetab = 0
 local numtab
 for j = 1, #tabs, 1 do
-	if tabs[j].name ~= "HUNTER/DRUID/ROGUE" or ((myClass == "HUNTER" or myClass == "DRUID" or myClass == "ROGUE") and tabs[j].name == "HUNTER/DRUID/ROGUE") then
+--	if tabs[j].name ~= "HUNTER/DRUID/ROGUE" or ((myClass == "HUNTER" or myClass == "DRUID" or myClass == "ROGUE") and tabs[j].name == "HUNTER/DRUID/ROGUE") then
 		create_tab_head(j,tabs[j].name)							-- create tab header
 		numtab = #iFilger_Spells[tabs[j].name]					-- get number of tab in the header
 		for i = 1, numtab, 1 do
@@ -1649,7 +1641,7 @@ for j = 1, #tabs, 1 do
 			data = iFilger_Spells[tabs[j].name][i].Name				-- get data about the current tab
 			create_tab(data,indicetab,j,i)						-- create tab and options
 		end
-	end
+--	end
 end
 
 --	LET'S CLOSE ALL TABS FIRST

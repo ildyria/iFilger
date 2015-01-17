@@ -28,7 +28,7 @@ I.CreateMoverFrames = function(frame, w, h, anchor, x, y, color, text)
 	frame:SetFrameStrata("HIGH")
 	frame.text = I.SetFontString(frame, C.media.pixelfont, 12, "MONOCHROMEOUTLINE")
 	frame.text:SetPoint("CENTER")
-	frame.text:SetText("Move "..text)
+	frame.text:SetText(text)
 	frame:Hide()
 end
 
