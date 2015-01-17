@@ -335,12 +335,16 @@ C["Filger_Spells"] = {
 			Size = 37, 
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
+			-- Magic Amp
+			{ spellID = 159916, filter = "CD" },
+			-- Dragonbreath
+			{ spellID = 31661, filter = "CD" },
 			-- Supernova
 			{ spellID = 157980, filter = "CD" },
-
-			-- Supernova
+			-- Blast Wave
+			{ spellID = 157981, filter = "CD" },
+			-- Arcane Orb
 			{ spellID = 153626, filter = "CD" },
-
 			-- Iceberg 
 			{ spellID = 108839, filter = "CD" },
 			-- Evocation
@@ -445,6 +449,8 @@ C["Filger_Spells"] = {
 			{ spellID = 116014, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Ice Barrier
 			{ spellID = 11426, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Fireball
+			{ spellID = 157644, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Mage Procs",
@@ -466,9 +472,9 @@ C["Filger_Spells"] = {
 			-- Brain Freeze
 			{ spellID = 57761, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Heating Up 
-			{ spellID = 48107, unitId = "player", caster = "player", filter = "BUFF", icon =  [[Interface\Icons\spell_mage_infernoblast]] },
+			{ spellID = 48107, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Hot Streak
-			{ spellID = 48108, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 48108, unitId = "player", caster = "player", filter = "BUFF" , icon =  [[Interface\Icons\Spell_Fire_Fireball02]] },
 			-- Arcane Charge
 			{ spellID = 36032, unitId = "player", caster = "player", filter = "DEBUFF" },
 			-- Fingers Of Frost
@@ -501,6 +507,8 @@ C["Filger_Spells"] = {
 			{ spellID = 116014, unitId = "player", caster = "player", filter = "IBUFF", known = 116011 },
 			-- Frost Bomb
 			{ spellID = 112948, unitId = "target", caster = "player", filter = "IDEBUFF", known = 112948, incombat = true},
+			-- living Bomb
+			{ spellID = 44457, unitId = "target", caster = "player", filter = "IDEBUFF", known = 44457, incombat = true},
 		},
 		{
 			Name = "Focus",  
@@ -2283,6 +2291,9 @@ C["Filger_Spells"] = {
 		-- Potions
 
 		-- External Buffs
+
+			-- Magic Imp
+			{ spellID = 159916, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Tricks of the Trade
 			{ spellID = 57934, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Power Infusion
@@ -2372,6 +2383,9 @@ C["Filger_Spells"] = {
 --			BarWidth = 150,
 			Size = 37,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
+
+			
+			{ spellID = 162919, filter = "ICD", trigger = "BUFF", duration = 115 },
 
 			-- Foul Gift (Foul Gift of the Demon Lord)
 			{ spellID = 102662, filter = "ICD", trigger = "BUFF", duration = 45, absID = true }, -- 60 ?
