@@ -1,9 +1,5 @@
 h2. iFilger
 
-h3. Language
-
-p. Vous pourrez trouver un guide en fran&#231;ais "ici":http://wisdom.biv.free.fr/WoW/iFilger.html
-
 h3. About
 
 p. iFilger is a very minimal buff/debuff tracking addon that will allow you to track buffs/debuffs on yourself, target, pets, focus, etc, and also can be used to track cooldowns.
@@ -16,18 +12,13 @@ p. The default config is VERY bar/icon spammy, you'll probably want to go throug
 
 h3. Download
 
-h4. World of Warcraft (4.3 live)
+h4. World of Warcraft (6.0 live)
 
 p. "Latest Version":https://github.com/ildyria/iFilger/zipball/master
 
 h3. Installation
 
-p. Download the zip file and unzip it. You will find the README and four folders named : *iFilger*, *iFilger_Config*, *iFilger_ConfigUI*, *Tukui_iFilger*. Copy the four folders (iFilger, iFilger_Config, iFilger_ConfigUI and Tukui_iFilger +not ildyria-iFilger-somerandomnumbers+) into you World of Warcraft\Interface\AddOns\ folder.
-
-p. Tukui_iFilger is for those who already have Tukui (dependant version).
-iFilger is for the one who do not have Tukui (stand alone version).
-!http://i40.servimg.com/u/f40/11/00/34/63/both10.jpg!
-iFilger_ConfigUI is an optional ingame configuration interface (not required to use iFilger/Tukui_iFilger).
+p. Download the zip file and unzip it. You will find the README, the .gitignore and three folders named : *iFilger*, *iFilger_Config*, *iFilger_ConfigUI*. Copy only the three folders (iFilger, iFilger_Config, and iFilger_ConfigUI +not ildyria-iFilger+) into you World of Warcraft\Interface\AddOns\ folder.
 
 p. Launch the game and enjoy !
 
@@ -41,8 +32,6 @@ p. Resizing, moving & some other options can be done ingame using the ConfigUI.
 
 p. All other configuration (like adding a groupe of buffs, managing buffs...) must be done by directly editing iFilger_Config/Config.lua.
 
-p. A guide can be found "here":http://www.tukui.org/forums/topic.php?id=19087 .
-
 p. Moving the bars
 
 <pre>
@@ -51,18 +40,6 @@ p. Moving the bars
 </pre>
 
 h3. Screenshots
-
-p. In configuration (moving bars) :
-"Mage":http://wisdom.biv.free.fr/WoW/Mage.jpg
-"Hunter":http://wisdom.biv.free.fr/WoW/Hunt.jpg
-"Druid":http://wisdom.biv.free.fr/WoW/druid.jpg
-"DK":http://wisdom.biv.free.fr/WoW/DK.jpg
-"Warlock":http://wisdom.biv.free.fr/WoW/warlock.jpg
-"Shaman":http://wisdom.biv.free.fr/WoW/shaman.jpg
-"Rogue":http://wisdom.biv.free.fr/WoW/rogue.jpg
-"Priest":http://wisdom.biv.free.fr/WoW/priest.jpg
-"Paladin":http://wisdom.biv.free.fr/WoW/Paladin.jpg
-"Warrior":http://wisdom.biv.free.fr/WoW/War.jpg
 
 p. Using the ConfigUI :
 !http://i40.servimg.com/u/f40/11/00/34/63/config10.jpg!
