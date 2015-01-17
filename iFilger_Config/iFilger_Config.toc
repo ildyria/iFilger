@@ -1,4 +1,4 @@
-## Interface: 50001
+## Interface: 60000
 ## Author: Ildyria
 ## Editor: Pat
 ## Title: |cff1784d1iFilger|r |cffffffffconfig|r
